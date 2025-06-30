@@ -22,6 +22,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "@types/express": "^5.0.3",
     "@types/sqlite3": "^3.1.11",
     "prisma": "^6.10.1",
     "typescript": "^5.8.3"
@@ -29,8 +30,14 @@
   "dependencies": {
     "@octokit/rest": "^22.0.0",
     "@prisma/client": "^6.10.1",
+    "@types/ws": "^8.18.1",
     "commander": "^14.0.0",
+    "express": "^5.1.0",
     "inquirer": "^12.6.3",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "ws": "^8.18.3"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.9"
   }
 }
