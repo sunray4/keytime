@@ -50,8 +50,23 @@ function activate(context) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     output.appendLine('Congratulations, your extension "keytime" is now active!');
+    let lastHeartbeat = Date.now();
     vscode.workspace.onDidChangeTextDocument((event) => {
-        output.appendLine("text doc change detected");
+        // check if changes are from a file - prevent output channel changes from being tracked
+        const doc = event.document;
+        if (doc.uri.scheme !== "file")
+            return;
+        output.appendLine("text doc change");
+        // event.contentChanges.forEach((change, i) => {
+        //   output.appendLine(`--- Change #${i + 1} ---`);
+        //   output.appendLine(`Inserted text: "${change.text}"`);
+        //   output.appendLine(
+        //     `Range replaced: (${change.range.start.line}, ${change.range.start.character}) → (${change.range.end.line}, ${change.range.end.character})`
+        //   );
+        //   output.appendLine(`Range length: ${change.rangeLength}`);
+        //   output.appendLine(`Range offset: ${change.rangeOffset}`);
+        //   output.appendLine("Document URI: " + event.document.uri.toString());
+        // });
     });
     vscode.window.onDidChangeActiveTextEditor((event) => {
         output.appendLine("text editor changed");
