@@ -22,7 +22,7 @@ export function server(): void {
             console.error('WebSocket error:', error);
         });
         
-        // debugging code
+        // debugging code - remove later
         console.log('client connected');
         ws.send('Hello from server');
 
