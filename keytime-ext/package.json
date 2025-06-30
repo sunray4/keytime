@@ -9,7 +9,7 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": ["onStartupFinished"],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -39,6 +39,8 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "sqlite3": "^5.1.7"
+    "@types/ws": "^8.18.1",
+    "sqlite3": "^5.1.7",
+    "ws": "^8.18.3"
   }
 }

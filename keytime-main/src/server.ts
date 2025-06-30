@@ -27,7 +27,7 @@ export function server(): void {
         ws.send('Hello from server');
 
         ws.on('message', (data) => {
-            console.log('Received message:', data);
+            console.log('Received message:', data.toString());
         });
 
     wss.on('close', () => console.log('Connection closed'));

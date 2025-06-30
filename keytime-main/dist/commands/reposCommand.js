@@ -11,17 +11,13 @@ function reposCommand(program) {
         .action(async () => {
         try {
             const users = await prisma.user.findMany();
-            console.log(users);
+            console.log("users:", users);
             if (users.length === 0) {
                 await (0, setup_1.setup)();
             }
             else {
-                const repos = await prisma.project.findMany({
-                    where: {
-                        authorId: 1
-                    }
-                });
-                console.log(repos);
+                const repos = await prisma.project.findMany();
+                console.log("repos:", repos);
             }
         }
         catch (error) {

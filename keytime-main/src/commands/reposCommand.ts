@@ -14,13 +14,13 @@ export function  reposCommand(program: Command) {
         try {
 
             const users = await prisma.user.findMany();
-            
+            console.log("users:", users)
             if (users.length === 0) {
                 await setup()
             }
             else {
-                const repos = await prisma.project.findFirst()
-                console.log(repos)
+                const repos = await prisma.project.findMany()
+                console.log("repos:", repos)
             }
         } catch (error) {
             console.error('An error occurred:', error instanceof Error ? error.message : String(error));
