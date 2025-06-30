@@ -132,7 +132,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/joannalau/Documents/code/keytime/generated/prisma",
+      "value": "/Users/joannalau/Documents/code/keytime/keytime-main/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -146,7 +146,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/joannalau/Documents/code/keytime/prisma/schema.prisma",
+    "sourceFilePath": "/Users/joannalau/Documents/code/keytime/keytime-main/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -160,7 +160,6 @@ const config = {
     "db"
   ],
   "activeProvider": "sqlite",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {

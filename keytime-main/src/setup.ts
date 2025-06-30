@@ -14,11 +14,11 @@ export async function setup() {
         message: "Enter your username: ",
       },
       {
-        type: "number",
+        type: "list",
         name: "timeInterval",
-        message: "Choose your preferred heartbeat time interval (default: 2): ",
+        message: "Choose your preferred heartbeat time interval: ",
         choices: [
-          { name: "1 minutes", value: 1 },
+          { name: "1 minute", value: 1 },
           { name: "2 minutes", value: 2 },
           { name: "3 minutes", value: 3 },
           { name: "4 minutes", value: 4 },

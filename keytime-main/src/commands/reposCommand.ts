@@ -12,19 +12,14 @@ export function  reposCommand(program: Command) {
     .description('Display all repositories that the user had worked on, with the duration of the work')
     .action(async () => {
         try {
-            if (!prisma.user.findUnique({
-                where: {
-                    id: 1
-                }
-            })) {
+
+            const users = await prisma.user.findMany();
+            
+            if (users.length === 0) {
                 await setup()
             }
             else {
-                const repos = await prisma.project.findMany({
-                    where: {
-                        authorId: 1
-                    }
-                })
+                const repos = await prisma.project.findFirst()
                 console.log(repos)
             }
         } catch (error) {
