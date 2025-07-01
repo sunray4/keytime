@@ -1,50 +1,53 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-import { server } from "./server";
+import WebSocket from 'ws';
+import { Client } from "./client";
 
-let cleanup: (() => void) | null = null;
+
 let output = vscode.window.createOutputChannel("Output");
+ // create extension client
+ const client = new Client(output);
+
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
   output.appendLine("Activating keytime extension...");
   output.show(true);
-  cleanup = server(output);
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
+
   output.appendLine('Congratulations, your extension "keytime" is now active!');
 
   let lastHeartbeat = Date.now();
+  const hbInterval = 1000 * 60 * 2;
+  const maxInterval = 1000 * 60 * 15;
 
   vscode.workspace.onDidChangeTextDocument((event) => {
-
     // check if changes are from a file - prevent output channel changes from being tracked
     const doc = event.document;
     if (doc.uri.scheme !== "file") return;
 
     output.appendLine("text doc change");
 
-    // event.contentChanges.forEach((change, i) => {
-    //   output.appendLine(`--- Change #${i + 1} ---`);
-    //   output.appendLine(`Inserted text: "${change.text}"`);
-    //   output.appendLine(
-    //     `Range replaced: (${change.range.start.line}, ${change.range.start.character}) → (${change.range.end.line}, ${change.range.end.character})`
-    //   );
-    //   output.appendLine(`Range length: ${change.rangeLength}`);
-    //   output.appendLine(`Range offset: ${change.rangeOffset}`);
-    //   output.appendLine("Document URI: " + event.document.uri.toString());
-    // });
+    if (Date.now() - lastHeartbeat >= hbInterval && Date.now() - lastHeartbeat <= maxInterval) {
+      lastHeartbeat = Date.now();
+      output.appendLine("sending heartbeat...");
+      client.send("heartbeat");
+    }
   });
 
   vscode.window.onDidChangeActiveTextEditor((event) => {
     output.appendLine("text editor changed");
+    output.appendLine("sending heartbeat...");
+    client.send("heartbeat");
+
   });
 
   vscode.window.onDidChangeWindowState((event) => {
     if (event.focused) {
       output.appendLine("editor focused");
+      output.appendLine("sending heartbeat...");
+      client.send("heartbeat");
     }
   });
 
@@ -62,8 +65,5 @@ export function activate(context: vscode.ExtensionContext) {
 
 // This method is called when your extension is deactivated
 export function deactivate() {
-  if (cleanup) {
-    cleanup();
-    cleanup = null;
-  }
+  client.close();
 }

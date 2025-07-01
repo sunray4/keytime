@@ -3,10 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Server = void 0;
+exports.Client = void 0;
 const ws_1 = __importDefault(require("ws"));
 let ws = null;
-class Server {
+class Client {
     ws = null;
     output;
     constructor(output) {
@@ -35,7 +35,7 @@ class Server {
         this.ws?.close();
     }
 }
-exports.Server = Server;
+exports.Client = Client;
 // export function server(output: vscode.OutputChannel): () => void {
 //     ws = new WebSocket('ws://localhost:8081');
 //     ws.on('error', output.appendLine);
@@ -59,4 +59,4 @@ exports.Server = Server;
 //         }
 //     };
 // }
-//# sourceMappingURL=server.js.map
+//# sourceMappingURL=client.js.map
