@@ -1,6 +1,5 @@
 import WebSocket from 'ws';
 import * as vscode from "vscode";
-let ws: WebSocket | null = null;
 
 export class Client {
     private ws: WebSocket | null = null;
@@ -30,9 +29,14 @@ export class Client {
         });
     }
 
-    public send(message: string) {
-        this.ws?.send(message);
-        this.output.appendLine(`Sent message: ${message}`);
+    public sendHeartbeat(type: string, timestamp: number, doc: vscode.TextDocument | null) {
+        const message = {
+            type: type,
+            timestamp: timestamp,
+            filename: doc?.fileName || null, 
+        };
+        this.ws?.send(JSON.stringify(message));
+        this.output.appendLine(`Sent message: ${JSON.stringify(message)}`);
     }
 
     public close() {

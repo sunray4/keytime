@@ -32,22 +32,35 @@ export function activate(context: vscode.ExtensionContext) {
     if (Date.now() - lastHeartbeat >= hbInterval && Date.now() - lastHeartbeat <= maxInterval) {
       lastHeartbeat = Date.now();
       output.appendLine("sending heartbeat...");
-      client.send("heartbeat");
+      client.sendHeartbeat("heartbeat", Date.now(), doc);
     }
   });
 
   vscode.window.onDidChangeActiveTextEditor((event) => {
+    if (!event) return;
+    lastHeartbeat = Date.now();
+    const doc = event.document;
+    if (!doc) return;
+
     output.appendLine("text editor changed");
     output.appendLine("sending heartbeat...");
-    client.send("heartbeat");
+    client.sendHeartbeat("heartbeat", Date.now(), doc);
 
   });
 
   vscode.window.onDidChangeWindowState((event) => {
     if (event.focused) {
+      lastHeartbeat = Date.now();
       output.appendLine("editor focused");
+
+      const editor = vscode.window.activeTextEditor;
+      let doc = null;
+      if (editor) {
+        doc = editor.document;
+      }
+
       output.appendLine("sending heartbeat...");
-      client.send("heartbeat");
+      client.sendHeartbeat("heartbeat", Date.now(), doc);
     }
   });
 

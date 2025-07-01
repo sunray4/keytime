@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Client = void 0;
 const ws_1 = __importDefault(require("ws"));
-let ws = null;
 class Client {
     ws = null;
     output;
@@ -27,9 +26,14 @@ class Client {
             this.output.appendLine('Disconnected from server');
         });
     }
-    send(message) {
-        this.ws?.send(message);
-        this.output.appendLine(`Sent message: ${message}`);
+    sendHeartbeat(type, timestamp, doc) {
+        const message = {
+            type: type,
+            timestamp: timestamp,
+            filename: doc?.fileName || null,
+        };
+        this.ws?.send(JSON.stringify(message));
+        this.output.appendLine(`Sent message: ${JSON.stringify(message)}`);
     }
     close() {
         this.ws?.close();
