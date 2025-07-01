@@ -1,13 +1,14 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-import WebSocket from 'ws';
 import { Client } from "./client";
 
 
 let output = vscode.window.createOutputChannel("Output");
  // create extension client
- const client = new Client(output);
+const client = new Client(output);
+const hbInterval = 1000 * 60 * 2;
+const maxInterval = 1000 * 60 * 15;
 
 
 // This method is called when your extension is activated
@@ -19,8 +20,14 @@ export function activate(context: vscode.ExtensionContext) {
   output.appendLine('Congratulations, your extension "keytime" is now active!');
 
   let lastHeartbeat = Date.now();
-  const hbInterval = 1000 * 60 * 2;
-  const maxInterval = 1000 * 60 * 15;
+  
+  // send initial heartbeat when extension is activated
+  const editor = vscode.window.activeTextEditor;
+  let doc = null;
+  if (editor) {
+    doc = editor.document;
+  }
+  client.sendHeartbeat("heartbeat", lastHeartbeat, doc);
 
   vscode.workspace.onDidChangeTextDocument((event) => {
     // check if changes are from a file - prevent output channel changes from being tracked

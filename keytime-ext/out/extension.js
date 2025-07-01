@@ -42,6 +42,8 @@ const client_1 = require("./client");
 let output = vscode.window.createOutputChannel("Output");
 // create extension client
 const client = new client_1.Client(output);
+const hbInterval = 1000 * 60 * 2;
+const maxInterval = 1000 * 60 * 15;
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 function activate(context) {
@@ -49,8 +51,13 @@ function activate(context) {
     output.show(true);
     output.appendLine('Congratulations, your extension "keytime" is now active!');
     let lastHeartbeat = Date.now();
-    const hbInterval = 1000 * 60 * 2;
-    const maxInterval = 1000 * 60 * 15;
+    // send initial heartbeat when extension is activated
+    const editor = vscode.window.activeTextEditor;
+    let doc = null;
+    if (editor) {
+        doc = editor.document;
+    }
+    client.sendHeartbeat("heartbeat", lastHeartbeat, doc);
     vscode.workspace.onDidChangeTextDocument((event) => {
         // check if changes are from a file - prevent output channel changes from being tracked
         const doc = event.document;
