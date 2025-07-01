@@ -8,16 +8,20 @@ const ws_1 = __importDefault(require("ws"));
 class Client {
     ws = null;
     output;
+    queue = [];
+    isOpen = false;
     constructor(output) {
         this.output = output;
         this.connect();
     }
-    connect() {
+    async connect() {
         this.ws = new ws_1.default('ws://localhost:8081');
         this.ws.on('error', (err) => this.output.appendLine(err.message));
         this.ws.on('open', () => {
             this.output.appendLine('Connected to server');
+            this.isOpen = true;
             this.ws?.send('Hello from client');
+            this.sendQueue();
         });
         this.ws.on('message', (data) => {
             this.output.appendLine(`Received message: ${data.toString()}`);
@@ -26,14 +30,19 @@ class Client {
             this.output.appendLine('Disconnected from server');
         });
     }
-    sendHeartbeat(type, timestamp, doc) {
-        const message = {
-            type: type,
-            timestamp: timestamp,
-            filename: doc?.fileName || null,
-        };
-        this.ws?.send(JSON.stringify(message));
-        this.output.appendLine(`Sent message: ${JSON.stringify(message)}`);
+    sendQueue() {
+        if (this.isOpen) {
+            this.queue.forEach(message => this.sendHeartbeat(message));
+        }
+    }
+    sendHeartbeat(message) {
+        if (this.isOpen) {
+            this.ws?.send(JSON.stringify(message));
+            this.output.appendLine(`Sent message: ${JSON.stringify(message)}`);
+        }
+        else {
+            this.queue.push(message);
+        }
     }
     close() {
         this.ws?.close();

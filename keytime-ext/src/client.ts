@@ -1,23 +1,33 @@
 import WebSocket from 'ws';
 import * as vscode from "vscode";
 
+interface Message {
+    type: string;
+    timestamp: number;
+    filename: string | null;
+}
+
 export class Client {
     private ws: WebSocket | null = null;
     private output: vscode.OutputChannel;
+    private queue: Message[] = [];
+    private isOpen: boolean = false;
 
     constructor(output: vscode.OutputChannel) {
         this.output = output;
         this.connect();
     }
 
-    private connect() {
+    private async connect() {
         this.ws = new WebSocket('ws://localhost:8081');
 
         this.ws.on('error', (err) => this.output.appendLine(err.message));
         
         this.ws.on('open', () => {
             this.output.appendLine('Connected to server');
+            this.isOpen = true;
             this.ws?.send('Hello from client');
+            this.sendQueue();
         });
 
         this.ws.on('message', (data) => {
@@ -29,14 +39,19 @@ export class Client {
         });
     }
 
-    public sendHeartbeat(type: string, timestamp: number, doc: vscode.TextDocument | null) {
-        const message = {
-            type: type,
-            timestamp: timestamp,
-            filename: doc?.fileName || null, 
-        };
-        this.ws?.send(JSON.stringify(message));
-        this.output.appendLine(`Sent message: ${JSON.stringify(message)}`);
+    private sendQueue() {
+        if (this.isOpen) {
+            this.queue.forEach(message => this.sendHeartbeat(message));
+        }
+    }
+
+    public sendHeartbeat(message: Message) {
+        if (this.isOpen) {
+            this.ws?.send(JSON.stringify(message));
+            this.output.appendLine(`Sent message: ${JSON.stringify(message)}`);
+        } else {
+            this.queue.push(message);
+        }
     }
 
     public close() {

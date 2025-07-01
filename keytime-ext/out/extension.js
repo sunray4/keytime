@@ -39,59 +39,87 @@ exports.deactivate = deactivate;
 // Import the module and reference it with the alias vscode in your code below
 const vscode = __importStar(require("vscode"));
 const client_1 = require("./client");
-let output = vscode.window.createOutputChannel("Output");
-// create extension client
-const client = new client_1.Client(output);
+let client = null;
 const hbInterval = 1000 * 60 * 2;
 const maxInterval = 1000 * 60 * 15;
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
-function activate(context) {
+async function activate(context) {
+    // create output channel
+    let output = await vscode.window.createOutputChannel("Output");
+    // create extension client
+    const client = await new client_1.Client(output);
     output.appendLine("Activating keytime extension...");
     output.show(true);
     output.appendLine('Congratulations, your extension "keytime" is now active!');
-    let lastHeartbeat = Date.now();
+    let lastHeartbeat = 0;
     // send initial heartbeat when extension is activated
     const editor = vscode.window.activeTextEditor;
     let doc = null;
     if (editor) {
+        output.appendLine("editor found");
         doc = editor.document;
     }
-    client.sendHeartbeat("heartbeat", lastHeartbeat, doc);
+    if (doc) { // if no document is open, don't send heartbeat
+        lastHeartbeat = Date.now();
+        const message = {
+            type: "heartbeat",
+            timestamp: lastHeartbeat,
+            filename: doc.uri.path,
+        };
+        output.appendLine("sending initial heartbeat...");
+        client.sendHeartbeat(message);
+    }
     vscode.workspace.onDidChangeTextDocument((event) => {
         // check if changes are from a file - prevent output channel changes from being tracked
         const doc = event.document;
-        if (doc.uri.scheme !== "file")
-            return;
-        output.appendLine("text doc change");
-        if (Date.now() - lastHeartbeat >= hbInterval && Date.now() - lastHeartbeat <= maxInterval) {
-            lastHeartbeat = Date.now();
-            output.appendLine("sending heartbeat...");
-            client.sendHeartbeat("heartbeat", Date.now(), doc);
+        if (doc.uri.scheme === "file") {
+            output.appendLine("text doc change");
+            if (Date.now() - lastHeartbeat >= hbInterval && Date.now() - lastHeartbeat <= maxInterval || lastHeartbeat === 0) {
+                lastHeartbeat = Date.now();
+                const message = {
+                    type: "heartbeat",
+                    timestamp: lastHeartbeat,
+                    filename: doc.uri.path,
+                };
+                output.appendLine("sending heartbeat...");
+                client.sendHeartbeat(message);
+            }
         }
     });
     vscode.window.onDidChangeActiveTextEditor((event) => {
-        if (!event)
-            return;
-        lastHeartbeat = Date.now();
-        const doc = event.document;
-        if (!doc)
-            return;
-        output.appendLine("text editor changed");
-        output.appendLine("sending heartbeat...");
-        client.sendHeartbeat("heartbeat", Date.now(), doc);
+        if (event) {
+            lastHeartbeat = Date.now();
+            const doc = event.document;
+            if (doc) {
+                output.appendLine("text editor changed");
+                output.appendLine("sending heartbeat...");
+                const message = {
+                    type: "heartbeat",
+                    timestamp: lastHeartbeat,
+                    filename: doc.uri.path,
+                };
+                client.sendHeartbeat(message);
+            }
+        }
     });
     vscode.window.onDidChangeWindowState((event) => {
         if (event.focused) {
             lastHeartbeat = Date.now();
             output.appendLine("editor focused");
             const editor = vscode.window.activeTextEditor;
-            let doc = null;
             if (editor) {
-                doc = editor.document;
+                const doc = editor.document;
+                if (doc) {
+                    output.appendLine("sending heartbeat...");
+                    const message = {
+                        type: "heartbeat",
+                        timestamp: lastHeartbeat,
+                        filename: doc.uri.path,
+                    };
+                    client.sendHeartbeat(message);
+                }
             }
-            output.appendLine("sending heartbeat...");
-            client.sendHeartbeat("heartbeat", Date.now(), doc);
         }
     });
     // The command has been defined in the package.json file
@@ -106,6 +134,6 @@ function activate(context) {
 }
 // This method is called when your extension is deactivated
 function deactivate() {
-    client.close();
+    client?.close();
 }
 //# sourceMappingURL=extension.js.map
