@@ -2,7 +2,6 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import { Client } from "./client";
-import { findFolder } from "./findFolder";
 
 let client: Client | null = null;
 
@@ -44,14 +43,8 @@ export async function activate(context: vscode.ExtensionContext) {
   }
   if (doc && doc.uri.scheme === "file") { // if no document is open, don't send heartbeat
     lastHeartbeat = Date.now();
-    const message = {
-      type: "heartbeat",
-      timestamp: lastHeartbeat,
-      folder: folderNames[1]?findFolder(folderNames, doc.uri.path):folderNames[0],
-      filename: doc.uri.path, 
-    };
     output.appendLine("sending initial heartbeat...");
-    client.sendHeartbeat(message);
+    client.prepareHeartbeat(doc, lastHeartbeat, folderNames);
   }
 
   
@@ -64,14 +57,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
       if (Date.now() - lastHeartbeat >= hbInterval && Date.now() - lastHeartbeat <= maxInterval || lastHeartbeat === 0) {
         lastHeartbeat = Date.now();
-        const message = {
-          type: "heartbeat",
-          timestamp: lastHeartbeat,
-          folder: folderNames[1]?findFolder(folderNames, doc.uri.path):folderNames[0],
-          filename: doc.uri.path, 
-        };
-        output.appendLine("sending heartbeat...");
-        client.sendHeartbeat(message);
+        client.prepareHeartbeat(doc, lastHeartbeat, folderNames);
       }
     }
   });
@@ -82,14 +68,7 @@ export async function activate(context: vscode.ExtensionContext) {
       const doc = event.document;
       if (doc && doc.uri.scheme === "file") {
         output.appendLine("text editor changed");
-        output.appendLine("sending heartbeat...");
-        const message = {
-          type: "heartbeat",
-          timestamp: lastHeartbeat,
-          folder: folderNames[1]?findFolder(folderNames, doc.uri.path):folderNames[0],
-          filename: doc.uri.path, 
-        };
-        client.sendHeartbeat(message);
+        client.prepareHeartbeat(doc, lastHeartbeat, folderNames);
       }
     }
   });
@@ -103,14 +82,7 @@ export async function activate(context: vscode.ExtensionContext) {
       if (editor) {
         const doc = editor.document;
         if (doc && doc.uri.scheme === "file") {
-          output.appendLine("sending heartbeat...");
-          const message = {
-            type: "heartbeat",
-            timestamp: lastHeartbeat,
-            folder: folderNames[1]?findFolder(folderNames, doc.uri.path):folderNames[0],
-            filename: doc.uri.path, 
-          };
-          client.sendHeartbeat(message);
+          client.prepareHeartbeat(doc, lastHeartbeat, folderNames);
         }
       }
     }
@@ -126,7 +98,6 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
-  // The commandId parameter must match the command field in package.json
   // 	const disposable = vscode.commands.registerCommand('keytime.helloWorld', () => {
   // 		// The code you place here will be executed every time your command is executed
   // 		// Display a message box to the user

@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Client = void 0;
 const ws_1 = __importDefault(require("ws"));
+const findFolder_1 = require("./findFolder");
 class Client {
     ws = null;
     output;
@@ -34,6 +35,15 @@ class Client {
         if (this.isOpen) {
             this.queue.forEach(message => this.sendHeartbeat(message));
         }
+    }
+    prepareHeartbeat(doc, timestamp, folderNames) {
+        const message = {
+            type: "heartbeat",
+            timestamp: timestamp,
+            folder: folderNames[1] ? (0, findFolder_1.findFolder)(folderNames, doc.uri.path) || folderNames[0] : folderNames[0],
+            lang: doc.languageId
+        };
+        this.sendHeartbeat(message);
     }
     sendHeartbeat(message) {
         if (this.isOpen) {

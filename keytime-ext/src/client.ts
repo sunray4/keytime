@@ -1,11 +1,15 @@
 import WebSocket from 'ws';
 import * as vscode from "vscode";
+import { findFolder } from './findFolder';
 
 interface Message {
     type: string;
     timestamp: number;
-    filename: string | null;
+    folder: string;
+    lang: string | null;
 }
+
+
 
 export class Client {
     private ws: WebSocket | null = null;
@@ -41,11 +45,21 @@ export class Client {
 
     private sendQueue() {
         if (this.isOpen) {
-            this.queue.forEach(message => this.sendHeartbeat(message));
+            this.queue.forEach(message => this.sendHeartbeat(message)); 
         }
     }
 
-    public sendHeartbeat(message: Message) {
+    public prepareHeartbeat(doc: vscode.TextDocument, timestamp: number, folderNames: string[]) {
+        const message: Message = {
+            type: "heartbeat",
+            timestamp: timestamp,
+            folder: folderNames[1] ? findFolder(folderNames, doc.uri.path) || folderNames[0] : folderNames[0],
+            lang: doc.languageId
+          };
+        this.sendHeartbeat(message);
+    }
+
+    private sendHeartbeat(message: Message) {
         if (this.isOpen) {
             this.ws?.send(JSON.stringify(message));
             this.output.appendLine(`Sent message: ${JSON.stringify(message)}`);
