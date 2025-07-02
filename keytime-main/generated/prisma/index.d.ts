@@ -28,6 +28,16 @@ export type Project = $Result.DefaultSelection<Prisma.$ProjectPayload>
  * 
  */
 export type Editor = $Result.DefaultSelection<Prisma.$EditorPayload>
+/**
+ * Model ProjectLanguage
+ * 
+ */
+export type ProjectLanguage = $Result.DefaultSelection<Prisma.$ProjectLanguagePayload>
+/**
+ * Model Language
+ * 
+ */
+export type Language = $Result.DefaultSelection<Prisma.$LanguagePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,6 +193,26 @@ export class PrismaClient<
     * ```
     */
   get editor(): Prisma.EditorDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.projectLanguage`: Exposes CRUD operations for the **ProjectLanguage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProjectLanguages
+    * const projectLanguages = await prisma.projectLanguage.findMany()
+    * ```
+    */
+  get projectLanguage(): Prisma.ProjectLanguageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.language`: Exposes CRUD operations for the **Language** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Languages
+    * const languages = await prisma.language.findMany()
+    * ```
+    */
+  get language(): Prisma.LanguageDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -625,7 +655,9 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Project: 'Project',
-    Editor: 'Editor'
+    Editor: 'Editor',
+    ProjectLanguage: 'ProjectLanguage',
+    Language: 'Language'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "project" | "editor"
+      modelProps: "user" | "project" | "editor" | "projectLanguage" | "language"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -870,6 +902,154 @@ export namespace Prisma {
           }
         }
       }
+      ProjectLanguage: {
+        payload: Prisma.$ProjectLanguagePayload<ExtArgs>
+        fields: Prisma.ProjectLanguageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProjectLanguageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectLanguagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProjectLanguageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectLanguagePayload>
+          }
+          findFirst: {
+            args: Prisma.ProjectLanguageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectLanguagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProjectLanguageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectLanguagePayload>
+          }
+          findMany: {
+            args: Prisma.ProjectLanguageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectLanguagePayload>[]
+          }
+          create: {
+            args: Prisma.ProjectLanguageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectLanguagePayload>
+          }
+          createMany: {
+            args: Prisma.ProjectLanguageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProjectLanguageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectLanguagePayload>[]
+          }
+          delete: {
+            args: Prisma.ProjectLanguageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectLanguagePayload>
+          }
+          update: {
+            args: Prisma.ProjectLanguageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectLanguagePayload>
+          }
+          deleteMany: {
+            args: Prisma.ProjectLanguageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProjectLanguageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProjectLanguageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectLanguagePayload>[]
+          }
+          upsert: {
+            args: Prisma.ProjectLanguageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectLanguagePayload>
+          }
+          aggregate: {
+            args: Prisma.ProjectLanguageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProjectLanguage>
+          }
+          groupBy: {
+            args: Prisma.ProjectLanguageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProjectLanguageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProjectLanguageCountArgs<ExtArgs>
+            result: $Utils.Optional<ProjectLanguageCountAggregateOutputType> | number
+          }
+        }
+      }
+      Language: {
+        payload: Prisma.$LanguagePayload<ExtArgs>
+        fields: Prisma.LanguageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LanguageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LanguageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagePayload>
+          }
+          findFirst: {
+            args: Prisma.LanguageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LanguageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagePayload>
+          }
+          findMany: {
+            args: Prisma.LanguageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagePayload>[]
+          }
+          create: {
+            args: Prisma.LanguageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagePayload>
+          }
+          createMany: {
+            args: Prisma.LanguageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LanguageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagePayload>[]
+          }
+          delete: {
+            args: Prisma.LanguageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagePayload>
+          }
+          update: {
+            args: Prisma.LanguageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagePayload>
+          }
+          deleteMany: {
+            args: Prisma.LanguageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LanguageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LanguageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagePayload>[]
+          }
+          upsert: {
+            args: Prisma.LanguageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LanguagePayload>
+          }
+          aggregate: {
+            args: Prisma.LanguageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLanguage>
+          }
+          groupBy: {
+            args: Prisma.LanguageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LanguageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LanguageCountArgs<ExtArgs>
+            result: $Utils.Optional<LanguageCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -957,6 +1137,8 @@ export namespace Prisma {
     user?: UserOmit
     project?: ProjectOmit
     editor?: EditorOmit
+    projectLanguage?: ProjectLanguageOmit
+    language?: LanguageOmit
   }
 
   /* Types for Logging */
@@ -1053,11 +1235,13 @@ export namespace Prisma {
   export type UserCountOutputType = {
     projects: number
     editors: number
+    languages: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     projects?: boolean | UserCountOutputTypeCountProjectsArgs
     editors?: boolean | UserCountOutputTypeCountEditorsArgs
+    languages?: boolean | UserCountOutputTypeCountLanguagesArgs
   }
 
   // Custom InputTypes
@@ -1085,6 +1269,13 @@ export namespace Prisma {
     where?: EditorWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountLanguagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LanguageWhereInput
+  }
+
 
   /**
    * Count Type ProjectCountOutputType
@@ -1092,10 +1283,12 @@ export namespace Prisma {
 
   export type ProjectCountOutputType = {
     Editors: number
+    languages: number
   }
 
   export type ProjectCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Editors?: boolean | ProjectCountOutputTypeCountEditorsArgs
+    languages?: boolean | ProjectCountOutputTypeCountLanguagesArgs
   }
 
   // Custom InputTypes
@@ -1114,6 +1307,44 @@ export namespace Prisma {
    */
   export type ProjectCountOutputTypeCountEditorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EditorWhereInput
+  }
+
+  /**
+   * ProjectCountOutputType without action
+   */
+  export type ProjectCountOutputTypeCountLanguagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProjectLanguageWhereInput
+  }
+
+
+  /**
+   * Count Type LanguageCountOutputType
+   */
+
+  export type LanguageCountOutputType = {
+    projects: number
+  }
+
+  export type LanguageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    projects?: boolean | LanguageCountOutputTypeCountProjectsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * LanguageCountOutputType without action
+   */
+  export type LanguageCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LanguageCountOutputType
+     */
+    select?: LanguageCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * LanguageCountOutputType without action
+   */
+  export type LanguageCountOutputTypeCountProjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProjectLanguageWhereInput
   }
 
 
@@ -1136,29 +1367,43 @@ export namespace Prisma {
   export type UserAvgAggregateOutputType = {
     id: number | null
     timeInterval: number | null
+    lastHeartbeat: number | null
   }
 
   export type UserSumAggregateOutputType = {
     id: number | null
     timeInterval: number | null
+    lastHeartbeat: number | null
   }
 
   export type UserMinAggregateOutputType = {
     id: number | null
     username: string | null
     timeInterval: number | null
+    lastHeartbeat: number | null
+    lastFolder: string | null
+    lastLang: string | null
+    lastEditor: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: number | null
     username: string | null
     timeInterval: number | null
+    lastHeartbeat: number | null
+    lastFolder: string | null
+    lastLang: string | null
+    lastEditor: string | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     username: number
     timeInterval: number
+    lastHeartbeat: number
+    lastFolder: number
+    lastLang: number
+    lastEditor: number
     _all: number
   }
 
@@ -1166,29 +1411,43 @@ export namespace Prisma {
   export type UserAvgAggregateInputType = {
     id?: true
     timeInterval?: true
+    lastHeartbeat?: true
   }
 
   export type UserSumAggregateInputType = {
     id?: true
     timeInterval?: true
+    lastHeartbeat?: true
   }
 
   export type UserMinAggregateInputType = {
     id?: true
     username?: true
     timeInterval?: true
+    lastHeartbeat?: true
+    lastFolder?: true
+    lastLang?: true
+    lastEditor?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     username?: true
     timeInterval?: true
+    lastHeartbeat?: true
+    lastFolder?: true
+    lastLang?: true
+    lastEditor?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     username?: true
     timeInterval?: true
+    lastHeartbeat?: true
+    lastFolder?: true
+    lastLang?: true
+    lastEditor?: true
     _all?: true
   }
 
@@ -1282,6 +1541,10 @@ export namespace Prisma {
     id: number
     username: string
     timeInterval: number
+    lastHeartbeat: number
+    lastFolder: string
+    lastLang: string
+    lastEditor: string
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1307,8 +1570,13 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     timeInterval?: boolean
+    lastHeartbeat?: boolean
+    lastFolder?: boolean
+    lastLang?: boolean
+    lastEditor?: boolean
     projects?: boolean | User$projectsArgs<ExtArgs>
     editors?: boolean | User$editorsArgs<ExtArgs>
+    languages?: boolean | User$languagesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1316,24 +1584,37 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     timeInterval?: boolean
+    lastHeartbeat?: boolean
+    lastFolder?: boolean
+    lastLang?: boolean
+    lastEditor?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     username?: boolean
     timeInterval?: boolean
+    lastHeartbeat?: boolean
+    lastFolder?: boolean
+    lastLang?: boolean
+    lastEditor?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
     username?: boolean
     timeInterval?: boolean
+    lastHeartbeat?: boolean
+    lastFolder?: boolean
+    lastLang?: boolean
+    lastEditor?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "timeInterval", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "timeInterval" | "lastHeartbeat" | "lastFolder" | "lastLang" | "lastEditor", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     projects?: boolean | User$projectsArgs<ExtArgs>
     editors?: boolean | User$editorsArgs<ExtArgs>
+    languages?: boolean | User$languagesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1344,11 +1625,16 @@ export namespace Prisma {
     objects: {
       projects: Prisma.$ProjectPayload<ExtArgs>[]
       editors: Prisma.$EditorPayload<ExtArgs>[]
+      languages: Prisma.$LanguagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       username: string
       timeInterval: number
+      lastHeartbeat: number
+      lastFolder: string
+      lastLang: string
+      lastEditor: string
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1745,6 +2031,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     projects<T extends User$projectsArgs<ExtArgs> = {}>(args?: Subset<T, User$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     editors<T extends User$editorsArgs<ExtArgs> = {}>(args?: Subset<T, User$editorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EditorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    languages<T extends User$languagesArgs<ExtArgs> = {}>(args?: Subset<T, User$languagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1777,6 +2064,10 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'Int'>
     readonly username: FieldRef<"User", 'String'>
     readonly timeInterval: FieldRef<"User", 'Int'>
+    readonly lastHeartbeat: FieldRef<"User", 'Int'>
+    readonly lastFolder: FieldRef<"User", 'String'>
+    readonly lastLang: FieldRef<"User", 'String'>
+    readonly lastEditor: FieldRef<"User", 'String'>
   }
     
 
@@ -2211,6 +2502,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.languages
+   */
+  export type User$languagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Language
+     */
+    select?: LanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Language
+     */
+    omit?: LanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LanguageInclude<ExtArgs> | null
+    where?: LanguageWhereInput
+    orderBy?: LanguageOrderByWithRelationInput | LanguageOrderByWithRelationInput[]
+    cursor?: LanguageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LanguageScalarFieldEnum | LanguageScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2243,34 +2558,34 @@ export namespace Prisma {
 
   export type ProjectAvgAggregateOutputType = {
     id: number | null
-    timeInterval: number | null
+    timeSpent: number | null
     authorId: number | null
   }
 
   export type ProjectSumAggregateOutputType = {
     id: number | null
-    timeInterval: number | null
+    timeSpent: number | null
     authorId: number | null
   }
 
   export type ProjectMinAggregateOutputType = {
     id: number | null
     name: string | null
-    timeInterval: number | null
+    timeSpent: number | null
     authorId: number | null
   }
 
   export type ProjectMaxAggregateOutputType = {
     id: number | null
     name: string | null
-    timeInterval: number | null
+    timeSpent: number | null
     authorId: number | null
   }
 
   export type ProjectCountAggregateOutputType = {
     id: number
     name: number
-    timeInterval: number
+    timeSpent: number
     authorId: number
     _all: number
   }
@@ -2278,34 +2593,34 @@ export namespace Prisma {
 
   export type ProjectAvgAggregateInputType = {
     id?: true
-    timeInterval?: true
+    timeSpent?: true
     authorId?: true
   }
 
   export type ProjectSumAggregateInputType = {
     id?: true
-    timeInterval?: true
+    timeSpent?: true
     authorId?: true
   }
 
   export type ProjectMinAggregateInputType = {
     id?: true
     name?: true
-    timeInterval?: true
+    timeSpent?: true
     authorId?: true
   }
 
   export type ProjectMaxAggregateInputType = {
     id?: true
     name?: true
-    timeInterval?: true
+    timeSpent?: true
     authorId?: true
   }
 
   export type ProjectCountAggregateInputType = {
     id?: true
     name?: true
-    timeInterval?: true
+    timeSpent?: true
     authorId?: true
     _all?: true
   }
@@ -2399,7 +2714,7 @@ export namespace Prisma {
   export type ProjectGroupByOutputType = {
     id: number
     name: string
-    timeInterval: number
+    timeSpent: number
     authorId: number
     _count: ProjectCountAggregateOutputType | null
     _avg: ProjectAvgAggregateOutputType | null
@@ -2425,17 +2740,18 @@ export namespace Prisma {
   export type ProjectSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    timeInterval?: boolean
+    timeSpent?: boolean
     authorId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
     Editors?: boolean | Project$EditorsArgs<ExtArgs>
+    languages?: boolean | Project$languagesArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
 
   export type ProjectSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    timeInterval?: boolean
+    timeSpent?: boolean
     authorId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
@@ -2443,7 +2759,7 @@ export namespace Prisma {
   export type ProjectSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    timeInterval?: boolean
+    timeSpent?: boolean
     authorId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
@@ -2451,14 +2767,15 @@ export namespace Prisma {
   export type ProjectSelectScalar = {
     id?: boolean
     name?: boolean
-    timeInterval?: boolean
+    timeSpent?: boolean
     authorId?: boolean
   }
 
-  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "timeInterval" | "authorId", ExtArgs["result"]["project"]>
+  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "timeSpent" | "authorId", ExtArgs["result"]["project"]>
   export type ProjectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
     Editors?: boolean | Project$EditorsArgs<ExtArgs>
+    languages?: boolean | Project$languagesArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProjectIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2473,11 +2790,12 @@ export namespace Prisma {
     objects: {
       author: Prisma.$UserPayload<ExtArgs>
       Editors: Prisma.$EditorPayload<ExtArgs>[]
+      languages: Prisma.$ProjectLanguagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
-      timeInterval: number
+      timeSpent: number
       authorId: number
     }, ExtArgs["result"]["project"]>
     composites: {}
@@ -2875,6 +3193,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     Editors<T extends Project$EditorsArgs<ExtArgs> = {}>(args?: Subset<T, Project$EditorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EditorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    languages<T extends Project$languagesArgs<ExtArgs> = {}>(args?: Subset<T, Project$languagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2906,7 +3225,7 @@ export namespace Prisma {
   interface ProjectFieldRefs {
     readonly id: FieldRef<"Project", 'Int'>
     readonly name: FieldRef<"Project", 'String'>
-    readonly timeInterval: FieldRef<"Project", 'Int'>
+    readonly timeSpent: FieldRef<"Project", 'Int'>
     readonly authorId: FieldRef<"Project", 'Int'>
   }
     
@@ -3326,6 +3645,30 @@ export namespace Prisma {
   }
 
   /**
+   * Project.languages
+   */
+  export type Project$languagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageInclude<ExtArgs> | null
+    where?: ProjectLanguageWhereInput
+    orderBy?: ProjectLanguageOrderByWithRelationInput | ProjectLanguageOrderByWithRelationInput[]
+    cursor?: ProjectLanguageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProjectLanguageScalarFieldEnum | ProjectLanguageScalarFieldEnum[]
+  }
+
+  /**
    * Project without action
    */
   export type ProjectDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3360,35 +3703,38 @@ export namespace Prisma {
     id: number | null
     userId: number | null
     projectId: number | null
-    timeInterval: number | null
+    timeSpent: number | null
   }
 
   export type EditorSumAggregateOutputType = {
     id: number | null
     userId: number | null
     projectId: number | null
-    timeInterval: number | null
+    timeSpent: number | null
   }
 
   export type EditorMinAggregateOutputType = {
     id: number | null
+    name: string | null
     userId: number | null
     projectId: number | null
-    timeInterval: number | null
+    timeSpent: number | null
   }
 
   export type EditorMaxAggregateOutputType = {
     id: number | null
+    name: string | null
     userId: number | null
     projectId: number | null
-    timeInterval: number | null
+    timeSpent: number | null
   }
 
   export type EditorCountAggregateOutputType = {
     id: number
+    name: number
     userId: number
     projectId: number
-    timeInterval: number
+    timeSpent: number
     _all: number
   }
 
@@ -3397,35 +3743,38 @@ export namespace Prisma {
     id?: true
     userId?: true
     projectId?: true
-    timeInterval?: true
+    timeSpent?: true
   }
 
   export type EditorSumAggregateInputType = {
     id?: true
     userId?: true
     projectId?: true
-    timeInterval?: true
+    timeSpent?: true
   }
 
   export type EditorMinAggregateInputType = {
     id?: true
+    name?: true
     userId?: true
     projectId?: true
-    timeInterval?: true
+    timeSpent?: true
   }
 
   export type EditorMaxAggregateInputType = {
     id?: true
+    name?: true
     userId?: true
     projectId?: true
-    timeInterval?: true
+    timeSpent?: true
   }
 
   export type EditorCountAggregateInputType = {
     id?: true
+    name?: true
     userId?: true
     projectId?: true
-    timeInterval?: true
+    timeSpent?: true
     _all?: true
   }
 
@@ -3517,9 +3866,10 @@ export namespace Prisma {
 
   export type EditorGroupByOutputType = {
     id: number
+    name: string
     userId: number
     projectId: number
-    timeInterval: number
+    timeSpent: number
     _count: EditorCountAggregateOutputType | null
     _avg: EditorAvgAggregateOutputType | null
     _sum: EditorSumAggregateOutputType | null
@@ -3543,39 +3893,43 @@ export namespace Prisma {
 
   export type EditorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     userId?: boolean
     projectId?: boolean
-    timeInterval?: boolean
+    timeSpent?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     project?: boolean | ProjectDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["editor"]>
 
   export type EditorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     userId?: boolean
     projectId?: boolean
-    timeInterval?: boolean
+    timeSpent?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     project?: boolean | ProjectDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["editor"]>
 
   export type EditorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     userId?: boolean
     projectId?: boolean
-    timeInterval?: boolean
+    timeSpent?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     project?: boolean | ProjectDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["editor"]>
 
   export type EditorSelectScalar = {
     id?: boolean
+    name?: boolean
     userId?: boolean
     projectId?: boolean
-    timeInterval?: boolean
+    timeSpent?: boolean
   }
 
-  export type EditorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "projectId" | "timeInterval", ExtArgs["result"]["editor"]>
+  export type EditorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userId" | "projectId" | "timeSpent", ExtArgs["result"]["editor"]>
   export type EditorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     project?: boolean | ProjectDefaultArgs<ExtArgs>
@@ -3597,9 +3951,10 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      name: string
       userId: number
       projectId: number
-      timeInterval: number
+      timeSpent: number
     }, ExtArgs["result"]["editor"]>
     composites: {}
   }
@@ -4026,9 +4381,10 @@ export namespace Prisma {
    */
   interface EditorFieldRefs {
     readonly id: FieldRef<"Editor", 'Int'>
+    readonly name: FieldRef<"Editor", 'String'>
     readonly userId: FieldRef<"Editor", 'Int'>
     readonly projectId: FieldRef<"Editor", 'Int'>
-    readonly timeInterval: FieldRef<"Editor", 'Int'>
+    readonly timeSpent: FieldRef<"Editor", 'Int'>
   }
     
 
@@ -4442,6 +4798,2218 @@ export namespace Prisma {
 
 
   /**
+   * Model ProjectLanguage
+   */
+
+  export type AggregateProjectLanguage = {
+    _count: ProjectLanguageCountAggregateOutputType | null
+    _avg: ProjectLanguageAvgAggregateOutputType | null
+    _sum: ProjectLanguageSumAggregateOutputType | null
+    _min: ProjectLanguageMinAggregateOutputType | null
+    _max: ProjectLanguageMaxAggregateOutputType | null
+  }
+
+  export type ProjectLanguageAvgAggregateOutputType = {
+    id: number | null
+    projectId: number | null
+    languageId: number | null
+    timeSpent: number | null
+  }
+
+  export type ProjectLanguageSumAggregateOutputType = {
+    id: number | null
+    projectId: number | null
+    languageId: number | null
+    timeSpent: number | null
+  }
+
+  export type ProjectLanguageMinAggregateOutputType = {
+    id: number | null
+    projectId: number | null
+    languageId: number | null
+    timeSpent: number | null
+  }
+
+  export type ProjectLanguageMaxAggregateOutputType = {
+    id: number | null
+    projectId: number | null
+    languageId: number | null
+    timeSpent: number | null
+  }
+
+  export type ProjectLanguageCountAggregateOutputType = {
+    id: number
+    projectId: number
+    languageId: number
+    timeSpent: number
+    _all: number
+  }
+
+
+  export type ProjectLanguageAvgAggregateInputType = {
+    id?: true
+    projectId?: true
+    languageId?: true
+    timeSpent?: true
+  }
+
+  export type ProjectLanguageSumAggregateInputType = {
+    id?: true
+    projectId?: true
+    languageId?: true
+    timeSpent?: true
+  }
+
+  export type ProjectLanguageMinAggregateInputType = {
+    id?: true
+    projectId?: true
+    languageId?: true
+    timeSpent?: true
+  }
+
+  export type ProjectLanguageMaxAggregateInputType = {
+    id?: true
+    projectId?: true
+    languageId?: true
+    timeSpent?: true
+  }
+
+  export type ProjectLanguageCountAggregateInputType = {
+    id?: true
+    projectId?: true
+    languageId?: true
+    timeSpent?: true
+    _all?: true
+  }
+
+  export type ProjectLanguageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProjectLanguage to aggregate.
+     */
+    where?: ProjectLanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProjectLanguages to fetch.
+     */
+    orderBy?: ProjectLanguageOrderByWithRelationInput | ProjectLanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProjectLanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProjectLanguages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProjectLanguages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProjectLanguages
+    **/
+    _count?: true | ProjectLanguageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProjectLanguageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProjectLanguageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProjectLanguageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProjectLanguageMaxAggregateInputType
+  }
+
+  export type GetProjectLanguageAggregateType<T extends ProjectLanguageAggregateArgs> = {
+        [P in keyof T & keyof AggregateProjectLanguage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProjectLanguage[P]>
+      : GetScalarType<T[P], AggregateProjectLanguage[P]>
+  }
+
+
+
+
+  export type ProjectLanguageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProjectLanguageWhereInput
+    orderBy?: ProjectLanguageOrderByWithAggregationInput | ProjectLanguageOrderByWithAggregationInput[]
+    by: ProjectLanguageScalarFieldEnum[] | ProjectLanguageScalarFieldEnum
+    having?: ProjectLanguageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProjectLanguageCountAggregateInputType | true
+    _avg?: ProjectLanguageAvgAggregateInputType
+    _sum?: ProjectLanguageSumAggregateInputType
+    _min?: ProjectLanguageMinAggregateInputType
+    _max?: ProjectLanguageMaxAggregateInputType
+  }
+
+  export type ProjectLanguageGroupByOutputType = {
+    id: number
+    projectId: number
+    languageId: number
+    timeSpent: number
+    _count: ProjectLanguageCountAggregateOutputType | null
+    _avg: ProjectLanguageAvgAggregateOutputType | null
+    _sum: ProjectLanguageSumAggregateOutputType | null
+    _min: ProjectLanguageMinAggregateOutputType | null
+    _max: ProjectLanguageMaxAggregateOutputType | null
+  }
+
+  type GetProjectLanguageGroupByPayload<T extends ProjectLanguageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProjectLanguageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProjectLanguageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProjectLanguageGroupByOutputType[P]>
+            : GetScalarType<T[P], ProjectLanguageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProjectLanguageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    projectId?: boolean
+    languageId?: boolean
+    timeSpent?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["projectLanguage"]>
+
+  export type ProjectLanguageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    projectId?: boolean
+    languageId?: boolean
+    timeSpent?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["projectLanguage"]>
+
+  export type ProjectLanguageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    projectId?: boolean
+    languageId?: boolean
+    timeSpent?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["projectLanguage"]>
+
+  export type ProjectLanguageSelectScalar = {
+    id?: boolean
+    projectId?: boolean
+    languageId?: boolean
+    timeSpent?: boolean
+  }
+
+  export type ProjectLanguageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "projectId" | "languageId" | "timeSpent", ExtArgs["result"]["projectLanguage"]>
+  export type ProjectLanguageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }
+  export type ProjectLanguageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }
+  export type ProjectLanguageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    language?: boolean | LanguageDefaultArgs<ExtArgs>
+  }
+
+  export type $ProjectLanguagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProjectLanguage"
+    objects: {
+      project: Prisma.$ProjectPayload<ExtArgs>
+      language: Prisma.$LanguagePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      projectId: number
+      languageId: number
+      timeSpent: number
+    }, ExtArgs["result"]["projectLanguage"]>
+    composites: {}
+  }
+
+  type ProjectLanguageGetPayload<S extends boolean | null | undefined | ProjectLanguageDefaultArgs> = $Result.GetResult<Prisma.$ProjectLanguagePayload, S>
+
+  type ProjectLanguageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProjectLanguageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProjectLanguageCountAggregateInputType | true
+    }
+
+  export interface ProjectLanguageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProjectLanguage'], meta: { name: 'ProjectLanguage' } }
+    /**
+     * Find zero or one ProjectLanguage that matches the filter.
+     * @param {ProjectLanguageFindUniqueArgs} args - Arguments to find a ProjectLanguage
+     * @example
+     * // Get one ProjectLanguage
+     * const projectLanguage = await prisma.projectLanguage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProjectLanguageFindUniqueArgs>(args: SelectSubset<T, ProjectLanguageFindUniqueArgs<ExtArgs>>): Prisma__ProjectLanguageClient<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProjectLanguage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProjectLanguageFindUniqueOrThrowArgs} args - Arguments to find a ProjectLanguage
+     * @example
+     * // Get one ProjectLanguage
+     * const projectLanguage = await prisma.projectLanguage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProjectLanguageFindUniqueOrThrowArgs>(args: SelectSubset<T, ProjectLanguageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProjectLanguageClient<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProjectLanguage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectLanguageFindFirstArgs} args - Arguments to find a ProjectLanguage
+     * @example
+     * // Get one ProjectLanguage
+     * const projectLanguage = await prisma.projectLanguage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProjectLanguageFindFirstArgs>(args?: SelectSubset<T, ProjectLanguageFindFirstArgs<ExtArgs>>): Prisma__ProjectLanguageClient<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProjectLanguage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectLanguageFindFirstOrThrowArgs} args - Arguments to find a ProjectLanguage
+     * @example
+     * // Get one ProjectLanguage
+     * const projectLanguage = await prisma.projectLanguage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProjectLanguageFindFirstOrThrowArgs>(args?: SelectSubset<T, ProjectLanguageFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProjectLanguageClient<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProjectLanguages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectLanguageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProjectLanguages
+     * const projectLanguages = await prisma.projectLanguage.findMany()
+     * 
+     * // Get first 10 ProjectLanguages
+     * const projectLanguages = await prisma.projectLanguage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const projectLanguageWithIdOnly = await prisma.projectLanguage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProjectLanguageFindManyArgs>(args?: SelectSubset<T, ProjectLanguageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProjectLanguage.
+     * @param {ProjectLanguageCreateArgs} args - Arguments to create a ProjectLanguage.
+     * @example
+     * // Create one ProjectLanguage
+     * const ProjectLanguage = await prisma.projectLanguage.create({
+     *   data: {
+     *     // ... data to create a ProjectLanguage
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProjectLanguageCreateArgs>(args: SelectSubset<T, ProjectLanguageCreateArgs<ExtArgs>>): Prisma__ProjectLanguageClient<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProjectLanguages.
+     * @param {ProjectLanguageCreateManyArgs} args - Arguments to create many ProjectLanguages.
+     * @example
+     * // Create many ProjectLanguages
+     * const projectLanguage = await prisma.projectLanguage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProjectLanguageCreateManyArgs>(args?: SelectSubset<T, ProjectLanguageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProjectLanguages and returns the data saved in the database.
+     * @param {ProjectLanguageCreateManyAndReturnArgs} args - Arguments to create many ProjectLanguages.
+     * @example
+     * // Create many ProjectLanguages
+     * const projectLanguage = await prisma.projectLanguage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProjectLanguages and only return the `id`
+     * const projectLanguageWithIdOnly = await prisma.projectLanguage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProjectLanguageCreateManyAndReturnArgs>(args?: SelectSubset<T, ProjectLanguageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ProjectLanguage.
+     * @param {ProjectLanguageDeleteArgs} args - Arguments to delete one ProjectLanguage.
+     * @example
+     * // Delete one ProjectLanguage
+     * const ProjectLanguage = await prisma.projectLanguage.delete({
+     *   where: {
+     *     // ... filter to delete one ProjectLanguage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProjectLanguageDeleteArgs>(args: SelectSubset<T, ProjectLanguageDeleteArgs<ExtArgs>>): Prisma__ProjectLanguageClient<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProjectLanguage.
+     * @param {ProjectLanguageUpdateArgs} args - Arguments to update one ProjectLanguage.
+     * @example
+     * // Update one ProjectLanguage
+     * const projectLanguage = await prisma.projectLanguage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProjectLanguageUpdateArgs>(args: SelectSubset<T, ProjectLanguageUpdateArgs<ExtArgs>>): Prisma__ProjectLanguageClient<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProjectLanguages.
+     * @param {ProjectLanguageDeleteManyArgs} args - Arguments to filter ProjectLanguages to delete.
+     * @example
+     * // Delete a few ProjectLanguages
+     * const { count } = await prisma.projectLanguage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProjectLanguageDeleteManyArgs>(args?: SelectSubset<T, ProjectLanguageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProjectLanguages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectLanguageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProjectLanguages
+     * const projectLanguage = await prisma.projectLanguage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProjectLanguageUpdateManyArgs>(args: SelectSubset<T, ProjectLanguageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProjectLanguages and returns the data updated in the database.
+     * @param {ProjectLanguageUpdateManyAndReturnArgs} args - Arguments to update many ProjectLanguages.
+     * @example
+     * // Update many ProjectLanguages
+     * const projectLanguage = await prisma.projectLanguage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ProjectLanguages and only return the `id`
+     * const projectLanguageWithIdOnly = await prisma.projectLanguage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProjectLanguageUpdateManyAndReturnArgs>(args: SelectSubset<T, ProjectLanguageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ProjectLanguage.
+     * @param {ProjectLanguageUpsertArgs} args - Arguments to update or create a ProjectLanguage.
+     * @example
+     * // Update or create a ProjectLanguage
+     * const projectLanguage = await prisma.projectLanguage.upsert({
+     *   create: {
+     *     // ... data to create a ProjectLanguage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProjectLanguage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProjectLanguageUpsertArgs>(args: SelectSubset<T, ProjectLanguageUpsertArgs<ExtArgs>>): Prisma__ProjectLanguageClient<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ProjectLanguages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectLanguageCountArgs} args - Arguments to filter ProjectLanguages to count.
+     * @example
+     * // Count the number of ProjectLanguages
+     * const count = await prisma.projectLanguage.count({
+     *   where: {
+     *     // ... the filter for the ProjectLanguages we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProjectLanguageCountArgs>(
+      args?: Subset<T, ProjectLanguageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProjectLanguageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProjectLanguage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectLanguageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProjectLanguageAggregateArgs>(args: Subset<T, ProjectLanguageAggregateArgs>): Prisma.PrismaPromise<GetProjectLanguageAggregateType<T>>
+
+    /**
+     * Group by ProjectLanguage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectLanguageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProjectLanguageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProjectLanguageGroupByArgs['orderBy'] }
+        : { orderBy?: ProjectLanguageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProjectLanguageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProjectLanguageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProjectLanguage model
+   */
+  readonly fields: ProjectLanguageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProjectLanguage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProjectLanguageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    language<T extends LanguageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LanguageDefaultArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProjectLanguage model
+   */
+  interface ProjectLanguageFieldRefs {
+    readonly id: FieldRef<"ProjectLanguage", 'Int'>
+    readonly projectId: FieldRef<"ProjectLanguage", 'Int'>
+    readonly languageId: FieldRef<"ProjectLanguage", 'Int'>
+    readonly timeSpent: FieldRef<"ProjectLanguage", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProjectLanguage findUnique
+   */
+  export type ProjectLanguageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProjectLanguage to fetch.
+     */
+    where: ProjectLanguageWhereUniqueInput
+  }
+
+  /**
+   * ProjectLanguage findUniqueOrThrow
+   */
+  export type ProjectLanguageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProjectLanguage to fetch.
+     */
+    where: ProjectLanguageWhereUniqueInput
+  }
+
+  /**
+   * ProjectLanguage findFirst
+   */
+  export type ProjectLanguageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProjectLanguage to fetch.
+     */
+    where?: ProjectLanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProjectLanguages to fetch.
+     */
+    orderBy?: ProjectLanguageOrderByWithRelationInput | ProjectLanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProjectLanguages.
+     */
+    cursor?: ProjectLanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProjectLanguages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProjectLanguages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProjectLanguages.
+     */
+    distinct?: ProjectLanguageScalarFieldEnum | ProjectLanguageScalarFieldEnum[]
+  }
+
+  /**
+   * ProjectLanguage findFirstOrThrow
+   */
+  export type ProjectLanguageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProjectLanguage to fetch.
+     */
+    where?: ProjectLanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProjectLanguages to fetch.
+     */
+    orderBy?: ProjectLanguageOrderByWithRelationInput | ProjectLanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProjectLanguages.
+     */
+    cursor?: ProjectLanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProjectLanguages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProjectLanguages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProjectLanguages.
+     */
+    distinct?: ProjectLanguageScalarFieldEnum | ProjectLanguageScalarFieldEnum[]
+  }
+
+  /**
+   * ProjectLanguage findMany
+   */
+  export type ProjectLanguageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProjectLanguages to fetch.
+     */
+    where?: ProjectLanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProjectLanguages to fetch.
+     */
+    orderBy?: ProjectLanguageOrderByWithRelationInput | ProjectLanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProjectLanguages.
+     */
+    cursor?: ProjectLanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProjectLanguages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProjectLanguages.
+     */
+    skip?: number
+    distinct?: ProjectLanguageScalarFieldEnum | ProjectLanguageScalarFieldEnum[]
+  }
+
+  /**
+   * ProjectLanguage create
+   */
+  export type ProjectLanguageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProjectLanguage.
+     */
+    data: XOR<ProjectLanguageCreateInput, ProjectLanguageUncheckedCreateInput>
+  }
+
+  /**
+   * ProjectLanguage createMany
+   */
+  export type ProjectLanguageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProjectLanguages.
+     */
+    data: ProjectLanguageCreateManyInput | ProjectLanguageCreateManyInput[]
+  }
+
+  /**
+   * ProjectLanguage createManyAndReturn
+   */
+  export type ProjectLanguageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * The data used to create many ProjectLanguages.
+     */
+    data: ProjectLanguageCreateManyInput | ProjectLanguageCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProjectLanguage update
+   */
+  export type ProjectLanguageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProjectLanguage.
+     */
+    data: XOR<ProjectLanguageUpdateInput, ProjectLanguageUncheckedUpdateInput>
+    /**
+     * Choose, which ProjectLanguage to update.
+     */
+    where: ProjectLanguageWhereUniqueInput
+  }
+
+  /**
+   * ProjectLanguage updateMany
+   */
+  export type ProjectLanguageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProjectLanguages.
+     */
+    data: XOR<ProjectLanguageUpdateManyMutationInput, ProjectLanguageUncheckedUpdateManyInput>
+    /**
+     * Filter which ProjectLanguages to update
+     */
+    where?: ProjectLanguageWhereInput
+    /**
+     * Limit how many ProjectLanguages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProjectLanguage updateManyAndReturn
+   */
+  export type ProjectLanguageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * The data used to update ProjectLanguages.
+     */
+    data: XOR<ProjectLanguageUpdateManyMutationInput, ProjectLanguageUncheckedUpdateManyInput>
+    /**
+     * Filter which ProjectLanguages to update
+     */
+    where?: ProjectLanguageWhereInput
+    /**
+     * Limit how many ProjectLanguages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProjectLanguage upsert
+   */
+  export type ProjectLanguageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProjectLanguage to update in case it exists.
+     */
+    where: ProjectLanguageWhereUniqueInput
+    /**
+     * In case the ProjectLanguage found by the `where` argument doesn't exist, create a new ProjectLanguage with this data.
+     */
+    create: XOR<ProjectLanguageCreateInput, ProjectLanguageUncheckedCreateInput>
+    /**
+     * In case the ProjectLanguage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProjectLanguageUpdateInput, ProjectLanguageUncheckedUpdateInput>
+  }
+
+  /**
+   * ProjectLanguage delete
+   */
+  export type ProjectLanguageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageInclude<ExtArgs> | null
+    /**
+     * Filter which ProjectLanguage to delete.
+     */
+    where: ProjectLanguageWhereUniqueInput
+  }
+
+  /**
+   * ProjectLanguage deleteMany
+   */
+  export type ProjectLanguageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProjectLanguages to delete
+     */
+    where?: ProjectLanguageWhereInput
+    /**
+     * Limit how many ProjectLanguages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProjectLanguage without action
+   */
+  export type ProjectLanguageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Language
+   */
+
+  export type AggregateLanguage = {
+    _count: LanguageCountAggregateOutputType | null
+    _avg: LanguageAvgAggregateOutputType | null
+    _sum: LanguageSumAggregateOutputType | null
+    _min: LanguageMinAggregateOutputType | null
+    _max: LanguageMaxAggregateOutputType | null
+  }
+
+  export type LanguageAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    timeSpent: number | null
+  }
+
+  export type LanguageSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    timeSpent: number | null
+  }
+
+  export type LanguageMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    userId: number | null
+    timeSpent: number | null
+  }
+
+  export type LanguageMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    userId: number | null
+    timeSpent: number | null
+  }
+
+  export type LanguageCountAggregateOutputType = {
+    id: number
+    name: number
+    userId: number
+    timeSpent: number
+    _all: number
+  }
+
+
+  export type LanguageAvgAggregateInputType = {
+    id?: true
+    userId?: true
+    timeSpent?: true
+  }
+
+  export type LanguageSumAggregateInputType = {
+    id?: true
+    userId?: true
+    timeSpent?: true
+  }
+
+  export type LanguageMinAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    timeSpent?: true
+  }
+
+  export type LanguageMaxAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    timeSpent?: true
+  }
+
+  export type LanguageCountAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    timeSpent?: true
+    _all?: true
+  }
+
+  export type LanguageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Language to aggregate.
+     */
+    where?: LanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Languages to fetch.
+     */
+    orderBy?: LanguageOrderByWithRelationInput | LanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Languages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Languages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Languages
+    **/
+    _count?: true | LanguageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LanguageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LanguageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LanguageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LanguageMaxAggregateInputType
+  }
+
+  export type GetLanguageAggregateType<T extends LanguageAggregateArgs> = {
+        [P in keyof T & keyof AggregateLanguage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLanguage[P]>
+      : GetScalarType<T[P], AggregateLanguage[P]>
+  }
+
+
+
+
+  export type LanguageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LanguageWhereInput
+    orderBy?: LanguageOrderByWithAggregationInput | LanguageOrderByWithAggregationInput[]
+    by: LanguageScalarFieldEnum[] | LanguageScalarFieldEnum
+    having?: LanguageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LanguageCountAggregateInputType | true
+    _avg?: LanguageAvgAggregateInputType
+    _sum?: LanguageSumAggregateInputType
+    _min?: LanguageMinAggregateInputType
+    _max?: LanguageMaxAggregateInputType
+  }
+
+  export type LanguageGroupByOutputType = {
+    id: number
+    name: string
+    userId: number
+    timeSpent: number
+    _count: LanguageCountAggregateOutputType | null
+    _avg: LanguageAvgAggregateOutputType | null
+    _sum: LanguageSumAggregateOutputType | null
+    _min: LanguageMinAggregateOutputType | null
+    _max: LanguageMaxAggregateOutputType | null
+  }
+
+  type GetLanguageGroupByPayload<T extends LanguageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LanguageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LanguageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LanguageGroupByOutputType[P]>
+            : GetScalarType<T[P], LanguageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LanguageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    timeSpent?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    projects?: boolean | Language$projectsArgs<ExtArgs>
+    _count?: boolean | LanguageCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["language"]>
+
+  export type LanguageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    timeSpent?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["language"]>
+
+  export type LanguageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    timeSpent?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["language"]>
+
+  export type LanguageSelectScalar = {
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    timeSpent?: boolean
+  }
+
+  export type LanguageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userId" | "timeSpent", ExtArgs["result"]["language"]>
+  export type LanguageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    projects?: boolean | Language$projectsArgs<ExtArgs>
+    _count?: boolean | LanguageCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type LanguageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type LanguageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $LanguagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Language"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      projects: Prisma.$ProjectLanguagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      userId: number
+      timeSpent: number
+    }, ExtArgs["result"]["language"]>
+    composites: {}
+  }
+
+  type LanguageGetPayload<S extends boolean | null | undefined | LanguageDefaultArgs> = $Result.GetResult<Prisma.$LanguagePayload, S>
+
+  type LanguageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LanguageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LanguageCountAggregateInputType | true
+    }
+
+  export interface LanguageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Language'], meta: { name: 'Language' } }
+    /**
+     * Find zero or one Language that matches the filter.
+     * @param {LanguageFindUniqueArgs} args - Arguments to find a Language
+     * @example
+     * // Get one Language
+     * const language = await prisma.language.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LanguageFindUniqueArgs>(args: SelectSubset<T, LanguageFindUniqueArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Language that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LanguageFindUniqueOrThrowArgs} args - Arguments to find a Language
+     * @example
+     * // Get one Language
+     * const language = await prisma.language.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LanguageFindUniqueOrThrowArgs>(args: SelectSubset<T, LanguageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Language that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguageFindFirstArgs} args - Arguments to find a Language
+     * @example
+     * // Get one Language
+     * const language = await prisma.language.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LanguageFindFirstArgs>(args?: SelectSubset<T, LanguageFindFirstArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Language that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguageFindFirstOrThrowArgs} args - Arguments to find a Language
+     * @example
+     * // Get one Language
+     * const language = await prisma.language.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LanguageFindFirstOrThrowArgs>(args?: SelectSubset<T, LanguageFindFirstOrThrowArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Languages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Languages
+     * const languages = await prisma.language.findMany()
+     * 
+     * // Get first 10 Languages
+     * const languages = await prisma.language.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const languageWithIdOnly = await prisma.language.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LanguageFindManyArgs>(args?: SelectSubset<T, LanguageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Language.
+     * @param {LanguageCreateArgs} args - Arguments to create a Language.
+     * @example
+     * // Create one Language
+     * const Language = await prisma.language.create({
+     *   data: {
+     *     // ... data to create a Language
+     *   }
+     * })
+     * 
+     */
+    create<T extends LanguageCreateArgs>(args: SelectSubset<T, LanguageCreateArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Languages.
+     * @param {LanguageCreateManyArgs} args - Arguments to create many Languages.
+     * @example
+     * // Create many Languages
+     * const language = await prisma.language.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LanguageCreateManyArgs>(args?: SelectSubset<T, LanguageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Languages and returns the data saved in the database.
+     * @param {LanguageCreateManyAndReturnArgs} args - Arguments to create many Languages.
+     * @example
+     * // Create many Languages
+     * const language = await prisma.language.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Languages and only return the `id`
+     * const languageWithIdOnly = await prisma.language.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LanguageCreateManyAndReturnArgs>(args?: SelectSubset<T, LanguageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Language.
+     * @param {LanguageDeleteArgs} args - Arguments to delete one Language.
+     * @example
+     * // Delete one Language
+     * const Language = await prisma.language.delete({
+     *   where: {
+     *     // ... filter to delete one Language
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LanguageDeleteArgs>(args: SelectSubset<T, LanguageDeleteArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Language.
+     * @param {LanguageUpdateArgs} args - Arguments to update one Language.
+     * @example
+     * // Update one Language
+     * const language = await prisma.language.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LanguageUpdateArgs>(args: SelectSubset<T, LanguageUpdateArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Languages.
+     * @param {LanguageDeleteManyArgs} args - Arguments to filter Languages to delete.
+     * @example
+     * // Delete a few Languages
+     * const { count } = await prisma.language.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LanguageDeleteManyArgs>(args?: SelectSubset<T, LanguageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Languages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Languages
+     * const language = await prisma.language.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LanguageUpdateManyArgs>(args: SelectSubset<T, LanguageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Languages and returns the data updated in the database.
+     * @param {LanguageUpdateManyAndReturnArgs} args - Arguments to update many Languages.
+     * @example
+     * // Update many Languages
+     * const language = await prisma.language.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Languages and only return the `id`
+     * const languageWithIdOnly = await prisma.language.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LanguageUpdateManyAndReturnArgs>(args: SelectSubset<T, LanguageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Language.
+     * @param {LanguageUpsertArgs} args - Arguments to update or create a Language.
+     * @example
+     * // Update or create a Language
+     * const language = await prisma.language.upsert({
+     *   create: {
+     *     // ... data to create a Language
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Language we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LanguageUpsertArgs>(args: SelectSubset<T, LanguageUpsertArgs<ExtArgs>>): Prisma__LanguageClient<$Result.GetResult<Prisma.$LanguagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Languages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguageCountArgs} args - Arguments to filter Languages to count.
+     * @example
+     * // Count the number of Languages
+     * const count = await prisma.language.count({
+     *   where: {
+     *     // ... the filter for the Languages we want to count
+     *   }
+     * })
+    **/
+    count<T extends LanguageCountArgs>(
+      args?: Subset<T, LanguageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LanguageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Language.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LanguageAggregateArgs>(args: Subset<T, LanguageAggregateArgs>): Prisma.PrismaPromise<GetLanguageAggregateType<T>>
+
+    /**
+     * Group by Language.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LanguageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LanguageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LanguageGroupByArgs['orderBy'] }
+        : { orderBy?: LanguageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LanguageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLanguageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Language model
+   */
+  readonly fields: LanguageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Language.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LanguageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    projects<T extends Language$projectsArgs<ExtArgs> = {}>(args?: Subset<T, Language$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Language model
+   */
+  interface LanguageFieldRefs {
+    readonly id: FieldRef<"Language", 'Int'>
+    readonly name: FieldRef<"Language", 'String'>
+    readonly userId: FieldRef<"Language", 'Int'>
+    readonly timeSpent: FieldRef<"Language", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Language findUnique
+   */
+  export type LanguageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Language
+     */
+    select?: LanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Language
+     */
+    omit?: LanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which Language to fetch.
+     */
+    where: LanguageWhereUniqueInput
+  }
+
+  /**
+   * Language findUniqueOrThrow
+   */
+  export type LanguageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Language
+     */
+    select?: LanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Language
+     */
+    omit?: LanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which Language to fetch.
+     */
+    where: LanguageWhereUniqueInput
+  }
+
+  /**
+   * Language findFirst
+   */
+  export type LanguageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Language
+     */
+    select?: LanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Language
+     */
+    omit?: LanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which Language to fetch.
+     */
+    where?: LanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Languages to fetch.
+     */
+    orderBy?: LanguageOrderByWithRelationInput | LanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Languages.
+     */
+    cursor?: LanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Languages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Languages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Languages.
+     */
+    distinct?: LanguageScalarFieldEnum | LanguageScalarFieldEnum[]
+  }
+
+  /**
+   * Language findFirstOrThrow
+   */
+  export type LanguageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Language
+     */
+    select?: LanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Language
+     */
+    omit?: LanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which Language to fetch.
+     */
+    where?: LanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Languages to fetch.
+     */
+    orderBy?: LanguageOrderByWithRelationInput | LanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Languages.
+     */
+    cursor?: LanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Languages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Languages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Languages.
+     */
+    distinct?: LanguageScalarFieldEnum | LanguageScalarFieldEnum[]
+  }
+
+  /**
+   * Language findMany
+   */
+  export type LanguageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Language
+     */
+    select?: LanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Language
+     */
+    omit?: LanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which Languages to fetch.
+     */
+    where?: LanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Languages to fetch.
+     */
+    orderBy?: LanguageOrderByWithRelationInput | LanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Languages.
+     */
+    cursor?: LanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Languages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Languages.
+     */
+    skip?: number
+    distinct?: LanguageScalarFieldEnum | LanguageScalarFieldEnum[]
+  }
+
+  /**
+   * Language create
+   */
+  export type LanguageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Language
+     */
+    select?: LanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Language
+     */
+    omit?: LanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LanguageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Language.
+     */
+    data: XOR<LanguageCreateInput, LanguageUncheckedCreateInput>
+  }
+
+  /**
+   * Language createMany
+   */
+  export type LanguageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Languages.
+     */
+    data: LanguageCreateManyInput | LanguageCreateManyInput[]
+  }
+
+  /**
+   * Language createManyAndReturn
+   */
+  export type LanguageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Language
+     */
+    select?: LanguageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Language
+     */
+    omit?: LanguageOmit<ExtArgs> | null
+    /**
+     * The data used to create many Languages.
+     */
+    data: LanguageCreateManyInput | LanguageCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LanguageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Language update
+   */
+  export type LanguageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Language
+     */
+    select?: LanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Language
+     */
+    omit?: LanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LanguageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Language.
+     */
+    data: XOR<LanguageUpdateInput, LanguageUncheckedUpdateInput>
+    /**
+     * Choose, which Language to update.
+     */
+    where: LanguageWhereUniqueInput
+  }
+
+  /**
+   * Language updateMany
+   */
+  export type LanguageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Languages.
+     */
+    data: XOR<LanguageUpdateManyMutationInput, LanguageUncheckedUpdateManyInput>
+    /**
+     * Filter which Languages to update
+     */
+    where?: LanguageWhereInput
+    /**
+     * Limit how many Languages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Language updateManyAndReturn
+   */
+  export type LanguageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Language
+     */
+    select?: LanguageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Language
+     */
+    omit?: LanguageOmit<ExtArgs> | null
+    /**
+     * The data used to update Languages.
+     */
+    data: XOR<LanguageUpdateManyMutationInput, LanguageUncheckedUpdateManyInput>
+    /**
+     * Filter which Languages to update
+     */
+    where?: LanguageWhereInput
+    /**
+     * Limit how many Languages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LanguageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Language upsert
+   */
+  export type LanguageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Language
+     */
+    select?: LanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Language
+     */
+    omit?: LanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LanguageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Language to update in case it exists.
+     */
+    where: LanguageWhereUniqueInput
+    /**
+     * In case the Language found by the `where` argument doesn't exist, create a new Language with this data.
+     */
+    create: XOR<LanguageCreateInput, LanguageUncheckedCreateInput>
+    /**
+     * In case the Language was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LanguageUpdateInput, LanguageUncheckedUpdateInput>
+  }
+
+  /**
+   * Language delete
+   */
+  export type LanguageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Language
+     */
+    select?: LanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Language
+     */
+    omit?: LanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LanguageInclude<ExtArgs> | null
+    /**
+     * Filter which Language to delete.
+     */
+    where: LanguageWhereUniqueInput
+  }
+
+  /**
+   * Language deleteMany
+   */
+  export type LanguageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Languages to delete
+     */
+    where?: LanguageWhereInput
+    /**
+     * Limit how many Languages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Language.projects
+   */
+  export type Language$projectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectLanguage
+     */
+    select?: ProjectLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectLanguage
+     */
+    omit?: ProjectLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectLanguageInclude<ExtArgs> | null
+    where?: ProjectLanguageWhereInput
+    orderBy?: ProjectLanguageOrderByWithRelationInput | ProjectLanguageOrderByWithRelationInput[]
+    cursor?: ProjectLanguageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProjectLanguageScalarFieldEnum | ProjectLanguageScalarFieldEnum[]
+  }
+
+  /**
+   * Language without action
+   */
+  export type LanguageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Language
+     */
+    select?: LanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Language
+     */
+    omit?: LanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LanguageInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4455,7 +7023,11 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     username: 'username',
-    timeInterval: 'timeInterval'
+    timeInterval: 'timeInterval',
+    lastHeartbeat: 'lastHeartbeat',
+    lastFolder: 'lastFolder',
+    lastLang: 'lastLang',
+    lastEditor: 'lastEditor'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -4464,7 +7036,7 @@ export namespace Prisma {
   export const ProjectScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    timeInterval: 'timeInterval',
+    timeSpent: 'timeSpent',
     authorId: 'authorId'
   };
 
@@ -4473,12 +7045,33 @@ export namespace Prisma {
 
   export const EditorScalarFieldEnum: {
     id: 'id',
+    name: 'name',
     userId: 'userId',
     projectId: 'projectId',
-    timeInterval: 'timeInterval'
+    timeSpent: 'timeSpent'
   };
 
   export type EditorScalarFieldEnum = (typeof EditorScalarFieldEnum)[keyof typeof EditorScalarFieldEnum]
+
+
+  export const ProjectLanguageScalarFieldEnum: {
+    id: 'id',
+    projectId: 'projectId',
+    languageId: 'languageId',
+    timeSpent: 'timeSpent'
+  };
+
+  export type ProjectLanguageScalarFieldEnum = (typeof ProjectLanguageScalarFieldEnum)[keyof typeof ProjectLanguageScalarFieldEnum]
+
+
+  export const LanguageScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    userId: 'userId',
+    timeSpent: 'timeSpent'
+  };
+
+  export type LanguageScalarFieldEnum = (typeof LanguageScalarFieldEnum)[keyof typeof LanguageScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4525,16 +7118,26 @@ export namespace Prisma {
     id?: IntFilter<"User"> | number
     username?: StringFilter<"User"> | string
     timeInterval?: IntFilter<"User"> | number
+    lastHeartbeat?: IntFilter<"User"> | number
+    lastFolder?: StringFilter<"User"> | string
+    lastLang?: StringFilter<"User"> | string
+    lastEditor?: StringFilter<"User"> | string
     projects?: ProjectListRelationFilter
     editors?: EditorListRelationFilter
+    languages?: LanguageListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     username?: SortOrder
     timeInterval?: SortOrder
+    lastHeartbeat?: SortOrder
+    lastFolder?: SortOrder
+    lastLang?: SortOrder
+    lastEditor?: SortOrder
     projects?: ProjectOrderByRelationAggregateInput
     editors?: EditorOrderByRelationAggregateInput
+    languages?: LanguageOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4544,14 +7147,23 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     timeInterval?: IntFilter<"User"> | number
+    lastHeartbeat?: IntFilter<"User"> | number
+    lastFolder?: StringFilter<"User"> | string
+    lastLang?: StringFilter<"User"> | string
+    lastEditor?: StringFilter<"User"> | string
     projects?: ProjectListRelationFilter
     editors?: EditorListRelationFilter
+    languages?: LanguageListRelationFilter
   }, "id" | "username">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     username?: SortOrder
     timeInterval?: SortOrder
+    lastHeartbeat?: SortOrder
+    lastFolder?: SortOrder
+    lastLang?: SortOrder
+    lastEditor?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -4566,6 +7178,10 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"User"> | number
     username?: StringWithAggregatesFilter<"User"> | string
     timeInterval?: IntWithAggregatesFilter<"User"> | number
+    lastHeartbeat?: IntWithAggregatesFilter<"User"> | number
+    lastFolder?: StringWithAggregatesFilter<"User"> | string
+    lastLang?: StringWithAggregatesFilter<"User"> | string
+    lastEditor?: StringWithAggregatesFilter<"User"> | string
   }
 
   export type ProjectWhereInput = {
@@ -4574,19 +7190,21 @@ export namespace Prisma {
     NOT?: ProjectWhereInput | ProjectWhereInput[]
     id?: IntFilter<"Project"> | number
     name?: StringFilter<"Project"> | string
-    timeInterval?: IntFilter<"Project"> | number
+    timeSpent?: IntFilter<"Project"> | number
     authorId?: IntFilter<"Project"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
     Editors?: EditorListRelationFilter
+    languages?: ProjectLanguageListRelationFilter
   }
 
   export type ProjectOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
     authorId?: SortOrder
     author?: UserOrderByWithRelationInput
     Editors?: EditorOrderByRelationAggregateInput
+    languages?: ProjectLanguageOrderByRelationAggregateInput
   }
 
   export type ProjectWhereUniqueInput = Prisma.AtLeast<{
@@ -4595,16 +7213,17 @@ export namespace Prisma {
     AND?: ProjectWhereInput | ProjectWhereInput[]
     OR?: ProjectWhereInput[]
     NOT?: ProjectWhereInput | ProjectWhereInput[]
-    timeInterval?: IntFilter<"Project"> | number
+    timeSpent?: IntFilter<"Project"> | number
     authorId?: IntFilter<"Project"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
     Editors?: EditorListRelationFilter
+    languages?: ProjectLanguageListRelationFilter
   }, "id" | "name">
 
   export type ProjectOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
     authorId?: SortOrder
     _count?: ProjectCountOrderByAggregateInput
     _avg?: ProjectAvgOrderByAggregateInput
@@ -4619,7 +7238,7 @@ export namespace Prisma {
     NOT?: ProjectScalarWhereWithAggregatesInput | ProjectScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Project"> | number
     name?: StringWithAggregatesFilter<"Project"> | string
-    timeInterval?: IntWithAggregatesFilter<"Project"> | number
+    timeSpent?: IntWithAggregatesFilter<"Project"> | number
     authorId?: IntWithAggregatesFilter<"Project"> | number
   }
 
@@ -4628,39 +7247,43 @@ export namespace Prisma {
     OR?: EditorWhereInput[]
     NOT?: EditorWhereInput | EditorWhereInput[]
     id?: IntFilter<"Editor"> | number
+    name?: StringFilter<"Editor"> | string
     userId?: IntFilter<"Editor"> | number
     projectId?: IntFilter<"Editor"> | number
-    timeInterval?: IntFilter<"Editor"> | number
+    timeSpent?: IntFilter<"Editor"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
   }
 
   export type EditorOrderByWithRelationInput = {
     id?: SortOrder
+    name?: SortOrder
     userId?: SortOrder
     projectId?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
     user?: UserOrderByWithRelationInput
     project?: ProjectOrderByWithRelationInput
   }
 
   export type EditorWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    name?: string
     AND?: EditorWhereInput | EditorWhereInput[]
     OR?: EditorWhereInput[]
     NOT?: EditorWhereInput | EditorWhereInput[]
     userId?: IntFilter<"Editor"> | number
     projectId?: IntFilter<"Editor"> | number
-    timeInterval?: IntFilter<"Editor"> | number
+    timeSpent?: IntFilter<"Editor"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
-  }, "id">
+  }, "id" | "name">
 
   export type EditorOrderByWithAggregationInput = {
     id?: SortOrder
+    name?: SortOrder
     userId?: SortOrder
     projectId?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
     _count?: EditorCountOrderByAggregateInput
     _avg?: EditorAvgOrderByAggregateInput
     _max?: EditorMaxOrderByAggregateInput
@@ -4673,149 +7296,397 @@ export namespace Prisma {
     OR?: EditorScalarWhereWithAggregatesInput[]
     NOT?: EditorScalarWhereWithAggregatesInput | EditorScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Editor"> | number
+    name?: StringWithAggregatesFilter<"Editor"> | string
     userId?: IntWithAggregatesFilter<"Editor"> | number
     projectId?: IntWithAggregatesFilter<"Editor"> | number
-    timeInterval?: IntWithAggregatesFilter<"Editor"> | number
+    timeSpent?: IntWithAggregatesFilter<"Editor"> | number
+  }
+
+  export type ProjectLanguageWhereInput = {
+    AND?: ProjectLanguageWhereInput | ProjectLanguageWhereInput[]
+    OR?: ProjectLanguageWhereInput[]
+    NOT?: ProjectLanguageWhereInput | ProjectLanguageWhereInput[]
+    id?: IntFilter<"ProjectLanguage"> | number
+    projectId?: IntFilter<"ProjectLanguage"> | number
+    languageId?: IntFilter<"ProjectLanguage"> | number
+    timeSpent?: IntFilter<"ProjectLanguage"> | number
+    project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
+    language?: XOR<LanguageScalarRelationFilter, LanguageWhereInput>
+  }
+
+  export type ProjectLanguageOrderByWithRelationInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    languageId?: SortOrder
+    timeSpent?: SortOrder
+    project?: ProjectOrderByWithRelationInput
+    language?: LanguageOrderByWithRelationInput
+  }
+
+  export type ProjectLanguageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    projectId_languageId?: ProjectLanguageProjectIdLanguageIdCompoundUniqueInput
+    AND?: ProjectLanguageWhereInput | ProjectLanguageWhereInput[]
+    OR?: ProjectLanguageWhereInput[]
+    NOT?: ProjectLanguageWhereInput | ProjectLanguageWhereInput[]
+    projectId?: IntFilter<"ProjectLanguage"> | number
+    languageId?: IntFilter<"ProjectLanguage"> | number
+    timeSpent?: IntFilter<"ProjectLanguage"> | number
+    project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
+    language?: XOR<LanguageScalarRelationFilter, LanguageWhereInput>
+  }, "id" | "projectId_languageId">
+
+  export type ProjectLanguageOrderByWithAggregationInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    languageId?: SortOrder
+    timeSpent?: SortOrder
+    _count?: ProjectLanguageCountOrderByAggregateInput
+    _avg?: ProjectLanguageAvgOrderByAggregateInput
+    _max?: ProjectLanguageMaxOrderByAggregateInput
+    _min?: ProjectLanguageMinOrderByAggregateInput
+    _sum?: ProjectLanguageSumOrderByAggregateInput
+  }
+
+  export type ProjectLanguageScalarWhereWithAggregatesInput = {
+    AND?: ProjectLanguageScalarWhereWithAggregatesInput | ProjectLanguageScalarWhereWithAggregatesInput[]
+    OR?: ProjectLanguageScalarWhereWithAggregatesInput[]
+    NOT?: ProjectLanguageScalarWhereWithAggregatesInput | ProjectLanguageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ProjectLanguage"> | number
+    projectId?: IntWithAggregatesFilter<"ProjectLanguage"> | number
+    languageId?: IntWithAggregatesFilter<"ProjectLanguage"> | number
+    timeSpent?: IntWithAggregatesFilter<"ProjectLanguage"> | number
+  }
+
+  export type LanguageWhereInput = {
+    AND?: LanguageWhereInput | LanguageWhereInput[]
+    OR?: LanguageWhereInput[]
+    NOT?: LanguageWhereInput | LanguageWhereInput[]
+    id?: IntFilter<"Language"> | number
+    name?: StringFilter<"Language"> | string
+    userId?: IntFilter<"Language"> | number
+    timeSpent?: IntFilter<"Language"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    projects?: ProjectLanguageListRelationFilter
+  }
+
+  export type LanguageOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    timeSpent?: SortOrder
+    user?: UserOrderByWithRelationInput
+    projects?: ProjectLanguageOrderByRelationAggregateInput
+  }
+
+  export type LanguageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: LanguageWhereInput | LanguageWhereInput[]
+    OR?: LanguageWhereInput[]
+    NOT?: LanguageWhereInput | LanguageWhereInput[]
+    userId?: IntFilter<"Language"> | number
+    timeSpent?: IntFilter<"Language"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    projects?: ProjectLanguageListRelationFilter
+  }, "id" | "name">
+
+  export type LanguageOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    timeSpent?: SortOrder
+    _count?: LanguageCountOrderByAggregateInput
+    _avg?: LanguageAvgOrderByAggregateInput
+    _max?: LanguageMaxOrderByAggregateInput
+    _min?: LanguageMinOrderByAggregateInput
+    _sum?: LanguageSumOrderByAggregateInput
+  }
+
+  export type LanguageScalarWhereWithAggregatesInput = {
+    AND?: LanguageScalarWhereWithAggregatesInput | LanguageScalarWhereWithAggregatesInput[]
+    OR?: LanguageScalarWhereWithAggregatesInput[]
+    NOT?: LanguageScalarWhereWithAggregatesInput | LanguageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Language"> | number
+    name?: StringWithAggregatesFilter<"Language"> | string
+    userId?: IntWithAggregatesFilter<"Language"> | number
+    timeSpent?: IntWithAggregatesFilter<"Language"> | number
   }
 
   export type UserCreateInput = {
     username: string
     timeInterval?: number
+    lastHeartbeat?: number
+    lastFolder?: string
+    lastLang?: string
+    lastEditor?: string
     projects?: ProjectCreateNestedManyWithoutAuthorInput
     editors?: EditorCreateNestedManyWithoutUserInput
+    languages?: LanguageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: number
     username: string
     timeInterval?: number
+    lastHeartbeat?: number
+    lastFolder?: string
+    lastLang?: string
+    lastEditor?: string
     projects?: ProjectUncheckedCreateNestedManyWithoutAuthorInput
     editors?: EditorUncheckedCreateNestedManyWithoutUserInput
+    languages?: LanguageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastFolder?: StringFieldUpdateOperationsInput | string
+    lastLang?: StringFieldUpdateOperationsInput | string
+    lastEditor?: StringFieldUpdateOperationsInput | string
     projects?: ProjectUpdateManyWithoutAuthorNestedInput
     editors?: EditorUpdateManyWithoutUserNestedInput
+    languages?: LanguageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastFolder?: StringFieldUpdateOperationsInput | string
+    lastLang?: StringFieldUpdateOperationsInput | string
+    lastEditor?: StringFieldUpdateOperationsInput | string
     projects?: ProjectUncheckedUpdateManyWithoutAuthorNestedInput
     editors?: EditorUncheckedUpdateManyWithoutUserNestedInput
+    languages?: LanguageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: number
     username: string
     timeInterval?: number
+    lastHeartbeat?: number
+    lastFolder?: string
+    lastLang?: string
+    lastEditor?: string
   }
 
   export type UserUpdateManyMutationInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastFolder?: StringFieldUpdateOperationsInput | string
+    lastLang?: StringFieldUpdateOperationsInput | string
+    lastEditor?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastFolder?: StringFieldUpdateOperationsInput | string
+    lastLang?: StringFieldUpdateOperationsInput | string
+    lastEditor?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProjectCreateInput = {
     name: string
-    timeInterval?: number
+    timeSpent?: number
     author: UserCreateNestedOneWithoutProjectsInput
     Editors?: EditorCreateNestedManyWithoutProjectInput
+    languages?: ProjectLanguageCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateInput = {
     id?: number
     name: string
-    timeInterval?: number
+    timeSpent?: number
     authorId: number
     Editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
+    languages?: ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
     author?: UserUpdateOneRequiredWithoutProjectsNestedInput
     Editors?: EditorUpdateManyWithoutProjectNestedInput
+    languages?: ProjectLanguageUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
     authorId?: IntFieldUpdateOperationsInput | number
     Editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
+    languages?: ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateManyInput = {
     id?: number
     name: string
-    timeInterval?: number
+    timeSpent?: number
     authorId: number
   }
 
   export type ProjectUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProjectUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
     authorId?: IntFieldUpdateOperationsInput | number
   }
 
   export type EditorCreateInput = {
-    timeInterval?: number
+    name: string
+    timeSpent?: number
     user: UserCreateNestedOneWithoutEditorsInput
     project: ProjectCreateNestedOneWithoutEditorsInput
   }
 
   export type EditorUncheckedCreateInput = {
     id?: number
+    name: string
     userId: number
     projectId: number
-    timeInterval?: number
+    timeSpent?: number
   }
 
   export type EditorUpdateInput = {
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: IntFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutEditorsNestedInput
     project?: ProjectUpdateOneRequiredWithoutEditorsNestedInput
   }
 
   export type EditorUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
     projectId?: IntFieldUpdateOperationsInput | number
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
   }
 
   export type EditorCreateManyInput = {
     id?: number
+    name: string
     userId: number
     projectId: number
-    timeInterval?: number
+    timeSpent?: number
   }
 
   export type EditorUpdateManyMutationInput = {
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: IntFieldUpdateOperationsInput | number
   }
 
   export type EditorUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
     projectId?: IntFieldUpdateOperationsInput | number
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProjectLanguageCreateInput = {
+    timeSpent?: number
+    project: ProjectCreateNestedOneWithoutLanguagesInput
+    language: LanguageCreateNestedOneWithoutProjectsInput
+  }
+
+  export type ProjectLanguageUncheckedCreateInput = {
+    id?: number
+    projectId: number
+    languageId: number
+    timeSpent?: number
+  }
+
+  export type ProjectLanguageUpdateInput = {
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    project?: ProjectUpdateOneRequiredWithoutLanguagesNestedInput
+    language?: LanguageUpdateOneRequiredWithoutProjectsNestedInput
+  }
+
+  export type ProjectLanguageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    projectId?: IntFieldUpdateOperationsInput | number
+    languageId?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProjectLanguageCreateManyInput = {
+    id?: number
+    projectId: number
+    languageId: number
+    timeSpent?: number
+  }
+
+  export type ProjectLanguageUpdateManyMutationInput = {
+    timeSpent?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProjectLanguageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    projectId?: IntFieldUpdateOperationsInput | number
+    languageId?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type LanguageCreateInput = {
+    name: string
+    timeSpent?: number
+    user: UserCreateNestedOneWithoutLanguagesInput
+    projects?: ProjectLanguageCreateNestedManyWithoutLanguageInput
+  }
+
+  export type LanguageUncheckedCreateInput = {
+    id?: number
+    name: string
+    userId: number
+    timeSpent?: number
+    projects?: ProjectLanguageUncheckedCreateNestedManyWithoutLanguageInput
+  }
+
+  export type LanguageUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    user?: UserUpdateOneRequiredWithoutLanguagesNestedInput
+    projects?: ProjectLanguageUpdateManyWithoutLanguageNestedInput
+  }
+
+  export type LanguageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    projects?: ProjectLanguageUncheckedUpdateManyWithoutLanguageNestedInput
+  }
+
+  export type LanguageCreateManyInput = {
+    id?: number
+    name: string
+    userId: number
+    timeSpent?: number
+  }
+
+  export type LanguageUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type LanguageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -4855,6 +7726,12 @@ export namespace Prisma {
     none?: EditorWhereInput
   }
 
+  export type LanguageListRelationFilter = {
+    every?: LanguageWhereInput
+    some?: LanguageWhereInput
+    none?: LanguageWhereInput
+  }
+
   export type ProjectOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -4863,32 +7740,50 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type LanguageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     username?: SortOrder
     timeInterval?: SortOrder
+    lastHeartbeat?: SortOrder
+    lastFolder?: SortOrder
+    lastLang?: SortOrder
+    lastEditor?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
     id?: SortOrder
     timeInterval?: SortOrder
+    lastHeartbeat?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     username?: SortOrder
     timeInterval?: SortOrder
+    lastHeartbeat?: SortOrder
+    lastFolder?: SortOrder
+    lastLang?: SortOrder
+    lastEditor?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     username?: SortOrder
     timeInterval?: SortOrder
+    lastHeartbeat?: SortOrder
+    lastFolder?: SortOrder
+    lastLang?: SortOrder
+    lastEditor?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
     id?: SortOrder
     timeInterval?: SortOrder
+    lastHeartbeat?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -4929,36 +7824,46 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
+  export type ProjectLanguageListRelationFilter = {
+    every?: ProjectLanguageWhereInput
+    some?: ProjectLanguageWhereInput
+    none?: ProjectLanguageWhereInput
+  }
+
+  export type ProjectLanguageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type ProjectCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
     authorId?: SortOrder
   }
 
   export type ProjectAvgOrderByAggregateInput = {
     id?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
     authorId?: SortOrder
   }
 
   export type ProjectMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
     authorId?: SortOrder
   }
 
   export type ProjectMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
     authorId?: SortOrder
   }
 
   export type ProjectSumOrderByAggregateInput = {
     id?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
     authorId?: SortOrder
   }
 
@@ -4969,37 +7874,118 @@ export namespace Prisma {
 
   export type EditorCountOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     userId?: SortOrder
     projectId?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
   }
 
   export type EditorAvgOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     projectId?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
   }
 
   export type EditorMaxOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     userId?: SortOrder
     projectId?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
   }
 
   export type EditorMinOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     userId?: SortOrder
     projectId?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
   }
 
   export type EditorSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     projectId?: SortOrder
-    timeInterval?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type LanguageScalarRelationFilter = {
+    is?: LanguageWhereInput
+    isNot?: LanguageWhereInput
+  }
+
+  export type ProjectLanguageProjectIdLanguageIdCompoundUniqueInput = {
+    projectId: number
+    languageId: number
+  }
+
+  export type ProjectLanguageCountOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    languageId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type ProjectLanguageAvgOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    languageId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type ProjectLanguageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    languageId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type ProjectLanguageMinOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    languageId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type ProjectLanguageSumOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    languageId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type LanguageCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type LanguageAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type LanguageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type LanguageMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type LanguageSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    timeSpent?: SortOrder
   }
 
   export type ProjectCreateNestedManyWithoutAuthorInput = {
@@ -5016,6 +8002,13 @@ export namespace Prisma {
     connect?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
   }
 
+  export type LanguageCreateNestedManyWithoutUserInput = {
+    create?: XOR<LanguageCreateWithoutUserInput, LanguageUncheckedCreateWithoutUserInput> | LanguageCreateWithoutUserInput[] | LanguageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LanguageCreateOrConnectWithoutUserInput | LanguageCreateOrConnectWithoutUserInput[]
+    createMany?: LanguageCreateManyUserInputEnvelope
+    connect?: LanguageWhereUniqueInput | LanguageWhereUniqueInput[]
+  }
+
   export type ProjectUncheckedCreateNestedManyWithoutAuthorInput = {
     create?: XOR<ProjectCreateWithoutAuthorInput, ProjectUncheckedCreateWithoutAuthorInput> | ProjectCreateWithoutAuthorInput[] | ProjectUncheckedCreateWithoutAuthorInput[]
     connectOrCreate?: ProjectCreateOrConnectWithoutAuthorInput | ProjectCreateOrConnectWithoutAuthorInput[]
@@ -5028,6 +8021,13 @@ export namespace Prisma {
     connectOrCreate?: EditorCreateOrConnectWithoutUserInput | EditorCreateOrConnectWithoutUserInput[]
     createMany?: EditorCreateManyUserInputEnvelope
     connect?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
+  }
+
+  export type LanguageUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<LanguageCreateWithoutUserInput, LanguageUncheckedCreateWithoutUserInput> | LanguageCreateWithoutUserInput[] | LanguageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LanguageCreateOrConnectWithoutUserInput | LanguageCreateOrConnectWithoutUserInput[]
+    createMany?: LanguageCreateManyUserInputEnvelope
+    connect?: LanguageWhereUniqueInput | LanguageWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5070,6 +8070,20 @@ export namespace Prisma {
     deleteMany?: EditorScalarWhereInput | EditorScalarWhereInput[]
   }
 
+  export type LanguageUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LanguageCreateWithoutUserInput, LanguageUncheckedCreateWithoutUserInput> | LanguageCreateWithoutUserInput[] | LanguageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LanguageCreateOrConnectWithoutUserInput | LanguageCreateOrConnectWithoutUserInput[]
+    upsert?: LanguageUpsertWithWhereUniqueWithoutUserInput | LanguageUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LanguageCreateManyUserInputEnvelope
+    set?: LanguageWhereUniqueInput | LanguageWhereUniqueInput[]
+    disconnect?: LanguageWhereUniqueInput | LanguageWhereUniqueInput[]
+    delete?: LanguageWhereUniqueInput | LanguageWhereUniqueInput[]
+    connect?: LanguageWhereUniqueInput | LanguageWhereUniqueInput[]
+    update?: LanguageUpdateWithWhereUniqueWithoutUserInput | LanguageUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LanguageUpdateManyWithWhereWithoutUserInput | LanguageUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LanguageScalarWhereInput | LanguageScalarWhereInput[]
+  }
+
   export type ProjectUncheckedUpdateManyWithoutAuthorNestedInput = {
     create?: XOR<ProjectCreateWithoutAuthorInput, ProjectUncheckedCreateWithoutAuthorInput> | ProjectCreateWithoutAuthorInput[] | ProjectUncheckedCreateWithoutAuthorInput[]
     connectOrCreate?: ProjectCreateOrConnectWithoutAuthorInput | ProjectCreateOrConnectWithoutAuthorInput[]
@@ -5098,6 +8112,20 @@ export namespace Prisma {
     deleteMany?: EditorScalarWhereInput | EditorScalarWhereInput[]
   }
 
+  export type LanguageUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LanguageCreateWithoutUserInput, LanguageUncheckedCreateWithoutUserInput> | LanguageCreateWithoutUserInput[] | LanguageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LanguageCreateOrConnectWithoutUserInput | LanguageCreateOrConnectWithoutUserInput[]
+    upsert?: LanguageUpsertWithWhereUniqueWithoutUserInput | LanguageUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LanguageCreateManyUserInputEnvelope
+    set?: LanguageWhereUniqueInput | LanguageWhereUniqueInput[]
+    disconnect?: LanguageWhereUniqueInput | LanguageWhereUniqueInput[]
+    delete?: LanguageWhereUniqueInput | LanguageWhereUniqueInput[]
+    connect?: LanguageWhereUniqueInput | LanguageWhereUniqueInput[]
+    update?: LanguageUpdateWithWhereUniqueWithoutUserInput | LanguageUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LanguageUpdateManyWithWhereWithoutUserInput | LanguageUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LanguageScalarWhereInput | LanguageScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutProjectsInput = {
     create?: XOR<UserCreateWithoutProjectsInput, UserUncheckedCreateWithoutProjectsInput>
     connectOrCreate?: UserCreateOrConnectWithoutProjectsInput
@@ -5111,11 +8139,25 @@ export namespace Prisma {
     connect?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
   }
 
+  export type ProjectLanguageCreateNestedManyWithoutProjectInput = {
+    create?: XOR<ProjectLanguageCreateWithoutProjectInput, ProjectLanguageUncheckedCreateWithoutProjectInput> | ProjectLanguageCreateWithoutProjectInput[] | ProjectLanguageUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: ProjectLanguageCreateOrConnectWithoutProjectInput | ProjectLanguageCreateOrConnectWithoutProjectInput[]
+    createMany?: ProjectLanguageCreateManyProjectInputEnvelope
+    connect?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+  }
+
   export type EditorUncheckedCreateNestedManyWithoutProjectInput = {
     create?: XOR<EditorCreateWithoutProjectInput, EditorUncheckedCreateWithoutProjectInput> | EditorCreateWithoutProjectInput[] | EditorUncheckedCreateWithoutProjectInput[]
     connectOrCreate?: EditorCreateOrConnectWithoutProjectInput | EditorCreateOrConnectWithoutProjectInput[]
     createMany?: EditorCreateManyProjectInputEnvelope
     connect?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
+  }
+
+  export type ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput = {
+    create?: XOR<ProjectLanguageCreateWithoutProjectInput, ProjectLanguageUncheckedCreateWithoutProjectInput> | ProjectLanguageCreateWithoutProjectInput[] | ProjectLanguageUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: ProjectLanguageCreateOrConnectWithoutProjectInput | ProjectLanguageCreateOrConnectWithoutProjectInput[]
+    createMany?: ProjectLanguageCreateManyProjectInputEnvelope
+    connect?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutProjectsNestedInput = {
@@ -5140,6 +8182,20 @@ export namespace Prisma {
     deleteMany?: EditorScalarWhereInput | EditorScalarWhereInput[]
   }
 
+  export type ProjectLanguageUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<ProjectLanguageCreateWithoutProjectInput, ProjectLanguageUncheckedCreateWithoutProjectInput> | ProjectLanguageCreateWithoutProjectInput[] | ProjectLanguageUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: ProjectLanguageCreateOrConnectWithoutProjectInput | ProjectLanguageCreateOrConnectWithoutProjectInput[]
+    upsert?: ProjectLanguageUpsertWithWhereUniqueWithoutProjectInput | ProjectLanguageUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: ProjectLanguageCreateManyProjectInputEnvelope
+    set?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    disconnect?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    delete?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    connect?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    update?: ProjectLanguageUpdateWithWhereUniqueWithoutProjectInput | ProjectLanguageUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: ProjectLanguageUpdateManyWithWhereWithoutProjectInput | ProjectLanguageUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: ProjectLanguageScalarWhereInput | ProjectLanguageScalarWhereInput[]
+  }
+
   export type EditorUncheckedUpdateManyWithoutProjectNestedInput = {
     create?: XOR<EditorCreateWithoutProjectInput, EditorUncheckedCreateWithoutProjectInput> | EditorCreateWithoutProjectInput[] | EditorUncheckedCreateWithoutProjectInput[]
     connectOrCreate?: EditorCreateOrConnectWithoutProjectInput | EditorCreateOrConnectWithoutProjectInput[]
@@ -5152,6 +8208,20 @@ export namespace Prisma {
     update?: EditorUpdateWithWhereUniqueWithoutProjectInput | EditorUpdateWithWhereUniqueWithoutProjectInput[]
     updateMany?: EditorUpdateManyWithWhereWithoutProjectInput | EditorUpdateManyWithWhereWithoutProjectInput[]
     deleteMany?: EditorScalarWhereInput | EditorScalarWhereInput[]
+  }
+
+  export type ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<ProjectLanguageCreateWithoutProjectInput, ProjectLanguageUncheckedCreateWithoutProjectInput> | ProjectLanguageCreateWithoutProjectInput[] | ProjectLanguageUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: ProjectLanguageCreateOrConnectWithoutProjectInput | ProjectLanguageCreateOrConnectWithoutProjectInput[]
+    upsert?: ProjectLanguageUpsertWithWhereUniqueWithoutProjectInput | ProjectLanguageUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: ProjectLanguageCreateManyProjectInputEnvelope
+    set?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    disconnect?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    delete?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    connect?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    update?: ProjectLanguageUpdateWithWhereUniqueWithoutProjectInput | ProjectLanguageUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: ProjectLanguageUpdateManyWithWhereWithoutProjectInput | ProjectLanguageUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: ProjectLanguageScalarWhereInput | ProjectLanguageScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutEditorsInput = {
@@ -5180,6 +8250,90 @@ export namespace Prisma {
     upsert?: ProjectUpsertWithoutEditorsInput
     connect?: ProjectWhereUniqueInput
     update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutEditorsInput, ProjectUpdateWithoutEditorsInput>, ProjectUncheckedUpdateWithoutEditorsInput>
+  }
+
+  export type ProjectCreateNestedOneWithoutLanguagesInput = {
+    create?: XOR<ProjectCreateWithoutLanguagesInput, ProjectUncheckedCreateWithoutLanguagesInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutLanguagesInput
+    connect?: ProjectWhereUniqueInput
+  }
+
+  export type LanguageCreateNestedOneWithoutProjectsInput = {
+    create?: XOR<LanguageCreateWithoutProjectsInput, LanguageUncheckedCreateWithoutProjectsInput>
+    connectOrCreate?: LanguageCreateOrConnectWithoutProjectsInput
+    connect?: LanguageWhereUniqueInput
+  }
+
+  export type ProjectUpdateOneRequiredWithoutLanguagesNestedInput = {
+    create?: XOR<ProjectCreateWithoutLanguagesInput, ProjectUncheckedCreateWithoutLanguagesInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutLanguagesInput
+    upsert?: ProjectUpsertWithoutLanguagesInput
+    connect?: ProjectWhereUniqueInput
+    update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutLanguagesInput, ProjectUpdateWithoutLanguagesInput>, ProjectUncheckedUpdateWithoutLanguagesInput>
+  }
+
+  export type LanguageUpdateOneRequiredWithoutProjectsNestedInput = {
+    create?: XOR<LanguageCreateWithoutProjectsInput, LanguageUncheckedCreateWithoutProjectsInput>
+    connectOrCreate?: LanguageCreateOrConnectWithoutProjectsInput
+    upsert?: LanguageUpsertWithoutProjectsInput
+    connect?: LanguageWhereUniqueInput
+    update?: XOR<XOR<LanguageUpdateToOneWithWhereWithoutProjectsInput, LanguageUpdateWithoutProjectsInput>, LanguageUncheckedUpdateWithoutProjectsInput>
+  }
+
+  export type UserCreateNestedOneWithoutLanguagesInput = {
+    create?: XOR<UserCreateWithoutLanguagesInput, UserUncheckedCreateWithoutLanguagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLanguagesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ProjectLanguageCreateNestedManyWithoutLanguageInput = {
+    create?: XOR<ProjectLanguageCreateWithoutLanguageInput, ProjectLanguageUncheckedCreateWithoutLanguageInput> | ProjectLanguageCreateWithoutLanguageInput[] | ProjectLanguageUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: ProjectLanguageCreateOrConnectWithoutLanguageInput | ProjectLanguageCreateOrConnectWithoutLanguageInput[]
+    createMany?: ProjectLanguageCreateManyLanguageInputEnvelope
+    connect?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+  }
+
+  export type ProjectLanguageUncheckedCreateNestedManyWithoutLanguageInput = {
+    create?: XOR<ProjectLanguageCreateWithoutLanguageInput, ProjectLanguageUncheckedCreateWithoutLanguageInput> | ProjectLanguageCreateWithoutLanguageInput[] | ProjectLanguageUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: ProjectLanguageCreateOrConnectWithoutLanguageInput | ProjectLanguageCreateOrConnectWithoutLanguageInput[]
+    createMany?: ProjectLanguageCreateManyLanguageInputEnvelope
+    connect?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutLanguagesNestedInput = {
+    create?: XOR<UserCreateWithoutLanguagesInput, UserUncheckedCreateWithoutLanguagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLanguagesInput
+    upsert?: UserUpsertWithoutLanguagesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLanguagesInput, UserUpdateWithoutLanguagesInput>, UserUncheckedUpdateWithoutLanguagesInput>
+  }
+
+  export type ProjectLanguageUpdateManyWithoutLanguageNestedInput = {
+    create?: XOR<ProjectLanguageCreateWithoutLanguageInput, ProjectLanguageUncheckedCreateWithoutLanguageInput> | ProjectLanguageCreateWithoutLanguageInput[] | ProjectLanguageUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: ProjectLanguageCreateOrConnectWithoutLanguageInput | ProjectLanguageCreateOrConnectWithoutLanguageInput[]
+    upsert?: ProjectLanguageUpsertWithWhereUniqueWithoutLanguageInput | ProjectLanguageUpsertWithWhereUniqueWithoutLanguageInput[]
+    createMany?: ProjectLanguageCreateManyLanguageInputEnvelope
+    set?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    disconnect?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    delete?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    connect?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    update?: ProjectLanguageUpdateWithWhereUniqueWithoutLanguageInput | ProjectLanguageUpdateWithWhereUniqueWithoutLanguageInput[]
+    updateMany?: ProjectLanguageUpdateManyWithWhereWithoutLanguageInput | ProjectLanguageUpdateManyWithWhereWithoutLanguageInput[]
+    deleteMany?: ProjectLanguageScalarWhereInput | ProjectLanguageScalarWhereInput[]
+  }
+
+  export type ProjectLanguageUncheckedUpdateManyWithoutLanguageNestedInput = {
+    create?: XOR<ProjectLanguageCreateWithoutLanguageInput, ProjectLanguageUncheckedCreateWithoutLanguageInput> | ProjectLanguageCreateWithoutLanguageInput[] | ProjectLanguageUncheckedCreateWithoutLanguageInput[]
+    connectOrCreate?: ProjectLanguageCreateOrConnectWithoutLanguageInput | ProjectLanguageCreateOrConnectWithoutLanguageInput[]
+    upsert?: ProjectLanguageUpsertWithWhereUniqueWithoutLanguageInput | ProjectLanguageUpsertWithWhereUniqueWithoutLanguageInput[]
+    createMany?: ProjectLanguageCreateManyLanguageInputEnvelope
+    set?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    disconnect?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    delete?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    connect?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
+    update?: ProjectLanguageUpdateWithWhereUniqueWithoutLanguageInput | ProjectLanguageUpdateWithWhereUniqueWithoutLanguageInput[]
+    updateMany?: ProjectLanguageUpdateManyWithWhereWithoutLanguageInput | ProjectLanguageUpdateManyWithWhereWithoutLanguageInput[]
+    deleteMany?: ProjectLanguageScalarWhereInput | ProjectLanguageScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -5253,15 +8407,17 @@ export namespace Prisma {
 
   export type ProjectCreateWithoutAuthorInput = {
     name: string
-    timeInterval?: number
+    timeSpent?: number
     Editors?: EditorCreateNestedManyWithoutProjectInput
+    languages?: ProjectLanguageCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutAuthorInput = {
     id?: number
     name: string
-    timeInterval?: number
+    timeSpent?: number
     Editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
+    languages?: ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutAuthorInput = {
@@ -5274,14 +8430,16 @@ export namespace Prisma {
   }
 
   export type EditorCreateWithoutUserInput = {
-    timeInterval?: number
+    name: string
+    timeSpent?: number
     project: ProjectCreateNestedOneWithoutEditorsInput
   }
 
   export type EditorUncheckedCreateWithoutUserInput = {
     id?: number
+    name: string
     projectId: number
-    timeInterval?: number
+    timeSpent?: number
   }
 
   export type EditorCreateOrConnectWithoutUserInput = {
@@ -5291,6 +8449,28 @@ export namespace Prisma {
 
   export type EditorCreateManyUserInputEnvelope = {
     data: EditorCreateManyUserInput | EditorCreateManyUserInput[]
+  }
+
+  export type LanguageCreateWithoutUserInput = {
+    name: string
+    timeSpent?: number
+    projects?: ProjectLanguageCreateNestedManyWithoutLanguageInput
+  }
+
+  export type LanguageUncheckedCreateWithoutUserInput = {
+    id?: number
+    name: string
+    timeSpent?: number
+    projects?: ProjectLanguageUncheckedCreateNestedManyWithoutLanguageInput
+  }
+
+  export type LanguageCreateOrConnectWithoutUserInput = {
+    where: LanguageWhereUniqueInput
+    create: XOR<LanguageCreateWithoutUserInput, LanguageUncheckedCreateWithoutUserInput>
+  }
+
+  export type LanguageCreateManyUserInputEnvelope = {
+    data: LanguageCreateManyUserInput | LanguageCreateManyUserInput[]
   }
 
   export type ProjectUpsertWithWhereUniqueWithoutAuthorInput = {
@@ -5315,7 +8495,7 @@ export namespace Prisma {
     NOT?: ProjectScalarWhereInput | ProjectScalarWhereInput[]
     id?: IntFilter<"Project"> | number
     name?: StringFilter<"Project"> | string
-    timeInterval?: IntFilter<"Project"> | number
+    timeSpent?: IntFilter<"Project"> | number
     authorId?: IntFilter<"Project"> | number
   }
 
@@ -5340,22 +8520,59 @@ export namespace Prisma {
     OR?: EditorScalarWhereInput[]
     NOT?: EditorScalarWhereInput | EditorScalarWhereInput[]
     id?: IntFilter<"Editor"> | number
+    name?: StringFilter<"Editor"> | string
     userId?: IntFilter<"Editor"> | number
     projectId?: IntFilter<"Editor"> | number
-    timeInterval?: IntFilter<"Editor"> | number
+    timeSpent?: IntFilter<"Editor"> | number
+  }
+
+  export type LanguageUpsertWithWhereUniqueWithoutUserInput = {
+    where: LanguageWhereUniqueInput
+    update: XOR<LanguageUpdateWithoutUserInput, LanguageUncheckedUpdateWithoutUserInput>
+    create: XOR<LanguageCreateWithoutUserInput, LanguageUncheckedCreateWithoutUserInput>
+  }
+
+  export type LanguageUpdateWithWhereUniqueWithoutUserInput = {
+    where: LanguageWhereUniqueInput
+    data: XOR<LanguageUpdateWithoutUserInput, LanguageUncheckedUpdateWithoutUserInput>
+  }
+
+  export type LanguageUpdateManyWithWhereWithoutUserInput = {
+    where: LanguageScalarWhereInput
+    data: XOR<LanguageUpdateManyMutationInput, LanguageUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type LanguageScalarWhereInput = {
+    AND?: LanguageScalarWhereInput | LanguageScalarWhereInput[]
+    OR?: LanguageScalarWhereInput[]
+    NOT?: LanguageScalarWhereInput | LanguageScalarWhereInput[]
+    id?: IntFilter<"Language"> | number
+    name?: StringFilter<"Language"> | string
+    userId?: IntFilter<"Language"> | number
+    timeSpent?: IntFilter<"Language"> | number
   }
 
   export type UserCreateWithoutProjectsInput = {
     username: string
     timeInterval?: number
+    lastHeartbeat?: number
+    lastFolder?: string
+    lastLang?: string
+    lastEditor?: string
     editors?: EditorCreateNestedManyWithoutUserInput
+    languages?: LanguageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProjectsInput = {
     id?: number
     username: string
     timeInterval?: number
+    lastHeartbeat?: number
+    lastFolder?: string
+    lastLang?: string
+    lastEditor?: string
     editors?: EditorUncheckedCreateNestedManyWithoutUserInput
+    languages?: LanguageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProjectsInput = {
@@ -5364,14 +8581,16 @@ export namespace Prisma {
   }
 
   export type EditorCreateWithoutProjectInput = {
-    timeInterval?: number
+    name: string
+    timeSpent?: number
     user: UserCreateNestedOneWithoutEditorsInput
   }
 
   export type EditorUncheckedCreateWithoutProjectInput = {
     id?: number
+    name: string
     userId: number
-    timeInterval?: number
+    timeSpent?: number
   }
 
   export type EditorCreateOrConnectWithoutProjectInput = {
@@ -5381,6 +8600,26 @@ export namespace Prisma {
 
   export type EditorCreateManyProjectInputEnvelope = {
     data: EditorCreateManyProjectInput | EditorCreateManyProjectInput[]
+  }
+
+  export type ProjectLanguageCreateWithoutProjectInput = {
+    timeSpent?: number
+    language: LanguageCreateNestedOneWithoutProjectsInput
+  }
+
+  export type ProjectLanguageUncheckedCreateWithoutProjectInput = {
+    id?: number
+    languageId: number
+    timeSpent?: number
+  }
+
+  export type ProjectLanguageCreateOrConnectWithoutProjectInput = {
+    where: ProjectLanguageWhereUniqueInput
+    create: XOR<ProjectLanguageCreateWithoutProjectInput, ProjectLanguageUncheckedCreateWithoutProjectInput>
+  }
+
+  export type ProjectLanguageCreateManyProjectInputEnvelope = {
+    data: ProjectLanguageCreateManyProjectInput | ProjectLanguageCreateManyProjectInput[]
   }
 
   export type UserUpsertWithoutProjectsInput = {
@@ -5397,14 +8636,24 @@ export namespace Prisma {
   export type UserUpdateWithoutProjectsInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastFolder?: StringFieldUpdateOperationsInput | string
+    lastLang?: StringFieldUpdateOperationsInput | string
+    lastEditor?: StringFieldUpdateOperationsInput | string
     editors?: EditorUpdateManyWithoutUserNestedInput
+    languages?: LanguageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProjectsInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastFolder?: StringFieldUpdateOperationsInput | string
+    lastLang?: StringFieldUpdateOperationsInput | string
+    lastEditor?: StringFieldUpdateOperationsInput | string
     editors?: EditorUncheckedUpdateManyWithoutUserNestedInput
+    languages?: LanguageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type EditorUpsertWithWhereUniqueWithoutProjectInput = {
@@ -5423,17 +8672,53 @@ export namespace Prisma {
     data: XOR<EditorUpdateManyMutationInput, EditorUncheckedUpdateManyWithoutProjectInput>
   }
 
+  export type ProjectLanguageUpsertWithWhereUniqueWithoutProjectInput = {
+    where: ProjectLanguageWhereUniqueInput
+    update: XOR<ProjectLanguageUpdateWithoutProjectInput, ProjectLanguageUncheckedUpdateWithoutProjectInput>
+    create: XOR<ProjectLanguageCreateWithoutProjectInput, ProjectLanguageUncheckedCreateWithoutProjectInput>
+  }
+
+  export type ProjectLanguageUpdateWithWhereUniqueWithoutProjectInput = {
+    where: ProjectLanguageWhereUniqueInput
+    data: XOR<ProjectLanguageUpdateWithoutProjectInput, ProjectLanguageUncheckedUpdateWithoutProjectInput>
+  }
+
+  export type ProjectLanguageUpdateManyWithWhereWithoutProjectInput = {
+    where: ProjectLanguageScalarWhereInput
+    data: XOR<ProjectLanguageUpdateManyMutationInput, ProjectLanguageUncheckedUpdateManyWithoutProjectInput>
+  }
+
+  export type ProjectLanguageScalarWhereInput = {
+    AND?: ProjectLanguageScalarWhereInput | ProjectLanguageScalarWhereInput[]
+    OR?: ProjectLanguageScalarWhereInput[]
+    NOT?: ProjectLanguageScalarWhereInput | ProjectLanguageScalarWhereInput[]
+    id?: IntFilter<"ProjectLanguage"> | number
+    projectId?: IntFilter<"ProjectLanguage"> | number
+    languageId?: IntFilter<"ProjectLanguage"> | number
+    timeSpent?: IntFilter<"ProjectLanguage"> | number
+  }
+
   export type UserCreateWithoutEditorsInput = {
     username: string
     timeInterval?: number
+    lastHeartbeat?: number
+    lastFolder?: string
+    lastLang?: string
+    lastEditor?: string
     projects?: ProjectCreateNestedManyWithoutAuthorInput
+    languages?: LanguageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutEditorsInput = {
     id?: number
     username: string
     timeInterval?: number
+    lastHeartbeat?: number
+    lastFolder?: string
+    lastLang?: string
+    lastEditor?: string
     projects?: ProjectUncheckedCreateNestedManyWithoutAuthorInput
+    languages?: LanguageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutEditorsInput = {
@@ -5443,15 +8728,17 @@ export namespace Prisma {
 
   export type ProjectCreateWithoutEditorsInput = {
     name: string
-    timeInterval?: number
+    timeSpent?: number
     author: UserCreateNestedOneWithoutProjectsInput
+    languages?: ProjectLanguageCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutEditorsInput = {
     id?: number
     name: string
-    timeInterval?: number
+    timeSpent?: number
     authorId: number
+    languages?: ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutEditorsInput = {
@@ -5473,14 +8760,24 @@ export namespace Prisma {
   export type UserUpdateWithoutEditorsInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastFolder?: StringFieldUpdateOperationsInput | string
+    lastLang?: StringFieldUpdateOperationsInput | string
+    lastEditor?: StringFieldUpdateOperationsInput | string
     projects?: ProjectUpdateManyWithoutAuthorNestedInput
+    languages?: LanguageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutEditorsInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastFolder?: StringFieldUpdateOperationsInput | string
+    lastLang?: StringFieldUpdateOperationsInput | string
+    lastEditor?: StringFieldUpdateOperationsInput | string
     projects?: ProjectUncheckedUpdateManyWithoutAuthorNestedInput
+    languages?: LanguageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProjectUpsertWithoutEditorsInput = {
@@ -5496,86 +8793,355 @@ export namespace Prisma {
 
   export type ProjectUpdateWithoutEditorsInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
     author?: UserUpdateOneRequiredWithoutProjectsNestedInput
+    languages?: ProjectLanguageUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutEditorsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
     authorId?: IntFieldUpdateOperationsInput | number
+    languages?: ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput
+  }
+
+  export type ProjectCreateWithoutLanguagesInput = {
+    name: string
+    timeSpent?: number
+    author: UserCreateNestedOneWithoutProjectsInput
+    Editors?: EditorCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectUncheckedCreateWithoutLanguagesInput = {
+    id?: number
+    name: string
+    timeSpent?: number
+    authorId: number
+    Editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectCreateOrConnectWithoutLanguagesInput = {
+    where: ProjectWhereUniqueInput
+    create: XOR<ProjectCreateWithoutLanguagesInput, ProjectUncheckedCreateWithoutLanguagesInput>
+  }
+
+  export type LanguageCreateWithoutProjectsInput = {
+    name: string
+    timeSpent?: number
+    user: UserCreateNestedOneWithoutLanguagesInput
+  }
+
+  export type LanguageUncheckedCreateWithoutProjectsInput = {
+    id?: number
+    name: string
+    userId: number
+    timeSpent?: number
+  }
+
+  export type LanguageCreateOrConnectWithoutProjectsInput = {
+    where: LanguageWhereUniqueInput
+    create: XOR<LanguageCreateWithoutProjectsInput, LanguageUncheckedCreateWithoutProjectsInput>
+  }
+
+  export type ProjectUpsertWithoutLanguagesInput = {
+    update: XOR<ProjectUpdateWithoutLanguagesInput, ProjectUncheckedUpdateWithoutLanguagesInput>
+    create: XOR<ProjectCreateWithoutLanguagesInput, ProjectUncheckedCreateWithoutLanguagesInput>
+    where?: ProjectWhereInput
+  }
+
+  export type ProjectUpdateToOneWithWhereWithoutLanguagesInput = {
+    where?: ProjectWhereInput
+    data: XOR<ProjectUpdateWithoutLanguagesInput, ProjectUncheckedUpdateWithoutLanguagesInput>
+  }
+
+  export type ProjectUpdateWithoutLanguagesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    author?: UserUpdateOneRequiredWithoutProjectsNestedInput
+    Editors?: EditorUpdateManyWithoutProjectNestedInput
+  }
+
+  export type ProjectUncheckedUpdateWithoutLanguagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    authorId?: IntFieldUpdateOperationsInput | number
+    Editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
+  }
+
+  export type LanguageUpsertWithoutProjectsInput = {
+    update: XOR<LanguageUpdateWithoutProjectsInput, LanguageUncheckedUpdateWithoutProjectsInput>
+    create: XOR<LanguageCreateWithoutProjectsInput, LanguageUncheckedCreateWithoutProjectsInput>
+    where?: LanguageWhereInput
+  }
+
+  export type LanguageUpdateToOneWithWhereWithoutProjectsInput = {
+    where?: LanguageWhereInput
+    data: XOR<LanguageUpdateWithoutProjectsInput, LanguageUncheckedUpdateWithoutProjectsInput>
+  }
+
+  export type LanguageUpdateWithoutProjectsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    user?: UserUpdateOneRequiredWithoutLanguagesNestedInput
+  }
+
+  export type LanguageUncheckedUpdateWithoutProjectsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserCreateWithoutLanguagesInput = {
+    username: string
+    timeInterval?: number
+    lastHeartbeat?: number
+    lastFolder?: string
+    lastLang?: string
+    lastEditor?: string
+    projects?: ProjectCreateNestedManyWithoutAuthorInput
+    editors?: EditorCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutLanguagesInput = {
+    id?: number
+    username: string
+    timeInterval?: number
+    lastHeartbeat?: number
+    lastFolder?: string
+    lastLang?: string
+    lastEditor?: string
+    projects?: ProjectUncheckedCreateNestedManyWithoutAuthorInput
+    editors?: EditorUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutLanguagesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutLanguagesInput, UserUncheckedCreateWithoutLanguagesInput>
+  }
+
+  export type ProjectLanguageCreateWithoutLanguageInput = {
+    timeSpent?: number
+    project: ProjectCreateNestedOneWithoutLanguagesInput
+  }
+
+  export type ProjectLanguageUncheckedCreateWithoutLanguageInput = {
+    id?: number
+    projectId: number
+    timeSpent?: number
+  }
+
+  export type ProjectLanguageCreateOrConnectWithoutLanguageInput = {
+    where: ProjectLanguageWhereUniqueInput
+    create: XOR<ProjectLanguageCreateWithoutLanguageInput, ProjectLanguageUncheckedCreateWithoutLanguageInput>
+  }
+
+  export type ProjectLanguageCreateManyLanguageInputEnvelope = {
+    data: ProjectLanguageCreateManyLanguageInput | ProjectLanguageCreateManyLanguageInput[]
+  }
+
+  export type UserUpsertWithoutLanguagesInput = {
+    update: XOR<UserUpdateWithoutLanguagesInput, UserUncheckedUpdateWithoutLanguagesInput>
+    create: XOR<UserCreateWithoutLanguagesInput, UserUncheckedCreateWithoutLanguagesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutLanguagesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutLanguagesInput, UserUncheckedUpdateWithoutLanguagesInput>
+  }
+
+  export type UserUpdateWithoutLanguagesInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    timeInterval?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastFolder?: StringFieldUpdateOperationsInput | string
+    lastLang?: StringFieldUpdateOperationsInput | string
+    lastEditor?: StringFieldUpdateOperationsInput | string
+    projects?: ProjectUpdateManyWithoutAuthorNestedInput
+    editors?: EditorUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutLanguagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    username?: StringFieldUpdateOperationsInput | string
+    timeInterval?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastFolder?: StringFieldUpdateOperationsInput | string
+    lastLang?: StringFieldUpdateOperationsInput | string
+    lastEditor?: StringFieldUpdateOperationsInput | string
+    projects?: ProjectUncheckedUpdateManyWithoutAuthorNestedInput
+    editors?: EditorUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ProjectLanguageUpsertWithWhereUniqueWithoutLanguageInput = {
+    where: ProjectLanguageWhereUniqueInput
+    update: XOR<ProjectLanguageUpdateWithoutLanguageInput, ProjectLanguageUncheckedUpdateWithoutLanguageInput>
+    create: XOR<ProjectLanguageCreateWithoutLanguageInput, ProjectLanguageUncheckedCreateWithoutLanguageInput>
+  }
+
+  export type ProjectLanguageUpdateWithWhereUniqueWithoutLanguageInput = {
+    where: ProjectLanguageWhereUniqueInput
+    data: XOR<ProjectLanguageUpdateWithoutLanguageInput, ProjectLanguageUncheckedUpdateWithoutLanguageInput>
+  }
+
+  export type ProjectLanguageUpdateManyWithWhereWithoutLanguageInput = {
+    where: ProjectLanguageScalarWhereInput
+    data: XOR<ProjectLanguageUpdateManyMutationInput, ProjectLanguageUncheckedUpdateManyWithoutLanguageInput>
   }
 
   export type ProjectCreateManyAuthorInput = {
     id?: number
     name: string
-    timeInterval?: number
+    timeSpent?: number
   }
 
   export type EditorCreateManyUserInput = {
     id?: number
+    name: string
     projectId: number
-    timeInterval?: number
+    timeSpent?: number
+  }
+
+  export type LanguageCreateManyUserInput = {
+    id?: number
+    name: string
+    timeSpent?: number
   }
 
   export type ProjectUpdateWithoutAuthorInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
     Editors?: EditorUpdateManyWithoutProjectNestedInput
+    languages?: ProjectLanguageUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
     Editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
+    languages?: ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateManyWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
   }
 
   export type EditorUpdateWithoutUserInput = {
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: IntFieldUpdateOperationsInput | number
     project?: ProjectUpdateOneRequiredWithoutEditorsNestedInput
   }
 
   export type EditorUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     projectId?: IntFieldUpdateOperationsInput | number
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
   }
 
   export type EditorUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     projectId?: IntFieldUpdateOperationsInput | number
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type LanguageUpdateWithoutUserInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    projects?: ProjectLanguageUpdateManyWithoutLanguageNestedInput
+  }
+
+  export type LanguageUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    projects?: ProjectLanguageUncheckedUpdateManyWithoutLanguageNestedInput
+  }
+
+  export type LanguageUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: IntFieldUpdateOperationsInput | number
   }
 
   export type EditorCreateManyProjectInput = {
     id?: number
+    name: string
     userId: number
-    timeInterval?: number
+    timeSpent?: number
+  }
+
+  export type ProjectLanguageCreateManyProjectInput = {
+    id?: number
+    languageId: number
+    timeSpent?: number
   }
 
   export type EditorUpdateWithoutProjectInput = {
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: IntFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutEditorsNestedInput
   }
 
   export type EditorUncheckedUpdateWithoutProjectInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
   }
 
   export type EditorUncheckedUpdateManyWithoutProjectInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
-    timeInterval?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProjectLanguageUpdateWithoutProjectInput = {
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    language?: LanguageUpdateOneRequiredWithoutProjectsNestedInput
+  }
+
+  export type ProjectLanguageUncheckedUpdateWithoutProjectInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    languageId?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProjectLanguageUncheckedUpdateManyWithoutProjectInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    languageId?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProjectLanguageCreateManyLanguageInput = {
+    id?: number
+    projectId: number
+    timeSpent?: number
+  }
+
+  export type ProjectLanguageUpdateWithoutLanguageInput = {
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    project?: ProjectUpdateOneRequiredWithoutLanguagesNestedInput
+  }
+
+  export type ProjectLanguageUncheckedUpdateWithoutLanguageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    projectId?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProjectLanguageUncheckedUpdateManyWithoutLanguageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    projectId?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
   }
 
 

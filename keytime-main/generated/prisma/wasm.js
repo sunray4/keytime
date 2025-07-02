@@ -120,21 +120,40 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   username: 'username',
-  timeInterval: 'timeInterval'
+  timeInterval: 'timeInterval',
+  lastHeartbeat: 'lastHeartbeat',
+  lastFolder: 'lastFolder',
+  lastLang: 'lastLang',
+  lastEditor: 'lastEditor'
 };
 
 exports.Prisma.ProjectScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  timeInterval: 'timeInterval',
+  timeSpent: 'timeSpent',
   authorId: 'authorId'
 };
 
 exports.Prisma.EditorScalarFieldEnum = {
   id: 'id',
+  name: 'name',
   userId: 'userId',
   projectId: 'projectId',
-  timeInterval: 'timeInterval'
+  timeSpent: 'timeSpent'
+};
+
+exports.Prisma.ProjectLanguageScalarFieldEnum = {
+  id: 'id',
+  projectId: 'projectId',
+  languageId: 'languageId',
+  timeSpent: 'timeSpent'
+};
+
+exports.Prisma.LanguageScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  userId: 'userId',
+  timeSpent: 'timeSpent'
 };
 
 exports.Prisma.SortOrder = {
@@ -146,7 +165,9 @@ exports.Prisma.SortOrder = {
 exports.Prisma.ModelName = {
   User: 'User',
   Project: 'Project',
-  Editor: 'Editor'
+  Editor: 'Editor',
+  ProjectLanguage: 'ProjectLanguage',
+  Language: 'Language'
 };
 
 /**

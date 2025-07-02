@@ -41,7 +41,8 @@ class Client {
             type: "heartbeat",
             timestamp: timestamp,
             folder: folderNames[1] ? (0, findFolder_1.findFolder)(folderNames, doc.uri.path) || folderNames[0] : folderNames[0],
-            lang: doc.languageId
+            lang: doc.languageId,
+            editor: "vscode"
         };
         this.sendHeartbeat(message);
     }

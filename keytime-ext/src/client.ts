@@ -6,7 +6,8 @@ interface Message {
     type: string;
     timestamp: number;
     folder: string;
-    lang: string | null;
+    lang: string;
+    editor: string;
 }
 
 
@@ -54,7 +55,8 @@ export class Client {
             type: "heartbeat",
             timestamp: timestamp,
             folder: folderNames[1] ? findFolder(folderNames, doc.uri.path) || folderNames[0] : folderNames[0],
-            lang: doc.languageId
+            lang: doc.languageId,
+            editor: "vscode"
           };
         this.sendHeartbeat(message);
     }

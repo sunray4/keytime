@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import WebSocket, { WebSocketServer } from "ws";
+import { handleHeartbeat } from './handleHeartbeat';
 
 const app = express();
 
@@ -28,6 +29,10 @@ export function server(): void {
 
         ws.on('message', (data) => {
             console.log('Received message:', data.toString());
+            const message = JSON.parse(data.toString());
+            if (message.type === "heartbeat") {
+              handleHeartbeat(message);
+            }
         });
 
     wss.on('close', () => console.log('Connection closed'));
