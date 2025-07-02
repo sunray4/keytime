@@ -144,6 +144,7 @@ exports.Prisma.EditorScalarFieldEnum = {
 
 exports.Prisma.ProjectLanguageScalarFieldEnum = {
   id: 'id',
+  name: 'name',
   projectId: 'projectId',
   languageId: 'languageId',
   timeSpent: 'timeSpent'

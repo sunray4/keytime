@@ -46,6 +46,7 @@ model Editor {
 
 model ProjectLanguage {
   id         Int      @id @default(autoincrement())
+  name       String   @unique
   project    Project  @relation(fields: [projectId], references: [id])
   projectId  Int
   language   Language @relation(fields: [languageId], references: [id])

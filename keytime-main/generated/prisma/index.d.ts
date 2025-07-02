@@ -4825,6 +4825,7 @@ export namespace Prisma {
 
   export type ProjectLanguageMinAggregateOutputType = {
     id: number | null
+    name: string | null
     projectId: number | null
     languageId: number | null
     timeSpent: bigint | null
@@ -4832,6 +4833,7 @@ export namespace Prisma {
 
   export type ProjectLanguageMaxAggregateOutputType = {
     id: number | null
+    name: string | null
     projectId: number | null
     languageId: number | null
     timeSpent: bigint | null
@@ -4839,6 +4841,7 @@ export namespace Prisma {
 
   export type ProjectLanguageCountAggregateOutputType = {
     id: number
+    name: number
     projectId: number
     languageId: number
     timeSpent: number
@@ -4862,6 +4865,7 @@ export namespace Prisma {
 
   export type ProjectLanguageMinAggregateInputType = {
     id?: true
+    name?: true
     projectId?: true
     languageId?: true
     timeSpent?: true
@@ -4869,6 +4873,7 @@ export namespace Prisma {
 
   export type ProjectLanguageMaxAggregateInputType = {
     id?: true
+    name?: true
     projectId?: true
     languageId?: true
     timeSpent?: true
@@ -4876,6 +4881,7 @@ export namespace Prisma {
 
   export type ProjectLanguageCountAggregateInputType = {
     id?: true
+    name?: true
     projectId?: true
     languageId?: true
     timeSpent?: true
@@ -4970,6 +4976,7 @@ export namespace Prisma {
 
   export type ProjectLanguageGroupByOutputType = {
     id: number
+    name: string
     projectId: number
     languageId: number
     timeSpent: bigint
@@ -4996,6 +5003,7 @@ export namespace Prisma {
 
   export type ProjectLanguageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     projectId?: boolean
     languageId?: boolean
     timeSpent?: boolean
@@ -5005,6 +5013,7 @@ export namespace Prisma {
 
   export type ProjectLanguageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     projectId?: boolean
     languageId?: boolean
     timeSpent?: boolean
@@ -5014,6 +5023,7 @@ export namespace Prisma {
 
   export type ProjectLanguageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     projectId?: boolean
     languageId?: boolean
     timeSpent?: boolean
@@ -5023,12 +5033,13 @@ export namespace Prisma {
 
   export type ProjectLanguageSelectScalar = {
     id?: boolean
+    name?: boolean
     projectId?: boolean
     languageId?: boolean
     timeSpent?: boolean
   }
 
-  export type ProjectLanguageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "projectId" | "languageId" | "timeSpent", ExtArgs["result"]["projectLanguage"]>
+  export type ProjectLanguageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "projectId" | "languageId" | "timeSpent", ExtArgs["result"]["projectLanguage"]>
   export type ProjectLanguageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     project?: boolean | ProjectDefaultArgs<ExtArgs>
     language?: boolean | LanguageDefaultArgs<ExtArgs>
@@ -5050,6 +5061,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      name: string
       projectId: number
       languageId: number
       timeSpent: bigint
@@ -5479,6 +5491,7 @@ export namespace Prisma {
    */
   interface ProjectLanguageFieldRefs {
     readonly id: FieldRef<"ProjectLanguage", 'Int'>
+    readonly name: FieldRef<"ProjectLanguage", 'String'>
     readonly projectId: FieldRef<"ProjectLanguage", 'Int'>
     readonly languageId: FieldRef<"ProjectLanguage", 'Int'>
     readonly timeSpent: FieldRef<"ProjectLanguage", 'BigInt'>
@@ -7056,6 +7069,7 @@ export namespace Prisma {
 
   export const ProjectLanguageScalarFieldEnum: {
     id: 'id',
+    name: 'name',
     projectId: 'projectId',
     languageId: 'languageId',
     timeSpent: 'timeSpent'
@@ -7314,6 +7328,7 @@ export namespace Prisma {
     OR?: ProjectLanguageWhereInput[]
     NOT?: ProjectLanguageWhereInput | ProjectLanguageWhereInput[]
     id?: IntFilter<"ProjectLanguage"> | number
+    name?: StringFilter<"ProjectLanguage"> | string
     projectId?: IntFilter<"ProjectLanguage"> | number
     languageId?: IntFilter<"ProjectLanguage"> | number
     timeSpent?: BigIntFilter<"ProjectLanguage"> | bigint | number
@@ -7323,6 +7338,7 @@ export namespace Prisma {
 
   export type ProjectLanguageOrderByWithRelationInput = {
     id?: SortOrder
+    name?: SortOrder
     projectId?: SortOrder
     languageId?: SortOrder
     timeSpent?: SortOrder
@@ -7332,6 +7348,7 @@ export namespace Prisma {
 
   export type ProjectLanguageWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    name?: string
     AND?: ProjectLanguageWhereInput | ProjectLanguageWhereInput[]
     OR?: ProjectLanguageWhereInput[]
     NOT?: ProjectLanguageWhereInput | ProjectLanguageWhereInput[]
@@ -7340,10 +7357,11 @@ export namespace Prisma {
     timeSpent?: BigIntFilter<"ProjectLanguage"> | bigint | number
     project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
     language?: XOR<LanguageScalarRelationFilter, LanguageWhereInput>
-  }, "id">
+  }, "id" | "name">
 
   export type ProjectLanguageOrderByWithAggregationInput = {
     id?: SortOrder
+    name?: SortOrder
     projectId?: SortOrder
     languageId?: SortOrder
     timeSpent?: SortOrder
@@ -7359,6 +7377,7 @@ export namespace Prisma {
     OR?: ProjectLanguageScalarWhereWithAggregatesInput[]
     NOT?: ProjectLanguageScalarWhereWithAggregatesInput | ProjectLanguageScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"ProjectLanguage"> | number
+    name?: StringWithAggregatesFilter<"ProjectLanguage"> | string
     projectId?: IntWithAggregatesFilter<"ProjectLanguage"> | number
     languageId?: IntWithAggregatesFilter<"ProjectLanguage"> | number
     timeSpent?: BigIntWithAggregatesFilter<"ProjectLanguage"> | bigint | number
@@ -7603,6 +7622,7 @@ export namespace Prisma {
   }
 
   export type ProjectLanguageCreateInput = {
+    name: string
     timeSpent?: bigint | number
     project: ProjectCreateNestedOneWithoutLanguagesInput
     language: LanguageCreateNestedOneWithoutProjectsInput
@@ -7610,12 +7630,14 @@ export namespace Prisma {
 
   export type ProjectLanguageUncheckedCreateInput = {
     id?: number
+    name: string
     projectId: number
     languageId: number
     timeSpent?: bigint | number
   }
 
   export type ProjectLanguageUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     project?: ProjectUpdateOneRequiredWithoutLanguagesNestedInput
     language?: LanguageUpdateOneRequiredWithoutProjectsNestedInput
@@ -7623,6 +7645,7 @@ export namespace Prisma {
 
   export type ProjectLanguageUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     projectId?: IntFieldUpdateOperationsInput | number
     languageId?: IntFieldUpdateOperationsInput | number
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -7630,17 +7653,20 @@ export namespace Prisma {
 
   export type ProjectLanguageCreateManyInput = {
     id?: number
+    name: string
     projectId: number
     languageId: number
     timeSpent?: bigint | number
   }
 
   export type ProjectLanguageUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type ProjectLanguageUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     projectId?: IntFieldUpdateOperationsInput | number
     languageId?: IntFieldUpdateOperationsInput | number
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -7950,6 +7976,7 @@ export namespace Prisma {
 
   export type ProjectLanguageCountOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     projectId?: SortOrder
     languageId?: SortOrder
     timeSpent?: SortOrder
@@ -7964,6 +7991,7 @@ export namespace Prisma {
 
   export type ProjectLanguageMaxOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     projectId?: SortOrder
     languageId?: SortOrder
     timeSpent?: SortOrder
@@ -7971,6 +7999,7 @@ export namespace Prisma {
 
   export type ProjectLanguageMinOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     projectId?: SortOrder
     languageId?: SortOrder
     timeSpent?: SortOrder
@@ -8666,12 +8695,14 @@ export namespace Prisma {
   }
 
   export type ProjectLanguageCreateWithoutProjectInput = {
+    name: string
     timeSpent?: bigint | number
     language: LanguageCreateNestedOneWithoutProjectsInput
   }
 
   export type ProjectLanguageUncheckedCreateWithoutProjectInput = {
     id?: number
+    name: string
     languageId: number
     timeSpent?: bigint | number
   }
@@ -8756,6 +8787,7 @@ export namespace Prisma {
     OR?: ProjectLanguageScalarWhereInput[]
     NOT?: ProjectLanguageScalarWhereInput | ProjectLanguageScalarWhereInput[]
     id?: IntFilter<"ProjectLanguage"> | number
+    name?: StringFilter<"ProjectLanguage"> | string
     projectId?: IntFilter<"ProjectLanguage"> | number
     languageId?: IntFilter<"ProjectLanguage"> | number
     timeSpent?: BigIntFilter<"ProjectLanguage"> | bigint | number
@@ -8986,12 +9018,14 @@ export namespace Prisma {
   }
 
   export type ProjectLanguageCreateWithoutLanguageInput = {
+    name: string
     timeSpent?: bigint | number
     project: ProjectCreateNestedOneWithoutLanguagesInput
   }
 
   export type ProjectLanguageUncheckedCreateWithoutLanguageInput = {
     id?: number
+    name: string
     projectId: number
     timeSpent?: bigint | number
   }
@@ -9143,6 +9177,7 @@ export namespace Prisma {
 
   export type ProjectLanguageCreateManyProjectInput = {
     id?: number
+    name: string
     languageId: number
     timeSpent?: bigint | number
   }
@@ -9168,41 +9203,48 @@ export namespace Prisma {
   }
 
   export type ProjectLanguageUpdateWithoutProjectInput = {
+    name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     language?: LanguageUpdateOneRequiredWithoutProjectsNestedInput
   }
 
   export type ProjectLanguageUncheckedUpdateWithoutProjectInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     languageId?: IntFieldUpdateOperationsInput | number
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type ProjectLanguageUncheckedUpdateManyWithoutProjectInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     languageId?: IntFieldUpdateOperationsInput | number
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type ProjectLanguageCreateManyLanguageInput = {
     id?: number
+    name: string
     projectId: number
     timeSpent?: bigint | number
   }
 
   export type ProjectLanguageUpdateWithoutLanguageInput = {
+    name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     project?: ProjectUpdateOneRequiredWithoutLanguagesNestedInput
   }
 
   export type ProjectLanguageUncheckedUpdateWithoutLanguageInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     projectId?: IntFieldUpdateOperationsInput | number
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type ProjectLanguageUncheckedUpdateManyWithoutLanguageInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     projectId?: IntFieldUpdateOperationsInput | number
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
