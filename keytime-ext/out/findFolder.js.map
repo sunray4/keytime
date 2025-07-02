@@ -1,0 +1,1 @@
+{"version":3,"file":"findFolder.js","sourceRoot":"","sources":["../src/findFolder.ts"],"names":[],"mappings":";;AAAA,gCAGC;AAHD,SAAgB,UAAU,CAAC,OAAiB,EAAE,IAAY;IACtD,MAAM,MAAM,GAAG,OAAO,CAAC,IAAI,CAAC,MAAM,CAAC,EAAE,CAAC,IAAI,CAAC,QAAQ,CAAC,MAAM,CAAC,CAAC,CAAC;IAC7D,OAAO,MAAM,CAAC;AAClB,CAAC"}

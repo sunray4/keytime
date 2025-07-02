@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import { Client } from "./client";
+import { findFolder } from "./findFolder";
 
 let client: Client | null = null;
 
@@ -23,6 +24,16 @@ export async function activate(context: vscode.ExtensionContext) {
   output.appendLine('Congratulations, your extension "keytime" is now active!');
 
   let lastHeartbeat = 0;
+  let folderNames : string[];
+  const folders = vscode.workspace.workspaceFolders;
+
+  if (!folders|| folders.length <= 0) {
+    output.appendLine("No workspace folders found");
+    return;
+  } else {
+    folderNames = folders.map(folder => folder.name);
+  }
+
   
   // send initial heartbeat when extension is activated
   const editor = vscode.window.activeTextEditor;
@@ -31,21 +42,24 @@ export async function activate(context: vscode.ExtensionContext) {
     output.appendLine("editor found");
     doc = editor.document;
   }
-  if (doc) { // if no document is open, don't send heartbeat
+  if (doc && doc.uri.scheme === "file") { // if no document is open, don't send heartbeat
     lastHeartbeat = Date.now();
     const message = {
       type: "heartbeat",
       timestamp: lastHeartbeat,
+      folder: folderNames[1]?findFolder(folderNames, doc.uri.path):folderNames[0],
       filename: doc.uri.path, 
     };
     output.appendLine("sending initial heartbeat...");
     client.sendHeartbeat(message);
   }
 
+  
+
   vscode.workspace.onDidChangeTextDocument((event) => {
     // check if changes are from a file - prevent output channel changes from being tracked
     const doc = event.document;
-    if (doc.uri.scheme === "file") {
+    if (doc && doc.uri.scheme === "file") {
       output.appendLine("text doc change");
 
       if (Date.now() - lastHeartbeat >= hbInterval && Date.now() - lastHeartbeat <= maxInterval || lastHeartbeat === 0) {
@@ -53,6 +67,7 @@ export async function activate(context: vscode.ExtensionContext) {
         const message = {
           type: "heartbeat",
           timestamp: lastHeartbeat,
+          folder: folderNames[1]?findFolder(folderNames, doc.uri.path):folderNames[0],
           filename: doc.uri.path, 
         };
         output.appendLine("sending heartbeat...");
@@ -65,12 +80,13 @@ export async function activate(context: vscode.ExtensionContext) {
     if (event) {
       lastHeartbeat = Date.now();
       const doc = event.document;
-      if (doc) {
+      if (doc && doc.uri.scheme === "file") {
         output.appendLine("text editor changed");
         output.appendLine("sending heartbeat...");
         const message = {
           type: "heartbeat",
           timestamp: lastHeartbeat,
+          folder: folderNames[1]?findFolder(folderNames, doc.uri.path):folderNames[0],
           filename: doc.uri.path, 
         };
         client.sendHeartbeat(message);
@@ -86,17 +102,26 @@ export async function activate(context: vscode.ExtensionContext) {
       const editor = vscode.window.activeTextEditor;
       if (editor) {
         const doc = editor.document;
-        if (doc) {
+        if (doc && doc.uri.scheme === "file") {
           output.appendLine("sending heartbeat...");
           const message = {
             type: "heartbeat",
             timestamp: lastHeartbeat,
+            folder: folderNames[1]?findFolder(folderNames, doc.uri.path):folderNames[0],
             filename: doc.uri.path, 
           };
           client.sendHeartbeat(message);
         }
       }
     }
+  });
+
+  vscode.workspace.onDidChangeWorkspaceFolders((event) => {
+    const folders = vscode.workspace.workspaceFolders;
+    if (folders && folders.length > 0) {
+      folderNames = folders.map(folder => folder.name);
+    }
+    output.appendLine("workspace folders changed");
   });
 
   // The command has been defined in the package.json file
