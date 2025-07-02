@@ -1282,12 +1282,12 @@ export namespace Prisma {
    */
 
   export type ProjectCountOutputType = {
-    Editors: number
+    editors: number
     languages: number
   }
 
   export type ProjectCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Editors?: boolean | ProjectCountOutputTypeCountEditorsArgs
+    editors?: boolean | ProjectCountOutputTypeCountEditorsArgs
     languages?: boolean | ProjectCountOutputTypeCountLanguagesArgs
   }
 
@@ -2743,7 +2743,7 @@ export namespace Prisma {
     timeSpent?: boolean
     authorId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
-    Editors?: boolean | Project$EditorsArgs<ExtArgs>
+    editors?: boolean | Project$editorsArgs<ExtArgs>
     languages?: boolean | Project$languagesArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
@@ -2774,7 +2774,7 @@ export namespace Prisma {
   export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "timeSpent" | "authorId", ExtArgs["result"]["project"]>
   export type ProjectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
-    Editors?: boolean | Project$EditorsArgs<ExtArgs>
+    editors?: boolean | Project$editorsArgs<ExtArgs>
     languages?: boolean | Project$languagesArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -2789,7 +2789,7 @@ export namespace Prisma {
     name: "Project"
     objects: {
       author: Prisma.$UserPayload<ExtArgs>
-      Editors: Prisma.$EditorPayload<ExtArgs>[]
+      editors: Prisma.$EditorPayload<ExtArgs>[]
       languages: Prisma.$ProjectLanguagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -3192,7 +3192,7 @@ export namespace Prisma {
   export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    Editors<T extends Project$EditorsArgs<ExtArgs> = {}>(args?: Subset<T, Project$EditorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EditorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    editors<T extends Project$editorsArgs<ExtArgs> = {}>(args?: Subset<T, Project$editorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EditorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     languages<T extends Project$languagesArgs<ExtArgs> = {}>(args?: Subset<T, Project$languagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3621,9 +3621,9 @@ export namespace Prisma {
   }
 
   /**
-   * Project.Editors
+   * Project.editors
    */
-  export type Project$EditorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Project$editorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Editor
      */
@@ -7200,7 +7200,7 @@ export namespace Prisma {
     timeSpent?: BigIntFilter<"Project"> | bigint | number
     authorId?: IntFilter<"Project"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
-    Editors?: EditorListRelationFilter
+    editors?: EditorListRelationFilter
     languages?: ProjectLanguageListRelationFilter
   }
 
@@ -7210,7 +7210,7 @@ export namespace Prisma {
     timeSpent?: SortOrder
     authorId?: SortOrder
     author?: UserOrderByWithRelationInput
-    Editors?: EditorOrderByRelationAggregateInput
+    editors?: EditorOrderByRelationAggregateInput
     languages?: ProjectLanguageOrderByRelationAggregateInput
   }
 
@@ -7223,7 +7223,7 @@ export namespace Prisma {
     timeSpent?: BigIntFilter<"Project"> | bigint | number
     authorId?: IntFilter<"Project"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
-    Editors?: EditorListRelationFilter
+    editors?: EditorListRelationFilter
     languages?: ProjectLanguageListRelationFilter
   }, "id" | "name">
 
@@ -7502,7 +7502,7 @@ export namespace Prisma {
     name: string
     timeSpent?: bigint | number
     author: UserCreateNestedOneWithoutProjectsInput
-    Editors?: EditorCreateNestedManyWithoutProjectInput
+    editors?: EditorCreateNestedManyWithoutProjectInput
     languages?: ProjectLanguageCreateNestedManyWithoutProjectInput
   }
 
@@ -7511,7 +7511,7 @@ export namespace Prisma {
     name: string
     timeSpent?: bigint | number
     authorId: number
-    Editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
+    editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
     languages?: ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput
   }
 
@@ -7519,7 +7519,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     author?: UserUpdateOneRequiredWithoutProjectsNestedInput
-    Editors?: EditorUpdateManyWithoutProjectNestedInput
+    editors?: EditorUpdateManyWithoutProjectNestedInput
     languages?: ProjectLanguageUpdateManyWithoutProjectNestedInput
   }
 
@@ -7528,7 +7528,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     authorId?: IntFieldUpdateOperationsInput | number
-    Editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
+    editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
     languages?: ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput
   }
 
@@ -8471,7 +8471,7 @@ export namespace Prisma {
   export type ProjectCreateWithoutAuthorInput = {
     name: string
     timeSpent?: bigint | number
-    Editors?: EditorCreateNestedManyWithoutProjectInput
+    editors?: EditorCreateNestedManyWithoutProjectInput
     languages?: ProjectLanguageCreateNestedManyWithoutProjectInput
   }
 
@@ -8479,7 +8479,7 @@ export namespace Prisma {
     id?: number
     name: string
     timeSpent?: bigint | number
-    Editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
+    editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
     languages?: ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput
   }
 
@@ -8873,7 +8873,7 @@ export namespace Prisma {
     name: string
     timeSpent?: bigint | number
     author: UserCreateNestedOneWithoutProjectsInput
-    Editors?: EditorCreateNestedManyWithoutProjectInput
+    editors?: EditorCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutLanguagesInput = {
@@ -8881,7 +8881,7 @@ export namespace Prisma {
     name: string
     timeSpent?: bigint | number
     authorId: number
-    Editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
+    editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutLanguagesInput = {
@@ -8922,7 +8922,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     author?: UserUpdateOneRequiredWithoutProjectsNestedInput
-    Editors?: EditorUpdateManyWithoutProjectNestedInput
+    editors?: EditorUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutLanguagesInput = {
@@ -8930,7 +8930,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     authorId?: IntFieldUpdateOperationsInput | number
-    Editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
+    editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type LanguageUpsertWithoutProjectsInput = {
@@ -9077,7 +9077,7 @@ export namespace Prisma {
   export type ProjectUpdateWithoutAuthorInput = {
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
-    Editors?: EditorUpdateManyWithoutProjectNestedInput
+    editors?: EditorUpdateManyWithoutProjectNestedInput
     languages?: ProjectLanguageUpdateManyWithoutProjectNestedInput
   }
 
@@ -9085,7 +9085,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
-    Editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
+    editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
     languages?: ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput
   }
 

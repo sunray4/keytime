@@ -31,9 +31,11 @@
     "@octokit/rest": "^22.0.0",
     "@prisma/client": "^6.10.1",
     "@types/ws": "^8.18.1",
+    "chalk": "^5.4.1",
     "commander": "^14.0.0",
     "express": "^5.1.0",
     "inquirer": "^12.6.3",
+    "ora": "^8.2.0",
     "sqlite3": "^5.1.7",
     "ws": "^8.18.3"
   },

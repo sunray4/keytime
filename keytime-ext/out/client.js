@@ -16,34 +16,38 @@ class Client {
         this.connect();
     }
     async connect() {
-        this.ws = new ws_1.default('ws://localhost:8081');
-        this.ws.on('error', (err) => this.output.appendLine(err.message));
-        this.ws.on('open', () => {
-            this.output.appendLine('Connected to server');
+        this.ws = new ws_1.default("ws://localhost:8081");
+        this.ws.on("error", (err) => this.output.appendLine(err.message));
+        this.ws.on("open", () => {
+            this.output.appendLine("Connected to server");
             this.isOpen = true;
-            this.ws?.send('Hello from client');
+            this.ws?.send("Hello from client");
             this.sendQueue();
         });
-        this.ws.on('message', (data) => {
+        this.ws.on("message", (data) => {
             this.output.appendLine(`Received message: ${data.toString()}`);
         });
-        this.ws.on('close', () => {
-            this.output.appendLine('Disconnected from server');
+        this.ws.on("close", () => {
+            this.output.appendLine("Disconnected from server");
         });
     }
     sendQueue() {
         if (this.isOpen) {
-            this.queue.forEach(message => this.sendHeartbeat(message));
+            this.queue.forEach((message) => this.sendHeartbeat(message));
         }
     }
     prepareHeartbeat(doc, timestamp, folderNames) {
         const message = {
             type: "heartbeat",
             timestamp: timestamp,
-            folder: folderNames[1] ? (0, findFolder_1.findFolder)(folderNames, doc.uri.path) || folderNames[0] : folderNames[0],
+            folder: (0, findFolder_1.findFolder)(folderNames, doc.uri.path),
             lang: doc.languageId,
-            editor: "vscode"
+            editor: "vscode",
         };
+        if (message.folder === "") {
+            this.output.appendLine("No corresponding folder found");
+            return;
+        }
         this.sendHeartbeat(message);
     }
     sendHeartbeat(message) {
