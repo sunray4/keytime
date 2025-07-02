@@ -23,15 +23,19 @@ export function server(): void {
             console.error('WebSocket error:', error);
         });
         
-        // debugging code - remove later
         console.log('client connected');
         ws.send('Hello from server');
 
         ws.on('message', (data) => {
             console.log('Received message:', data.toString());
-            const message = JSON.parse(data.toString());
-            if (message.type === "heartbeat") {
-              handleHeartbeat(message);
+
+            try {
+              const message = JSON.parse(data.toString());
+              if (message.type === "heartbeat") {
+                handleHeartbeat(message);
+              }
+            } catch (error) {
+              console.log("not a json heartbeat");
             }
         });
 

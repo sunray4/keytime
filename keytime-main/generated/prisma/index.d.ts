@@ -1373,14 +1373,14 @@ export namespace Prisma {
   export type UserSumAggregateOutputType = {
     id: number | null
     timeInterval: number | null
-    lastHeartbeat: number | null
+    lastHeartbeat: bigint | null
   }
 
   export type UserMinAggregateOutputType = {
     id: number | null
     username: string | null
     timeInterval: number | null
-    lastHeartbeat: number | null
+    lastHeartbeat: bigint | null
     lastFolder: string | null
     lastLang: string | null
     lastEditor: string | null
@@ -1390,7 +1390,7 @@ export namespace Prisma {
     id: number | null
     username: string | null
     timeInterval: number | null
-    lastHeartbeat: number | null
+    lastHeartbeat: bigint | null
     lastFolder: string | null
     lastLang: string | null
     lastEditor: string | null
@@ -1541,7 +1541,7 @@ export namespace Prisma {
     id: number
     username: string
     timeInterval: number
-    lastHeartbeat: number
+    lastHeartbeat: bigint
     lastFolder: string
     lastLang: string
     lastEditor: string
@@ -1631,7 +1631,7 @@ export namespace Prisma {
       id: number
       username: string
       timeInterval: number
-      lastHeartbeat: number
+      lastHeartbeat: bigint
       lastFolder: string
       lastLang: string
       lastEditor: string
@@ -2064,7 +2064,7 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'Int'>
     readonly username: FieldRef<"User", 'String'>
     readonly timeInterval: FieldRef<"User", 'Int'>
-    readonly lastHeartbeat: FieldRef<"User", 'Int'>
+    readonly lastHeartbeat: FieldRef<"User", 'BigInt'>
     readonly lastFolder: FieldRef<"User", 'String'>
     readonly lastLang: FieldRef<"User", 'String'>
     readonly lastEditor: FieldRef<"User", 'String'>
@@ -2564,21 +2564,21 @@ export namespace Prisma {
 
   export type ProjectSumAggregateOutputType = {
     id: number | null
-    timeSpent: number | null
+    timeSpent: bigint | null
     authorId: number | null
   }
 
   export type ProjectMinAggregateOutputType = {
     id: number | null
     name: string | null
-    timeSpent: number | null
+    timeSpent: bigint | null
     authorId: number | null
   }
 
   export type ProjectMaxAggregateOutputType = {
     id: number | null
     name: string | null
-    timeSpent: number | null
+    timeSpent: bigint | null
     authorId: number | null
   }
 
@@ -2714,7 +2714,7 @@ export namespace Prisma {
   export type ProjectGroupByOutputType = {
     id: number
     name: string
-    timeSpent: number
+    timeSpent: bigint
     authorId: number
     _count: ProjectCountAggregateOutputType | null
     _avg: ProjectAvgAggregateOutputType | null
@@ -2795,7 +2795,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
-      timeSpent: number
+      timeSpent: bigint
       authorId: number
     }, ExtArgs["result"]["project"]>
     composites: {}
@@ -3225,7 +3225,7 @@ export namespace Prisma {
   interface ProjectFieldRefs {
     readonly id: FieldRef<"Project", 'Int'>
     readonly name: FieldRef<"Project", 'String'>
-    readonly timeSpent: FieldRef<"Project", 'Int'>
+    readonly timeSpent: FieldRef<"Project", 'BigInt'>
     readonly authorId: FieldRef<"Project", 'Int'>
   }
     
@@ -3710,7 +3710,7 @@ export namespace Prisma {
     id: number | null
     userId: number | null
     projectId: number | null
-    timeSpent: number | null
+    timeSpent: bigint | null
   }
 
   export type EditorMinAggregateOutputType = {
@@ -3718,7 +3718,7 @@ export namespace Prisma {
     name: string | null
     userId: number | null
     projectId: number | null
-    timeSpent: number | null
+    timeSpent: bigint | null
   }
 
   export type EditorMaxAggregateOutputType = {
@@ -3726,7 +3726,7 @@ export namespace Prisma {
     name: string | null
     userId: number | null
     projectId: number | null
-    timeSpent: number | null
+    timeSpent: bigint | null
   }
 
   export type EditorCountAggregateOutputType = {
@@ -3869,7 +3869,7 @@ export namespace Prisma {
     name: string
     userId: number
     projectId: number
-    timeSpent: number
+    timeSpent: bigint
     _count: EditorCountAggregateOutputType | null
     _avg: EditorAvgAggregateOutputType | null
     _sum: EditorSumAggregateOutputType | null
@@ -3954,7 +3954,7 @@ export namespace Prisma {
       name: string
       userId: number
       projectId: number
-      timeSpent: number
+      timeSpent: bigint
     }, ExtArgs["result"]["editor"]>
     composites: {}
   }
@@ -4384,7 +4384,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Editor", 'String'>
     readonly userId: FieldRef<"Editor", 'Int'>
     readonly projectId: FieldRef<"Editor", 'Int'>
-    readonly timeSpent: FieldRef<"Editor", 'Int'>
+    readonly timeSpent: FieldRef<"Editor", 'BigInt'>
   }
     
 
@@ -4820,21 +4820,21 @@ export namespace Prisma {
     id: number | null
     projectId: number | null
     languageId: number | null
-    timeSpent: number | null
+    timeSpent: bigint | null
   }
 
   export type ProjectLanguageMinAggregateOutputType = {
     id: number | null
     projectId: number | null
     languageId: number | null
-    timeSpent: number | null
+    timeSpent: bigint | null
   }
 
   export type ProjectLanguageMaxAggregateOutputType = {
     id: number | null
     projectId: number | null
     languageId: number | null
-    timeSpent: number | null
+    timeSpent: bigint | null
   }
 
   export type ProjectLanguageCountAggregateOutputType = {
@@ -4972,7 +4972,7 @@ export namespace Prisma {
     id: number
     projectId: number
     languageId: number
-    timeSpent: number
+    timeSpent: bigint
     _count: ProjectLanguageCountAggregateOutputType | null
     _avg: ProjectLanguageAvgAggregateOutputType | null
     _sum: ProjectLanguageSumAggregateOutputType | null
@@ -5052,7 +5052,7 @@ export namespace Prisma {
       id: number
       projectId: number
       languageId: number
-      timeSpent: number
+      timeSpent: bigint
     }, ExtArgs["result"]["projectLanguage"]>
     composites: {}
   }
@@ -5481,7 +5481,7 @@ export namespace Prisma {
     readonly id: FieldRef<"ProjectLanguage", 'Int'>
     readonly projectId: FieldRef<"ProjectLanguage", 'Int'>
     readonly languageId: FieldRef<"ProjectLanguage", 'Int'>
-    readonly timeSpent: FieldRef<"ProjectLanguage", 'Int'>
+    readonly timeSpent: FieldRef<"ProjectLanguage", 'BigInt'>
   }
     
 
@@ -5915,21 +5915,21 @@ export namespace Prisma {
   export type LanguageSumAggregateOutputType = {
     id: number | null
     userId: number | null
-    timeSpent: number | null
+    timeSpent: bigint | null
   }
 
   export type LanguageMinAggregateOutputType = {
     id: number | null
     name: string | null
     userId: number | null
-    timeSpent: number | null
+    timeSpent: bigint | null
   }
 
   export type LanguageMaxAggregateOutputType = {
     id: number | null
     name: string | null
     userId: number | null
-    timeSpent: number | null
+    timeSpent: bigint | null
   }
 
   export type LanguageCountAggregateOutputType = {
@@ -6065,7 +6065,7 @@ export namespace Prisma {
     id: number
     name: string
     userId: number
-    timeSpent: number
+    timeSpent: bigint
     _count: LanguageCountAggregateOutputType | null
     _avg: LanguageAvgAggregateOutputType | null
     _sum: LanguageSumAggregateOutputType | null
@@ -6143,7 +6143,7 @@ export namespace Prisma {
       id: number
       name: string
       userId: number
-      timeSpent: number
+      timeSpent: bigint
     }, ExtArgs["result"]["language"]>
     composites: {}
   }
@@ -6572,7 +6572,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Language", 'Int'>
     readonly name: FieldRef<"Language", 'String'>
     readonly userId: FieldRef<"Language", 'Int'>
-    readonly timeSpent: FieldRef<"Language", 'Int'>
+    readonly timeSpent: FieldRef<"Language", 'BigInt'>
   }
     
 
@@ -7102,6 +7102,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'BigInt'
+   */
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -7118,7 +7125,7 @@ export namespace Prisma {
     id?: IntFilter<"User"> | number
     username?: StringFilter<"User"> | string
     timeInterval?: IntFilter<"User"> | number
-    lastHeartbeat?: IntFilter<"User"> | number
+    lastHeartbeat?: BigIntFilter<"User"> | bigint | number
     lastFolder?: StringFilter<"User"> | string
     lastLang?: StringFilter<"User"> | string
     lastEditor?: StringFilter<"User"> | string
@@ -7147,7 +7154,7 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     timeInterval?: IntFilter<"User"> | number
-    lastHeartbeat?: IntFilter<"User"> | number
+    lastHeartbeat?: BigIntFilter<"User"> | bigint | number
     lastFolder?: StringFilter<"User"> | string
     lastLang?: StringFilter<"User"> | string
     lastEditor?: StringFilter<"User"> | string
@@ -7178,7 +7185,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"User"> | number
     username?: StringWithAggregatesFilter<"User"> | string
     timeInterval?: IntWithAggregatesFilter<"User"> | number
-    lastHeartbeat?: IntWithAggregatesFilter<"User"> | number
+    lastHeartbeat?: BigIntWithAggregatesFilter<"User"> | bigint | number
     lastFolder?: StringWithAggregatesFilter<"User"> | string
     lastLang?: StringWithAggregatesFilter<"User"> | string
     lastEditor?: StringWithAggregatesFilter<"User"> | string
@@ -7190,7 +7197,7 @@ export namespace Prisma {
     NOT?: ProjectWhereInput | ProjectWhereInput[]
     id?: IntFilter<"Project"> | number
     name?: StringFilter<"Project"> | string
-    timeSpent?: IntFilter<"Project"> | number
+    timeSpent?: BigIntFilter<"Project"> | bigint | number
     authorId?: IntFilter<"Project"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
     Editors?: EditorListRelationFilter
@@ -7213,7 +7220,7 @@ export namespace Prisma {
     AND?: ProjectWhereInput | ProjectWhereInput[]
     OR?: ProjectWhereInput[]
     NOT?: ProjectWhereInput | ProjectWhereInput[]
-    timeSpent?: IntFilter<"Project"> | number
+    timeSpent?: BigIntFilter<"Project"> | bigint | number
     authorId?: IntFilter<"Project"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
     Editors?: EditorListRelationFilter
@@ -7238,7 +7245,7 @@ export namespace Prisma {
     NOT?: ProjectScalarWhereWithAggregatesInput | ProjectScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Project"> | number
     name?: StringWithAggregatesFilter<"Project"> | string
-    timeSpent?: IntWithAggregatesFilter<"Project"> | number
+    timeSpent?: BigIntWithAggregatesFilter<"Project"> | bigint | number
     authorId?: IntWithAggregatesFilter<"Project"> | number
   }
 
@@ -7250,7 +7257,7 @@ export namespace Prisma {
     name?: StringFilter<"Editor"> | string
     userId?: IntFilter<"Editor"> | number
     projectId?: IntFilter<"Editor"> | number
-    timeSpent?: IntFilter<"Editor"> | number
+    timeSpent?: BigIntFilter<"Editor"> | bigint | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
   }
@@ -7273,7 +7280,7 @@ export namespace Prisma {
     NOT?: EditorWhereInput | EditorWhereInput[]
     userId?: IntFilter<"Editor"> | number
     projectId?: IntFilter<"Editor"> | number
-    timeSpent?: IntFilter<"Editor"> | number
+    timeSpent?: BigIntFilter<"Editor"> | bigint | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
   }, "id" | "name">
@@ -7299,7 +7306,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Editor"> | string
     userId?: IntWithAggregatesFilter<"Editor"> | number
     projectId?: IntWithAggregatesFilter<"Editor"> | number
-    timeSpent?: IntWithAggregatesFilter<"Editor"> | number
+    timeSpent?: BigIntWithAggregatesFilter<"Editor"> | bigint | number
   }
 
   export type ProjectLanguageWhereInput = {
@@ -7309,7 +7316,7 @@ export namespace Prisma {
     id?: IntFilter<"ProjectLanguage"> | number
     projectId?: IntFilter<"ProjectLanguage"> | number
     languageId?: IntFilter<"ProjectLanguage"> | number
-    timeSpent?: IntFilter<"ProjectLanguage"> | number
+    timeSpent?: BigIntFilter<"ProjectLanguage"> | bigint | number
     project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
     language?: XOR<LanguageScalarRelationFilter, LanguageWhereInput>
   }
@@ -7325,16 +7332,15 @@ export namespace Prisma {
 
   export type ProjectLanguageWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    projectId_languageId?: ProjectLanguageProjectIdLanguageIdCompoundUniqueInput
     AND?: ProjectLanguageWhereInput | ProjectLanguageWhereInput[]
     OR?: ProjectLanguageWhereInput[]
     NOT?: ProjectLanguageWhereInput | ProjectLanguageWhereInput[]
     projectId?: IntFilter<"ProjectLanguage"> | number
     languageId?: IntFilter<"ProjectLanguage"> | number
-    timeSpent?: IntFilter<"ProjectLanguage"> | number
+    timeSpent?: BigIntFilter<"ProjectLanguage"> | bigint | number
     project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
     language?: XOR<LanguageScalarRelationFilter, LanguageWhereInput>
-  }, "id" | "projectId_languageId">
+  }, "id">
 
   export type ProjectLanguageOrderByWithAggregationInput = {
     id?: SortOrder
@@ -7355,7 +7361,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"ProjectLanguage"> | number
     projectId?: IntWithAggregatesFilter<"ProjectLanguage"> | number
     languageId?: IntWithAggregatesFilter<"ProjectLanguage"> | number
-    timeSpent?: IntWithAggregatesFilter<"ProjectLanguage"> | number
+    timeSpent?: BigIntWithAggregatesFilter<"ProjectLanguage"> | bigint | number
   }
 
   export type LanguageWhereInput = {
@@ -7365,7 +7371,7 @@ export namespace Prisma {
     id?: IntFilter<"Language"> | number
     name?: StringFilter<"Language"> | string
     userId?: IntFilter<"Language"> | number
-    timeSpent?: IntFilter<"Language"> | number
+    timeSpent?: BigIntFilter<"Language"> | bigint | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     projects?: ProjectLanguageListRelationFilter
   }
@@ -7386,7 +7392,7 @@ export namespace Prisma {
     OR?: LanguageWhereInput[]
     NOT?: LanguageWhereInput | LanguageWhereInput[]
     userId?: IntFilter<"Language"> | number
-    timeSpent?: IntFilter<"Language"> | number
+    timeSpent?: BigIntFilter<"Language"> | bigint | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     projects?: ProjectLanguageListRelationFilter
   }, "id" | "name">
@@ -7410,13 +7416,13 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Language"> | number
     name?: StringWithAggregatesFilter<"Language"> | string
     userId?: IntWithAggregatesFilter<"Language"> | number
-    timeSpent?: IntWithAggregatesFilter<"Language"> | number
+    timeSpent?: BigIntWithAggregatesFilter<"Language"> | bigint | number
   }
 
   export type UserCreateInput = {
     username: string
     timeInterval?: number
-    lastHeartbeat?: number
+    lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
     lastEditor?: string
@@ -7429,7 +7435,7 @@ export namespace Prisma {
     id?: number
     username: string
     timeInterval?: number
-    lastHeartbeat?: number
+    lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
     lastEditor?: string
@@ -7441,7 +7447,7 @@ export namespace Prisma {
   export type UserUpdateInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
-    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
     lastEditor?: StringFieldUpdateOperationsInput | string
@@ -7454,7 +7460,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
-    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
     lastEditor?: StringFieldUpdateOperationsInput | string
@@ -7467,7 +7473,7 @@ export namespace Prisma {
     id?: number
     username: string
     timeInterval?: number
-    lastHeartbeat?: number
+    lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
     lastEditor?: string
@@ -7476,7 +7482,7 @@ export namespace Prisma {
   export type UserUpdateManyMutationInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
-    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
     lastEditor?: StringFieldUpdateOperationsInput | string
@@ -7486,7 +7492,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
-    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
     lastEditor?: StringFieldUpdateOperationsInput | string
@@ -7494,7 +7500,7 @@ export namespace Prisma {
 
   export type ProjectCreateInput = {
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     author: UserCreateNestedOneWithoutProjectsInput
     Editors?: EditorCreateNestedManyWithoutProjectInput
     languages?: ProjectLanguageCreateNestedManyWithoutProjectInput
@@ -7503,7 +7509,7 @@ export namespace Prisma {
   export type ProjectUncheckedCreateInput = {
     id?: number
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     authorId: number
     Editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
     languages?: ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput
@@ -7511,7 +7517,7 @@ export namespace Prisma {
 
   export type ProjectUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     author?: UserUpdateOneRequiredWithoutProjectsNestedInput
     Editors?: EditorUpdateManyWithoutProjectNestedInput
     languages?: ProjectLanguageUpdateManyWithoutProjectNestedInput
@@ -7520,7 +7526,7 @@ export namespace Prisma {
   export type ProjectUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     authorId?: IntFieldUpdateOperationsInput | number
     Editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
     languages?: ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput
@@ -7529,25 +7535,25 @@ export namespace Prisma {
   export type ProjectCreateManyInput = {
     id?: number
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     authorId: number
   }
 
   export type ProjectUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type ProjectUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     authorId?: IntFieldUpdateOperationsInput | number
   }
 
   export type EditorCreateInput = {
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     user: UserCreateNestedOneWithoutEditorsInput
     project: ProjectCreateNestedOneWithoutEditorsInput
   }
@@ -7557,12 +7563,12 @@ export namespace Prisma {
     name: string
     userId: number
     projectId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type EditorUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     user?: UserUpdateOneRequiredWithoutEditorsNestedInput
     project?: ProjectUpdateOneRequiredWithoutEditorsNestedInput
   }
@@ -7572,7 +7578,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
     projectId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type EditorCreateManyInput = {
@@ -7580,12 +7586,12 @@ export namespace Prisma {
     name: string
     userId: number
     projectId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type EditorUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type EditorUncheckedUpdateManyInput = {
@@ -7593,11 +7599,11 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
     projectId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type ProjectLanguageCreateInput = {
-    timeSpent?: number
+    timeSpent?: bigint | number
     project: ProjectCreateNestedOneWithoutLanguagesInput
     language: LanguageCreateNestedOneWithoutProjectsInput
   }
@@ -7606,11 +7612,11 @@ export namespace Prisma {
     id?: number
     projectId: number
     languageId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type ProjectLanguageUpdateInput = {
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     project?: ProjectUpdateOneRequiredWithoutLanguagesNestedInput
     language?: LanguageUpdateOneRequiredWithoutProjectsNestedInput
   }
@@ -7619,30 +7625,30 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     projectId?: IntFieldUpdateOperationsInput | number
     languageId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type ProjectLanguageCreateManyInput = {
     id?: number
     projectId: number
     languageId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type ProjectLanguageUpdateManyMutationInput = {
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type ProjectLanguageUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     projectId?: IntFieldUpdateOperationsInput | number
     languageId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type LanguageCreateInput = {
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     user: UserCreateNestedOneWithoutLanguagesInput
     projects?: ProjectLanguageCreateNestedManyWithoutLanguageInput
   }
@@ -7651,13 +7657,13 @@ export namespace Prisma {
     id?: number
     name: string
     userId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
     projects?: ProjectLanguageUncheckedCreateNestedManyWithoutLanguageInput
   }
 
   export type LanguageUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     user?: UserUpdateOneRequiredWithoutLanguagesNestedInput
     projects?: ProjectLanguageUpdateManyWithoutLanguageNestedInput
   }
@@ -7666,7 +7672,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     projects?: ProjectLanguageUncheckedUpdateManyWithoutLanguageNestedInput
   }
 
@@ -7674,19 +7680,19 @@ export namespace Prisma {
     id?: number
     name: string
     userId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type LanguageUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type LanguageUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -7712,6 +7718,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
   export type ProjectListRelationFilter = {
@@ -7819,6 +7836,22 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -7913,11 +7946,6 @@ export namespace Prisma {
   export type LanguageScalarRelationFilter = {
     is?: LanguageWhereInput
     isNot?: LanguageWhereInput
-  }
-
-  export type ProjectLanguageProjectIdLanguageIdCompoundUniqueInput = {
-    projectId: number
-    languageId: number
   }
 
   export type ProjectLanguageCountOrderByAggregateInput = {
@@ -8040,6 +8068,14 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type BigIntFieldUpdateOperationsInput = {
+    set?: bigint | number
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
   }
 
   export type ProjectUpdateManyWithoutAuthorNestedInput = {
@@ -8361,6 +8397,17 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -8405,9 +8452,25 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
   export type ProjectCreateWithoutAuthorInput = {
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     Editors?: EditorCreateNestedManyWithoutProjectInput
     languages?: ProjectLanguageCreateNestedManyWithoutProjectInput
   }
@@ -8415,7 +8478,7 @@ export namespace Prisma {
   export type ProjectUncheckedCreateWithoutAuthorInput = {
     id?: number
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     Editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
     languages?: ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput
   }
@@ -8431,7 +8494,7 @@ export namespace Prisma {
 
   export type EditorCreateWithoutUserInput = {
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     project: ProjectCreateNestedOneWithoutEditorsInput
   }
 
@@ -8439,7 +8502,7 @@ export namespace Prisma {
     id?: number
     name: string
     projectId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type EditorCreateOrConnectWithoutUserInput = {
@@ -8453,14 +8516,14 @@ export namespace Prisma {
 
   export type LanguageCreateWithoutUserInput = {
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     projects?: ProjectLanguageCreateNestedManyWithoutLanguageInput
   }
 
   export type LanguageUncheckedCreateWithoutUserInput = {
     id?: number
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     projects?: ProjectLanguageUncheckedCreateNestedManyWithoutLanguageInput
   }
 
@@ -8495,7 +8558,7 @@ export namespace Prisma {
     NOT?: ProjectScalarWhereInput | ProjectScalarWhereInput[]
     id?: IntFilter<"Project"> | number
     name?: StringFilter<"Project"> | string
-    timeSpent?: IntFilter<"Project"> | number
+    timeSpent?: BigIntFilter<"Project"> | bigint | number
     authorId?: IntFilter<"Project"> | number
   }
 
@@ -8523,7 +8586,7 @@ export namespace Prisma {
     name?: StringFilter<"Editor"> | string
     userId?: IntFilter<"Editor"> | number
     projectId?: IntFilter<"Editor"> | number
-    timeSpent?: IntFilter<"Editor"> | number
+    timeSpent?: BigIntFilter<"Editor"> | bigint | number
   }
 
   export type LanguageUpsertWithWhereUniqueWithoutUserInput = {
@@ -8549,13 +8612,13 @@ export namespace Prisma {
     id?: IntFilter<"Language"> | number
     name?: StringFilter<"Language"> | string
     userId?: IntFilter<"Language"> | number
-    timeSpent?: IntFilter<"Language"> | number
+    timeSpent?: BigIntFilter<"Language"> | bigint | number
   }
 
   export type UserCreateWithoutProjectsInput = {
     username: string
     timeInterval?: number
-    lastHeartbeat?: number
+    lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
     lastEditor?: string
@@ -8567,7 +8630,7 @@ export namespace Prisma {
     id?: number
     username: string
     timeInterval?: number
-    lastHeartbeat?: number
+    lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
     lastEditor?: string
@@ -8582,7 +8645,7 @@ export namespace Prisma {
 
   export type EditorCreateWithoutProjectInput = {
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     user: UserCreateNestedOneWithoutEditorsInput
   }
 
@@ -8590,7 +8653,7 @@ export namespace Prisma {
     id?: number
     name: string
     userId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type EditorCreateOrConnectWithoutProjectInput = {
@@ -8603,14 +8666,14 @@ export namespace Prisma {
   }
 
   export type ProjectLanguageCreateWithoutProjectInput = {
-    timeSpent?: number
+    timeSpent?: bigint | number
     language: LanguageCreateNestedOneWithoutProjectsInput
   }
 
   export type ProjectLanguageUncheckedCreateWithoutProjectInput = {
     id?: number
     languageId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type ProjectLanguageCreateOrConnectWithoutProjectInput = {
@@ -8636,7 +8699,7 @@ export namespace Prisma {
   export type UserUpdateWithoutProjectsInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
-    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
     lastEditor?: StringFieldUpdateOperationsInput | string
@@ -8648,7 +8711,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
-    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
     lastEditor?: StringFieldUpdateOperationsInput | string
@@ -8695,13 +8758,13 @@ export namespace Prisma {
     id?: IntFilter<"ProjectLanguage"> | number
     projectId?: IntFilter<"ProjectLanguage"> | number
     languageId?: IntFilter<"ProjectLanguage"> | number
-    timeSpent?: IntFilter<"ProjectLanguage"> | number
+    timeSpent?: BigIntFilter<"ProjectLanguage"> | bigint | number
   }
 
   export type UserCreateWithoutEditorsInput = {
     username: string
     timeInterval?: number
-    lastHeartbeat?: number
+    lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
     lastEditor?: string
@@ -8713,7 +8776,7 @@ export namespace Prisma {
     id?: number
     username: string
     timeInterval?: number
-    lastHeartbeat?: number
+    lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
     lastEditor?: string
@@ -8728,7 +8791,7 @@ export namespace Prisma {
 
   export type ProjectCreateWithoutEditorsInput = {
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     author: UserCreateNestedOneWithoutProjectsInput
     languages?: ProjectLanguageCreateNestedManyWithoutProjectInput
   }
@@ -8736,7 +8799,7 @@ export namespace Prisma {
   export type ProjectUncheckedCreateWithoutEditorsInput = {
     id?: number
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     authorId: number
     languages?: ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput
   }
@@ -8760,7 +8823,7 @@ export namespace Prisma {
   export type UserUpdateWithoutEditorsInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
-    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
     lastEditor?: StringFieldUpdateOperationsInput | string
@@ -8772,7 +8835,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
-    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
     lastEditor?: StringFieldUpdateOperationsInput | string
@@ -8793,7 +8856,7 @@ export namespace Prisma {
 
   export type ProjectUpdateWithoutEditorsInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     author?: UserUpdateOneRequiredWithoutProjectsNestedInput
     languages?: ProjectLanguageUpdateManyWithoutProjectNestedInput
   }
@@ -8801,14 +8864,14 @@ export namespace Prisma {
   export type ProjectUncheckedUpdateWithoutEditorsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     authorId?: IntFieldUpdateOperationsInput | number
     languages?: ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutLanguagesInput = {
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     author: UserCreateNestedOneWithoutProjectsInput
     Editors?: EditorCreateNestedManyWithoutProjectInput
   }
@@ -8816,7 +8879,7 @@ export namespace Prisma {
   export type ProjectUncheckedCreateWithoutLanguagesInput = {
     id?: number
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     authorId: number
     Editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
   }
@@ -8828,7 +8891,7 @@ export namespace Prisma {
 
   export type LanguageCreateWithoutProjectsInput = {
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
     user: UserCreateNestedOneWithoutLanguagesInput
   }
 
@@ -8836,7 +8899,7 @@ export namespace Prisma {
     id?: number
     name: string
     userId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type LanguageCreateOrConnectWithoutProjectsInput = {
@@ -8857,7 +8920,7 @@ export namespace Prisma {
 
   export type ProjectUpdateWithoutLanguagesInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     author?: UserUpdateOneRequiredWithoutProjectsNestedInput
     Editors?: EditorUpdateManyWithoutProjectNestedInput
   }
@@ -8865,7 +8928,7 @@ export namespace Prisma {
   export type ProjectUncheckedUpdateWithoutLanguagesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     authorId?: IntFieldUpdateOperationsInput | number
     Editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
   }
@@ -8883,7 +8946,7 @@ export namespace Prisma {
 
   export type LanguageUpdateWithoutProjectsInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     user?: UserUpdateOneRequiredWithoutLanguagesNestedInput
   }
 
@@ -8891,13 +8954,13 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type UserCreateWithoutLanguagesInput = {
     username: string
     timeInterval?: number
-    lastHeartbeat?: number
+    lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
     lastEditor?: string
@@ -8909,7 +8972,7 @@ export namespace Prisma {
     id?: number
     username: string
     timeInterval?: number
-    lastHeartbeat?: number
+    lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
     lastEditor?: string
@@ -8923,14 +8986,14 @@ export namespace Prisma {
   }
 
   export type ProjectLanguageCreateWithoutLanguageInput = {
-    timeSpent?: number
+    timeSpent?: bigint | number
     project: ProjectCreateNestedOneWithoutLanguagesInput
   }
 
   export type ProjectLanguageUncheckedCreateWithoutLanguageInput = {
     id?: number
     projectId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type ProjectLanguageCreateOrConnectWithoutLanguageInput = {
@@ -8956,7 +9019,7 @@ export namespace Prisma {
   export type UserUpdateWithoutLanguagesInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
-    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
     lastEditor?: StringFieldUpdateOperationsInput | string
@@ -8968,7 +9031,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
-    lastHeartbeat?: IntFieldUpdateOperationsInput | number
+    lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
     lastEditor?: StringFieldUpdateOperationsInput | string
@@ -8995,25 +9058,25 @@ export namespace Prisma {
   export type ProjectCreateManyAuthorInput = {
     id?: number
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type EditorCreateManyUserInput = {
     id?: number
     name: string
     projectId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type LanguageCreateManyUserInput = {
     id?: number
     name: string
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type ProjectUpdateWithoutAuthorInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     Editors?: EditorUpdateManyWithoutProjectNestedInput
     languages?: ProjectLanguageUpdateManyWithoutProjectNestedInput
   }
@@ -9021,7 +9084,7 @@ export namespace Prisma {
   export type ProjectUncheckedUpdateWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     Editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
     languages?: ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput
   }
@@ -9029,12 +9092,12 @@ export namespace Prisma {
   export type ProjectUncheckedUpdateManyWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type EditorUpdateWithoutUserInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     project?: ProjectUpdateOneRequiredWithoutEditorsNestedInput
   }
 
@@ -9042,51 +9105,51 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     projectId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type EditorUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     projectId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type LanguageUpdateWithoutUserInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     projects?: ProjectLanguageUpdateManyWithoutLanguageNestedInput
   }
 
   export type LanguageUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     projects?: ProjectLanguageUncheckedUpdateManyWithoutLanguageNestedInput
   }
 
   export type LanguageUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type EditorCreateManyProjectInput = {
     id?: number
     name: string
     userId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type ProjectLanguageCreateManyProjectInput = {
     id?: number
     languageId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type EditorUpdateWithoutProjectInput = {
     name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     user?: UserUpdateOneRequiredWithoutEditorsNestedInput
   }
 
@@ -9094,54 +9157,54 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type EditorUncheckedUpdateManyWithoutProjectInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type ProjectLanguageUpdateWithoutProjectInput = {
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     language?: LanguageUpdateOneRequiredWithoutProjectsNestedInput
   }
 
   export type ProjectLanguageUncheckedUpdateWithoutProjectInput = {
     id?: IntFieldUpdateOperationsInput | number
     languageId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type ProjectLanguageUncheckedUpdateManyWithoutProjectInput = {
     id?: IntFieldUpdateOperationsInput | number
     languageId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type ProjectLanguageCreateManyLanguageInput = {
     id?: number
     projectId: number
-    timeSpent?: number
+    timeSpent?: bigint | number
   }
 
   export type ProjectLanguageUpdateWithoutLanguageInput = {
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     project?: ProjectUpdateOneRequiredWithoutLanguagesNestedInput
   }
 
   export type ProjectLanguageUncheckedUpdateWithoutLanguageInput = {
     id?: IntFieldUpdateOperationsInput | number
     projectId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type ProjectLanguageUncheckedUpdateManyWithoutLanguageInput = {
     id?: IntFieldUpdateOperationsInput | number
     projectId?: IntFieldUpdateOperationsInput | number
-    timeSpent?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
 

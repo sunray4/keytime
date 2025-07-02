@@ -18,7 +18,7 @@ model User {
   projects      Project[]
   editors       Editor[]
   languages     Language[]
-  lastHeartbeat Int        @default(0)
+  lastHeartbeat BigInt     @default(0)
   lastFolder    String     @default("")
   lastLang      String     @default("")
   lastEditor    String     @default("")
@@ -27,7 +27,7 @@ model User {
 model Project {
   id        Int               @id @default(autoincrement())
   name      String            @unique
-  timeSpent Int               @default(0)
+  timeSpent BigInt            @default(0)
   author    User              @relation(fields: [authorId], references: [id])
   authorId  Int
   Editors   Editor[]
@@ -41,7 +41,7 @@ model Editor {
   userId    Int
   project   Project @relation(fields: [projectId], references: [id])
   projectId Int
-  timeSpent Int     @default(0)
+  timeSpent BigInt  @default(0)
 }
 
 model ProjectLanguage {
@@ -50,9 +50,7 @@ model ProjectLanguage {
   projectId  Int
   language   Language @relation(fields: [languageId], references: [id])
   languageId Int
-  timeSpent  Int      @default(0)
-
-  @@unique([projectId, languageId])
+  timeSpent  BigInt   @default(0)
 }
 
 model Language {
@@ -60,6 +58,6 @@ model Language {
   name      String            @unique
   user      User              @relation(fields: [userId], references: [id])
   userId    Int
-  timeSpent Int               @default(0)
+  timeSpent BigInt            @default(0)
   projects  ProjectLanguage[]
 }
