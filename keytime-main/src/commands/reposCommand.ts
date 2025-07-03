@@ -36,7 +36,6 @@ export function reposCommand(program: Command) {
             },
           },
         });
-        console.log("user:", user);
         if (user === null) {
           await setup();
         } else {
@@ -47,20 +46,37 @@ export function reposCommand(program: Command) {
           "An error occurred:",
           error instanceof Error ? error.message : String(error)
         );
+      } finally {
+        await prisma.$disconnect();
       }
     });
+}
+
+// this needs some fixing - doesnt really work correctly
+function formatTime(milliseconds: bigint): string {
+  const seconds = milliseconds / 1000n;
+  const hours = seconds / 3600n;
+  const minutes = (seconds % 3600n) / 60n;
+
+  if (hours > 0) {
+    return `${hours}h ${minutes}m`;
+  } else if (minutes > 0) {
+    return `${minutes}m`;
+  } else {
+    return `${seconds}s`;
+  }
 }
 
 async function showRepos(user: User) {
   const spinner = ora("Fetching repositories...").start(); // spinning animation
   try {
-    const repos = await user.projects.map((project) => {
+    const repos = user.projects.map((project) => {
       return {
         name: project.name,
         timeSpent: project.timeSpent,
         languages: project.languages.map((language) => {
           return {
-            id: language.languageId,
+            name: language.name,
             timeSpent: language.timeSpent,
           };
         }),
@@ -71,13 +87,6 @@ async function showRepos(user: User) {
         }),
       };
     });
-    const langs = await prisma.language.findMany({
-      where: {
-        id: {
-          in: repos.flatMap((repo) => repo.languages.map((lang) => lang.id)),
-        },
-      },
-    });
 
     if (repos.length === 0) {
       spinner.fail(chalk.red("No repositories found. Start building!!"));
@@ -87,5 +96,6 @@ async function showRepos(user: User) {
     }
   } catch (error) {
     spinner.fail(chalk.red("Failed to fetch repositories"));
+    console.error(error);
   }
 }

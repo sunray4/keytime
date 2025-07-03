@@ -20,3 +20,9 @@ To clear the database, just run:
 ```bash
 node clear-db.js
 ```
+
+to check if the server is still running:
+lsof -ti:8081
+
+to kill the server:
+kill -TERM <PID>
