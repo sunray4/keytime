@@ -18,6 +18,7 @@ model User {
   projects Project[]
   editors  Editor[]
   languages Language[]
+  serverPid Int @default(0)
   lastHeartbeat BigInt @default(0)
   lastFolder String @default("")
   lastLang String @default("")

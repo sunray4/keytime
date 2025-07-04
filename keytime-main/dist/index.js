@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const chalk_1 = __importDefault(require("chalk"));
 const child_process_1 = require("child_process");
 const commander_1 = require("commander");
 const reposCommand_1 = require("./commands/reposCommand");
@@ -17,7 +21,7 @@ function startServerInBackground() {
     });
     serverProcess.unref();
     // Store the PID for potential cleanup later
-    console.log(`Server started in background with PID: ${serverProcess.pid}`);
+    console.log(chalk_1.default.green(`Server started in background with PID: ${serverProcess.pid}`));
 }
 // Check if server is already running
 function isServerRunning() {

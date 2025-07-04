@@ -121,6 +121,7 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   username: 'username',
   timeInterval: 'timeInterval',
+  serverPid: 'serverPid',
   lastHeartbeat: 'lastHeartbeat',
   lastFolder: 'lastFolder',
   lastLang: 'lastLang',

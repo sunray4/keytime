@@ -1367,12 +1367,14 @@ export namespace Prisma {
   export type UserAvgAggregateOutputType = {
     id: number | null
     timeInterval: number | null
+    serverPid: number | null
     lastHeartbeat: number | null
   }
 
   export type UserSumAggregateOutputType = {
     id: number | null
     timeInterval: number | null
+    serverPid: number | null
     lastHeartbeat: bigint | null
   }
 
@@ -1380,6 +1382,7 @@ export namespace Prisma {
     id: number | null
     username: string | null
     timeInterval: number | null
+    serverPid: number | null
     lastHeartbeat: bigint | null
     lastFolder: string | null
     lastLang: string | null
@@ -1390,6 +1393,7 @@ export namespace Prisma {
     id: number | null
     username: string | null
     timeInterval: number | null
+    serverPid: number | null
     lastHeartbeat: bigint | null
     lastFolder: string | null
     lastLang: string | null
@@ -1400,6 +1404,7 @@ export namespace Prisma {
     id: number
     username: number
     timeInterval: number
+    serverPid: number
     lastHeartbeat: number
     lastFolder: number
     lastLang: number
@@ -1411,12 +1416,14 @@ export namespace Prisma {
   export type UserAvgAggregateInputType = {
     id?: true
     timeInterval?: true
+    serverPid?: true
     lastHeartbeat?: true
   }
 
   export type UserSumAggregateInputType = {
     id?: true
     timeInterval?: true
+    serverPid?: true
     lastHeartbeat?: true
   }
 
@@ -1424,6 +1431,7 @@ export namespace Prisma {
     id?: true
     username?: true
     timeInterval?: true
+    serverPid?: true
     lastHeartbeat?: true
     lastFolder?: true
     lastLang?: true
@@ -1434,6 +1442,7 @@ export namespace Prisma {
     id?: true
     username?: true
     timeInterval?: true
+    serverPid?: true
     lastHeartbeat?: true
     lastFolder?: true
     lastLang?: true
@@ -1444,6 +1453,7 @@ export namespace Prisma {
     id?: true
     username?: true
     timeInterval?: true
+    serverPid?: true
     lastHeartbeat?: true
     lastFolder?: true
     lastLang?: true
@@ -1541,6 +1551,7 @@ export namespace Prisma {
     id: number
     username: string
     timeInterval: number
+    serverPid: number
     lastHeartbeat: bigint
     lastFolder: string
     lastLang: string
@@ -1570,6 +1581,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     timeInterval?: boolean
+    serverPid?: boolean
     lastHeartbeat?: boolean
     lastFolder?: boolean
     lastLang?: boolean
@@ -1584,6 +1596,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     timeInterval?: boolean
+    serverPid?: boolean
     lastHeartbeat?: boolean
     lastFolder?: boolean
     lastLang?: boolean
@@ -1594,6 +1607,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     timeInterval?: boolean
+    serverPid?: boolean
     lastHeartbeat?: boolean
     lastFolder?: boolean
     lastLang?: boolean
@@ -1604,13 +1618,14 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     timeInterval?: boolean
+    serverPid?: boolean
     lastHeartbeat?: boolean
     lastFolder?: boolean
     lastLang?: boolean
     lastEditor?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "timeInterval" | "lastHeartbeat" | "lastFolder" | "lastLang" | "lastEditor", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "timeInterval" | "serverPid" | "lastHeartbeat" | "lastFolder" | "lastLang" | "lastEditor", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     projects?: boolean | User$projectsArgs<ExtArgs>
     editors?: boolean | User$editorsArgs<ExtArgs>
@@ -1631,6 +1646,7 @@ export namespace Prisma {
       id: number
       username: string
       timeInterval: number
+      serverPid: number
       lastHeartbeat: bigint
       lastFolder: string
       lastLang: string
@@ -2064,6 +2080,7 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'Int'>
     readonly username: FieldRef<"User", 'String'>
     readonly timeInterval: FieldRef<"User", 'Int'>
+    readonly serverPid: FieldRef<"User", 'Int'>
     readonly lastHeartbeat: FieldRef<"User", 'BigInt'>
     readonly lastFolder: FieldRef<"User", 'String'>
     readonly lastLang: FieldRef<"User", 'String'>
@@ -7037,6 +7054,7 @@ export namespace Prisma {
     id: 'id',
     username: 'username',
     timeInterval: 'timeInterval',
+    serverPid: 'serverPid',
     lastHeartbeat: 'lastHeartbeat',
     lastFolder: 'lastFolder',
     lastLang: 'lastLang',
@@ -7139,6 +7157,7 @@ export namespace Prisma {
     id?: IntFilter<"User"> | number
     username?: StringFilter<"User"> | string
     timeInterval?: IntFilter<"User"> | number
+    serverPid?: IntFilter<"User"> | number
     lastHeartbeat?: BigIntFilter<"User"> | bigint | number
     lastFolder?: StringFilter<"User"> | string
     lastLang?: StringFilter<"User"> | string
@@ -7152,6 +7171,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     timeInterval?: SortOrder
+    serverPid?: SortOrder
     lastHeartbeat?: SortOrder
     lastFolder?: SortOrder
     lastLang?: SortOrder
@@ -7168,6 +7188,7 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     timeInterval?: IntFilter<"User"> | number
+    serverPid?: IntFilter<"User"> | number
     lastHeartbeat?: BigIntFilter<"User"> | bigint | number
     lastFolder?: StringFilter<"User"> | string
     lastLang?: StringFilter<"User"> | string
@@ -7181,6 +7202,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     timeInterval?: SortOrder
+    serverPid?: SortOrder
     lastHeartbeat?: SortOrder
     lastFolder?: SortOrder
     lastLang?: SortOrder
@@ -7199,6 +7221,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"User"> | number
     username?: StringWithAggregatesFilter<"User"> | string
     timeInterval?: IntWithAggregatesFilter<"User"> | number
+    serverPid?: IntWithAggregatesFilter<"User"> | number
     lastHeartbeat?: BigIntWithAggregatesFilter<"User"> | bigint | number
     lastFolder?: StringWithAggregatesFilter<"User"> | string
     lastLang?: StringWithAggregatesFilter<"User"> | string
@@ -7441,6 +7464,7 @@ export namespace Prisma {
   export type UserCreateInput = {
     username: string
     timeInterval?: number
+    serverPid?: number
     lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
@@ -7454,6 +7478,7 @@ export namespace Prisma {
     id?: number
     username: string
     timeInterval?: number
+    serverPid?: number
     lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
@@ -7466,6 +7491,7 @@ export namespace Prisma {
   export type UserUpdateInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    serverPid?: IntFieldUpdateOperationsInput | number
     lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
@@ -7479,6 +7505,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    serverPid?: IntFieldUpdateOperationsInput | number
     lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
@@ -7492,6 +7519,7 @@ export namespace Prisma {
     id?: number
     username: string
     timeInterval?: number
+    serverPid?: number
     lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
@@ -7501,6 +7529,7 @@ export namespace Prisma {
   export type UserUpdateManyMutationInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    serverPid?: IntFieldUpdateOperationsInput | number
     lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
@@ -7511,6 +7540,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    serverPid?: IntFieldUpdateOperationsInput | number
     lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
@@ -7791,6 +7821,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     timeInterval?: SortOrder
+    serverPid?: SortOrder
     lastHeartbeat?: SortOrder
     lastFolder?: SortOrder
     lastLang?: SortOrder
@@ -7800,6 +7831,7 @@ export namespace Prisma {
   export type UserAvgOrderByAggregateInput = {
     id?: SortOrder
     timeInterval?: SortOrder
+    serverPid?: SortOrder
     lastHeartbeat?: SortOrder
   }
 
@@ -7807,6 +7839,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     timeInterval?: SortOrder
+    serverPid?: SortOrder
     lastHeartbeat?: SortOrder
     lastFolder?: SortOrder
     lastLang?: SortOrder
@@ -7817,6 +7850,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     timeInterval?: SortOrder
+    serverPid?: SortOrder
     lastHeartbeat?: SortOrder
     lastFolder?: SortOrder
     lastLang?: SortOrder
@@ -7826,6 +7860,7 @@ export namespace Prisma {
   export type UserSumOrderByAggregateInput = {
     id?: SortOrder
     timeInterval?: SortOrder
+    serverPid?: SortOrder
     lastHeartbeat?: SortOrder
   }
 
@@ -8647,6 +8682,7 @@ export namespace Prisma {
   export type UserCreateWithoutProjectsInput = {
     username: string
     timeInterval?: number
+    serverPid?: number
     lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
@@ -8659,6 +8695,7 @@ export namespace Prisma {
     id?: number
     username: string
     timeInterval?: number
+    serverPid?: number
     lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
@@ -8730,6 +8767,7 @@ export namespace Prisma {
   export type UserUpdateWithoutProjectsInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    serverPid?: IntFieldUpdateOperationsInput | number
     lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
@@ -8742,6 +8780,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    serverPid?: IntFieldUpdateOperationsInput | number
     lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
@@ -8796,6 +8835,7 @@ export namespace Prisma {
   export type UserCreateWithoutEditorsInput = {
     username: string
     timeInterval?: number
+    serverPid?: number
     lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
@@ -8808,6 +8848,7 @@ export namespace Prisma {
     id?: number
     username: string
     timeInterval?: number
+    serverPid?: number
     lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
@@ -8855,6 +8896,7 @@ export namespace Prisma {
   export type UserUpdateWithoutEditorsInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    serverPid?: IntFieldUpdateOperationsInput | number
     lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
@@ -8867,6 +8909,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    serverPid?: IntFieldUpdateOperationsInput | number
     lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
@@ -8992,6 +9035,7 @@ export namespace Prisma {
   export type UserCreateWithoutLanguagesInput = {
     username: string
     timeInterval?: number
+    serverPid?: number
     lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
@@ -9004,6 +9048,7 @@ export namespace Prisma {
     id?: number
     username: string
     timeInterval?: number
+    serverPid?: number
     lastHeartbeat?: bigint | number
     lastFolder?: string
     lastLang?: string
@@ -9053,6 +9098,7 @@ export namespace Prisma {
   export type UserUpdateWithoutLanguagesInput = {
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    serverPid?: IntFieldUpdateOperationsInput | number
     lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
@@ -9065,6 +9111,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     timeInterval?: IntFieldUpdateOperationsInput | number
+    serverPid?: IntFieldUpdateOperationsInput | number
     lastHeartbeat?: BigIntFieldUpdateOperationsInput | bigint | number
     lastFolder?: StringFieldUpdateOperationsInput | string
     lastLang?: StringFieldUpdateOperationsInput | string
