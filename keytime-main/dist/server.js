@@ -4,19 +4,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.server = server;
+const chalk_1 = __importDefault(require("chalk"));
 const express_1 = __importDefault(require("express"));
 const ws_1 = require("ws");
+const prisma_1 = require("../generated/prisma");
 const handleHeartbeat_1 = require("./handleHeartbeat");
+const prisma = new prisma_1.PrismaClient();
 const app = (0, express_1.default)();
-app.use(express_1.default.json());
 const wss = new ws_1.WebSocketServer({ port: 8081 });
+app.use(express_1.default.json());
 // change ws to use the same port as the express server for production
 // const server = app.listen(8080);
 // const wss = new WebSocketServer({
 //   server,           // Use same HTTP server
 //   path: '/ws'       // Different path instead of port
 // });
-function server() {
+async function server() {
     try {
         // app.listen(8080, () => console.log('Server started on port 8080'));
         wss.on("connection", (ws) => {
@@ -39,30 +42,45 @@ function server() {
             });
             ws.on("close", () => console.log("Connection closed"));
         });
-        console.log("WebSocket server started on port 8081");
+        // store the PID in db
+        changeServerPid(process.env.userId, process.pid);
+        console.log(chalk_1.default.green(`Server started in background with PID: ${process.pid} on port 8081`));
     }
     catch (error) {
         console.error(error);
+        changeServerPid(process.env.userId, 0);
         process.exit(1);
     }
 }
 // Run server if this file is executed directly
 if (require.main === module) {
     server();
-    // Graceful shutdown
-    process.on("SIGINT", () => {
+    // keytime stop command shuts down the server
+    process.on("SIGTERM", () => {
         console.log("\nShutting down server...");
-        wss.close(() => {
+        const userId = process.env.userId;
+        wss.close(async () => {
             console.log("Server closed");
+            changeServerPid(userId, 0);
             process.exit(0);
         });
     });
-    process.on("SIGTERM", () => {
-        console.log("\nShutting down server...");
-        wss.close(() => {
-            console.log("Server closed");
-            process.exit(0);
-        });
+}
+// updated server pid when server process crashes
+process.on("uncaughtException", (error) => {
+    console.error("Uncaught Exception:", error);
+    changeServerPid(process.env.userId, 0);
+    process.exit(1);
+});
+process.on("unhandledRejection", (reason, promise) => {
+    console.error("Unhandled Rejection:", reason);
+    changeServerPid(process.env.userId, 0);
+    process.exit(1);
+});
+function changeServerPid(userId, pid) {
+    prisma.user.update({
+        where: { id: parseInt(userId) },
+        data: { serverPid: pid },
     });
 }
 //# sourceMappingURL=server.js.map

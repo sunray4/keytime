@@ -1,2 +1,2 @@
-export declare function server(): void;
+export declare function server(): Promise<void>;
 //# sourceMappingURL=server.d.ts.map

@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import { spawn } from "child_process";
 import { Command } from "commander";
+import ora from "ora";
 import { PrismaClient } from "../../generated/prisma";
 import { setup } from "../setup";
 
@@ -65,7 +66,18 @@ export function startCommand(program: Command) {
     .command("start")
     .description("Start the server")
     .action(async () => {
+      const spinner = ora("Initializing server...").start();
+      spinner.color = "blue";
       await startServer();
+      setTimeout(async () => {
+        const user = await prisma.user.findFirst();
+        const pid = user!.serverPid;
+        if (pid === 0) {
+          spinner.fail(chalk.red("Failed to start server"));
+        } else {
+          spinner.succeed(chalk.green("Server started"));
+        }
+      }, 700);
     });
 }
 
@@ -74,6 +86,17 @@ export function stopCommand(program: Command) {
     .command("stop")
     .description("Stop the server")
     .action(async () => {
+      const spinner = ora("Stopping server...").start();
+      spinner.color = "magenta";
       await stopServer();
+      setTimeout(async () => {
+        const user = await prisma.user.findFirst();
+        const pid = user!.serverPid;
+        if (pid !== 0) {
+          spinner.fail(chalk.red("Failed to stop server"));
+        } else {
+          spinner.succeed(chalk.green("Server stopped"));
+        }
+      }, 700);
     });
 }
