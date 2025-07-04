@@ -1,20 +1,37 @@
 import chalk from "chalk";
 import { spawn } from "child_process";
 import { Command } from "commander";
+import fs from "fs";
 import ora from "ora";
+import path from "path";
 import { PrismaClient } from "../../generated/prisma";
 import { setup } from "../setup";
 
 const prisma = new PrismaClient();
 
+const LOG_FILE_PATH = path.join(process.cwd(), "keytime-server.log");
+
 async function startServerInBackground() {
-  // main process dir is dist folder
+  // use log file to store server output
+  const logFile = fs.openSync(LOG_FILE_PATH, "w");
+
   const serverProcess = spawn("node", [__dirname + "/server.js"], {
     detached: true,
-    stdio: "ignore", // ignore the server process output
+    stdio: ["ignore", logFile, logFile], // Redirect stdout and stderr to log file
   });
 
-  serverProcess.unref(); // server process is now detached from the main process
+  serverProcess.unref();
+
+  // Check if PID is available
+  if (!serverProcess.pid) {
+    throw new Error("Failed to get server process PID");
+  }
+
+  console.log(
+    chalk.green(`Server started in background with PID: ${serverProcess.pid}`)
+  );
+  console.log(chalk.blue(`View logs: tail -f ${LOG_FILE_PATH}`));
+  console.log(chalk.yellow(`Stop server: keytime stop`));
 }
 
 // initialize server if not running

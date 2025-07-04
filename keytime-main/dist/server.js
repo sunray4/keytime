@@ -21,6 +21,8 @@ app.use(express_1.default.json());
 // });
 async function server() {
     try {
+        // store the PID in db
+        changeServerPid(process.env.userId, process.pid);
         // app.listen(8080, () => console.log('Server started on port 8080'));
         wss.on("connection", (ws) => {
             ws.on("error", (error) => {
@@ -42,8 +44,6 @@ async function server() {
             });
             ws.on("close", () => console.log("Connection closed"));
         });
-        // store the PID in db
-        changeServerPid(process.env.userId, process.pid);
         console.log(chalk_1.default.green(`Server started in background with PID: ${process.pid} on port 8081`));
     }
     catch (error) {

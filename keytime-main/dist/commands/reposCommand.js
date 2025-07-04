@@ -80,7 +80,18 @@ async function showRepos(user) {
         }
         else {
             spinner.succeed(chalk_1.default.green("Your repositories are ready :)"));
-            console.log(repos);
+            for (const repo of repos) {
+                console.log(chalk_1.default.gray("--------------------------------"));
+                console.log(chalk_1.default.bold(repo.name));
+                console.log(chalk_1.default.blue(`Time spent: ${repo.timeSpent}`)); // should format time later
+                // for (const language of repo.languages) {
+                console.log(chalk_1.default.green(`Languages: ${repo.languages
+                    .map((language) => {
+                    return `${language.name} (${language.timeSpent})`;
+                })
+                    .join(", ")}`));
+                console.log(chalk_1.default.yellow(`Editors: ${repo.editors.map((editor) => editor.name).join(", ")}`));
+            }
         }
     }
     catch (error) {

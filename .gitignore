@@ -6,3 +6,6 @@ node_modules
 
 /generated/prisma
 /dist
+
+
+/keytime-server.log

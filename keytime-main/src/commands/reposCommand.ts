@@ -92,7 +92,27 @@ async function showRepos(user: User) {
       spinner.fail(chalk.red("No repositories found. Start building!!"));
     } else {
       spinner.succeed(chalk.green("Your repositories are ready :)"));
-      console.log(repos);
+      for (const repo of repos) {
+        console.log(chalk.gray("--------------------------------"));
+        console.log(chalk.bold(repo.name));
+        console.log(chalk.blue(`Time spent: ${repo.timeSpent}`)); // should format time later
+        // for (const language of repo.languages) {
+
+        console.log(
+          chalk.green(
+            `Languages: ${repo.languages
+              .map((language) => {
+                return `${language.name} (${language.timeSpent})`;
+              })
+              .join(", ")}`
+          )
+        );
+        console.log(
+          chalk.yellow(
+            `Editors: ${repo.editors.map((editor) => editor.name).join(", ")}`
+          )
+        );
+      }
     }
   } catch (error) {
     spinner.fail(chalk.red("Failed to fetch repositories"));
