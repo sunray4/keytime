@@ -26,3 +26,9 @@ lsof -ti:8081
 
 to kill the server:
 kill -TERM <PID>
+
+to setup the prisma db:
+npx prisma generate
+npx prisma migrate dev
+
+\*\* add handling of client or server crashing after initial setup - maybe migrate into using socket io?

@@ -17,7 +17,7 @@ const LOG_FILE_PATH = path_1.default.join(process.cwd(), "keytime-server.log");
 async function startServerInBackground() {
     // use log file to store server output
     const logFile = fs_1.default.openSync(LOG_FILE_PATH, "w");
-    const serverProcess = (0, child_process_1.spawn)("node", [__dirname + "/server.js"], {
+    const serverProcess = (0, child_process_1.spawn)("node", [path_1.default.join(__dirname, "../server.js")], {
         detached: true,
         stdio: ["ignore", logFile, logFile], // Redirect stdout and stderr to log file
     });
@@ -64,11 +64,21 @@ async function stopServer() {
     const serverPid = user.serverPid;
     if (serverPid === 0) {
         console.log(chalk_1.default.yellow("Server is not running"));
-        return;
+        return false;
     }
     process.env.userId = user.id.toString();
-    process.kill(serverPid, "SIGTERM"); // server.ts handles changing the stored pid into 0
-    console.log(chalk_1.default.green("Server stopped"));
+    console.log("in stopServer: ", serverPid);
+    console.log("user id: ", process.env.userId);
+    try {
+        // Check if process exists before trying to kill it
+        process.kill(serverPid, 0); // Signal 0 doesn't kill the process, just checks if it exists
+        process.kill(serverPid, "SIGTERM"); // server.ts handles changing the stored pid into 0
+        return true;
+    }
+    catch (error) {
+        console.error(chalk_1.default.red("Error stopping server:"), error);
+        return false;
+    }
 }
 function startCommand(program) {
     program
@@ -80,6 +90,7 @@ function startCommand(program) {
         await startServer();
         setTimeout(async () => {
             const user = await prisma.user.findFirst();
+            // console.log("in startCommand: ", user);
             const pid = user.serverPid;
             if (pid === 0) {
                 spinner.fail(chalk_1.default.red("Failed to start server"));
@@ -97,11 +108,12 @@ function stopCommand(program) {
         .action(async () => {
         const spinner = (0, ora_1.default)("Stopping server...").start();
         spinner.color = "magenta";
-        await stopServer();
+        const success = await stopServer();
         setTimeout(async () => {
             const user = await prisma.user.findFirst();
+            // console.log("in stopCommand: ", user);
             const pid = user.serverPid;
-            if (pid !== 0) {
+            if (pid !== 0 || !success) {
                 spinner.fail(chalk_1.default.red("Failed to stop server"));
             }
             else {

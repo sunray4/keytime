@@ -21,7 +21,7 @@ app.use(express.json());
 export async function server() {
   try {
     // store the PID in db
-    changeServerPid(process.env.userId!, process.pid);
+    await changeServerPid(process.env.userId!, process.pid);
     // app.listen(8080, () => console.log('Server started on port 8080'));
     wss.on("connection", (ws) => {
       ws.on("error", (error) => {
@@ -54,7 +54,7 @@ export async function server() {
     );
   } catch (error) {
     console.error(error);
-    changeServerPid(process.env.userId!, 0);
+    await changeServerPid(process.env.userId!, 0);
     process.exit(1);
   }
 }
@@ -69,28 +69,34 @@ if (require.main === module) {
     const userId = process.env.userId;
 
     wss.close(async () => {
+      await changeServerPid(userId!, 0);
       console.log("Server closed");
-      changeServerPid(userId!, 0);
       process.exit(0);
     });
   });
 }
 
 // updated server pid when server process crashes
-process.on("uncaughtException", (error) => {
+process.on("uncaughtException", async (error) => {
   console.error("Uncaught Exception:", error);
-  changeServerPid(process.env.userId!, 0);
+  await changeServerPid(process.env.userId!, 0);
   process.exit(1);
 });
-process.on("unhandledRejection", (reason, promise) => {
+process.on("unhandledRejection", async (reason) => {
   console.error("Unhandled Rejection:", reason);
-  changeServerPid(process.env.userId!, 0);
+  await changeServerPid(process.env.userId!, 0);
   process.exit(1);
 });
 
-function changeServerPid(userId: string, pid: number) {
-  prisma.user.update({
+async function changeServerPid(userId: string, pid: number) {
+  console.log("in changeServerPid: ", userId, pid);
+  await prisma.user.update({
     where: { id: parseInt(userId) },
     data: { serverPid: pid },
   });
+  const user = await prisma.user.findFirst({
+    where: { id: parseInt(userId) },
+  });
+  console.log("user: ", user);
+  console.log("changed server pid to: ", pid);
 }
