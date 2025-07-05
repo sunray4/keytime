@@ -3,7 +3,6 @@ import { Prisma, PrismaClient } from "../../generated/prisma";
 import chalk from "chalk";
 import { Command } from "commander";
 import ora from "ora";
-import { setup } from "../setup";
 
 const prisma = new PrismaClient();
 
@@ -37,7 +36,8 @@ export function reposCommand(program: Command) {
           },
         });
         if (user === null) {
-          await setup();
+          console.log(chalk.red("You don't have a keytime account yet."));
+          console.log(chalk.red("Please run `keytime start` to create one."));
         } else {
           await showRepos(user!);
         }

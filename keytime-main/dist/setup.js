@@ -3,12 +3,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.setup = setup;
+exports.getUser = getUser;
+const chalk_1 = __importDefault(require("chalk"));
 const inquirer_1 = __importDefault(require("inquirer"));
 const prisma_1 = require("../generated/prisma");
 const prisma = new prisma_1.PrismaClient();
+async function getUser() {
+    let user = await prisma.user.findFirst();
+    if (!user) {
+        console.log(chalk_1.default.yellow("Let's create your keytime account!"));
+        await setup();
+        user = await prisma.user.findFirst();
+    }
+    return user;
+}
 async function setup() {
-    console.log("You haven't setup your keytime account yet!! Let's do it now.");
     let answers;
     try {
         answers = await inquirer_1.default.prompt([
@@ -42,7 +51,7 @@ async function setup() {
             timeInterval: answers.timeInterval,
         },
     });
-    console.log(user);
+    console.log(chalk_1.default.green("Keytime account created!"));
     try {
         await prisma.$disconnect();
     }

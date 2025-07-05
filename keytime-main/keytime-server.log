@@ -1,28 +1,28 @@
-in changeServerPid:  2 69403
+in changeServerPid:  3 75799
 user:  {
-  id: 2,
+  id: 3,
   username: 'ray',
   timeInterval: 2,
-  serverPid: 69403,
-  lastHeartbeat: 1751581355612n,
-  lastFolder: 'emailbloc',
-  lastLang: 'html',
-  lastEditor: 'vscode'
+  serverPid: 75799,
+  lastHeartbeat: 0n,
+  lastFolder: '',
+  lastLang: '',
+  lastEditor: ''
 }
-changed server pid to:  69403
-Server started in background with PID: 69403 on port 8081
+changed server pid to:  75799
+Server started in background with PID: 75799 on port 8081
 
 Shutting down server...
-in changeServerPid:  2 0
+in changeServerPid:  3 0
 user:  {
-  id: 2,
+  id: 3,
   username: 'ray',
   timeInterval: 2,
   serverPid: 0,
-  lastHeartbeat: 1751581355612n,
-  lastFolder: 'emailbloc',
-  lastLang: 'html',
-  lastEditor: 'vscode'
+  lastHeartbeat: 0n,
+  lastFolder: '',
+  lastLang: '',
+  lastEditor: ''
 }
 changed server pid to:  0
 Server closed

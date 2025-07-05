@@ -7,7 +7,6 @@ exports.reposCommand = reposCommand;
 const prisma_1 = require("../../generated/prisma");
 const chalk_1 = __importDefault(require("chalk"));
 const ora_1 = __importDefault(require("ora"));
-const setup_1 = require("../setup");
 const prisma = new prisma_1.PrismaClient();
 function reposCommand(program) {
     program
@@ -26,7 +25,8 @@ function reposCommand(program) {
                 },
             });
             if (user === null) {
-                await (0, setup_1.setup)();
+                console.log(chalk_1.default.red("You don't have a keytime account yet."));
+                console.log(chalk_1.default.red("Please run `keytime start` to create one."));
             }
             else {
                 await showRepos(user);

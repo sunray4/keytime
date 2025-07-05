@@ -5,7 +5,7 @@ import fs from "fs";
 import ora from "ora";
 import path from "path";
 import { PrismaClient } from "../../generated/prisma";
-import { setup } from "../setup";
+import { getUser } from "../setup";
 
 const prisma = new PrismaClient();
 
@@ -26,27 +26,11 @@ async function startServerInBackground() {
   if (!serverProcess.pid) {
     throw new Error("Failed to get server process PID");
   }
-
-  console.log(
-    chalk.green(`Server started in background with PID: ${serverProcess.pid}`)
-  );
-  console.log(chalk.blue(`View logs: tail -f ${LOG_FILE_PATH}`));
-  console.log(chalk.yellow(`Stop server: keytime stop`));
 }
 
 // initialize server if not running
-async function startServer(): Promise<boolean> {
+async function startServer(serverPid: number): Promise<boolean> {
   try {
-    let user = await prisma.user.findFirst();
-    if (!user) {
-      console.log(
-        chalk.yellow("You don't have an account yet. Let's create one now!")
-      );
-      await setup();
-      user = await prisma.user.findFirst();
-    }
-    process.env.userId = user!.id.toString();
-    const serverPid = user!.serverPid;
     if (serverPid === 0) {
       startServerInBackground();
       // wait for server to start
@@ -61,21 +45,11 @@ async function startServer(): Promise<boolean> {
   }
 }
 
-async function stopServer(): Promise<boolean> {
-  let user = await prisma.user.findFirst();
-  if (!user) {
-    console.log(
-      chalk.yellow("You don't have an account yet. Let's create one now!")
-    );
-    await setup();
-    user = await prisma.user.findFirst();
-  }
-  const serverPid = user!.serverPid;
+async function stopServer(serverPid: number): Promise<boolean> {
   if (serverPid === 0) {
     console.log(chalk.yellow("Server is not running"));
     return false;
   }
-  process.env.userId = user!.id.toString();
 
   try {
     process.kill(serverPid, "SIGTERM"); // server.ts handles changing the stored pid into 0
@@ -91,17 +65,27 @@ export function startCommand(program: Command) {
     .command("start")
     .description("Start the server")
     .action(async () => {
+      // first check if user exists and create one if not
+      const user = await getUser();
+      const serverPid = user!.serverPid;
+      process.env.userId = user!.id.toString();
+
+      // then start server
       const spinner = ora("Initializing server...").start();
       spinner.color = "blue";
-      const success = await startServer();
+      const success = await startServer(serverPid);
       setTimeout(async () => {
+        // need to retrieve user again to get updated serverPid
         const user = await prisma.user.findFirst();
-        // console.log("in startCommand: ", user);
         const pid = user!.serverPid;
         if (pid === 0 || !success) {
           spinner.fail(chalk.red("Failed to start server"));
         } else {
-          spinner.succeed(chalk.green("Server started"));
+          spinner.succeed(
+            chalk.green(`Server started in background with PID: ${pid}`)
+          );
+          console.log(chalk.blue(`View logs: tail -f ${LOG_FILE_PATH}`));
+          console.log(chalk.yellow(`Stop server: keytime stop`));
         }
       }, 700);
     });
@@ -112,14 +96,20 @@ export function stopCommand(program: Command) {
     .command("stop")
     .description("Stop the server")
     .action(async () => {
+      // first check if user exists and create one if not
+      const user = await getUser();
+      const serverPid = user!.serverPid;
+      process.env.userId = user!.id.toString();
+
+      // then stop server
       const spinner = ora("Stopping server...").start();
       spinner.color = "magenta";
-      const success = await stopServer();
+      const success = await stopServer(serverPid);
       setTimeout(async () => {
+        // need to retrieve user again to get updated serverPid
         const user = await prisma.user.findFirst();
-        // console.log("in stopCommand: ", user);
         const pid = user!.serverPid;
-        if (pid !== 0 || !success) {
+        if (pid !== 0 && !success) {
           spinner.fail(chalk.red("Failed to stop server"));
         } else {
           spinner.succeed(chalk.green("Server stopped"));
