@@ -15,6 +15,7 @@ export class Client {
   private output: vscode.OutputChannel;
   private queue: Message[] = [];
   private isOpen: boolean = false;
+  private isConnecting: boolean = false; // to prevent concurrent reconnection attempts - this should be true when ws is open
 
   constructor(output: vscode.OutputChannel) {
     this.output = output;
@@ -22,9 +23,17 @@ export class Client {
   }
 
   private async connect() {
+    if (this.isConnecting) {
+      return;
+    }
+    this.isConnecting = true;
+
     this.ws = new WebSocket("ws://localhost:8081");
 
-    this.ws.on("error", (err) => this.output.appendLine(err.message));
+    this.ws.on("error", (err) => {
+      this.output.appendLine(err.message);
+      this.isConnecting = false;
+    });
 
     this.ws.on("open", () => {
       this.output.appendLine("Connected to server");
@@ -37,14 +46,23 @@ export class Client {
       this.output.appendLine(`Received message: ${data.toString()}`);
     });
 
-    this.ws.on("close", () => {
+    this.ws.on("close", (code, reason) => {
       this.output.appendLine("Disconnected from server");
+      this.isOpen = false;
+      this.isConnecting = false;
+
+      // attempt reconnection
+      if (code !== 1000) {
+        this.output.appendLine("Server crashed, attempting to reconnect...");
+        this.connect();
+      }
     });
   }
 
   private sendQueue() {
     if (this.isOpen) {
       this.queue.forEach((message) => this.sendHeartbeat(message));
+      this.queue = [];
     }
   }
 
@@ -61,7 +79,9 @@ export class Client {
       editor: "vscode",
     };
     if (message.folder === "") {
-      this.output.appendLine("No corresponding folder found");
+      this.output.appendLine(
+        "No corresponding folder found. Heartbeat not sent."
+      );
       return;
     }
     this.sendHeartbeat(message);
@@ -73,6 +93,7 @@ export class Client {
       this.output.appendLine(`Sent message: ${JSON.stringify(message)}`);
     } else {
       this.queue.push(message);
+      this.connect();
     }
   }
 
@@ -80,33 +101,3 @@ export class Client {
     this.ws?.close();
   }
 }
-
-// export function server(output: vscode.OutputChannel): () => void {
-//     ws = new WebSocket('ws://localhost:8081');
-
-//     ws.on('error', output.appendLine);
-
-//     ws.on('open', () => {
-//         output.appendLine('Connected to server');
-//         ws?.send('Hello from client');
-//     });
-
-//     ws.on('message', (data) => {
-//         output.appendLine(`Received message: ${data.toString()}`);
-//     });
-
-//     ws.on('error', (error) => {
-//         output.appendLine(`WebSocket error: ${error}`);
-//     });
-
-//     ws.on('close', () => {
-//         output.appendLine('Disconnected from server');
-//     });
-
-//     return () => {
-//         if (ws) {
-//             ws.close();
-//             ws = null;
-//         }
-//     };
-// }

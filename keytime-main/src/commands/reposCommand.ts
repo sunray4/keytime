@@ -4,6 +4,7 @@ import chalk from "chalk";
 import { Command } from "commander";
 import ora from "ora";
 import { formatTime } from "../formatTime";
+import { startServer } from "./serverCommand";
 
 const prisma = new PrismaClient();
 
@@ -40,7 +41,24 @@ export function reposCommand(program: Command) {
           console.log(chalk.red("You don't have a keytime account yet."));
           console.log(chalk.red("Please run `keytime start` to create one."));
         } else {
-          await showRepos(user!);
+          const success = await startServer();
+          if (success !== 2) {
+            if (success === 1) {
+              const spinner = ora(
+                "Server has just been restarted. Syncing backlogged data from clients..."
+              ).start();
+              spinner.color = "blue";
+              await new Promise((resolve) => setTimeout(resolve, 10000));
+              spinner.succeed(chalk.green("Sync complete"));
+            }
+            await showRepos(user!);
+          } else {
+            console.log(
+              chalk.red(
+                "Please try to run `keytime start` to start the server."
+              )
+            );
+          }
         }
       } catch (error) {
         console.error(
