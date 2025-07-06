@@ -113,6 +113,11 @@ export function stopCommand(program: Command) {
           spinner.fail(chalk.red("Failed to stop server"));
         } else {
           spinner.succeed(chalk.green("Server stopped"));
+          console.log(
+            chalk.red(
+              "Warning: You won't be able to track time until you restart the server."
+            )
+          );
         }
       }, 700);
     });

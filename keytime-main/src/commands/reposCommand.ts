@@ -3,6 +3,7 @@ import { Prisma, PrismaClient } from "../../generated/prisma";
 import chalk from "chalk";
 import { Command } from "commander";
 import ora from "ora";
+import { formatTime } from "../formatTime";
 
 const prisma = new PrismaClient();
 
@@ -52,21 +53,6 @@ export function reposCommand(program: Command) {
     });
 }
 
-// this needs some fixing - doesnt really work correctly
-function formatTime(milliseconds: bigint): string {
-  const seconds = milliseconds / 1000n;
-  const hours = seconds / 3600n;
-  const minutes = (seconds % 3600n) / 60n;
-
-  if (hours > 0) {
-    return `${hours}h ${minutes}m`;
-  } else if (minutes > 0) {
-    return `${minutes}m`;
-  } else {
-    return `${seconds}s`;
-  }
-}
-
 async function showRepos(user: User) {
   const spinner = ora("Fetching repositories...").start(); // spinning animation
   try {
@@ -95,14 +81,14 @@ async function showRepos(user: User) {
       for (const repo of repos) {
         console.log(chalk.gray("--------------------------------"));
         console.log(chalk.bold(repo.name));
-        console.log(chalk.blue(`Time spent: ${repo.timeSpent}`)); // should format time later
+        console.log(chalk.blue(`Time spent: ${formatTime(repo.timeSpent)}`));
         // for (const language of repo.languages) {
 
         console.log(
           chalk.green(
             `Languages: ${repo.languages
               .map((language) => {
-                return `${language.name} (${language.timeSpent})`;
+                return `${language.name} (${formatTime(language.timeSpent)})`;
               })
               .join(", ")}`
           )
