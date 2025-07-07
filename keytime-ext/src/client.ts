@@ -14,6 +14,7 @@ export class Client {
   private ws: WebSocket | null = null;
   private output: vscode.OutputChannel;
   private initialHb: Message | null = null;
+  private sentWarning: boolean = false;
   private isOpen: boolean = false;
   private isConnecting: boolean = false; // to prevent concurrent reconnection attempts - this should be true when ws is open
 
@@ -56,9 +57,12 @@ export class Client {
       this.output.appendLine("Disconnected from server");
       this.isOpen = false;
       this.isConnecting = false;
-      vscode.window.showInformationMessage(
-        "Server disconnected. You won't be able to track time until you restart the server."
-      );
+      if (!this.sentWarning) {
+        vscode.window.showWarningMessage(
+          "Keytime server disconnected. You won't be able to track coding time until you restart the server."
+        );
+        this.sentWarning = true;
+      }
     });
   }
 

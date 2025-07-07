@@ -309,3 +309,54 @@ user: {
   ]
 } 
 
+Received message: {"type":"heartbeat","timestamp":1751866116614,"folder":"codegpt","lang":"python","editor":"vscode"}
+handling heartbeat...
+heartbeat updated
+user: {
+  id: 5,
+  username: 'rya',
+  timeInterval: 2,
+  serverPid: 77948,
+  lastHeartbeat: 1751866116614n,
+  lastFolder: 'codegpt',
+  lastLang: 'python',
+  lastEditor: 'vscode',
+  projects: [
+    { id: 11, name: 'medlinks', timeSpent: 245782n, authorId: 5 },
+    { id: 12, name: 'codegpt', timeSpent: 17333n, authorId: 5 }
+  ],
+  languages: [
+    { id: 16, name: 'python', userId: 5, timeSpent: 230882n },
+    { id: 17, name: 'json', userId: 5, timeSpent: 31845n },
+    { id: 18, name: 'html', userId: 5, timeSpent: 388n }
+  ],
+  editors: [
+    {
+      id: 5,
+      name: 'vscode',
+      userId: 5,
+      projectId: 11,
+      timeSpent: 256016n
+    }
+  ]
+} 
+
+Connection closed (0 active)
+
+entered sigterm
+user id: 5
+Closing WebSocket server with 0 active connections
+WebSocket server closing...
+in changeServerPid:  5 0
+user:  {
+  id: 5,
+  username: 'rya',
+  timeInterval: 2,
+  serverPid: 0,
+  lastHeartbeat: 1751866116614n,
+  lastFolder: 'codegpt',
+  lastLang: 'python',
+  lastEditor: 'vscode'
+}
+changed server pid to:  0
+Server closed
