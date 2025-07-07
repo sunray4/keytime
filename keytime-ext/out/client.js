@@ -17,13 +17,14 @@ class Client {
         this.connect();
     }
     async connect() {
-        if (this.isConnecting) {
-            return;
-        }
-        this.isConnecting = true;
+        // if (this.isConnecting) {
+        //   return;
+        // }
+        // this.isConnecting = true;
         this.ws = new ws_1.default("ws://localhost:8081");
         this.ws.on("error", (err) => {
             this.output.appendLine(err.message);
+            this.isOpen = false;
             this.isConnecting = false;
         });
         this.ws.on("open", () => {
@@ -48,7 +49,11 @@ class Client {
     }
     sendQueue() {
         if (this.isOpen) {
-            this.queue.forEach((message) => this.sendHeartbeat(message));
+            this.queue.forEach(async (message) => {
+                this.sendHeartbeat(message);
+                await new Promise((resolve) => setTimeout(resolve, 50));
+            });
+            this.output.appendLine(`Sent ${this.queue.length} messages from queue`);
             this.queue = [];
         }
     }
@@ -73,7 +78,7 @@ class Client {
         }
         else {
             this.queue.push(message);
-            this.connect();
+            // this.connect();
         }
     }
     close() {

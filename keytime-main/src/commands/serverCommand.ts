@@ -104,7 +104,7 @@ async function stopServer(): Promise<number> {
     // need to retrieve user again to get updated serverPid
     const user = await prisma.user.findFirst();
     const pid = user!.serverPid;
-    if (pid !== 0 && success === 2) {
+    if (pid !== 0 || success === 2) {
       spinner.fail(chalk.red("Failed to stop server"));
     } else {
       spinner.succeed(chalk.green("Server stopped"));

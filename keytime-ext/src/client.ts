@@ -23,15 +23,16 @@ export class Client {
   }
 
   private async connect() {
-    if (this.isConnecting) {
-      return;
-    }
-    this.isConnecting = true;
+    // if (this.isConnecting) {
+    //   return;
+    // }
+    // this.isConnecting = true;
 
     this.ws = new WebSocket("ws://localhost:8081");
 
     this.ws.on("error", (err) => {
       this.output.appendLine(err.message);
+      this.isOpen = false;
       this.isConnecting = false;
     });
 
@@ -61,7 +62,11 @@ export class Client {
 
   private sendQueue() {
     if (this.isOpen) {
-      this.queue.forEach((message) => this.sendHeartbeat(message));
+      this.queue.forEach(async (message) => {
+        this.sendHeartbeat(message);
+        await new Promise((resolve) => setTimeout(resolve, 50));
+      });
+      this.output.appendLine(`Sent ${this.queue.length} messages from queue`);
       this.queue = [];
     }
   }
@@ -93,7 +98,7 @@ export class Client {
       this.output.appendLine(`Sent message: ${JSON.stringify(message)}`);
     } else {
       this.queue.push(message);
-      this.connect();
+      // this.connect();
     }
   }
 

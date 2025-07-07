@@ -7,6 +7,8 @@ exports.reposCommand = reposCommand;
 const prisma_1 = require("../../generated/prisma");
 const chalk_1 = __importDefault(require("chalk"));
 const ora_1 = __importDefault(require("ora"));
+const formatTime_1 = require("../formatTime");
+const serverCommand_1 = require("./serverCommand");
 const prisma = new prisma_1.PrismaClient();
 function reposCommand(program) {
     program
@@ -29,7 +31,20 @@ function reposCommand(program) {
                 console.log(chalk_1.default.red("Please run `keytime start` to create one."));
             }
             else {
-                await showRepos(user);
+                const success = await (0, serverCommand_1.startServer)();
+                if (success !== 2) {
+                    if (success === 1) {
+                        await new Promise((resolve) => setTimeout(resolve, 20));
+                        const spinner = (0, ora_1.default)("Server has just been restarted. Syncing backlogged data from clients...").start();
+                        spinner.color = "blue";
+                        await new Promise((resolve) => setTimeout(resolve, 3000));
+                        spinner.succeed(chalk_1.default.green("Sync complete"));
+                    }
+                    await showRepos(user);
+                }
+                else {
+                    console.log(chalk_1.default.red("Please try to run `keytime start` to start the server."));
+                }
             }
         }
         catch (error) {
@@ -39,21 +54,6 @@ function reposCommand(program) {
             await prisma.$disconnect();
         }
     });
-}
-// this needs some fixing - doesnt really work correctly
-function formatTime(milliseconds) {
-    const seconds = milliseconds / 1000n;
-    const hours = seconds / 3600n;
-    const minutes = (seconds % 3600n) / 60n;
-    if (hours > 0) {
-        return `${hours}h ${minutes}m`;
-    }
-    else if (minutes > 0) {
-        return `${minutes}m`;
-    }
-    else {
-        return `${seconds}s`;
-    }
 }
 async function showRepos(user) {
     const spinner = (0, ora_1.default)("Fetching repositories...").start(); // spinning animation
@@ -83,11 +83,11 @@ async function showRepos(user) {
             for (const repo of repos) {
                 console.log(chalk_1.default.gray("--------------------------------"));
                 console.log(chalk_1.default.bold(repo.name));
-                console.log(chalk_1.default.blue(`Time spent: ${repo.timeSpent}`)); // should format time later
+                console.log(chalk_1.default.blue(`Time spent: ${(0, formatTime_1.formatTime)(repo.timeSpent)}`));
                 // for (const language of repo.languages) {
                 console.log(chalk_1.default.green(`Languages: ${repo.languages
                     .map((language) => {
-                    return `${language.name} (${language.timeSpent})`;
+                    return `${language.name} (${(0, formatTime_1.formatTime)(language.timeSpent)})`;
                 })
                     .join(", ")}`));
                 console.log(chalk_1.default.yellow(`Editors: ${repo.editors.map((editor) => editor.name).join(", ")}`));

@@ -1,28 +1,13 @@
-in changeServerPid:  3 75799
+in changeServerPid:  3 65791
 user:  {
   id: 3,
   username: 'ray',
   timeInterval: 2,
-  serverPid: 75799,
-  lastHeartbeat: 0n,
-  lastFolder: '',
-  lastLang: '',
-  lastEditor: ''
+  serverPid: 65791,
+  lastHeartbeat: 1751857073447n,
+  lastFolder: 'medlinks',
+  lastLang: 'python',
+  lastEditor: 'vscode'
 }
-changed server pid to:  75799
-Server started in background with PID: 75799 on port 8081
-
-Shutting down server...
-in changeServerPid:  3 0
-user:  {
-  id: 3,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 0,
-  lastHeartbeat: 0n,
-  lastFolder: '',
-  lastLang: '',
-  lastEditor: ''
-}
-changed server pid to:  0
-Server closed
+changed server pid to:  65791
+Server started in background with PID: 65791 on port 8081

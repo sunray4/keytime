@@ -44,11 +44,12 @@ export function reposCommand(program: Command) {
           const success = await startServer();
           if (success !== 2) {
             if (success === 1) {
+              await new Promise((resolve) => setTimeout(resolve, 20));
               const spinner = ora(
                 "Server has just been restarted. Syncing backlogged data from clients..."
               ).start();
               spinner.color = "blue";
-              await new Promise((resolve) => setTimeout(resolve, 10000));
+              await new Promise((resolve) => setTimeout(resolve, 3000));
               spinner.succeed(chalk.green("Sync complete"));
             }
             await showRepos(user!);
