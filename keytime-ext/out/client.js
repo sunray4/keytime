@@ -17,10 +17,10 @@ class Client {
         this.connect();
     }
     async connect() {
-        // if (this.isConnecting) {
-        //   return;
-        // }
-        // this.isConnecting = true;
+        if (this.isConnecting) {
+            return;
+        }
+        this.isConnecting = true;
         this.ws = new ws_1.default("ws://localhost:8081");
         this.ws.on("error", (err) => {
             this.output.appendLine(err.message);
@@ -40,18 +40,13 @@ class Client {
             this.output.appendLine("Disconnected from server");
             this.isOpen = false;
             this.isConnecting = false;
-            // attempt reconnection
-            if (code !== 1000) {
-                this.output.appendLine("Server crashed, attempting to reconnect...");
-                this.connect();
-            }
         });
     }
     sendQueue() {
         if (this.isOpen) {
             this.queue.forEach(async (message) => {
                 this.sendHeartbeat(message);
-                await new Promise((resolve) => setTimeout(resolve, 50));
+                await new Promise((resolve) => setTimeout(resolve, 1000));
             });
             this.output.appendLine(`Sent ${this.queue.length} messages from queue`);
             this.queue = [];
@@ -76,9 +71,12 @@ class Client {
             this.ws?.send(JSON.stringify(message));
             this.output.appendLine(`Sent message: ${JSON.stringify(message)}`);
         }
+        else if (this.isConnecting) {
+            this.queue.push(message);
+        }
         else {
             this.queue.push(message);
-            // this.connect();
+            this.connect();
         }
     }
     close() {

@@ -90,7 +90,6 @@ async function stopServer(): Promise<number> {
 
     // then stop server
     if (serverPid === 0) {
-      console.log(chalk.yellow("Server is not running"));
       success = 0;
     } else {
       process.kill(serverPid, "SIGTERM"); // server.ts handles changing the stored pid into 0
@@ -106,8 +105,15 @@ async function stopServer(): Promise<number> {
     const pid = user!.serverPid;
     if (pid !== 0 || success === 2) {
       spinner.fail(chalk.red("Failed to stop server"));
-    } else {
+    } else if (success === 1) {
       spinner.succeed(chalk.green("Server stopped"));
+      console.log(
+        chalk.red(
+          "Warning: You won't be able to track time until you restart the server."
+        )
+      );
+    } else {
+      spinner.succeed(chalk.yellow("Server was not running"));
       console.log(
         chalk.red(
           "Warning: You won't be able to track time until you restart the server."

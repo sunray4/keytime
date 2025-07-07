@@ -1,13 +1,86 @@
-in changeServerPid:  3 65791
+in changeServerPid:  3 69533
 user:  {
   id: 3,
   username: 'ray',
   timeInterval: 2,
-  serverPid: 65791,
-  lastHeartbeat: 1751857073447n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
+  serverPid: 69533,
+  lastHeartbeat: 1751857747208n,
+  lastFolder: 'sfx-history',
+  lastLang: 'html',
   lastEditor: 'vscode'
 }
-changed server pid to:  65791
-Server started in background with PID: 65791 on port 8081
+changed server pid to:  69533
+Server started in background with PID: 69533 on port 8081
+client connected (1 active)
+Received message: Hello from client
+not a json heartbeat
+Received message: {"type":"heartbeat","timestamp":1751858889055,"folder":"sfx-history","lang":"json","editor":"vscode"}
+handling heartbeat...
+Received message: {"type":"heartbeat","timestamp":1751858889085,"folder":"sfx-history","lang":"json","editor":"vscode"}
+handling heartbeat...
+heartbeat updated
+user: {
+  id: 3,
+  username: 'ray',
+  timeInterval: 2,
+  serverPid: 69533,
+  lastHeartbeat: 1751858889085n,
+  lastFolder: 'sfx-history',
+  lastLang: 'json',
+  lastEditor: 'vscode',
+  projects: [
+    { id: 6, name: 'emailbloc', timeSpent: 3078944n, authorId: 3 },
+    { id: 7, name: 'medlinks', timeSpent: 663512n, authorId: 3 },
+    { id: 8, name: 'sfx-history', timeSpent: 107408n, authorId: 3 }
+  ],
+  languages: [
+    { id: 8, name: 'javascript', userId: 3, timeSpent: 2356712n },
+    { id: 9, name: 'html', userId: 3, timeSpent: 385067n },
+    { id: 10, name: 'json', userId: 3, timeSpent: 84063n },
+    { id: 11, name: 'markdown', userId: 3, timeSpent: 322155n },
+    { id: 12, name: 'python', userId: 3, timeSpent: 663512n }
+  ],
+  editors: [
+    {
+      id: 3,
+      name: 'vscode',
+      userId: 3,
+      projectId: 6,
+      timeSpent: 3530492n
+    }
+  ]
+} 
+
+heartbeat updated
+user: {
+  id: 3,
+  username: 'ray',
+  timeInterval: 2,
+  serverPid: 69533,
+  lastHeartbeat: 1751858889085n,
+  lastFolder: 'sfx-history',
+  lastLang: 'json',
+  lastEditor: 'vscode',
+  projects: [
+    { id: 6, name: 'emailbloc', timeSpent: 3078944n, authorId: 3 },
+    { id: 7, name: 'medlinks', timeSpent: 663512n, authorId: 3 },
+    { id: 8, name: 'sfx-history', timeSpent: 107408n, authorId: 3 }
+  ],
+  languages: [
+    { id: 8, name: 'javascript', userId: 3, timeSpent: 2356712n },
+    { id: 9, name: 'html', userId: 3, timeSpent: 385067n },
+    { id: 10, name: 'json', userId: 3, timeSpent: 84063n },
+    { id: 11, name: 'markdown', userId: 3, timeSpent: 322155n },
+    { id: 12, name: 'python', userId: 3, timeSpent: 663512n }
+  ],
+  editors: [
+    {
+      id: 3,
+      name: 'vscode',
+      userId: 3,
+      projectId: 6,
+      timeSpent: 3530492n
+    }
+  ]
+} 
+

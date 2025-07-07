@@ -85,7 +85,6 @@ async function stopServer() {
         spinner.color = "magenta";
         // then stop server
         if (serverPid === 0) {
-            console.log(chalk_1.default.yellow("Server is not running"));
             success = 0;
         }
         else {
@@ -104,8 +103,12 @@ async function stopServer() {
         if (pid !== 0 || success === 2) {
             spinner.fail(chalk_1.default.red("Failed to stop server"));
         }
-        else {
+        else if (success === 1) {
             spinner.succeed(chalk_1.default.green("Server stopped"));
+            console.log(chalk_1.default.red("Warning: You won't be able to track time until you restart the server."));
+        }
+        else {
+            spinner.succeed(chalk_1.default.yellow("Server was not running"));
             console.log(chalk_1.default.red("Warning: You won't be able to track time until you restart the server."));
         }
     }, 700);
