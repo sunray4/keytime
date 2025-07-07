@@ -4,6 +4,7 @@ import { findFolder } from "./findFolder";
 
 interface Message {
   type: string;
+  date: string;
   timestamp: number;
   folder: string;
   lang: string;
@@ -80,7 +81,8 @@ export class Client {
   public prepareHeartbeat(
     doc: vscode.TextDocument,
     timestamp: number,
-    folderNames: string[]
+    folderNames: string[],
+    date: string
   ) {
     const message: Message = {
       type: "heartbeat",
@@ -88,6 +90,7 @@ export class Client {
       folder: findFolder(folderNames, doc.uri.path),
       lang: doc.languageId,
       editor: "vscode",
+      date: date,
     };
     if (message.folder === "") {
       this.output.appendLine(

@@ -24,6 +24,11 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Project = $Result.DefaultSelection<Prisma.$ProjectPayload>
 /**
+ * Model ProjectEditor
+ * 
+ */
+export type ProjectEditor = $Result.DefaultSelection<Prisma.$ProjectEditorPayload>
+/**
  * Model Editor
  * 
  */
@@ -183,6 +188,16 @@ export class PrismaClient<
     * ```
     */
   get project(): Prisma.ProjectDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.projectEditor`: Exposes CRUD operations for the **ProjectEditor** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProjectEditors
+    * const projectEditors = await prisma.projectEditor.findMany()
+    * ```
+    */
+  get projectEditor(): Prisma.ProjectEditorDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.editor`: Exposes CRUD operations for the **Editor** model.
@@ -655,6 +670,7 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Project: 'Project',
+    ProjectEditor: 'ProjectEditor',
     Editor: 'Editor',
     ProjectLanguage: 'ProjectLanguage',
     Language: 'Language'
@@ -676,7 +692,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "project" | "editor" | "projectLanguage" | "language"
+      modelProps: "user" | "project" | "projectEditor" | "editor" | "projectLanguage" | "language"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -825,6 +841,80 @@ export namespace Prisma {
           count: {
             args: Prisma.ProjectCountArgs<ExtArgs>
             result: $Utils.Optional<ProjectCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProjectEditor: {
+        payload: Prisma.$ProjectEditorPayload<ExtArgs>
+        fields: Prisma.ProjectEditorFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProjectEditorFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectEditorPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProjectEditorFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectEditorPayload>
+          }
+          findFirst: {
+            args: Prisma.ProjectEditorFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectEditorPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProjectEditorFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectEditorPayload>
+          }
+          findMany: {
+            args: Prisma.ProjectEditorFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectEditorPayload>[]
+          }
+          create: {
+            args: Prisma.ProjectEditorCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectEditorPayload>
+          }
+          createMany: {
+            args: Prisma.ProjectEditorCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProjectEditorCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectEditorPayload>[]
+          }
+          delete: {
+            args: Prisma.ProjectEditorDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectEditorPayload>
+          }
+          update: {
+            args: Prisma.ProjectEditorUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectEditorPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProjectEditorDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProjectEditorUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProjectEditorUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectEditorPayload>[]
+          }
+          upsert: {
+            args: Prisma.ProjectEditorUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectEditorPayload>
+          }
+          aggregate: {
+            args: Prisma.ProjectEditorAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProjectEditor>
+          }
+          groupBy: {
+            args: Prisma.ProjectEditorGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProjectEditorGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProjectEditorCountArgs<ExtArgs>
+            result: $Utils.Optional<ProjectEditorCountAggregateOutputType> | number
           }
         }
       }
@@ -1136,6 +1226,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     project?: ProjectOmit
+    projectEditor?: ProjectEditorOmit
     editor?: EditorOmit
     projectLanguage?: ProjectLanguageOmit
     language?: LanguageOmit
@@ -1306,7 +1397,7 @@ export namespace Prisma {
    * ProjectCountOutputType without action
    */
   export type ProjectCountOutputTypeCountEditorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: EditorWhereInput
+    where?: ProjectEditorWhereInput
   }
 
   /**
@@ -1314,6 +1405,37 @@ export namespace Prisma {
    */
   export type ProjectCountOutputTypeCountLanguagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProjectLanguageWhereInput
+  }
+
+
+  /**
+   * Count Type EditorCountOutputType
+   */
+
+  export type EditorCountOutputType = {
+    projects: number
+  }
+
+  export type EditorCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    projects?: boolean | EditorCountOutputTypeCountProjectsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * EditorCountOutputType without action
+   */
+  export type EditorCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EditorCountOutputType
+     */
+    select?: EditorCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EditorCountOutputType without action
+   */
+  export type EditorCountOutputTypeCountProjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProjectEditorWhereInput
   }
 
 
@@ -2806,7 +2928,7 @@ export namespace Prisma {
     name: "Project"
     objects: {
       author: Prisma.$UserPayload<ExtArgs>
-      editors: Prisma.$EditorPayload<ExtArgs>[]
+      editors: Prisma.$ProjectEditorPayload<ExtArgs>[]
       languages: Prisma.$ProjectLanguagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -3209,7 +3331,7 @@ export namespace Prisma {
   export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    editors<T extends Project$editorsArgs<ExtArgs> = {}>(args?: Subset<T, Project$editorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EditorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    editors<T extends Project$editorsArgs<ExtArgs> = {}>(args?: Subset<T, Project$editorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectEditorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     languages<T extends Project$languagesArgs<ExtArgs> = {}>(args?: Subset<T, Project$languagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectLanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3642,23 +3764,23 @@ export namespace Prisma {
    */
   export type Project$editorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Editor
+     * Select specific fields to fetch from the ProjectEditor
      */
-    select?: EditorSelect<ExtArgs> | null
+    select?: ProjectEditorSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Editor
+     * Omit specific fields from the ProjectEditor
      */
-    omit?: EditorOmit<ExtArgs> | null
+    omit?: ProjectEditorOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EditorInclude<ExtArgs> | null
-    where?: EditorWhereInput
-    orderBy?: EditorOrderByWithRelationInput | EditorOrderByWithRelationInput[]
-    cursor?: EditorWhereUniqueInput
+    include?: ProjectEditorInclude<ExtArgs> | null
+    where?: ProjectEditorWhereInput
+    orderBy?: ProjectEditorOrderByWithRelationInput | ProjectEditorOrderByWithRelationInput[]
+    cursor?: ProjectEditorWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: EditorScalarFieldEnum | EditorScalarFieldEnum[]
+    distinct?: ProjectEditorScalarFieldEnum | ProjectEditorScalarFieldEnum[]
   }
 
   /**
@@ -3705,6 +3827,1116 @@ export namespace Prisma {
 
 
   /**
+   * Model ProjectEditor
+   */
+
+  export type AggregateProjectEditor = {
+    _count: ProjectEditorCountAggregateOutputType | null
+    _avg: ProjectEditorAvgAggregateOutputType | null
+    _sum: ProjectEditorSumAggregateOutputType | null
+    _min: ProjectEditorMinAggregateOutputType | null
+    _max: ProjectEditorMaxAggregateOutputType | null
+  }
+
+  export type ProjectEditorAvgAggregateOutputType = {
+    id: number | null
+    projectId: number | null
+    editorId: number | null
+    timeSpent: number | null
+  }
+
+  export type ProjectEditorSumAggregateOutputType = {
+    id: number | null
+    projectId: number | null
+    editorId: number | null
+    timeSpent: bigint | null
+  }
+
+  export type ProjectEditorMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    projectId: number | null
+    editorId: number | null
+    timeSpent: bigint | null
+  }
+
+  export type ProjectEditorMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    projectId: number | null
+    editorId: number | null
+    timeSpent: bigint | null
+  }
+
+  export type ProjectEditorCountAggregateOutputType = {
+    id: number
+    name: number
+    projectId: number
+    editorId: number
+    timeSpent: number
+    _all: number
+  }
+
+
+  export type ProjectEditorAvgAggregateInputType = {
+    id?: true
+    projectId?: true
+    editorId?: true
+    timeSpent?: true
+  }
+
+  export type ProjectEditorSumAggregateInputType = {
+    id?: true
+    projectId?: true
+    editorId?: true
+    timeSpent?: true
+  }
+
+  export type ProjectEditorMinAggregateInputType = {
+    id?: true
+    name?: true
+    projectId?: true
+    editorId?: true
+    timeSpent?: true
+  }
+
+  export type ProjectEditorMaxAggregateInputType = {
+    id?: true
+    name?: true
+    projectId?: true
+    editorId?: true
+    timeSpent?: true
+  }
+
+  export type ProjectEditorCountAggregateInputType = {
+    id?: true
+    name?: true
+    projectId?: true
+    editorId?: true
+    timeSpent?: true
+    _all?: true
+  }
+
+  export type ProjectEditorAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProjectEditor to aggregate.
+     */
+    where?: ProjectEditorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProjectEditors to fetch.
+     */
+    orderBy?: ProjectEditorOrderByWithRelationInput | ProjectEditorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProjectEditorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProjectEditors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProjectEditors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProjectEditors
+    **/
+    _count?: true | ProjectEditorCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProjectEditorAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProjectEditorSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProjectEditorMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProjectEditorMaxAggregateInputType
+  }
+
+  export type GetProjectEditorAggregateType<T extends ProjectEditorAggregateArgs> = {
+        [P in keyof T & keyof AggregateProjectEditor]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProjectEditor[P]>
+      : GetScalarType<T[P], AggregateProjectEditor[P]>
+  }
+
+
+
+
+  export type ProjectEditorGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProjectEditorWhereInput
+    orderBy?: ProjectEditorOrderByWithAggregationInput | ProjectEditorOrderByWithAggregationInput[]
+    by: ProjectEditorScalarFieldEnum[] | ProjectEditorScalarFieldEnum
+    having?: ProjectEditorScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProjectEditorCountAggregateInputType | true
+    _avg?: ProjectEditorAvgAggregateInputType
+    _sum?: ProjectEditorSumAggregateInputType
+    _min?: ProjectEditorMinAggregateInputType
+    _max?: ProjectEditorMaxAggregateInputType
+  }
+
+  export type ProjectEditorGroupByOutputType = {
+    id: number
+    name: string
+    projectId: number
+    editorId: number
+    timeSpent: bigint
+    _count: ProjectEditorCountAggregateOutputType | null
+    _avg: ProjectEditorAvgAggregateOutputType | null
+    _sum: ProjectEditorSumAggregateOutputType | null
+    _min: ProjectEditorMinAggregateOutputType | null
+    _max: ProjectEditorMaxAggregateOutputType | null
+  }
+
+  type GetProjectEditorGroupByPayload<T extends ProjectEditorGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProjectEditorGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProjectEditorGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProjectEditorGroupByOutputType[P]>
+            : GetScalarType<T[P], ProjectEditorGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProjectEditorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    projectId?: boolean
+    editorId?: boolean
+    timeSpent?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    editor?: boolean | EditorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["projectEditor"]>
+
+  export type ProjectEditorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    projectId?: boolean
+    editorId?: boolean
+    timeSpent?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    editor?: boolean | EditorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["projectEditor"]>
+
+  export type ProjectEditorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    projectId?: boolean
+    editorId?: boolean
+    timeSpent?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    editor?: boolean | EditorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["projectEditor"]>
+
+  export type ProjectEditorSelectScalar = {
+    id?: boolean
+    name?: boolean
+    projectId?: boolean
+    editorId?: boolean
+    timeSpent?: boolean
+  }
+
+  export type ProjectEditorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "projectId" | "editorId" | "timeSpent", ExtArgs["result"]["projectEditor"]>
+  export type ProjectEditorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    editor?: boolean | EditorDefaultArgs<ExtArgs>
+  }
+  export type ProjectEditorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    editor?: boolean | EditorDefaultArgs<ExtArgs>
+  }
+  export type ProjectEditorIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    editor?: boolean | EditorDefaultArgs<ExtArgs>
+  }
+
+  export type $ProjectEditorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProjectEditor"
+    objects: {
+      project: Prisma.$ProjectPayload<ExtArgs>
+      editor: Prisma.$EditorPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      projectId: number
+      editorId: number
+      timeSpent: bigint
+    }, ExtArgs["result"]["projectEditor"]>
+    composites: {}
+  }
+
+  type ProjectEditorGetPayload<S extends boolean | null | undefined | ProjectEditorDefaultArgs> = $Result.GetResult<Prisma.$ProjectEditorPayload, S>
+
+  type ProjectEditorCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProjectEditorFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProjectEditorCountAggregateInputType | true
+    }
+
+  export interface ProjectEditorDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProjectEditor'], meta: { name: 'ProjectEditor' } }
+    /**
+     * Find zero or one ProjectEditor that matches the filter.
+     * @param {ProjectEditorFindUniqueArgs} args - Arguments to find a ProjectEditor
+     * @example
+     * // Get one ProjectEditor
+     * const projectEditor = await prisma.projectEditor.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProjectEditorFindUniqueArgs>(args: SelectSubset<T, ProjectEditorFindUniqueArgs<ExtArgs>>): Prisma__ProjectEditorClient<$Result.GetResult<Prisma.$ProjectEditorPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProjectEditor that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProjectEditorFindUniqueOrThrowArgs} args - Arguments to find a ProjectEditor
+     * @example
+     * // Get one ProjectEditor
+     * const projectEditor = await prisma.projectEditor.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProjectEditorFindUniqueOrThrowArgs>(args: SelectSubset<T, ProjectEditorFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProjectEditorClient<$Result.GetResult<Prisma.$ProjectEditorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProjectEditor that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectEditorFindFirstArgs} args - Arguments to find a ProjectEditor
+     * @example
+     * // Get one ProjectEditor
+     * const projectEditor = await prisma.projectEditor.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProjectEditorFindFirstArgs>(args?: SelectSubset<T, ProjectEditorFindFirstArgs<ExtArgs>>): Prisma__ProjectEditorClient<$Result.GetResult<Prisma.$ProjectEditorPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProjectEditor that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectEditorFindFirstOrThrowArgs} args - Arguments to find a ProjectEditor
+     * @example
+     * // Get one ProjectEditor
+     * const projectEditor = await prisma.projectEditor.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProjectEditorFindFirstOrThrowArgs>(args?: SelectSubset<T, ProjectEditorFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProjectEditorClient<$Result.GetResult<Prisma.$ProjectEditorPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProjectEditors that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectEditorFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProjectEditors
+     * const projectEditors = await prisma.projectEditor.findMany()
+     * 
+     * // Get first 10 ProjectEditors
+     * const projectEditors = await prisma.projectEditor.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const projectEditorWithIdOnly = await prisma.projectEditor.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProjectEditorFindManyArgs>(args?: SelectSubset<T, ProjectEditorFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectEditorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProjectEditor.
+     * @param {ProjectEditorCreateArgs} args - Arguments to create a ProjectEditor.
+     * @example
+     * // Create one ProjectEditor
+     * const ProjectEditor = await prisma.projectEditor.create({
+     *   data: {
+     *     // ... data to create a ProjectEditor
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProjectEditorCreateArgs>(args: SelectSubset<T, ProjectEditorCreateArgs<ExtArgs>>): Prisma__ProjectEditorClient<$Result.GetResult<Prisma.$ProjectEditorPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProjectEditors.
+     * @param {ProjectEditorCreateManyArgs} args - Arguments to create many ProjectEditors.
+     * @example
+     * // Create many ProjectEditors
+     * const projectEditor = await prisma.projectEditor.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProjectEditorCreateManyArgs>(args?: SelectSubset<T, ProjectEditorCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProjectEditors and returns the data saved in the database.
+     * @param {ProjectEditorCreateManyAndReturnArgs} args - Arguments to create many ProjectEditors.
+     * @example
+     * // Create many ProjectEditors
+     * const projectEditor = await prisma.projectEditor.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProjectEditors and only return the `id`
+     * const projectEditorWithIdOnly = await prisma.projectEditor.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProjectEditorCreateManyAndReturnArgs>(args?: SelectSubset<T, ProjectEditorCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectEditorPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ProjectEditor.
+     * @param {ProjectEditorDeleteArgs} args - Arguments to delete one ProjectEditor.
+     * @example
+     * // Delete one ProjectEditor
+     * const ProjectEditor = await prisma.projectEditor.delete({
+     *   where: {
+     *     // ... filter to delete one ProjectEditor
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProjectEditorDeleteArgs>(args: SelectSubset<T, ProjectEditorDeleteArgs<ExtArgs>>): Prisma__ProjectEditorClient<$Result.GetResult<Prisma.$ProjectEditorPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProjectEditor.
+     * @param {ProjectEditorUpdateArgs} args - Arguments to update one ProjectEditor.
+     * @example
+     * // Update one ProjectEditor
+     * const projectEditor = await prisma.projectEditor.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProjectEditorUpdateArgs>(args: SelectSubset<T, ProjectEditorUpdateArgs<ExtArgs>>): Prisma__ProjectEditorClient<$Result.GetResult<Prisma.$ProjectEditorPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProjectEditors.
+     * @param {ProjectEditorDeleteManyArgs} args - Arguments to filter ProjectEditors to delete.
+     * @example
+     * // Delete a few ProjectEditors
+     * const { count } = await prisma.projectEditor.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProjectEditorDeleteManyArgs>(args?: SelectSubset<T, ProjectEditorDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProjectEditors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectEditorUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProjectEditors
+     * const projectEditor = await prisma.projectEditor.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProjectEditorUpdateManyArgs>(args: SelectSubset<T, ProjectEditorUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProjectEditors and returns the data updated in the database.
+     * @param {ProjectEditorUpdateManyAndReturnArgs} args - Arguments to update many ProjectEditors.
+     * @example
+     * // Update many ProjectEditors
+     * const projectEditor = await prisma.projectEditor.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ProjectEditors and only return the `id`
+     * const projectEditorWithIdOnly = await prisma.projectEditor.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProjectEditorUpdateManyAndReturnArgs>(args: SelectSubset<T, ProjectEditorUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectEditorPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ProjectEditor.
+     * @param {ProjectEditorUpsertArgs} args - Arguments to update or create a ProjectEditor.
+     * @example
+     * // Update or create a ProjectEditor
+     * const projectEditor = await prisma.projectEditor.upsert({
+     *   create: {
+     *     // ... data to create a ProjectEditor
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProjectEditor we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProjectEditorUpsertArgs>(args: SelectSubset<T, ProjectEditorUpsertArgs<ExtArgs>>): Prisma__ProjectEditorClient<$Result.GetResult<Prisma.$ProjectEditorPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ProjectEditors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectEditorCountArgs} args - Arguments to filter ProjectEditors to count.
+     * @example
+     * // Count the number of ProjectEditors
+     * const count = await prisma.projectEditor.count({
+     *   where: {
+     *     // ... the filter for the ProjectEditors we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProjectEditorCountArgs>(
+      args?: Subset<T, ProjectEditorCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProjectEditorCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProjectEditor.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectEditorAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProjectEditorAggregateArgs>(args: Subset<T, ProjectEditorAggregateArgs>): Prisma.PrismaPromise<GetProjectEditorAggregateType<T>>
+
+    /**
+     * Group by ProjectEditor.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProjectEditorGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProjectEditorGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProjectEditorGroupByArgs['orderBy'] }
+        : { orderBy?: ProjectEditorGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProjectEditorGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProjectEditorGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProjectEditor model
+   */
+  readonly fields: ProjectEditorFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProjectEditor.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProjectEditorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    editor<T extends EditorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EditorDefaultArgs<ExtArgs>>): Prisma__EditorClient<$Result.GetResult<Prisma.$EditorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProjectEditor model
+   */
+  interface ProjectEditorFieldRefs {
+    readonly id: FieldRef<"ProjectEditor", 'Int'>
+    readonly name: FieldRef<"ProjectEditor", 'String'>
+    readonly projectId: FieldRef<"ProjectEditor", 'Int'>
+    readonly editorId: FieldRef<"ProjectEditor", 'Int'>
+    readonly timeSpent: FieldRef<"ProjectEditor", 'BigInt'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProjectEditor findUnique
+   */
+  export type ProjectEditorFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectEditor
+     */
+    select?: ProjectEditorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectEditor
+     */
+    omit?: ProjectEditorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectEditorInclude<ExtArgs> | null
+    /**
+     * Filter, which ProjectEditor to fetch.
+     */
+    where: ProjectEditorWhereUniqueInput
+  }
+
+  /**
+   * ProjectEditor findUniqueOrThrow
+   */
+  export type ProjectEditorFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectEditor
+     */
+    select?: ProjectEditorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectEditor
+     */
+    omit?: ProjectEditorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectEditorInclude<ExtArgs> | null
+    /**
+     * Filter, which ProjectEditor to fetch.
+     */
+    where: ProjectEditorWhereUniqueInput
+  }
+
+  /**
+   * ProjectEditor findFirst
+   */
+  export type ProjectEditorFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectEditor
+     */
+    select?: ProjectEditorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectEditor
+     */
+    omit?: ProjectEditorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectEditorInclude<ExtArgs> | null
+    /**
+     * Filter, which ProjectEditor to fetch.
+     */
+    where?: ProjectEditorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProjectEditors to fetch.
+     */
+    orderBy?: ProjectEditorOrderByWithRelationInput | ProjectEditorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProjectEditors.
+     */
+    cursor?: ProjectEditorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProjectEditors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProjectEditors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProjectEditors.
+     */
+    distinct?: ProjectEditorScalarFieldEnum | ProjectEditorScalarFieldEnum[]
+  }
+
+  /**
+   * ProjectEditor findFirstOrThrow
+   */
+  export type ProjectEditorFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectEditor
+     */
+    select?: ProjectEditorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectEditor
+     */
+    omit?: ProjectEditorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectEditorInclude<ExtArgs> | null
+    /**
+     * Filter, which ProjectEditor to fetch.
+     */
+    where?: ProjectEditorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProjectEditors to fetch.
+     */
+    orderBy?: ProjectEditorOrderByWithRelationInput | ProjectEditorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProjectEditors.
+     */
+    cursor?: ProjectEditorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProjectEditors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProjectEditors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProjectEditors.
+     */
+    distinct?: ProjectEditorScalarFieldEnum | ProjectEditorScalarFieldEnum[]
+  }
+
+  /**
+   * ProjectEditor findMany
+   */
+  export type ProjectEditorFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectEditor
+     */
+    select?: ProjectEditorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectEditor
+     */
+    omit?: ProjectEditorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectEditorInclude<ExtArgs> | null
+    /**
+     * Filter, which ProjectEditors to fetch.
+     */
+    where?: ProjectEditorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProjectEditors to fetch.
+     */
+    orderBy?: ProjectEditorOrderByWithRelationInput | ProjectEditorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProjectEditors.
+     */
+    cursor?: ProjectEditorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProjectEditors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProjectEditors.
+     */
+    skip?: number
+    distinct?: ProjectEditorScalarFieldEnum | ProjectEditorScalarFieldEnum[]
+  }
+
+  /**
+   * ProjectEditor create
+   */
+  export type ProjectEditorCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectEditor
+     */
+    select?: ProjectEditorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectEditor
+     */
+    omit?: ProjectEditorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectEditorInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProjectEditor.
+     */
+    data: XOR<ProjectEditorCreateInput, ProjectEditorUncheckedCreateInput>
+  }
+
+  /**
+   * ProjectEditor createMany
+   */
+  export type ProjectEditorCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProjectEditors.
+     */
+    data: ProjectEditorCreateManyInput | ProjectEditorCreateManyInput[]
+  }
+
+  /**
+   * ProjectEditor createManyAndReturn
+   */
+  export type ProjectEditorCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectEditor
+     */
+    select?: ProjectEditorSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectEditor
+     */
+    omit?: ProjectEditorOmit<ExtArgs> | null
+    /**
+     * The data used to create many ProjectEditors.
+     */
+    data: ProjectEditorCreateManyInput | ProjectEditorCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectEditorIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProjectEditor update
+   */
+  export type ProjectEditorUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectEditor
+     */
+    select?: ProjectEditorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectEditor
+     */
+    omit?: ProjectEditorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectEditorInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProjectEditor.
+     */
+    data: XOR<ProjectEditorUpdateInput, ProjectEditorUncheckedUpdateInput>
+    /**
+     * Choose, which ProjectEditor to update.
+     */
+    where: ProjectEditorWhereUniqueInput
+  }
+
+  /**
+   * ProjectEditor updateMany
+   */
+  export type ProjectEditorUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProjectEditors.
+     */
+    data: XOR<ProjectEditorUpdateManyMutationInput, ProjectEditorUncheckedUpdateManyInput>
+    /**
+     * Filter which ProjectEditors to update
+     */
+    where?: ProjectEditorWhereInput
+    /**
+     * Limit how many ProjectEditors to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProjectEditor updateManyAndReturn
+   */
+  export type ProjectEditorUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectEditor
+     */
+    select?: ProjectEditorSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectEditor
+     */
+    omit?: ProjectEditorOmit<ExtArgs> | null
+    /**
+     * The data used to update ProjectEditors.
+     */
+    data: XOR<ProjectEditorUpdateManyMutationInput, ProjectEditorUncheckedUpdateManyInput>
+    /**
+     * Filter which ProjectEditors to update
+     */
+    where?: ProjectEditorWhereInput
+    /**
+     * Limit how many ProjectEditors to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectEditorIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProjectEditor upsert
+   */
+  export type ProjectEditorUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectEditor
+     */
+    select?: ProjectEditorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectEditor
+     */
+    omit?: ProjectEditorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectEditorInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProjectEditor to update in case it exists.
+     */
+    where: ProjectEditorWhereUniqueInput
+    /**
+     * In case the ProjectEditor found by the `where` argument doesn't exist, create a new ProjectEditor with this data.
+     */
+    create: XOR<ProjectEditorCreateInput, ProjectEditorUncheckedCreateInput>
+    /**
+     * In case the ProjectEditor was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProjectEditorUpdateInput, ProjectEditorUncheckedUpdateInput>
+  }
+
+  /**
+   * ProjectEditor delete
+   */
+  export type ProjectEditorDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectEditor
+     */
+    select?: ProjectEditorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectEditor
+     */
+    omit?: ProjectEditorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectEditorInclude<ExtArgs> | null
+    /**
+     * Filter which ProjectEditor to delete.
+     */
+    where: ProjectEditorWhereUniqueInput
+  }
+
+  /**
+   * ProjectEditor deleteMany
+   */
+  export type ProjectEditorDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProjectEditors to delete
+     */
+    where?: ProjectEditorWhereInput
+    /**
+     * Limit how many ProjectEditors to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProjectEditor without action
+   */
+  export type ProjectEditorDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectEditor
+     */
+    select?: ProjectEditorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectEditor
+     */
+    omit?: ProjectEditorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectEditorInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Editor
    */
 
@@ -3718,80 +4950,70 @@ export namespace Prisma {
 
   export type EditorAvgAggregateOutputType = {
     id: number | null
-    userId: number | null
-    projectId: number | null
     timeSpent: number | null
+    userId: number | null
   }
 
   export type EditorSumAggregateOutputType = {
     id: number | null
-    userId: number | null
-    projectId: number | null
     timeSpent: bigint | null
+    userId: number | null
   }
 
   export type EditorMinAggregateOutputType = {
     id: number | null
     name: string | null
-    userId: number | null
-    projectId: number | null
     timeSpent: bigint | null
+    userId: number | null
   }
 
   export type EditorMaxAggregateOutputType = {
     id: number | null
     name: string | null
-    userId: number | null
-    projectId: number | null
     timeSpent: bigint | null
+    userId: number | null
   }
 
   export type EditorCountAggregateOutputType = {
     id: number
     name: number
-    userId: number
-    projectId: number
     timeSpent: number
+    userId: number
     _all: number
   }
 
 
   export type EditorAvgAggregateInputType = {
     id?: true
-    userId?: true
-    projectId?: true
     timeSpent?: true
+    userId?: true
   }
 
   export type EditorSumAggregateInputType = {
     id?: true
-    userId?: true
-    projectId?: true
     timeSpent?: true
+    userId?: true
   }
 
   export type EditorMinAggregateInputType = {
     id?: true
     name?: true
-    userId?: true
-    projectId?: true
     timeSpent?: true
+    userId?: true
   }
 
   export type EditorMaxAggregateInputType = {
     id?: true
     name?: true
-    userId?: true
-    projectId?: true
     timeSpent?: true
+    userId?: true
   }
 
   export type EditorCountAggregateInputType = {
     id?: true
     name?: true
-    userId?: true
-    projectId?: true
     timeSpent?: true
+    userId?: true
     _all?: true
   }
 
@@ -3884,9 +5106,8 @@ export namespace Prisma {
   export type EditorGroupByOutputType = {
     id: number
     name: string
-    userId: number
-    projectId: number
     timeSpent: bigint
+    userId: number
     _count: EditorCountAggregateOutputType | null
     _avg: EditorAvgAggregateOutputType | null
     _sum: EditorSumAggregateOutputType | null
@@ -3911,67 +5132,60 @@ export namespace Prisma {
   export type EditorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    userId?: boolean
-    projectId?: boolean
     timeSpent?: boolean
+    userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    projects?: boolean | Editor$projectsArgs<ExtArgs>
+    _count?: boolean | EditorCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["editor"]>
 
   export type EditorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    userId?: boolean
-    projectId?: boolean
     timeSpent?: boolean
+    userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    project?: boolean | ProjectDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["editor"]>
 
   export type EditorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    userId?: boolean
-    projectId?: boolean
     timeSpent?: boolean
+    userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    project?: boolean | ProjectDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["editor"]>
 
   export type EditorSelectScalar = {
     id?: boolean
     name?: boolean
-    userId?: boolean
-    projectId?: boolean
     timeSpent?: boolean
+    userId?: boolean
   }
 
-  export type EditorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userId" | "projectId" | "timeSpent", ExtArgs["result"]["editor"]>
+  export type EditorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "timeSpent" | "userId", ExtArgs["result"]["editor"]>
   export type EditorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    projects?: boolean | Editor$projectsArgs<ExtArgs>
+    _count?: boolean | EditorCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type EditorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    project?: boolean | ProjectDefaultArgs<ExtArgs>
   }
   export type EditorIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    project?: boolean | ProjectDefaultArgs<ExtArgs>
   }
 
   export type $EditorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Editor"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      project: Prisma.$ProjectPayload<ExtArgs>
+      projects: Prisma.$ProjectEditorPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
-      userId: number
-      projectId: number
       timeSpent: bigint
+      userId: number
     }, ExtArgs["result"]["editor"]>
     composites: {}
   }
@@ -4367,7 +5581,7 @@ export namespace Prisma {
   export interface Prisma__EditorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    projects<T extends Editor$projectsArgs<ExtArgs> = {}>(args?: Subset<T, Editor$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectEditorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4399,9 +5613,8 @@ export namespace Prisma {
   interface EditorFieldRefs {
     readonly id: FieldRef<"Editor", 'Int'>
     readonly name: FieldRef<"Editor", 'String'>
-    readonly userId: FieldRef<"Editor", 'Int'>
-    readonly projectId: FieldRef<"Editor", 'Int'>
     readonly timeSpent: FieldRef<"Editor", 'BigInt'>
+    readonly userId: FieldRef<"Editor", 'Int'>
   }
     
 
@@ -4793,6 +6006,30 @@ export namespace Prisma {
      * Limit how many Editors to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Editor.projects
+   */
+  export type Editor$projectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectEditor
+     */
+    select?: ProjectEditorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProjectEditor
+     */
+    omit?: ProjectEditorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectEditorInclude<ExtArgs> | null
+    where?: ProjectEditorWhereInput
+    orderBy?: ProjectEditorOrderByWithRelationInput | ProjectEditorOrderByWithRelationInput[]
+    cursor?: ProjectEditorWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProjectEditorScalarFieldEnum | ProjectEditorScalarFieldEnum[]
   }
 
   /**
@@ -7074,12 +8311,22 @@ export namespace Prisma {
   export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
 
 
+  export const ProjectEditorScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    projectId: 'projectId',
+    editorId: 'editorId',
+    timeSpent: 'timeSpent'
+  };
+
+  export type ProjectEditorScalarFieldEnum = (typeof ProjectEditorScalarFieldEnum)[keyof typeof ProjectEditorScalarFieldEnum]
+
+
   export const EditorScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    userId: 'userId',
-    projectId: 'projectId',
-    timeSpent: 'timeSpent'
+    timeSpent: 'timeSpent',
+    userId: 'userId'
   };
 
   export type EditorScalarFieldEnum = (typeof EditorScalarFieldEnum)[keyof typeof EditorScalarFieldEnum]
@@ -7237,7 +8484,7 @@ export namespace Prisma {
     timeSpent?: BigIntFilter<"Project"> | bigint | number
     authorId?: IntFilter<"Project"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
-    editors?: EditorListRelationFilter
+    editors?: ProjectEditorListRelationFilter
     languages?: ProjectLanguageListRelationFilter
   }
 
@@ -7247,7 +8494,7 @@ export namespace Prisma {
     timeSpent?: SortOrder
     authorId?: SortOrder
     author?: UserOrderByWithRelationInput
-    editors?: EditorOrderByRelationAggregateInput
+    editors?: ProjectEditorOrderByRelationAggregateInput
     languages?: ProjectLanguageOrderByRelationAggregateInput
   }
 
@@ -7260,7 +8507,7 @@ export namespace Prisma {
     timeSpent?: BigIntFilter<"Project"> | bigint | number
     authorId?: IntFilter<"Project"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
-    editors?: EditorListRelationFilter
+    editors?: ProjectEditorListRelationFilter
     languages?: ProjectLanguageListRelationFilter
   }, "id" | "name">
 
@@ -7286,27 +8533,85 @@ export namespace Prisma {
     authorId?: IntWithAggregatesFilter<"Project"> | number
   }
 
+  export type ProjectEditorWhereInput = {
+    AND?: ProjectEditorWhereInput | ProjectEditorWhereInput[]
+    OR?: ProjectEditorWhereInput[]
+    NOT?: ProjectEditorWhereInput | ProjectEditorWhereInput[]
+    id?: IntFilter<"ProjectEditor"> | number
+    name?: StringFilter<"ProjectEditor"> | string
+    projectId?: IntFilter<"ProjectEditor"> | number
+    editorId?: IntFilter<"ProjectEditor"> | number
+    timeSpent?: BigIntFilter<"ProjectEditor"> | bigint | number
+    project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
+    editor?: XOR<EditorScalarRelationFilter, EditorWhereInput>
+  }
+
+  export type ProjectEditorOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    projectId?: SortOrder
+    editorId?: SortOrder
+    timeSpent?: SortOrder
+    project?: ProjectOrderByWithRelationInput
+    editor?: EditorOrderByWithRelationInput
+  }
+
+  export type ProjectEditorWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ProjectEditorWhereInput | ProjectEditorWhereInput[]
+    OR?: ProjectEditorWhereInput[]
+    NOT?: ProjectEditorWhereInput | ProjectEditorWhereInput[]
+    name?: StringFilter<"ProjectEditor"> | string
+    projectId?: IntFilter<"ProjectEditor"> | number
+    editorId?: IntFilter<"ProjectEditor"> | number
+    timeSpent?: BigIntFilter<"ProjectEditor"> | bigint | number
+    project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
+    editor?: XOR<EditorScalarRelationFilter, EditorWhereInput>
+  }, "id">
+
+  export type ProjectEditorOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    projectId?: SortOrder
+    editorId?: SortOrder
+    timeSpent?: SortOrder
+    _count?: ProjectEditorCountOrderByAggregateInput
+    _avg?: ProjectEditorAvgOrderByAggregateInput
+    _max?: ProjectEditorMaxOrderByAggregateInput
+    _min?: ProjectEditorMinOrderByAggregateInput
+    _sum?: ProjectEditorSumOrderByAggregateInput
+  }
+
+  export type ProjectEditorScalarWhereWithAggregatesInput = {
+    AND?: ProjectEditorScalarWhereWithAggregatesInput | ProjectEditorScalarWhereWithAggregatesInput[]
+    OR?: ProjectEditorScalarWhereWithAggregatesInput[]
+    NOT?: ProjectEditorScalarWhereWithAggregatesInput | ProjectEditorScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ProjectEditor"> | number
+    name?: StringWithAggregatesFilter<"ProjectEditor"> | string
+    projectId?: IntWithAggregatesFilter<"ProjectEditor"> | number
+    editorId?: IntWithAggregatesFilter<"ProjectEditor"> | number
+    timeSpent?: BigIntWithAggregatesFilter<"ProjectEditor"> | bigint | number
+  }
+
   export type EditorWhereInput = {
     AND?: EditorWhereInput | EditorWhereInput[]
     OR?: EditorWhereInput[]
     NOT?: EditorWhereInput | EditorWhereInput[]
     id?: IntFilter<"Editor"> | number
     name?: StringFilter<"Editor"> | string
-    userId?: IntFilter<"Editor"> | number
-    projectId?: IntFilter<"Editor"> | number
     timeSpent?: BigIntFilter<"Editor"> | bigint | number
+    userId?: IntFilter<"Editor"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
+    projects?: ProjectEditorListRelationFilter
   }
 
   export type EditorOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    userId?: SortOrder
-    projectId?: SortOrder
     timeSpent?: SortOrder
+    userId?: SortOrder
     user?: UserOrderByWithRelationInput
-    project?: ProjectOrderByWithRelationInput
+    projects?: ProjectEditorOrderByRelationAggregateInput
   }
 
   export type EditorWhereUniqueInput = Prisma.AtLeast<{
@@ -7315,19 +8620,17 @@ export namespace Prisma {
     AND?: EditorWhereInput | EditorWhereInput[]
     OR?: EditorWhereInput[]
     NOT?: EditorWhereInput | EditorWhereInput[]
-    userId?: IntFilter<"Editor"> | number
-    projectId?: IntFilter<"Editor"> | number
     timeSpent?: BigIntFilter<"Editor"> | bigint | number
+    userId?: IntFilter<"Editor"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
+    projects?: ProjectEditorListRelationFilter
   }, "id" | "name">
 
   export type EditorOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    userId?: SortOrder
-    projectId?: SortOrder
     timeSpent?: SortOrder
+    userId?: SortOrder
     _count?: EditorCountOrderByAggregateInput
     _avg?: EditorAvgOrderByAggregateInput
     _max?: EditorMaxOrderByAggregateInput
@@ -7341,9 +8644,8 @@ export namespace Prisma {
     NOT?: EditorScalarWhereWithAggregatesInput | EditorScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Editor"> | number
     name?: StringWithAggregatesFilter<"Editor"> | string
-    userId?: IntWithAggregatesFilter<"Editor"> | number
-    projectId?: IntWithAggregatesFilter<"Editor"> | number
     timeSpent?: BigIntWithAggregatesFilter<"Editor"> | bigint | number
+    userId?: IntWithAggregatesFilter<"Editor"> | number
   }
 
   export type ProjectLanguageWhereInput = {
@@ -7551,7 +8853,7 @@ export namespace Prisma {
     name: string
     timeSpent?: bigint | number
     author: UserCreateNestedOneWithoutProjectsInput
-    editors?: EditorCreateNestedManyWithoutProjectInput
+    editors?: ProjectEditorCreateNestedManyWithoutProjectInput
     languages?: ProjectLanguageCreateNestedManyWithoutProjectInput
   }
 
@@ -7560,7 +8862,7 @@ export namespace Prisma {
     name: string
     timeSpent?: bigint | number
     authorId: number
-    editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
+    editors?: ProjectEditorUncheckedCreateNestedManyWithoutProjectInput
     languages?: ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput
   }
 
@@ -7568,7 +8870,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     author?: UserUpdateOneRequiredWithoutProjectsNestedInput
-    editors?: EditorUpdateManyWithoutProjectNestedInput
+    editors?: ProjectEditorUpdateManyWithoutProjectNestedInput
     languages?: ProjectLanguageUpdateManyWithoutProjectNestedInput
   }
 
@@ -7577,7 +8879,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     authorId?: IntFieldUpdateOperationsInput | number
-    editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
+    editors?: ProjectEditorUncheckedUpdateManyWithoutProjectNestedInput
     languages?: ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput
   }
 
@@ -7600,42 +8902,92 @@ export namespace Prisma {
     authorId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type ProjectEditorCreateInput = {
+    name: string
+    timeSpent?: bigint | number
+    project: ProjectCreateNestedOneWithoutEditorsInput
+    editor: EditorCreateNestedOneWithoutProjectsInput
+  }
+
+  export type ProjectEditorUncheckedCreateInput = {
+    id?: number
+    name: string
+    projectId: number
+    editorId: number
+    timeSpent?: bigint | number
+  }
+
+  export type ProjectEditorUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+    project?: ProjectUpdateOneRequiredWithoutEditorsNestedInput
+    editor?: EditorUpdateOneRequiredWithoutProjectsNestedInput
+  }
+
+  export type ProjectEditorUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    projectId?: IntFieldUpdateOperationsInput | number
+    editorId?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type ProjectEditorCreateManyInput = {
+    id?: number
+    name: string
+    projectId: number
+    editorId: number
+    timeSpent?: bigint | number
+  }
+
+  export type ProjectEditorUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type ProjectEditorUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    projectId?: IntFieldUpdateOperationsInput | number
+    editorId?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
   export type EditorCreateInput = {
     name: string
     timeSpent?: bigint | number
     user: UserCreateNestedOneWithoutEditorsInput
-    project: ProjectCreateNestedOneWithoutEditorsInput
+    projects?: ProjectEditorCreateNestedManyWithoutEditorInput
   }
 
   export type EditorUncheckedCreateInput = {
     id?: number
     name: string
-    userId: number
-    projectId: number
     timeSpent?: bigint | number
+    userId: number
+    projects?: ProjectEditorUncheckedCreateNestedManyWithoutEditorInput
   }
 
   export type EditorUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     user?: UserUpdateOneRequiredWithoutEditorsNestedInput
-    project?: ProjectUpdateOneRequiredWithoutEditorsNestedInput
+    projects?: ProjectEditorUpdateManyWithoutEditorNestedInput
   }
 
   export type EditorUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    userId?: IntFieldUpdateOperationsInput | number
-    projectId?: IntFieldUpdateOperationsInput | number
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+    userId?: IntFieldUpdateOperationsInput | number
+    projects?: ProjectEditorUncheckedUpdateManyWithoutEditorNestedInput
   }
 
   export type EditorCreateManyInput = {
     id?: number
     name: string
-    userId: number
-    projectId: number
     timeSpent?: bigint | number
+    userId: number
   }
 
   export type EditorUpdateManyMutationInput = {
@@ -7646,9 +8998,8 @@ export namespace Prisma {
   export type EditorUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    userId?: IntFieldUpdateOperationsInput | number
-    projectId?: IntFieldUpdateOperationsInput | number
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProjectLanguageCreateInput = {
@@ -7918,10 +9269,20 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
+  export type ProjectEditorListRelationFilter = {
+    every?: ProjectEditorWhereInput
+    some?: ProjectEditorWhereInput
+    none?: ProjectEditorWhereInput
+  }
+
   export type ProjectLanguageListRelationFilter = {
     every?: ProjectLanguageWhereInput
     some?: ProjectLanguageWhereInput
     none?: ProjectLanguageWhereInput
+  }
+
+  export type ProjectEditorOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type ProjectLanguageOrderByRelationAggregateInput = {
@@ -7966,42 +9327,80 @@ export namespace Prisma {
     isNot?: ProjectWhereInput
   }
 
+  export type EditorScalarRelationFilter = {
+    is?: EditorWhereInput
+    isNot?: EditorWhereInput
+  }
+
+  export type ProjectEditorCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    projectId?: SortOrder
+    editorId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type ProjectEditorAvgOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    editorId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type ProjectEditorMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    projectId?: SortOrder
+    editorId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type ProjectEditorMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    projectId?: SortOrder
+    editorId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
+  export type ProjectEditorSumOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    editorId?: SortOrder
+    timeSpent?: SortOrder
+  }
+
   export type EditorCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    userId?: SortOrder
-    projectId?: SortOrder
     timeSpent?: SortOrder
+    userId?: SortOrder
   }
 
   export type EditorAvgOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
-    projectId?: SortOrder
     timeSpent?: SortOrder
+    userId?: SortOrder
   }
 
   export type EditorMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    userId?: SortOrder
-    projectId?: SortOrder
     timeSpent?: SortOrder
+    userId?: SortOrder
   }
 
   export type EditorMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    userId?: SortOrder
-    projectId?: SortOrder
     timeSpent?: SortOrder
+    userId?: SortOrder
   }
 
   export type EditorSumOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
-    projectId?: SortOrder
     timeSpent?: SortOrder
+    userId?: SortOrder
   }
 
   export type LanguageScalarRelationFilter = {
@@ -8232,11 +9631,11 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type EditorCreateNestedManyWithoutProjectInput = {
-    create?: XOR<EditorCreateWithoutProjectInput, EditorUncheckedCreateWithoutProjectInput> | EditorCreateWithoutProjectInput[] | EditorUncheckedCreateWithoutProjectInput[]
-    connectOrCreate?: EditorCreateOrConnectWithoutProjectInput | EditorCreateOrConnectWithoutProjectInput[]
-    createMany?: EditorCreateManyProjectInputEnvelope
-    connect?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
+  export type ProjectEditorCreateNestedManyWithoutProjectInput = {
+    create?: XOR<ProjectEditorCreateWithoutProjectInput, ProjectEditorUncheckedCreateWithoutProjectInput> | ProjectEditorCreateWithoutProjectInput[] | ProjectEditorUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: ProjectEditorCreateOrConnectWithoutProjectInput | ProjectEditorCreateOrConnectWithoutProjectInput[]
+    createMany?: ProjectEditorCreateManyProjectInputEnvelope
+    connect?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
   }
 
   export type ProjectLanguageCreateNestedManyWithoutProjectInput = {
@@ -8246,11 +9645,11 @@ export namespace Prisma {
     connect?: ProjectLanguageWhereUniqueInput | ProjectLanguageWhereUniqueInput[]
   }
 
-  export type EditorUncheckedCreateNestedManyWithoutProjectInput = {
-    create?: XOR<EditorCreateWithoutProjectInput, EditorUncheckedCreateWithoutProjectInput> | EditorCreateWithoutProjectInput[] | EditorUncheckedCreateWithoutProjectInput[]
-    connectOrCreate?: EditorCreateOrConnectWithoutProjectInput | EditorCreateOrConnectWithoutProjectInput[]
-    createMany?: EditorCreateManyProjectInputEnvelope
-    connect?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
+  export type ProjectEditorUncheckedCreateNestedManyWithoutProjectInput = {
+    create?: XOR<ProjectEditorCreateWithoutProjectInput, ProjectEditorUncheckedCreateWithoutProjectInput> | ProjectEditorCreateWithoutProjectInput[] | ProjectEditorUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: ProjectEditorCreateOrConnectWithoutProjectInput | ProjectEditorCreateOrConnectWithoutProjectInput[]
+    createMany?: ProjectEditorCreateManyProjectInputEnvelope
+    connect?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
   }
 
   export type ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput = {
@@ -8268,18 +9667,18 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProjectsInput, UserUpdateWithoutProjectsInput>, UserUncheckedUpdateWithoutProjectsInput>
   }
 
-  export type EditorUpdateManyWithoutProjectNestedInput = {
-    create?: XOR<EditorCreateWithoutProjectInput, EditorUncheckedCreateWithoutProjectInput> | EditorCreateWithoutProjectInput[] | EditorUncheckedCreateWithoutProjectInput[]
-    connectOrCreate?: EditorCreateOrConnectWithoutProjectInput | EditorCreateOrConnectWithoutProjectInput[]
-    upsert?: EditorUpsertWithWhereUniqueWithoutProjectInput | EditorUpsertWithWhereUniqueWithoutProjectInput[]
-    createMany?: EditorCreateManyProjectInputEnvelope
-    set?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
-    disconnect?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
-    delete?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
-    connect?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
-    update?: EditorUpdateWithWhereUniqueWithoutProjectInput | EditorUpdateWithWhereUniqueWithoutProjectInput[]
-    updateMany?: EditorUpdateManyWithWhereWithoutProjectInput | EditorUpdateManyWithWhereWithoutProjectInput[]
-    deleteMany?: EditorScalarWhereInput | EditorScalarWhereInput[]
+  export type ProjectEditorUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<ProjectEditorCreateWithoutProjectInput, ProjectEditorUncheckedCreateWithoutProjectInput> | ProjectEditorCreateWithoutProjectInput[] | ProjectEditorUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: ProjectEditorCreateOrConnectWithoutProjectInput | ProjectEditorCreateOrConnectWithoutProjectInput[]
+    upsert?: ProjectEditorUpsertWithWhereUniqueWithoutProjectInput | ProjectEditorUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: ProjectEditorCreateManyProjectInputEnvelope
+    set?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    disconnect?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    delete?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    connect?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    update?: ProjectEditorUpdateWithWhereUniqueWithoutProjectInput | ProjectEditorUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: ProjectEditorUpdateManyWithWhereWithoutProjectInput | ProjectEditorUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: ProjectEditorScalarWhereInput | ProjectEditorScalarWhereInput[]
   }
 
   export type ProjectLanguageUpdateManyWithoutProjectNestedInput = {
@@ -8296,18 +9695,18 @@ export namespace Prisma {
     deleteMany?: ProjectLanguageScalarWhereInput | ProjectLanguageScalarWhereInput[]
   }
 
-  export type EditorUncheckedUpdateManyWithoutProjectNestedInput = {
-    create?: XOR<EditorCreateWithoutProjectInput, EditorUncheckedCreateWithoutProjectInput> | EditorCreateWithoutProjectInput[] | EditorUncheckedCreateWithoutProjectInput[]
-    connectOrCreate?: EditorCreateOrConnectWithoutProjectInput | EditorCreateOrConnectWithoutProjectInput[]
-    upsert?: EditorUpsertWithWhereUniqueWithoutProjectInput | EditorUpsertWithWhereUniqueWithoutProjectInput[]
-    createMany?: EditorCreateManyProjectInputEnvelope
-    set?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
-    disconnect?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
-    delete?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
-    connect?: EditorWhereUniqueInput | EditorWhereUniqueInput[]
-    update?: EditorUpdateWithWhereUniqueWithoutProjectInput | EditorUpdateWithWhereUniqueWithoutProjectInput[]
-    updateMany?: EditorUpdateManyWithWhereWithoutProjectInput | EditorUpdateManyWithWhereWithoutProjectInput[]
-    deleteMany?: EditorScalarWhereInput | EditorScalarWhereInput[]
+  export type ProjectEditorUncheckedUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<ProjectEditorCreateWithoutProjectInput, ProjectEditorUncheckedCreateWithoutProjectInput> | ProjectEditorCreateWithoutProjectInput[] | ProjectEditorUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: ProjectEditorCreateOrConnectWithoutProjectInput | ProjectEditorCreateOrConnectWithoutProjectInput[]
+    upsert?: ProjectEditorUpsertWithWhereUniqueWithoutProjectInput | ProjectEditorUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: ProjectEditorCreateManyProjectInputEnvelope
+    set?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    disconnect?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    delete?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    connect?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    update?: ProjectEditorUpdateWithWhereUniqueWithoutProjectInput | ProjectEditorUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: ProjectEditorUpdateManyWithWhereWithoutProjectInput | ProjectEditorUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: ProjectEditorScalarWhereInput | ProjectEditorScalarWhereInput[]
   }
 
   export type ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput = {
@@ -8324,16 +9723,52 @@ export namespace Prisma {
     deleteMany?: ProjectLanguageScalarWhereInput | ProjectLanguageScalarWhereInput[]
   }
 
+  export type ProjectCreateNestedOneWithoutEditorsInput = {
+    create?: XOR<ProjectCreateWithoutEditorsInput, ProjectUncheckedCreateWithoutEditorsInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutEditorsInput
+    connect?: ProjectWhereUniqueInput
+  }
+
+  export type EditorCreateNestedOneWithoutProjectsInput = {
+    create?: XOR<EditorCreateWithoutProjectsInput, EditorUncheckedCreateWithoutProjectsInput>
+    connectOrCreate?: EditorCreateOrConnectWithoutProjectsInput
+    connect?: EditorWhereUniqueInput
+  }
+
+  export type ProjectUpdateOneRequiredWithoutEditorsNestedInput = {
+    create?: XOR<ProjectCreateWithoutEditorsInput, ProjectUncheckedCreateWithoutEditorsInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutEditorsInput
+    upsert?: ProjectUpsertWithoutEditorsInput
+    connect?: ProjectWhereUniqueInput
+    update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutEditorsInput, ProjectUpdateWithoutEditorsInput>, ProjectUncheckedUpdateWithoutEditorsInput>
+  }
+
+  export type EditorUpdateOneRequiredWithoutProjectsNestedInput = {
+    create?: XOR<EditorCreateWithoutProjectsInput, EditorUncheckedCreateWithoutProjectsInput>
+    connectOrCreate?: EditorCreateOrConnectWithoutProjectsInput
+    upsert?: EditorUpsertWithoutProjectsInput
+    connect?: EditorWhereUniqueInput
+    update?: XOR<XOR<EditorUpdateToOneWithWhereWithoutProjectsInput, EditorUpdateWithoutProjectsInput>, EditorUncheckedUpdateWithoutProjectsInput>
+  }
+
   export type UserCreateNestedOneWithoutEditorsInput = {
     create?: XOR<UserCreateWithoutEditorsInput, UserUncheckedCreateWithoutEditorsInput>
     connectOrCreate?: UserCreateOrConnectWithoutEditorsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type ProjectCreateNestedOneWithoutEditorsInput = {
-    create?: XOR<ProjectCreateWithoutEditorsInput, ProjectUncheckedCreateWithoutEditorsInput>
-    connectOrCreate?: ProjectCreateOrConnectWithoutEditorsInput
-    connect?: ProjectWhereUniqueInput
+  export type ProjectEditorCreateNestedManyWithoutEditorInput = {
+    create?: XOR<ProjectEditorCreateWithoutEditorInput, ProjectEditorUncheckedCreateWithoutEditorInput> | ProjectEditorCreateWithoutEditorInput[] | ProjectEditorUncheckedCreateWithoutEditorInput[]
+    connectOrCreate?: ProjectEditorCreateOrConnectWithoutEditorInput | ProjectEditorCreateOrConnectWithoutEditorInput[]
+    createMany?: ProjectEditorCreateManyEditorInputEnvelope
+    connect?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+  }
+
+  export type ProjectEditorUncheckedCreateNestedManyWithoutEditorInput = {
+    create?: XOR<ProjectEditorCreateWithoutEditorInput, ProjectEditorUncheckedCreateWithoutEditorInput> | ProjectEditorCreateWithoutEditorInput[] | ProjectEditorUncheckedCreateWithoutEditorInput[]
+    connectOrCreate?: ProjectEditorCreateOrConnectWithoutEditorInput | ProjectEditorCreateOrConnectWithoutEditorInput[]
+    createMany?: ProjectEditorCreateManyEditorInputEnvelope
+    connect?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutEditorsNestedInput = {
@@ -8344,12 +9779,32 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutEditorsInput, UserUpdateWithoutEditorsInput>, UserUncheckedUpdateWithoutEditorsInput>
   }
 
-  export type ProjectUpdateOneRequiredWithoutEditorsNestedInput = {
-    create?: XOR<ProjectCreateWithoutEditorsInput, ProjectUncheckedCreateWithoutEditorsInput>
-    connectOrCreate?: ProjectCreateOrConnectWithoutEditorsInput
-    upsert?: ProjectUpsertWithoutEditorsInput
-    connect?: ProjectWhereUniqueInput
-    update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutEditorsInput, ProjectUpdateWithoutEditorsInput>, ProjectUncheckedUpdateWithoutEditorsInput>
+  export type ProjectEditorUpdateManyWithoutEditorNestedInput = {
+    create?: XOR<ProjectEditorCreateWithoutEditorInput, ProjectEditorUncheckedCreateWithoutEditorInput> | ProjectEditorCreateWithoutEditorInput[] | ProjectEditorUncheckedCreateWithoutEditorInput[]
+    connectOrCreate?: ProjectEditorCreateOrConnectWithoutEditorInput | ProjectEditorCreateOrConnectWithoutEditorInput[]
+    upsert?: ProjectEditorUpsertWithWhereUniqueWithoutEditorInput | ProjectEditorUpsertWithWhereUniqueWithoutEditorInput[]
+    createMany?: ProjectEditorCreateManyEditorInputEnvelope
+    set?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    disconnect?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    delete?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    connect?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    update?: ProjectEditorUpdateWithWhereUniqueWithoutEditorInput | ProjectEditorUpdateWithWhereUniqueWithoutEditorInput[]
+    updateMany?: ProjectEditorUpdateManyWithWhereWithoutEditorInput | ProjectEditorUpdateManyWithWhereWithoutEditorInput[]
+    deleteMany?: ProjectEditorScalarWhereInput | ProjectEditorScalarWhereInput[]
+  }
+
+  export type ProjectEditorUncheckedUpdateManyWithoutEditorNestedInput = {
+    create?: XOR<ProjectEditorCreateWithoutEditorInput, ProjectEditorUncheckedCreateWithoutEditorInput> | ProjectEditorCreateWithoutEditorInput[] | ProjectEditorUncheckedCreateWithoutEditorInput[]
+    connectOrCreate?: ProjectEditorCreateOrConnectWithoutEditorInput | ProjectEditorCreateOrConnectWithoutEditorInput[]
+    upsert?: ProjectEditorUpsertWithWhereUniqueWithoutEditorInput | ProjectEditorUpsertWithWhereUniqueWithoutEditorInput[]
+    createMany?: ProjectEditorCreateManyEditorInputEnvelope
+    set?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    disconnect?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    delete?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    connect?: ProjectEditorWhereUniqueInput | ProjectEditorWhereUniqueInput[]
+    update?: ProjectEditorUpdateWithWhereUniqueWithoutEditorInput | ProjectEditorUpdateWithWhereUniqueWithoutEditorInput[]
+    updateMany?: ProjectEditorUpdateManyWithWhereWithoutEditorInput | ProjectEditorUpdateManyWithWhereWithoutEditorInput[]
+    deleteMany?: ProjectEditorScalarWhereInput | ProjectEditorScalarWhereInput[]
   }
 
   export type ProjectCreateNestedOneWithoutLanguagesInput = {
@@ -8535,7 +9990,7 @@ export namespace Prisma {
   export type ProjectCreateWithoutAuthorInput = {
     name: string
     timeSpent?: bigint | number
-    editors?: EditorCreateNestedManyWithoutProjectInput
+    editors?: ProjectEditorCreateNestedManyWithoutProjectInput
     languages?: ProjectLanguageCreateNestedManyWithoutProjectInput
   }
 
@@ -8543,7 +9998,7 @@ export namespace Prisma {
     id?: number
     name: string
     timeSpent?: bigint | number
-    editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
+    editors?: ProjectEditorUncheckedCreateNestedManyWithoutProjectInput
     languages?: ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput
   }
 
@@ -8559,14 +10014,14 @@ export namespace Prisma {
   export type EditorCreateWithoutUserInput = {
     name: string
     timeSpent?: bigint | number
-    project: ProjectCreateNestedOneWithoutEditorsInput
+    projects?: ProjectEditorCreateNestedManyWithoutEditorInput
   }
 
   export type EditorUncheckedCreateWithoutUserInput = {
     id?: number
     name: string
-    projectId: number
     timeSpent?: bigint | number
+    projects?: ProjectEditorUncheckedCreateNestedManyWithoutEditorInput
   }
 
   export type EditorCreateOrConnectWithoutUserInput = {
@@ -8648,9 +10103,8 @@ export namespace Prisma {
     NOT?: EditorScalarWhereInput | EditorScalarWhereInput[]
     id?: IntFilter<"Editor"> | number
     name?: StringFilter<"Editor"> | string
-    userId?: IntFilter<"Editor"> | number
-    projectId?: IntFilter<"Editor"> | number
     timeSpent?: BigIntFilter<"Editor"> | bigint | number
+    userId?: IntFilter<"Editor"> | number
   }
 
   export type LanguageUpsertWithWhereUniqueWithoutUserInput = {
@@ -8709,26 +10163,26 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutProjectsInput, UserUncheckedCreateWithoutProjectsInput>
   }
 
-  export type EditorCreateWithoutProjectInput = {
+  export type ProjectEditorCreateWithoutProjectInput = {
     name: string
     timeSpent?: bigint | number
-    user: UserCreateNestedOneWithoutEditorsInput
+    editor: EditorCreateNestedOneWithoutProjectsInput
   }
 
-  export type EditorUncheckedCreateWithoutProjectInput = {
+  export type ProjectEditorUncheckedCreateWithoutProjectInput = {
     id?: number
     name: string
-    userId: number
+    editorId: number
     timeSpent?: bigint | number
   }
 
-  export type EditorCreateOrConnectWithoutProjectInput = {
-    where: EditorWhereUniqueInput
-    create: XOR<EditorCreateWithoutProjectInput, EditorUncheckedCreateWithoutProjectInput>
+  export type ProjectEditorCreateOrConnectWithoutProjectInput = {
+    where: ProjectEditorWhereUniqueInput
+    create: XOR<ProjectEditorCreateWithoutProjectInput, ProjectEditorUncheckedCreateWithoutProjectInput>
   }
 
-  export type EditorCreateManyProjectInputEnvelope = {
-    data: EditorCreateManyProjectInput | EditorCreateManyProjectInput[]
+  export type ProjectEditorCreateManyProjectInputEnvelope = {
+    data: ProjectEditorCreateManyProjectInput | ProjectEditorCreateManyProjectInput[]
   }
 
   export type ProjectLanguageCreateWithoutProjectInput = {
@@ -8789,20 +10243,31 @@ export namespace Prisma {
     languages?: LanguageUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type EditorUpsertWithWhereUniqueWithoutProjectInput = {
-    where: EditorWhereUniqueInput
-    update: XOR<EditorUpdateWithoutProjectInput, EditorUncheckedUpdateWithoutProjectInput>
-    create: XOR<EditorCreateWithoutProjectInput, EditorUncheckedCreateWithoutProjectInput>
+  export type ProjectEditorUpsertWithWhereUniqueWithoutProjectInput = {
+    where: ProjectEditorWhereUniqueInput
+    update: XOR<ProjectEditorUpdateWithoutProjectInput, ProjectEditorUncheckedUpdateWithoutProjectInput>
+    create: XOR<ProjectEditorCreateWithoutProjectInput, ProjectEditorUncheckedCreateWithoutProjectInput>
   }
 
-  export type EditorUpdateWithWhereUniqueWithoutProjectInput = {
-    where: EditorWhereUniqueInput
-    data: XOR<EditorUpdateWithoutProjectInput, EditorUncheckedUpdateWithoutProjectInput>
+  export type ProjectEditorUpdateWithWhereUniqueWithoutProjectInput = {
+    where: ProjectEditorWhereUniqueInput
+    data: XOR<ProjectEditorUpdateWithoutProjectInput, ProjectEditorUncheckedUpdateWithoutProjectInput>
   }
 
-  export type EditorUpdateManyWithWhereWithoutProjectInput = {
-    where: EditorScalarWhereInput
-    data: XOR<EditorUpdateManyMutationInput, EditorUncheckedUpdateManyWithoutProjectInput>
+  export type ProjectEditorUpdateManyWithWhereWithoutProjectInput = {
+    where: ProjectEditorScalarWhereInput
+    data: XOR<ProjectEditorUpdateManyMutationInput, ProjectEditorUncheckedUpdateManyWithoutProjectInput>
+  }
+
+  export type ProjectEditorScalarWhereInput = {
+    AND?: ProjectEditorScalarWhereInput | ProjectEditorScalarWhereInput[]
+    OR?: ProjectEditorScalarWhereInput[]
+    NOT?: ProjectEditorScalarWhereInput | ProjectEditorScalarWhereInput[]
+    id?: IntFilter<"ProjectEditor"> | number
+    name?: StringFilter<"ProjectEditor"> | string
+    projectId?: IntFilter<"ProjectEditor"> | number
+    editorId?: IntFilter<"ProjectEditor"> | number
+    timeSpent?: BigIntFilter<"ProjectEditor"> | bigint | number
   }
 
   export type ProjectLanguageUpsertWithWhereUniqueWithoutProjectInput = {
@@ -8830,6 +10295,94 @@ export namespace Prisma {
     projectId?: IntFilter<"ProjectLanguage"> | number
     languageId?: IntFilter<"ProjectLanguage"> | number
     timeSpent?: BigIntFilter<"ProjectLanguage"> | bigint | number
+  }
+
+  export type ProjectCreateWithoutEditorsInput = {
+    name: string
+    timeSpent?: bigint | number
+    author: UserCreateNestedOneWithoutProjectsInput
+    languages?: ProjectLanguageCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectUncheckedCreateWithoutEditorsInput = {
+    id?: number
+    name: string
+    timeSpent?: bigint | number
+    authorId: number
+    languages?: ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectCreateOrConnectWithoutEditorsInput = {
+    where: ProjectWhereUniqueInput
+    create: XOR<ProjectCreateWithoutEditorsInput, ProjectUncheckedCreateWithoutEditorsInput>
+  }
+
+  export type EditorCreateWithoutProjectsInput = {
+    name: string
+    timeSpent?: bigint | number
+    user: UserCreateNestedOneWithoutEditorsInput
+  }
+
+  export type EditorUncheckedCreateWithoutProjectsInput = {
+    id?: number
+    name: string
+    timeSpent?: bigint | number
+    userId: number
+  }
+
+  export type EditorCreateOrConnectWithoutProjectsInput = {
+    where: EditorWhereUniqueInput
+    create: XOR<EditorCreateWithoutProjectsInput, EditorUncheckedCreateWithoutProjectsInput>
+  }
+
+  export type ProjectUpsertWithoutEditorsInput = {
+    update: XOR<ProjectUpdateWithoutEditorsInput, ProjectUncheckedUpdateWithoutEditorsInput>
+    create: XOR<ProjectCreateWithoutEditorsInput, ProjectUncheckedCreateWithoutEditorsInput>
+    where?: ProjectWhereInput
+  }
+
+  export type ProjectUpdateToOneWithWhereWithoutEditorsInput = {
+    where?: ProjectWhereInput
+    data: XOR<ProjectUpdateWithoutEditorsInput, ProjectUncheckedUpdateWithoutEditorsInput>
+  }
+
+  export type ProjectUpdateWithoutEditorsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+    author?: UserUpdateOneRequiredWithoutProjectsNestedInput
+    languages?: ProjectLanguageUpdateManyWithoutProjectNestedInput
+  }
+
+  export type ProjectUncheckedUpdateWithoutEditorsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+    authorId?: IntFieldUpdateOperationsInput | number
+    languages?: ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput
+  }
+
+  export type EditorUpsertWithoutProjectsInput = {
+    update: XOR<EditorUpdateWithoutProjectsInput, EditorUncheckedUpdateWithoutProjectsInput>
+    create: XOR<EditorCreateWithoutProjectsInput, EditorUncheckedCreateWithoutProjectsInput>
+    where?: EditorWhereInput
+  }
+
+  export type EditorUpdateToOneWithWhereWithoutProjectsInput = {
+    where?: EditorWhereInput
+    data: XOR<EditorUpdateWithoutProjectsInput, EditorUncheckedUpdateWithoutProjectsInput>
+  }
+
+  export type EditorUpdateWithoutProjectsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+    user?: UserUpdateOneRequiredWithoutEditorsNestedInput
+  }
+
+  export type EditorUncheckedUpdateWithoutProjectsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserCreateWithoutEditorsInput = {
@@ -8862,24 +10415,26 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutEditorsInput, UserUncheckedCreateWithoutEditorsInput>
   }
 
-  export type ProjectCreateWithoutEditorsInput = {
+  export type ProjectEditorCreateWithoutEditorInput = {
     name: string
     timeSpent?: bigint | number
-    author: UserCreateNestedOneWithoutProjectsInput
-    languages?: ProjectLanguageCreateNestedManyWithoutProjectInput
+    project: ProjectCreateNestedOneWithoutEditorsInput
   }
 
-  export type ProjectUncheckedCreateWithoutEditorsInput = {
+  export type ProjectEditorUncheckedCreateWithoutEditorInput = {
     id?: number
     name: string
+    projectId: number
     timeSpent?: bigint | number
-    authorId: number
-    languages?: ProjectLanguageUncheckedCreateNestedManyWithoutProjectInput
   }
 
-  export type ProjectCreateOrConnectWithoutEditorsInput = {
-    where: ProjectWhereUniqueInput
-    create: XOR<ProjectCreateWithoutEditorsInput, ProjectUncheckedCreateWithoutEditorsInput>
+  export type ProjectEditorCreateOrConnectWithoutEditorInput = {
+    where: ProjectEditorWhereUniqueInput
+    create: XOR<ProjectEditorCreateWithoutEditorInput, ProjectEditorUncheckedCreateWithoutEditorInput>
+  }
+
+  export type ProjectEditorCreateManyEditorInputEnvelope = {
+    data: ProjectEditorCreateManyEditorInput | ProjectEditorCreateManyEditorInput[]
   }
 
   export type UserUpsertWithoutEditorsInput = {
@@ -8918,37 +10473,27 @@ export namespace Prisma {
     languages?: LanguageUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type ProjectUpsertWithoutEditorsInput = {
-    update: XOR<ProjectUpdateWithoutEditorsInput, ProjectUncheckedUpdateWithoutEditorsInput>
-    create: XOR<ProjectCreateWithoutEditorsInput, ProjectUncheckedCreateWithoutEditorsInput>
-    where?: ProjectWhereInput
+  export type ProjectEditorUpsertWithWhereUniqueWithoutEditorInput = {
+    where: ProjectEditorWhereUniqueInput
+    update: XOR<ProjectEditorUpdateWithoutEditorInput, ProjectEditorUncheckedUpdateWithoutEditorInput>
+    create: XOR<ProjectEditorCreateWithoutEditorInput, ProjectEditorUncheckedCreateWithoutEditorInput>
   }
 
-  export type ProjectUpdateToOneWithWhereWithoutEditorsInput = {
-    where?: ProjectWhereInput
-    data: XOR<ProjectUpdateWithoutEditorsInput, ProjectUncheckedUpdateWithoutEditorsInput>
+  export type ProjectEditorUpdateWithWhereUniqueWithoutEditorInput = {
+    where: ProjectEditorWhereUniqueInput
+    data: XOR<ProjectEditorUpdateWithoutEditorInput, ProjectEditorUncheckedUpdateWithoutEditorInput>
   }
 
-  export type ProjectUpdateWithoutEditorsInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
-    author?: UserUpdateOneRequiredWithoutProjectsNestedInput
-    languages?: ProjectLanguageUpdateManyWithoutProjectNestedInput
-  }
-
-  export type ProjectUncheckedUpdateWithoutEditorsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
-    authorId?: IntFieldUpdateOperationsInput | number
-    languages?: ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput
+  export type ProjectEditorUpdateManyWithWhereWithoutEditorInput = {
+    where: ProjectEditorScalarWhereInput
+    data: XOR<ProjectEditorUpdateManyMutationInput, ProjectEditorUncheckedUpdateManyWithoutEditorInput>
   }
 
   export type ProjectCreateWithoutLanguagesInput = {
     name: string
     timeSpent?: bigint | number
     author: UserCreateNestedOneWithoutProjectsInput
-    editors?: EditorCreateNestedManyWithoutProjectInput
+    editors?: ProjectEditorCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutLanguagesInput = {
@@ -8956,7 +10501,7 @@ export namespace Prisma {
     name: string
     timeSpent?: bigint | number
     authorId: number
-    editors?: EditorUncheckedCreateNestedManyWithoutProjectInput
+    editors?: ProjectEditorUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutLanguagesInput = {
@@ -8997,7 +10542,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     author?: UserUpdateOneRequiredWithoutProjectsNestedInput
-    editors?: EditorUpdateManyWithoutProjectNestedInput
+    editors?: ProjectEditorUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutLanguagesInput = {
@@ -9005,7 +10550,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
     authorId?: IntFieldUpdateOperationsInput | number
-    editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
+    editors?: ProjectEditorUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type LanguageUpsertWithoutProjectsInput = {
@@ -9145,7 +10690,6 @@ export namespace Prisma {
   export type EditorCreateManyUserInput = {
     id?: number
     name: string
-    projectId: number
     timeSpent?: bigint | number
   }
 
@@ -9158,7 +10702,7 @@ export namespace Prisma {
   export type ProjectUpdateWithoutAuthorInput = {
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
-    editors?: EditorUpdateManyWithoutProjectNestedInput
+    editors?: ProjectEditorUpdateManyWithoutProjectNestedInput
     languages?: ProjectLanguageUpdateManyWithoutProjectNestedInput
   }
 
@@ -9166,7 +10710,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
-    editors?: EditorUncheckedUpdateManyWithoutProjectNestedInput
+    editors?: ProjectEditorUncheckedUpdateManyWithoutProjectNestedInput
     languages?: ProjectLanguageUncheckedUpdateManyWithoutProjectNestedInput
   }
 
@@ -9179,20 +10723,19 @@ export namespace Prisma {
   export type EditorUpdateWithoutUserInput = {
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
-    project?: ProjectUpdateOneRequiredWithoutEditorsNestedInput
+    projects?: ProjectEditorUpdateManyWithoutEditorNestedInput
   }
 
   export type EditorUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    projectId?: IntFieldUpdateOperationsInput | number
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+    projects?: ProjectEditorUncheckedUpdateManyWithoutEditorNestedInput
   }
 
   export type EditorUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    projectId?: IntFieldUpdateOperationsInput | number
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
@@ -9215,10 +10758,10 @@ export namespace Prisma {
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
-  export type EditorCreateManyProjectInput = {
+  export type ProjectEditorCreateManyProjectInput = {
     id?: number
     name: string
-    userId: number
+    editorId: number
     timeSpent?: bigint | number
   }
 
@@ -9229,23 +10772,23 @@ export namespace Prisma {
     timeSpent?: bigint | number
   }
 
-  export type EditorUpdateWithoutProjectInput = {
+  export type ProjectEditorUpdateWithoutProjectInput = {
     name?: StringFieldUpdateOperationsInput | string
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
-    user?: UserUpdateOneRequiredWithoutEditorsNestedInput
+    editor?: EditorUpdateOneRequiredWithoutProjectsNestedInput
   }
 
-  export type EditorUncheckedUpdateWithoutProjectInput = {
+  export type ProjectEditorUncheckedUpdateWithoutProjectInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    userId?: IntFieldUpdateOperationsInput | number
+    editorId?: IntFieldUpdateOperationsInput | number
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
-  export type EditorUncheckedUpdateManyWithoutProjectInput = {
+  export type ProjectEditorUncheckedUpdateManyWithoutProjectInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    userId?: IntFieldUpdateOperationsInput | number
+    editorId?: IntFieldUpdateOperationsInput | number
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
@@ -9266,6 +10809,33 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     languageId?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type ProjectEditorCreateManyEditorInput = {
+    id?: number
+    name: string
+    projectId: number
+    timeSpent?: bigint | number
+  }
+
+  export type ProjectEditorUpdateWithoutEditorInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+    project?: ProjectUpdateOneRequiredWithoutEditorsNestedInput
+  }
+
+  export type ProjectEditorUncheckedUpdateWithoutEditorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    projectId?: IntFieldUpdateOperationsInput | number
+    timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type ProjectEditorUncheckedUpdateManyWithoutEditorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    projectId?: IntFieldUpdateOperationsInput | number
     timeSpent?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 

@@ -31,18 +31,27 @@ model Project {
   timeSpent BigInt            @default(0)
   author    User              @relation(fields: [authorId], references: [id])
   authorId  Int
-  editors   Editor[]
+  editors   ProjectEditor[]
   languages ProjectLanguage[]
 }
 
-model Editor {
+model ProjectEditor {
   id        Int     @id @default(autoincrement())
-  name      String  @unique
-  user      User    @relation(fields: [userId], references: [id])
-  userId    Int
+  name      String
   project   Project @relation(fields: [projectId], references: [id])
   projectId Int
+  editor    Editor  @relation(fields: [editorId], references: [id])
+  editorId  Int
   timeSpent BigInt  @default(0)
+}
+
+model Editor {
+  id        Int             @id @default(autoincrement())
+  name      String          @unique
+  timeSpent BigInt          @default(0)
+  user      User            @relation(fields: [userId], references: [id])
+  userId    Int
+  projects  ProjectEditor[]
 }
 
 model ProjectLanguage {

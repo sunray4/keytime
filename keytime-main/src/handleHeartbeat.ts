@@ -103,13 +103,36 @@ export async function handleHeartbeat(message: Message) {
             name: user.lastEditor,
             timeSpent: timeSpent,
             user: { connect: { id: user.id } },
-            project: { connect: { id: project!.id } },
           },
         });
       } else {
         await prisma.editor.update({
           where: { id: editor.id },
           data: { timeSpent: editor.timeSpent + timeSpent },
+        });
+      }
+
+      // update project editor stats
+      const projectWithEditor = await prisma.project.findUnique({
+        where: { id: project.id },
+        include: { editors: true },
+      });
+      let projectEditor = projectWithEditor!.editors.find(
+        (e) => e.name === user.lastEditor
+      );
+      if (!projectEditor) {
+        projectEditor = await prisma.projectEditor.create({
+          data: {
+            name: user.lastEditor,
+            project: { connect: { id: project!.id } },
+            timeSpent: timeSpent,
+            editor: { connect: { id: editor!.id } },
+          },
+        });
+      } else {
+        await prisma.projectEditor.update({
+          where: { id: projectEditor.id },
+          data: { timeSpent: projectEditor.timeSpent + timeSpent },
         });
       }
     }

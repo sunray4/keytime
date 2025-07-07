@@ -96,13 +96,14 @@ class Client {
     //     this.queue = [];
     //   }
     // }
-    prepareHeartbeat(doc, timestamp, folderNames) {
+    prepareHeartbeat(doc, timestamp, folderNames, date) {
         const message = {
             type: "heartbeat",
             timestamp: timestamp,
             folder: (0, findFolder_1.findFolder)(folderNames, doc.uri.path),
             lang: doc.languageId,
             editor: "vscode",
+            date: date,
         };
         if (message.folder === "") {
             this.output.appendLine("No corresponding folder found. Heartbeat not sent.");

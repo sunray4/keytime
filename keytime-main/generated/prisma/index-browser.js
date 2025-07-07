@@ -135,12 +135,19 @@ exports.Prisma.ProjectScalarFieldEnum = {
   authorId: 'authorId'
 };
 
+exports.Prisma.ProjectEditorScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  projectId: 'projectId',
+  editorId: 'editorId',
+  timeSpent: 'timeSpent'
+};
+
 exports.Prisma.EditorScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  userId: 'userId',
-  projectId: 'projectId',
-  timeSpent: 'timeSpent'
+  timeSpent: 'timeSpent',
+  userId: 'userId'
 };
 
 exports.Prisma.ProjectLanguageScalarFieldEnum = {
@@ -167,6 +174,7 @@ exports.Prisma.SortOrder = {
 exports.Prisma.ModelName = {
   User: 'User',
   Project: 'Project',
+  ProjectEditor: 'ProjectEditor',
   Editor: 'Editor',
   ProjectLanguage: 'ProjectLanguage',
   Language: 'Language'
