@@ -8,7 +8,6 @@ let client: Client | null = null;
 const hbInterval = 1000 * 60 * 2;
 const maxInterval = 1000 * 60 * 15;
 
-
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export async function activate(context: vscode.ExtensionContext) {
@@ -23,17 +22,16 @@ export async function activate(context: vscode.ExtensionContext) {
   output.appendLine('Congratulations, your extension "keytime" is now active!');
 
   let lastHeartbeat = 0;
-  let folderNames : string[];
+  let folderNames: string[];
   const folders = vscode.workspace.workspaceFolders;
 
-  if (!folders|| folders.length <= 0) {
+  if (!folders || folders.length <= 0) {
     output.appendLine("No workspace folders found");
     return;
   } else {
-    folderNames = folders.map(folder => folder.name);
+    folderNames = folders.map((folder) => folder.name);
   }
 
-  
   // send initial heartbeat when extension is activated
   const editor = vscode.window.activeTextEditor;
   let doc = null;
@@ -41,13 +39,11 @@ export async function activate(context: vscode.ExtensionContext) {
     output.appendLine("editor found");
     doc = editor.document;
   }
-  if (doc && doc.uri.scheme === "file") { // if no document is open, don't send heartbeat
+  if (doc && doc.uri.scheme === "file") {
+    // if no document is open, don't send heartbeat
     lastHeartbeat = Date.now();
-    output.appendLine("sending initial heartbeat...");
     client.prepareHeartbeat(doc, lastHeartbeat, folderNames);
   }
-
-  
 
   vscode.workspace.onDidChangeTextDocument((event) => {
     // check if changes are from a file - prevent output channel changes from being tracked
@@ -55,7 +51,11 @@ export async function activate(context: vscode.ExtensionContext) {
     if (doc && doc.uri.scheme === "file") {
       output.appendLine("text doc change");
 
-      if (Date.now() - lastHeartbeat >= hbInterval && Date.now() - lastHeartbeat <= maxInterval || lastHeartbeat === 0) {
+      if (
+        (Date.now() - lastHeartbeat >= hbInterval &&
+          Date.now() - lastHeartbeat <= maxInterval) ||
+        lastHeartbeat === 0
+      ) {
         lastHeartbeat = Date.now();
         client.prepareHeartbeat(doc, lastHeartbeat, folderNames);
       }
@@ -91,7 +91,7 @@ export async function activate(context: vscode.ExtensionContext) {
   vscode.workspace.onDidChangeWorkspaceFolders((event) => {
     const folders = vscode.workspace.workspaceFolders;
     if (folders && folders.length > 0) {
-      folderNames = folders.map(folder => folder.name);
+      folderNames = folders.map((folder) => folder.name);
     }
     output.appendLine("workspace folders changed");
   });

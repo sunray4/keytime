@@ -81,7 +81,7 @@ export async function handleHeartbeat(message: Message) {
       if (!projectLanguage) {
         projectLanguage = await prisma.projectLanguage.create({
           data: {
-            name: language!.name,
+            name: user.lastLang,
             project: { connect: { id: project!.id } },
             language: { connect: { id: language!.id } },
             timeSpent: timeSpent,
@@ -96,6 +96,7 @@ export async function handleHeartbeat(message: Message) {
 
       // update editor stats
       let editor = user.editors.find((e) => e.name === user.lastEditor);
+      console.log("editor:", editor);
       if (!editor) {
         editor = await prisma.editor.create({
           data: {

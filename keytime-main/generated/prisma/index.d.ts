@@ -7371,16 +7371,16 @@ export namespace Prisma {
 
   export type ProjectLanguageWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    name?: string
     AND?: ProjectLanguageWhereInput | ProjectLanguageWhereInput[]
     OR?: ProjectLanguageWhereInput[]
     NOT?: ProjectLanguageWhereInput | ProjectLanguageWhereInput[]
+    name?: StringFilter<"ProjectLanguage"> | string
     projectId?: IntFilter<"ProjectLanguage"> | number
     languageId?: IntFilter<"ProjectLanguage"> | number
     timeSpent?: BigIntFilter<"ProjectLanguage"> | bigint | number
     project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
     language?: XOR<LanguageScalarRelationFilter, LanguageWhereInput>
-  }, "id" | "name">
+  }, "id">
 
   export type ProjectLanguageOrderByWithAggregationInput = {
     id?: SortOrder

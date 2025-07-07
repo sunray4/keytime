@@ -60,7 +60,7 @@ async function activate(context) {
         return;
     }
     else {
-        folderNames = folders.map(folder => folder.name);
+        folderNames = folders.map((folder) => folder.name);
     }
     // send initial heartbeat when extension is activated
     const editor = vscode.window.activeTextEditor;
@@ -69,9 +69,9 @@ async function activate(context) {
         output.appendLine("editor found");
         doc = editor.document;
     }
-    if (doc && doc.uri.scheme === "file") { // if no document is open, don't send heartbeat
+    if (doc && doc.uri.scheme === "file") {
+        // if no document is open, don't send heartbeat
         lastHeartbeat = Date.now();
-        output.appendLine("sending initial heartbeat...");
         client.prepareHeartbeat(doc, lastHeartbeat, folderNames);
     }
     vscode.workspace.onDidChangeTextDocument((event) => {
@@ -79,7 +79,9 @@ async function activate(context) {
         const doc = event.document;
         if (doc && doc.uri.scheme === "file") {
             output.appendLine("text doc change");
-            if (Date.now() - lastHeartbeat >= hbInterval && Date.now() - lastHeartbeat <= maxInterval || lastHeartbeat === 0) {
+            if ((Date.now() - lastHeartbeat >= hbInterval &&
+                Date.now() - lastHeartbeat <= maxInterval) ||
+                lastHeartbeat === 0) {
                 lastHeartbeat = Date.now();
                 client.prepareHeartbeat(doc, lastHeartbeat, folderNames);
             }
@@ -111,7 +113,7 @@ async function activate(context) {
     vscode.workspace.onDidChangeWorkspaceFolders((event) => {
         const folders = vscode.workspace.workspaceFolders;
         if (folders && folders.length > 0) {
-            folderNames = folders.map(folder => folder.name);
+            folderNames = folders.map((folder) => folder.name);
         }
         output.appendLine("workspace folders changed");
     });

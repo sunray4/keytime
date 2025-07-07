@@ -13,7 +13,7 @@ interface Message {
 export class Client {
   private ws: WebSocket | null = null;
   private output: vscode.OutputChannel;
-  private queue: Message[] = [];
+  private initialHb: Message | null = null;
   private isOpen: boolean = false;
   private isConnecting: boolean = false; // to prevent concurrent reconnection attempts - this should be true when ws is open
 
@@ -40,7 +40,12 @@ export class Client {
       this.output.appendLine("Connected to server");
       this.isOpen = true;
       this.ws?.send("Hello from client");
-      this.sendQueue();
+      if (this.initialHb) {
+        this.sendHeartbeat(this.initialHb);
+        this.output.appendLine("sent initial heartbeat...");
+        this.initialHb = null;
+      }
+      // this.sendQueue();
     });
 
     this.ws.on("message", (data) => {
@@ -51,19 +56,22 @@ export class Client {
       this.output.appendLine("Disconnected from server");
       this.isOpen = false;
       this.isConnecting = false;
+      vscode.window.showInformationMessage(
+        "Server disconnected. You won't be able to track time until you restart the server."
+      );
     });
   }
 
-  private sendQueue() {
-    if (this.isOpen) {
-      this.queue.forEach(async (message) => {
-        this.sendHeartbeat(message);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-      });
-      this.output.appendLine(`Sent ${this.queue.length} messages from queue`);
-      this.queue = [];
-    }
-  }
+  // private sendQueue() {
+  //   if (this.isOpen) {
+  //     this.queue.forEach(async (message) => {
+  //       this.sendHeartbeat(message);
+  //       await new Promise((resolve) => setTimeout(resolve, 1000));
+  //     });
+  //     this.output.appendLine(`Sent ${this.queue.length} messages from queue`);
+  //     this.queue = [];
+  //   }
+  // }
 
   public prepareHeartbeat(
     doc: vscode.TextDocument,
@@ -90,10 +98,11 @@ export class Client {
     if (this.isOpen) {
       this.ws?.send(JSON.stringify(message));
       this.output.appendLine(`Sent message: ${JSON.stringify(message)}`);
-    } else if (this.isConnecting) {
-      this.queue.push(message);
+      // } else if (this.isConnecting) {
+      //   this.queue.push(message);
     } else {
-      this.queue.push(message);
+      // this.queue.push(message);
+      this.initialHb = message;
       this.connect();
     }
   }

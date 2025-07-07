@@ -64,7 +64,7 @@ async function handleHeartbeat(message) {
             if (!projectLanguage) {
                 projectLanguage = await prisma.projectLanguage.create({
                     data: {
-                        name: language.name,
+                        name: user.lastLang,
                         project: { connect: { id: project.id } },
                         language: { connect: { id: language.id } },
                         timeSpent: timeSpent,
