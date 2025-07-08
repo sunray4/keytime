@@ -43,13 +43,14 @@ const formatTime_1 = require("./formatTime");
 let client = null;
 const hbInterval = 1000 * 60 * 2;
 const maxInterval = 1000 * 60 * 15;
+let lastHeartbeat = 0;
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 async function activate(context) {
     // create output channel
-    let output = await vscode.window.createOutputChannel("Output");
+    let output = vscode.window.createOutputChannel("Output");
     // create extension client
-    const client = await new client_1.Client(output);
+    const client = new client_1.Client(output);
     // date tracking with vscode global state
     const today = (0, date_fns_1.format)(new Date(), "yyyy-MM-dd");
     let date = context.globalState.get("date");
@@ -68,7 +69,6 @@ async function activate(context) {
     output.appendLine("Activating keytime extension...");
     output.show(true);
     output.appendLine('Congratulations, your extension "keytime" is now active!');
-    let lastHeartbeat = 0;
     let folderNames;
     const folders = vscode.workspace.workspaceFolders;
     if (!folders || folders.length <= 0) {
@@ -82,85 +82,37 @@ async function activate(context) {
     const editor = vscode.window.activeTextEditor;
     let doc = null;
     if (editor) {
-        output.appendLine("editor found");
+        output.appendLine("initial editor found");
         doc = editor.document;
-    }
-    // if no document is open, don't send heartbeat
-    if (doc && doc.uri.scheme === "file") {
-        // update local vscode timespent data
         const newHeartbeat = Date.now();
-        if (lastHeartbeat !== 0) {
-            const timeSpent = BigInt(context.globalState.get("timeSpent"));
-            if (timeSpent >= 0 && newHeartbeat - lastHeartbeat < maxInterval) {
-                context.globalState.update("timeSpent", timeSpent + BigInt(newHeartbeat - lastHeartbeat));
-                output.appendLine(`time spent: ${context.globalState.get("timeSpent")}`);
-                _updateStatusBarItem(sbItem, BigInt(context.globalState.get("timeSpent")));
-            }
-        }
-        lastHeartbeat = newHeartbeat;
-        client.prepareHeartbeat(doc, lastHeartbeat, folderNames, (0, date_fns_1.format)(new Date(), "yyyy-MM-dd"));
+        processHeartbeat(newHeartbeat, doc, context, output, sbItem, client, folderNames);
     }
     vscode.workspace.onDidChangeTextDocument((event) => {
         // check if changes are from a file - prevent output channel changes from being tracked
         const doc = event.document;
-        if (doc && doc.uri.scheme === "file") {
-            output.appendLine("text doc change");
-            const newHeartbeat = Date.now();
-            if ((newHeartbeat - lastHeartbeat >= hbInterval &&
-                newHeartbeat - lastHeartbeat <= maxInterval) ||
-                lastHeartbeat === 0) {
-                if (lastHeartbeat !== 0) {
-                    const timeSpent = BigInt(context.globalState.get("timeSpent"));
-                    if (timeSpent >= 0) {
-                        context.globalState.update("timeSpent", timeSpent + BigInt(newHeartbeat - lastHeartbeat));
-                        output.appendLine(`time spent: ${context.globalState.get("timeSpent")}`);
-                        _updateStatusBarItem(sbItem, BigInt(context.globalState.get("timeSpent")));
-                    }
-                }
-                lastHeartbeat = newHeartbeat;
-                client.prepareHeartbeat(doc, lastHeartbeat, folderNames, (0, date_fns_1.format)(new Date(), "yyyy-MM-dd"));
-            }
+        const newHeartbeat = Date.now();
+        if ((newHeartbeat - lastHeartbeat >= hbInterval &&
+            newHeartbeat - lastHeartbeat <= maxInterval) ||
+            lastHeartbeat === 0) {
+            output.appendLine("text changed");
+            processHeartbeat(newHeartbeat, doc, context, output, sbItem, client, folderNames);
         }
     });
     vscode.window.onDidChangeActiveTextEditor((event) => {
         if (event) {
             const doc = event.document;
-            if (doc && doc.uri.scheme === "file") {
-                output.appendLine("text editor changed");
-                const newHeartbeat = Date.now();
-                if (lastHeartbeat !== 0) {
-                    const timeSpent = BigInt(context.globalState.get("timeSpent"));
-                    output.appendLine(`got time spent: ${context.globalState.get("timeSpent")}`);
-                    if (timeSpent >= 0 && newHeartbeat - lastHeartbeat < maxInterval) {
-                        context.globalState.update("timeSpent", timeSpent + BigInt(newHeartbeat - lastHeartbeat));
-                        output.appendLine(`time spent: ${context.globalState.get("timeSpent")}`);
-                        _updateStatusBarItem(sbItem, BigInt(context.globalState.get("timeSpent")));
-                    }
-                }
-                lastHeartbeat = newHeartbeat;
-                client.prepareHeartbeat(doc, lastHeartbeat, folderNames, (0, date_fns_1.format)(new Date(), "yyyy-MM-dd"));
-            }
+            const newHeartbeat = Date.now();
+            output.appendLine("editor changed");
+            processHeartbeat(newHeartbeat, doc, context, output, sbItem, client, folderNames);
         }
     });
     vscode.window.onDidChangeWindowState((event) => {
         if (event.focused) {
             output.appendLine("editor focused");
-            const editor = vscode.window.activeTextEditor;
-            if (editor) {
-                const doc = editor.document;
-                if (doc && doc.uri.scheme === "file") {
-                    const newHeartbeat = Date.now();
-                    if (lastHeartbeat !== 0) {
-                        const timeSpent = BigInt(context.globalState.get("timeSpent"));
-                        if (timeSpent >= 0 && newHeartbeat - lastHeartbeat < maxInterval) {
-                            context.globalState.update("timeSpent", timeSpent + BigInt(newHeartbeat - lastHeartbeat));
-                            output.appendLine(`time spent: ${context.globalState.get("timeSpent")}`);
-                            _updateStatusBarItem(sbItem, BigInt(context.globalState.get("timeSpent")));
-                        }
-                    }
-                    lastHeartbeat = newHeartbeat;
-                    client.prepareHeartbeat(doc, lastHeartbeat, folderNames, (0, date_fns_1.format)(new Date(), "yyyy-MM-dd"));
-                }
+            const newHeartbeat = Date.now();
+            const doc = vscode.window.activeTextEditor?.document;
+            if (doc) {
+                processHeartbeat(newHeartbeat, doc, context, output, sbItem, client, folderNames);
             }
         }
     });
@@ -171,14 +123,6 @@ async function activate(context) {
         }
         output.appendLine("workspace folders changed");
     });
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with registerCommand
-    // 	const disposable = vscode.commands.registerCommand('keytime.helloWorld', () => {
-    // 		// The code you place here will be executed every time your command is executed
-    // 		// Display a message box to the user
-    // 		vscode.window.showInformationMessage('Hello World from keytime!');
-    // 	});
-    // 	context.subscriptions.push(disposable);
 }
 // // This method is called when your extension is deactivated
 // export function deactivate() {
@@ -193,5 +137,21 @@ function _createStatusBarItem(timeSpent) {
 }
 function _updateStatusBarItem(sbItem, timeSpent) {
     sbItem.text = `${(0, formatTime_1.formatTime)(timeSpent)}`;
+}
+function processHeartbeat(newHeartbeat, doc, context, output, sbItem, client, folderNames) {
+    if (doc && doc.uri.scheme === "file") {
+        output.appendLine("doc found");
+        // update local vscode timespent data
+        if (lastHeartbeat !== 0) {
+            const timeSpent = BigInt(context.globalState.get("timeSpent"));
+            if (timeSpent >= 0 && newHeartbeat - lastHeartbeat <= maxInterval) {
+                context.globalState.update("timeSpent", timeSpent + BigInt(newHeartbeat - lastHeartbeat));
+                output.appendLine(`time spent: ${context.globalState.get("timeSpent")}`);
+                _updateStatusBarItem(sbItem, BigInt(context.globalState.get("timeSpent")));
+            }
+        }
+        lastHeartbeat = newHeartbeat;
+        client.prepareHeartbeat(doc, lastHeartbeat, folderNames, (0, date_fns_1.format)(new Date(), "yyyy-MM-dd"));
+    }
 }
 //# sourceMappingURL=extension.js.map
