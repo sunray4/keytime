@@ -25,15 +25,16 @@ async function setup() {
       },
       {
         type: "list",
-        name: "timeInterval",
-        message: "Choose your preferred heartbeat time interval: ",
+        name: "maxInterval",
+        message: "Choose your preferred max heartbeat interval: ",
         choices: [
-          { name: "1 minute", value: 1 },
-          { name: "2 minutes", value: 2 },
-          { name: "3 minutes", value: 3 },
-          { name: "4 minutes", value: 4 },
+          { name: "5 minutes", value: 5 },
+          { name: "10 minutes", value: 10 },
+          { name: "12 minutes", value: 12 },
+          { name: "15 minutes", value: 15 },
+          { name: "20 minutes", value: 20 },
         ],
-        default: 2,
+        default: 10,
       },
     ]);
     console.log(answers);
@@ -45,7 +46,7 @@ async function setup() {
   const user = await prisma.user.create({
     data: {
       username: answers.username,
-      timeInterval: answers.timeInterval,
+      maxInterval: answers.maxInterval,
     },
   });
 

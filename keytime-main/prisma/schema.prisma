@@ -14,7 +14,7 @@ datasource db {
 model User {
   id    Int     @id @default(autoincrement())
   username String  @unique
-  timeInterval Int @default(2)
+  maxInterval Int @default(10)
   projects Project[]
   editors  Editor[]
   languages Language[]

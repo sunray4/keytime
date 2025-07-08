@@ -18,6 +18,7 @@ export class Client {
   private sentWarning: boolean = false;
   private isOpen: boolean = false;
   private isConnecting: boolean = false; // to prevent concurrent reconnection attempts - this should be true when ws is open
+  private maxInterval: number | null = null;
 
   constructor(output: vscode.OutputChannel) {
     this.output = output;
@@ -52,6 +53,17 @@ export class Client {
 
     this.ws.on("message", (data) => {
       this.output.appendLine(`Received message: ${data.toString()}`);
+      try {
+        const message = JSON.parse(data.toString());
+        if (typeof message === "object" && message !== null) {
+          if (message.type === "maxInterval") {
+            this.output.appendLine("Received maxInterval");
+            this.maxInterval = message.maxInterval;
+          }
+        }
+      } catch (error) {
+        this.output.appendLine("this message is not a valid JSON");
+      }
     });
 
     this.ws.on("close", (code, reason) => {
@@ -111,6 +123,14 @@ export class Client {
       // this.queue.push(message);
       this.initialHb = message;
       this.connect();
+    }
+  }
+
+  public getMaxInterval() {
+    if (this.maxInterval) {
+      return this.maxInterval;
+    } else {
+      return null;
     }
   }
 

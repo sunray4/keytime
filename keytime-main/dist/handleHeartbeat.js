@@ -3,9 +3,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleHeartbeat = handleHeartbeat;
 const prisma_1 = require("../generated/prisma");
 const prisma = new prisma_1.PrismaClient();
-const hbInterval = 1000 * 60 * 2;
-const maxInterval = 1000 * 60 * 15;
 async function handleHeartbeat(message) {
+    const hbInterval = 1000 * 60 * 2;
+    const maxInterval = await prisma.user.findFirst({
+        select: {
+            maxInterval: true,
+        },
+    });
+    const maxIntervalms = maxInterval
+        ? maxInterval.maxInterval * 60 * 1000
+        : 1000 * 60 * 10;
     console.log("handling heartbeat...");
     const { timestamp, folder, lang, editor } = message;
     let lastHeartbeat = BigInt(0);
@@ -19,7 +26,7 @@ async function handleHeartbeat(message) {
     if (user) {
         lastHeartbeat = user.lastHeartbeat;
         if (lastHeartbeat != BigInt(0) &&
-            BigInt(timestamp) - lastHeartbeat <= maxInterval) {
+            BigInt(timestamp) - lastHeartbeat <= BigInt(maxIntervalms)) {
             const timeSpent = BigInt(timestamp) - lastHeartbeat;
             // update project stats
             let project = user.projects.find((p) => p.name === user.lastFolder);

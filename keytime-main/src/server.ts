@@ -24,7 +24,7 @@ export async function server() {
     // store the PID in db
     await changeServerPid(process.env.userId!, process.pid);
     // app.listen(8080, () => console.log('Server started on port 8080'));
-    wss.on("connection", (ws) => {
+    wss.on("connection", async (ws) => {
       activeConnections++;
       console.log(`client connected (${activeConnections} active)`);
 
@@ -32,6 +32,17 @@ export async function server() {
         console.error("WebSocket error:", error);
       });
       ws.send("Hello from server");
+      const maxInterval = await prisma.user.findFirst({
+        select: {
+          maxInterval: true,
+        },
+      });
+      ws.send(
+        JSON.stringify({
+          type: "maxInterval",
+          maxInterval: maxInterval?.maxInterval,
+        })
+      );
 
       ws.on("message", (data) => {
         console.log("Received message:", data.toString());

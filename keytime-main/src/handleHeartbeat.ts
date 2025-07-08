@@ -10,10 +10,16 @@ interface Message {
   editor: string;
 }
 
-const hbInterval = 1000 * 60 * 2;
-const maxInterval = 1000 * 60 * 15;
-
 export async function handleHeartbeat(message: Message) {
+  const hbInterval = 1000 * 60 * 2;
+  const maxInterval = await prisma.user.findFirst({
+    select: {
+      maxInterval: true,
+    },
+  });
+  const maxIntervalms = maxInterval
+    ? maxInterval.maxInterval * 60 * 1000
+    : 1000 * 60 * 10;
   console.log("handling heartbeat...");
 
   const { timestamp, folder, lang, editor } = message;
@@ -32,7 +38,7 @@ export async function handleHeartbeat(message: Message) {
 
     if (
       lastHeartbeat != BigInt(0) &&
-      BigInt(timestamp) - lastHeartbeat <= maxInterval
+      BigInt(timestamp) - lastHeartbeat <= BigInt(maxIntervalms)
     ) {
       const timeSpent = BigInt(timestamp) - lastHeartbeat;
 

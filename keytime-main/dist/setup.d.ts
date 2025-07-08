@@ -1,7 +1,7 @@
 export declare function getUser(): Promise<{
     id: number;
     username: string;
-    timeInterval: number;
+    maxInterval: number;
     serverPid: number;
     lastHeartbeat: bigint;
     lastFolder: string;

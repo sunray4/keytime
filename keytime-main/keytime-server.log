@@ -1,1778 +1,248 @@
-in changeServerPid:  6 90630
+in changeServerPid:  1 10058
 user:  {
-  id: 6,
+  id: 1,
   username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751914312029n,
-  lastFolder: 'keytime',
-  lastLang: 'json',
-  lastEditor: 'vscode'
+  maxInterval: 5,
+  serverPid: 10058,
+  lastHeartbeat: 0n,
+  lastFolder: '',
+  lastLang: '',
+  lastEditor: ''
 }
-changed server pid to:  90630
-Server started in background with PID: 90630 on port 8081
+changed server pid to:  10058
+Server started in background with PID: 10058 on port 8081
 client connected (1 active)
 Received message: Hello from client
 not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751914384685,"folder":"keytime","lang":"json","editor":"vscode"}
+Received message: {"type":"heartbeat","timestamp":1751948789205,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
 handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 112720n, userId: 6 }
 heartbeat updated
 user: {
-  id: 6,
+  id: 1,
   username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751914384685n,
-  lastFolder: 'keytime',
+  maxInterval: 5,
+  serverPid: 10058,
+  lastHeartbeat: 1751948789205n,
+  lastFolder: 'medlinks',
   lastLang: 'json',
   lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 168207n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 4450n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 5309n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 104606n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 185376n, userId: 6 } ]
+  projects: [],
+  languages: [],
+  editors: []
 } 
 
-Received message: {"type":"heartbeat","timestamp":1751914391395,"folder":"keytime","lang":"javascript","editor":"vscode"}
+Received message: {"type":"heartbeat","timestamp":1751948812607,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
 handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 185376n, userId: 6 }
+editor: undefined
 heartbeat updated
 user: {
-  id: 6,
+  id: 1,
   username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751914391395n,
-  lastFolder: 'keytime',
-  lastLang: 'javascript',
+  maxInterval: 5,
+  serverPid: 10058,
+  lastHeartbeat: 1751948812607n,
+  lastFolder: 'medlinks',
+  lastLang: 'python',
   lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 174917n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 4450n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 5309n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 111316n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 192086n, userId: 6 } ]
+  projects: [ { id: 16, name: 'medlinks', timeSpent: 23402n, authorId: 1 } ],
+  languages: [ { id: 24, name: 'json', userId: 1, timeSpent: 23402n } ],
+  editors: [ { id: 2, name: 'vscode', timeSpent: 23402n, userId: 1 } ]
 } 
 
-Received message: {"type":"heartbeat","timestamp":1751914395609,"folder":"keytime","lang":"json","editor":"vscode"}
+Received message: {"type":"heartbeat","timestamp":1751948816277,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
 handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 192086n, userId: 6 }
+editor: { id: 2, name: 'vscode', timeSpent: 23402n, userId: 1 }
 heartbeat updated
 user: {
-  id: 6,
+  id: 1,
   username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751914395609n,
-  lastFolder: 'keytime',
+  maxInterval: 5,
+  serverPid: 10058,
+  lastHeartbeat: 1751948816277n,
+  lastFolder: 'medlinks',
   lastLang: 'json',
   lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 179131n, authorId: 6 }
-  ],
+  projects: [ { id: 16, name: 'medlinks', timeSpent: 27072n, authorId: 1 } ],
   languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 4450n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 111316n }
+    { id: 24, name: 'json', userId: 1, timeSpent: 23402n },
+    { id: 25, name: 'python', userId: 1, timeSpent: 3670n }
   ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 196300n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751914407224,"folder":"keytime","lang":"json","editor":"vscode"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 196300n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751914407224n,
-  lastFolder: 'keytime',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 190746n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 4450n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 122931n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 207915n, userId: 6 } ]
+  editors: [ { id: 2, name: 'vscode', timeSpent: 27072n, userId: 1 } ]
 } 
 
 Connection closed (0 active)
 client connected (1 active)
 Received message: Hello from client
 not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751914424464,"folder":"medlinks","lang":"json","editor":"vscode"}
+Received message: {"type":"heartbeat","timestamp":1751948829479,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
 handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 207915n, userId: 6 }
+editor: { id: 2, name: 'vscode', timeSpent: 27072n, userId: 1 }
 heartbeat updated
 user: {
-  id: 6,
+  id: 1,
   username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751914424464n,
+  maxInterval: 5,
+  serverPid: 10058,
+  lastHeartbeat: 1751948829479n,
   lastFolder: 'medlinks',
   lastLang: 'json',
   lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 }
-  ],
+  projects: [ { id: 16, name: 'medlinks', timeSpent: 40274n, authorId: 1 } ],
   languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 4450n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 140171n }
+    { id: 24, name: 'json', userId: 1, timeSpent: 36604n },
+    { id: 25, name: 'python', userId: 1, timeSpent: 3670n }
   ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 225155n, userId: 6 } ]
+  editors: [ { id: 2, name: 'vscode', timeSpent: 40274n, userId: 1 } ]
 } 
 
-Received message: {"type":"heartbeat","timestamp":1751914427030,"folder":"medlinks","lang":"python","editor":"vscode"}
+Received message: {"type":"heartbeat","timestamp":1751948862111,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
 handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 225155n, userId: 6 }
+editor: { id: 2, name: 'vscode', timeSpent: 40274n, userId: 1 }
 heartbeat updated
 user: {
-  id: 6,
+  id: 1,
   username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751914427030n,
+  maxInterval: 5,
+  serverPid: 10058,
+  lastHeartbeat: 1751948862111n,
   lastFolder: 'medlinks',
   lastLang: 'python',
   lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2566n, authorId: 6 }
-  ],
+  projects: [ { id: 16, name: 'medlinks', timeSpent: 72906n, authorId: 1 } ],
   languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 4450n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 142737n }
+    { id: 24, name: 'json', userId: 1, timeSpent: 69236n },
+    { id: 25, name: 'python', userId: 1, timeSpent: 3670n }
   ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 227721n, userId: 6 } ]
+  editors: [ { id: 2, name: 'vscode', timeSpent: 72906n, userId: 1 } ]
 } 
 
-Received message: {"type":"heartbeat","timestamp":1751914430840,"folder":"medlinks","lang":"json","editor":"vscode"}
+Received message: {"type":"heartbeat","timestamp":1751948893594,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
 handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 227721n, userId: 6 }
+Received message: {"type":"heartbeat","timestamp":1751948893630,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
+handling heartbeat...
+editor: { id: 2, name: 'vscode', timeSpent: 72906n, userId: 1 }
 heartbeat updated
 user: {
-  id: 6,
+  id: 1,
   username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751914430840n,
+  maxInterval: 5,
+  serverPid: 10058,
+  lastHeartbeat: 1751948893594n,
   lastFolder: 'medlinks',
   lastLang: 'json',
   lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 6376n, authorId: 6 }
-  ],
+  projects: [ { id: 16, name: 'medlinks', timeSpent: 135908n, authorId: 1 } ],
   languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 8260n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 142737n }
+    { id: 24, name: 'json', userId: 1, timeSpent: 69236n },
+    { id: 25, name: 'python', userId: 1, timeSpent: 66672n }
   ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 231531n, userId: 6 } ]
+  editors: [ { id: 2, name: 'vscode', timeSpent: 104389n, userId: 1 } ]
 } 
 
-Received message: {"type":"heartbeat","timestamp":1751914433467,"folder":"medlinks","lang":"python","editor":"vscode"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 231531n, userId: 6 }
+editor: { id: 2, name: 'vscode', timeSpent: 72906n, userId: 1 }
 heartbeat updated
 user: {
-  id: 6,
+  id: 1,
   username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751914433467n,
+  maxInterval: 5,
+  serverPid: 10058,
+  lastHeartbeat: 1751948893630n,
   lastFolder: 'medlinks',
-  lastLang: 'python',
+  lastLang: 'json',
   lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 9003n, authorId: 6 }
-  ],
+  projects: [ { id: 16, name: 'medlinks', timeSpent: 135908n, authorId: 1 } ],
   languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 8260n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
+    { id: 24, name: 'json', userId: 1, timeSpent: 69236n },
+    { id: 25, name: 'python', userId: 1, timeSpent: 66672n }
   ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 234158n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751919302116,"folder":"medlinks","lang":"python","editor":"vscode"}
-handling heartbeat...
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751919302116n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 9003n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 8260n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 234158n, userId: 6 } ]
+  editors: [ { id: 2, name: 'vscode', timeSpent: 104425n, userId: 1 } ]
 } 
 
 Connection closed (0 active)
 client connected (1 active)
 Received message: Hello from client
 not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751919652411,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
+Received message: {"type":"heartbeat","timestamp":1751948912904,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
 handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 234158n, userId: 6 }
+editor: { id: 2, name: 'vscode', timeSpent: 104425n, userId: 1 }
 heartbeat updated
 user: {
-  id: 6,
+  id: 1,
   username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751919652411n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 359298n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 358555n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 584453n, userId: 6 } ]
-} 
-
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751920073050,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 584453n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920073050n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 779937n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 779194n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1005092n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920093604,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-Received message: {"type":"heartbeat","timestamp":1751920093632,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1005092n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920093632n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 821073n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 820330n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1025674n, userId: 6 } ]
-} 
-
-editor: { id: 1, name: 'vscode', timeSpent: 1005092n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920093604n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 821073n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 820330n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1025646n, userId: 6 } ]
-} 
-
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751920103901,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1025646n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920103901n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 831370n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 830627n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1035943n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920177716,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1035943n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920177716n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 905185n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 904442n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1109758n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920180903,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1109758n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920180903n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 908372n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 907629n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1112945n, userId: 6 } ]
-} 
-
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751920192343,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1112945n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920192343n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 919812n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 919069n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1124385n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920193373,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1124385n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920193373n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 920842n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 920099n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1125415n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920195992,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1125415n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920195992n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 923461n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 922718n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1128034n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920197727,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1128034n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920197727n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 925196n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 924453n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1129769n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920200102,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1129769n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920200102n,
+  maxInterval: 5,
+  serverPid: 10058,
+  lastHeartbeat: 1751948912904n,
   lastFolder: 'medlinks',
   lastLang: 'json',
   lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 927571n, authorId: 6 }
-  ],
+  projects: [ { id: 16, name: 'medlinks', timeSpent: 155182n, authorId: 1 } ],
   languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 926828n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 145364n }
+    { id: 24, name: 'json', userId: 1, timeSpent: 88510n },
+    { id: 25, name: 'python', userId: 1, timeSpent: 66672n }
   ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1132144n, userId: 6 } ]
+  editors: [ { id: 2, name: 'vscode', timeSpent: 123699n, userId: 1 } ]
 } 
 
-Received message: {"type":"heartbeat","timestamp":1751920201463,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
+Received message: {"type":"heartbeat","timestamp":1751948936666,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
 handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1132144n, userId: 6 }
+editor: { id: 2, name: 'vscode', timeSpent: 123699n, userId: 1 }
 heartbeat updated
 user: {
-  id: 6,
+  id: 1,
   username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920201463n,
+  maxInterval: 5,
+  serverPid: 10058,
+  lastHeartbeat: 1751948936666n,
   lastFolder: 'medlinks',
   lastLang: 'python',
   lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 928932n, authorId: 6 }
-  ],
+  projects: [ { id: 16, name: 'medlinks', timeSpent: 178944n, authorId: 1 } ],
   languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 926828n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 146725n }
+    { id: 24, name: 'json', userId: 1, timeSpent: 112272n },
+    { id: 25, name: 'python', userId: 1, timeSpent: 66672n }
   ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1133505n, userId: 6 } ]
+  editors: [ { id: 2, name: 'vscode', timeSpent: 147461n, userId: 1 } ]
 } 
 
-Received message: {"type":"heartbeat","timestamp":1751920203080,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
+Received message: {"type":"heartbeat","timestamp":1751948965945,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
 handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1133505n, userId: 6 }
+editor: { id: 2, name: 'vscode', timeSpent: 147461n, userId: 1 }
 heartbeat updated
 user: {
-  id: 6,
+  id: 1,
   username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920203080n,
+  maxInterval: 5,
+  serverPid: 10058,
+  lastHeartbeat: 1751948965945n,
   lastFolder: 'medlinks',
   lastLang: 'json',
   lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 930549n, authorId: 6 }
-  ],
+  projects: [ { id: 16, name: 'medlinks', timeSpent: 208223n, authorId: 1 } ],
   languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 928445n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 146725n }
+    { id: 24, name: 'json', userId: 1, timeSpent: 112272n },
+    { id: 25, name: 'python', userId: 1, timeSpent: 95951n }
   ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1135122n, userId: 6 } ]
+  editors: [ { id: 2, name: 'vscode', timeSpent: 176740n, userId: 1 } ]
 } 
 
-Received message: {"type":"heartbeat","timestamp":1751920204973,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
+Received message: {"type":"heartbeat","timestamp":1751949008613,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
 handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1135122n, userId: 6 }
+editor: { id: 2, name: 'vscode', timeSpent: 176740n, userId: 1 }
 heartbeat updated
 user: {
-  id: 6,
+  id: 1,
   username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920204973n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 932442n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 928445n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 148618n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1137015n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920208576,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1137015n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920208576n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 936045n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 932048n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 148618n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1140618n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920211344,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1140618n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920211344n,
+  maxInterval: 5,
+  serverPid: 10058,
+  lastHeartbeat: 1751949008613n,
   lastFolder: 'medlinks',
   lastLang: 'json',
   lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 938813n, authorId: 6 }
-  ],
+  projects: [ { id: 16, name: 'medlinks', timeSpent: 250891n, authorId: 1 } ],
   languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 934816n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 148618n }
+    { id: 24, name: 'json', userId: 1, timeSpent: 154940n },
+    { id: 25, name: 'python', userId: 1, timeSpent: 95951n }
   ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1143386n, userId: 6 } ]
-} 
-
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751920343356,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1143386n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920343356n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1070825n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 934816n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 280630n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1275398n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920346729,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1275398n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920346729n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1074198n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 934816n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 284003n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1278771n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920352259,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1278771n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920352259n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1079728n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 940346n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 284003n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1284301n, userId: 6 } ]
-} 
-
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751920445532,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1284301n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920445532n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1173001n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 940346n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 377276n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1377574n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920450513,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1377574n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920450513n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1177982n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 940346n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 382257n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1382555n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920456313,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1382555n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920456313n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1183782n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 946146n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 382257n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1388355n, userId: 6 } ]
-} 
-
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751920829723,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1388355n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920829723n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1557192n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 946146n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 755667n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1761765n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920832331,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1761765n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920832331n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1559800n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 946146n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 758275n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1764373n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920835112,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1764373n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920835112n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1562581n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 948927n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 758275n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1767154n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920928558,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1767154n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920928558n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1656027n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 948927n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 851721n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1860600n, userId: 6 } ]
-} 
-
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751920939195,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1860600n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920939195n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1666664n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 948927n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 862358n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1871237n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920942395,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1871237n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920942395n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1669864n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 948927n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 865558n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1874437n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920944627,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1874437n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920944627n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1672096n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 951159n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 865558n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1876669n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751920946358,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1876669n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751920946358n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 1673827n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 951159n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 867289n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 1878400n, userId: 6 } ]
-} 
-
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751921489471,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 1878400n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751921489471n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2216940n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 1494272n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 867289n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2421513n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751921495246,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2421513n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751921495246n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2222715n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 1500047n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 867289n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2427288n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751921498163,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2427288n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751921498163n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2225632n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 1500047n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 870206n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2430205n, userId: 6 } ]
-} 
-
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751921786274,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2430205n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751921786274n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2513743n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 1788158n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 870206n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2718316n, userId: 6 } ]
-} 
-
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751945533716,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945533716n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2513743n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 1788158n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 870206n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2718316n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751945551563,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2718316n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945551563n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2531590n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 1806005n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 870206n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2736163n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751945554022,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2736163n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945554022n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2534049n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 1806005n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 872665n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2738622n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751945555759,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2738622n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945555759n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2535786n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 1807742n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 872665n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2740359n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751945560110,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2740359n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945560110n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2540137n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 1812093n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 872665n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2744710n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751945638506,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-Received message: {"type":"heartbeat","timestamp":1751945638528,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-Received message: {"type":"heartbeat","timestamp":1751945638528,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2744710n, userId: 6 }
-editor: { id: 1, name: 'vscode', timeSpent: 2744710n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945638506n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2696951n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 1968907n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 872665n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2823106n, userId: 6 } ]
-} 
-
-editor: { id: 1, name: 'vscode', timeSpent: 2744710n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945638528n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2696951n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 1968907n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 872665n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2823128n, userId: 6 } ]
-} 
-
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945638528n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2696951n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 1968907n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 872665n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2823128n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751945642434,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2823128n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945642434n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2700857n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 1968907n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 876571n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2827034n, userId: 6 } ]
-} 
-
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751945692335,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2827034n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945692335n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2750758n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 2018808n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 876571n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2876935n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751945695654,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2876935n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945695654n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2754077n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 2022127n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 876571n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2880254n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751945700238,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2880254n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945700238n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2758661n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 2022127n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 881155n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2884838n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751945703742,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2884838n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945703742n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2762165n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 2025631n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 881155n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2888342n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751945708253,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2888342n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751945708253n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 2766676n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 2025631n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 885666n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 2892853n, userId: 6 } ]
-} 
-
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751946097635,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 2892853n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751946097635n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 3156058n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 2415013n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 885666n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 3282235n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751946105757,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 3282235n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751946105757n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 3164180n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 2423135n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 885666n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 3290357n, userId: 6 } ]
-} 
-
-Connection closed (0 active)
-client connected (1 active)
-Received message: Hello from client
-not a json heartbeat
-Received message: {"type":"heartbeat","timestamp":1751946184368,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 3290357n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751946184368n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 3242791n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 2423135n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 964277n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 3368968n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751946190507,"folder":"medlinks","lang":"python","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 3368968n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751946190507n,
-  lastFolder: 'medlinks',
-  lastLang: 'python',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 3248930n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 2423135n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 970416n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 3375107n, userId: 6 } ]
-} 
-
-Received message: {"type":"heartbeat","timestamp":1751946194731,"folder":"medlinks","lang":"json","editor":"vscode","date":"2025-07-07"}
-handling heartbeat...
-editor: { id: 1, name: 'vscode', timeSpent: 3375107n, userId: 6 }
-heartbeat updated
-user: {
-  id: 6,
-  username: 'ray',
-  timeInterval: 2,
-  serverPid: 90630,
-  lastHeartbeat: 1751946194731n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode',
-  projects: [
-    { id: 13, name: 'codegpt', timeSpent: 17143n, authorId: 6 },
-    { id: 14, name: 'keytime', timeSpent: 207986n, authorId: 6 },
-    { id: 15, name: 'medlinks', timeSpent: 3253154n, authorId: 6 }
-  ],
-  languages: [
-    { id: 20, name: 'python', userId: 6, timeSpent: 2427359n },
-    { id: 21, name: 'markdown', userId: 6, timeSpent: 71011n },
-    { id: 22, name: 'javascript', userId: 6, timeSpent: 9523n },
-    { id: 23, name: 'json', userId: 6, timeSpent: 970416n }
-  ],
-  editors: [ { id: 1, name: 'vscode', timeSpent: 3379331n, userId: 6 } ]
+  editors: [ { id: 2, name: 'vscode', timeSpent: 219408n, userId: 1 } ]
 } 
 

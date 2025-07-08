@@ -41,16 +41,17 @@ const vscode = __importStar(require("vscode"));
 const client_1 = require("./client");
 const formatTime_1 = require("./formatTime");
 let client = null;
-const hbInterval = 1000 * 60 * 2;
-const maxInterval = 1000 * 60 * 15;
 let lastHeartbeat = 0;
+// set heartbeat interval (always 2 minutes) and max heartbeat interval (decided by user - default 10 minutes)
+const hbInterval = 1000 * 60 * 2;
+let maxIntervalms = 1000 * 60 * 10;
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 async function activate(context) {
     // create output channel
     let output = vscode.window.createOutputChannel("Output");
     // create extension client
-    const client = new client_1.Client(output);
+    client = new client_1.Client(output);
     // date tracking with vscode global state
     const today = (0, date_fns_1.format)(new Date(), "yyyy-MM-dd");
     let date = context.globalState.get("date");
@@ -66,6 +67,7 @@ async function activate(context) {
     }
     output.appendLine(`time spent: ${context.globalState.get("timeSpent")}`);
     const sbItem = _createStatusBarItem(BigInt(context.globalState.get("timeSpent")));
+    checkForMaxInterval(client, output, context);
     output.appendLine("Activating keytime extension...");
     output.show(true);
     output.appendLine('Congratulations, your extension "keytime" is now active!');
@@ -85,33 +87,48 @@ async function activate(context) {
         output.appendLine("initial editor found");
         doc = editor.document;
         const newHeartbeat = Date.now();
-        processHeartbeat(newHeartbeat, doc, context, output, sbItem, client, folderNames);
+        if (client) {
+            processHeartbeat(newHeartbeat, doc, context, output, sbItem, client, folderNames);
+        }
     }
     vscode.workspace.onDidChangeTextDocument((event) => {
+        if (client) {
+            checkForMaxInterval(client, output, context);
+        }
         // check if changes are from a file - prevent output channel changes from being tracked
         const doc = event.document;
         const newHeartbeat = Date.now();
         if ((newHeartbeat - lastHeartbeat >= hbInterval &&
-            newHeartbeat - lastHeartbeat <= maxInterval) ||
+            newHeartbeat - lastHeartbeat <= maxIntervalms) ||
             lastHeartbeat === 0) {
             output.appendLine("text changed");
-            processHeartbeat(newHeartbeat, doc, context, output, sbItem, client, folderNames);
+            if (client) {
+                processHeartbeat(newHeartbeat, doc, context, output, sbItem, client, folderNames);
+            }
         }
     });
     vscode.window.onDidChangeActiveTextEditor((event) => {
+        if (client) {
+            checkForMaxInterval(client, output, context);
+        }
         if (event) {
             const doc = event.document;
             const newHeartbeat = Date.now();
             output.appendLine("editor changed");
-            processHeartbeat(newHeartbeat, doc, context, output, sbItem, client, folderNames);
+            if (client) {
+                processHeartbeat(newHeartbeat, doc, context, output, sbItem, client, folderNames);
+            }
         }
     });
     vscode.window.onDidChangeWindowState((event) => {
+        if (client) {
+            checkForMaxInterval(client, output, context);
+        }
         if (event.focused) {
             output.appendLine("editor focused");
             const newHeartbeat = Date.now();
             const doc = vscode.window.activeTextEditor?.document;
-            if (doc) {
+            if (doc && client) {
                 processHeartbeat(newHeartbeat, doc, context, output, sbItem, client, folderNames);
             }
         }
@@ -144,14 +161,28 @@ function processHeartbeat(newHeartbeat, doc, context, output, sbItem, client, fo
         // update local vscode timespent data
         if (lastHeartbeat !== 0) {
             const timeSpent = BigInt(context.globalState.get("timeSpent"));
-            if (timeSpent >= 0 && newHeartbeat - lastHeartbeat <= maxInterval) {
+            if (timeSpent >= 0 && newHeartbeat - lastHeartbeat <= maxIntervalms) {
                 context.globalState.update("timeSpent", timeSpent + BigInt(newHeartbeat - lastHeartbeat));
                 output.appendLine(`time spent: ${context.globalState.get("timeSpent")}`);
                 _updateStatusBarItem(sbItem, BigInt(context.globalState.get("timeSpent")));
             }
         }
         lastHeartbeat = newHeartbeat;
-        client.prepareHeartbeat(doc, lastHeartbeat, folderNames, (0, date_fns_1.format)(new Date(), "yyyy-MM-dd"));
+        client.prepareHeartbeat(doc, newHeartbeat, folderNames, (0, date_fns_1.format)(new Date(), "yyyy-MM-dd"));
+    }
+}
+function checkForMaxInterval(client, output, context) {
+    let mi = context.globalState.get("maxInterval");
+    if (mi && typeof mi === "number") {
+        maxIntervalms = mi * 60 * 1000;
+    }
+    else {
+        const maxInterval = client.getMaxInterval();
+        if (maxInterval) {
+            maxIntervalms = maxInterval * 60 * 1000;
+            output.appendLine(`updated maxInterval: ${maxInterval}`);
+            context.globalState.update("maxInterval", maxInterval);
+        }
     }
 }
 //# sourceMappingURL=extension.js.map
