@@ -19,11 +19,11 @@ type User = Prisma.UserGetPayload<{
   };
 }>;
 
-export function reposCommand(program: Command) {
+export function projCommand(program: Command) {
   program
-    .command("repos")
+    .command("proj")
     .description(
-      "Display all repositories that the user had worked on, with the duration of the work"
+      "Display all projects that the user had worked on, with the duration of the work"
     )
     .action(async () => {
       try {
@@ -37,7 +37,7 @@ export function reposCommand(program: Command) {
             },
           },
         });
-        if (user === null) {
+        if (!user) {
           console.log(chalk.red("You don't have a keytime account yet."));
           console.log(chalk.red("Please run `keytime start` to create one."));
         } else {
@@ -51,6 +51,7 @@ export function reposCommand(program: Command) {
               spinner.color = "blue";
               await new Promise((resolve) => setTimeout(resolve, 3000));
               spinner.succeed(chalk.green("Sync complete"));
+              await new Promise((resolve) => setTimeout(resolve, 500));
             }
             await showRepos(user!);
           } else {
@@ -73,7 +74,7 @@ export function reposCommand(program: Command) {
 }
 
 async function showRepos(user: User) {
-  const spinner = ora("Fetching repositories...").start(); // spinning animation
+  const spinner = ora("Fetching projects...").start(); // spinning animation
   try {
     const repos = user.projects.map((project) => {
       return {
@@ -94,9 +95,9 @@ async function showRepos(user: User) {
     });
 
     if (repos.length === 0) {
-      spinner.fail(chalk.red("No repositories found. Start building!!"));
+      spinner.fail(chalk.red("No projects found. Start building!!"));
     } else {
-      spinner.succeed(chalk.green("Your repositories are ready :)"));
+      spinner.succeed(chalk.green("Your projects are ready :)"));
       for (const repo of repos) {
         console.log(chalk.gray("--------------------------------"));
         console.log(chalk.bold(repo.name));
@@ -120,7 +121,7 @@ async function showRepos(user: User) {
       }
     }
   } catch (error) {
-    spinner.fail(chalk.red("Failed to fetch repositories"));
+    spinner.fail(chalk.red("Failed to fetch projects"));
     console.error(error);
   }
 }
