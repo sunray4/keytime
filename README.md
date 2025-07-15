@@ -16,5 +16,10 @@ Keytime is a coding time tracker that helps you monitor and analyze your program
 
 ---
 
-- **keytime-main/**: CLI, server, and database
-- **keytime-ext/**: VSCode extension
+### user account setup
+
+![Keytime Account Setup](assets/create_account.png)
+
+### working project
+
+![Keytime](assets/full_proj.png)
