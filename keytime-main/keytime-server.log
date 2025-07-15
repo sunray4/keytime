@@ -1,13 +1,31 @@
-in changeServerPid:  1 27579
+in changeServerPid:  3 54743
 user:  {
-  id: 1,
+  id: 3,
   username: 'ray',
-  maxInterval: 5,
-  serverPid: 27579,
-  lastHeartbeat: 1751949008613n,
-  lastFolder: 'medlinks',
-  lastLang: 'json',
-  lastEditor: 'vscode'
+  maxInterval: 10,
+  serverPid: 54743,
+  lastHeartbeat: 0n,
+  lastFolder: '',
+  lastLang: '',
+  lastEditor: ''
 }
-changed server pid to:  27579
-Server started in background with PID: 27579 on port 8081
+changed server pid to:  54743
+Server started in background with PID: 54743 on port 8081
+
+entered sigterm
+user id: 3
+Closing WebSocket server with 0 active connections
+WebSocket server closing...
+in changeServerPid:  3 0
+user:  {
+  id: 3,
+  username: 'ray',
+  maxInterval: 10,
+  serverPid: 0,
+  lastHeartbeat: 0n,
+  lastFolder: '',
+  lastLang: '',
+  lastEditor: ''
+}
+changed server pid to:  0
+Server closed

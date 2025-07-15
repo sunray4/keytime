@@ -58,17 +58,15 @@ function printUser(user) {
             ========================            ----------------
            .==+%%#############***===.           Username: ${user.username}
            .==*%%%############***+==.           Max Heartbeat Interval: ${user.maxInterval}
-           :==*%%##############**+==:           Projects: ${user.projects
-        .map((project) => project.name)
-        .join(", ")}
+           :==*%%##############**+==:           Server PID: ${user.serverPid}
            -==#%%##############**+==-           Languages: ${user.languages
         .map((language) => language.name)
         .join(", ")}
            -==#%%##############***==-           Editors: ${user.editors
         .map((editor) => editor.name)
         .join(", ")}
-           ===%%%##############***===           Server PID: ${user.serverPid}
-           ==+%%%##############***===           Last project: ${user.lastFolder}
+           ===%%%##############***===           Last project: ${user.lastFolder}
+           ==+%%%##############***===           
           .==+***+*************+++===.          
           .===--=====================.          
                 :==+********+==:                
