@@ -7,6 +7,7 @@ exports.userCommand = userCommand;
 const chalk_1 = __importDefault(require("chalk"));
 const ora_1 = __importDefault(require("ora"));
 const prisma_1 = require("../../generated/prisma");
+const formatTime_1 = require("../formatTime");
 const serverCommand_1 = require("./serverCommand");
 const prisma = new prisma_1.PrismaClient();
 function userCommand(program) {
@@ -37,7 +38,7 @@ function userCommand(program) {
                         spinner.succeed(chalk_1.default.green("Sync complete"));
                         await new Promise((resolve) => setTimeout(resolve, 500));
                     }
-                    console.log(printUser(user));
+                    printUser(user);
                 }
                 else {
                     console.log(chalk_1.default.red("Please try to run `keytime start` to start the server."));
@@ -53,33 +54,59 @@ function userCommand(program) {
     });
 }
 function printUser(user) {
-    return `
-            .::::::::::::::::::::::.            KEYTIME
-            ========================            ----------------
-           .==+%%#############***===.           Username: ${user.username}
-           .==*%%%############***+==.           Max Heartbeat Interval: ${user.maxInterval}
-           :==*%%##############**+==:           Server PID: ${user.serverPid}
-           -==#%%##############**+==-           Languages: ${user.languages
-        .map((language) => language.name)
-        .join(", ")}
-           -==#%%##############***==-           Editors: ${user.editors
-        .map((editor) => editor.name)
-        .join(", ")}
-           ===%%%##############***===           Last project: ${user.lastFolder}
-           ==+%%%##############***===           
-          .==+***+*************+++===.          
-          .===--=====================.          
-                :==+********+==:                
-              .:-===+++++++++==-:.              
-             :====================:             
-             :==+##**********+++==:             
-             :==*###*********+++==:             
-             :==+##**********+++==:             
-             :====================:             
-             :==-::-===++===-::-==:             
-             .==.  :==+**+==:  .==.             
-                   :========:                   
-                    .::::::.                    
-  `;
+    const asciiArt = [
+        "       ==+++++++++===       ",
+        "      .=*@########*+=.      ",
+        "      .=*%########*+=.      ",
+        "      :=#%########*+=:      ",
+        "      -=%%########**=-      ",
+        "      -====++++++====-      ",
+        "         :=++++++=:         ",
+        "        ==++++++====        ",
+        "        =+%#*****++=        ",
+        "        =+*+++++++==        ",
+        "        =-.-=++=-.-=        ",
+        "           :====:           ",
+    ];
+    const username = `Username: ${user.username}`;
+    const maxInterval = `Max Heartbeat Interval: ${user.maxInterval}`;
+    const serverPid = `Server PID: ${user.serverPid}`;
+    const editors = `Editors: ${user.editors
+        .map((editor) => {
+        return `${editor.name} (${(0, formatTime_1.formatTime)(editor.timeSpent)})`;
+    })
+        .join(", ")}`;
+    const languages = `Languages: ${user.languages
+        .map((language) => {
+        return `${language.name} (${(0, formatTime_1.formatTime)(language.timeSpent)})`;
+    })
+        .join(", ")}`;
+    const lastProject = `Last Project: ${user.lastFolder}`;
+    const terminalWidth = process.stdout.columns || 80;
+    const textWidth = terminalWidth - asciiArt[0].length;
+    if (terminalWidth < 42) {
+        return `\nKEYTIME\n*******\n${username}\n${maxInterval}\n${serverPid}\n${editors}\n${languages}\n${lastProject}
+    `;
+    }
+    let text = ["", "KEYTIME", "**********"];
+    text = splitText(text, username, textWidth);
+    text = splitText(text, maxInterval, textWidth);
+    text = splitText(text, serverPid, textWidth);
+    text = splitText(text, editors, textWidth);
+    text = splitText(text, languages, textWidth);
+    text = splitText(text, lastProject, textWidth);
+    for (let i = 0; i < Math.max(asciiArt.length, text.length); i++) {
+        const asciiLine = asciiArt[i] ?? " ".repeat(asciiArt[0].length);
+        const textLine = text[i] ?? "";
+        console.log(`${asciiLine}${textLine}`);
+    }
+}
+function splitText(text, cur, textWidth) {
+    while (cur.length > textWidth) {
+        text.push(cur.substring(0, textWidth));
+        cur = cur.substring(textWidth, cur.length);
+    }
+    text.push(cur);
+    return text;
 }
 //# sourceMappingURL=userCommand.js.map

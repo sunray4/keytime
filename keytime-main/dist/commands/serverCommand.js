@@ -48,7 +48,7 @@ async function startServer() {
         }
         else {
             success = 0;
-            console.log(chalk_1.default.green("Server is already running"));
+            console.log(chalk_1.default.green("Server is running"));
         }
     }
     catch (error) {

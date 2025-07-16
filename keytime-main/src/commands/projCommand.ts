@@ -21,7 +21,7 @@ type User = Prisma.UserGetPayload<{
 
 export function projCommand(program: Command) {
   program
-    .command("proj")
+    .command("projects")
     .description(
       "Display all projects that the user had worked on, with the duration of the work"
     )

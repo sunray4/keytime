@@ -50,7 +50,7 @@ export async function startServer(): Promise<number> {
       success = 1;
     } else {
       success = 0;
-      console.log(chalk.green("Server is already running"));
+      console.log(chalk.green("Server is running"));
     }
   } catch (error) {
     console.error(error);

@@ -12,7 +12,7 @@ const serverCommand_1 = require("./serverCommand");
 const prisma = new prisma_1.PrismaClient();
 function projCommand(program) {
     program
-        .command("proj")
+        .command("projects")
         .description("Display all projects that the user had worked on, with the duration of the work")
         .action(async () => {
         try {
