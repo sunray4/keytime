@@ -26,3 +26,5 @@ It consists of two main components:
 ### Extension communicating with server
 
 ![Keytime](assets/heartbeats.png)
+
+##### watch project demo here: https://hc-cdn.hel1.your-objectstorage.com/s/v3/b00b670370756475a6b5726c401aad38520e9227_keytime_demo.mp4
