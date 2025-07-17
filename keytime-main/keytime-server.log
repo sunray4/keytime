@@ -603,3 +603,31 @@ user: {
   editors: [ { id: 1, name: 'vscode', timeSpent: 585475n, userId: 1 } ]
 } 
 
+Received message: {"type":"heartbeat","timestamp":1752720727818,"folder":"toDoTracker","lang":"typescriptreact","editor":"vscode","date":"2025-07-16"}
+handling heartbeat...
+heartbeat updated
+user: {
+  id: 1,
+  username: 'ray',
+  maxInterval: 10,
+  serverPid: 79742,
+  lastHeartbeat: 1752720727818n,
+  lastFolder: 'toDoTracker',
+  lastLang: 'typescriptreact',
+  lastEditor: 'vscode',
+  projects: [
+    { id: 1, name: 'medlinks', timeSpent: 391351n, authorId: 1 },
+    { id: 2, name: 'emailbloc', timeSpent: 232894n, authorId: 1 },
+    { id: 3, name: 'toDoTracker', timeSpent: 102397n, authorId: 1 }
+  ],
+  languages: [
+    { id: 1, name: 'json', userId: 1, timeSpent: 117710n },
+    { id: 2, name: 'python', userId: 1, timeSpent: 273641n },
+    { id: 3, name: 'html', userId: 1, timeSpent: 2952n },
+    { id: 4, name: 'javascript', userId: 1, timeSpent: 229942n },
+    { id: 5, name: 'typescriptreact', userId: 1, timeSpent: 78074n },
+    { id: 6, name: 'typescript', userId: 1, timeSpent: 24323n }
+  ],
+  editors: [ { id: 1, name: 'vscode', timeSpent: 585475n, userId: 1 } ]
+} 
+
