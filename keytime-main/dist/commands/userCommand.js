@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userCommand = userCommand;
 const chalk_1 = __importDefault(require("chalk"));
 const ora_1 = __importDefault(require("ora"));
+const slice_ansi_1 = __importDefault(require("slice-ansi"));
+const string_width_1 = __importDefault(require("string-width"));
 const prisma_1 = require("../../generated/prisma");
 const formatTime_1 = require("../formatTime");
 const serverCommand_1 = require("./serverCommand");
@@ -55,6 +57,7 @@ function userCommand(program) {
 }
 function printUser(user) {
     const asciiArt = [
+        "                            ",
         "       ==+++++++++===       ",
         "      .=*@########*+=.      ",
         "      .=*%########*+=.      ",
@@ -68,27 +71,27 @@ function printUser(user) {
         "        =-.-=++=-.-=        ",
         "           :====:           ",
     ];
-    const username = `Username: ${user.username}`;
-    const maxInterval = `Max Heartbeat Interval: ${user.maxInterval}`;
-    const serverPid = `Server PID: ${user.serverPid}`;
-    const editors = `Editors: ${user.editors
+    const username = chalk_1.default.cyan(`Username: ${user.username}`);
+    const maxInterval = chalk_1.default.magenta(`Max Heartbeat Interval: ${user.maxInterval}`);
+    const serverPid = chalk_1.default.green(`Server PID: ${user.serverPid}`);
+    const editors = chalk_1.default.cyanBright(`Editors: ${user.editors
         .map((editor) => {
         return `${editor.name} (${(0, formatTime_1.formatTime)(editor.timeSpent)})`;
     })
-        .join(", ")}`;
-    const languages = `Languages: ${user.languages
+        .join(", ")}`);
+    const languages = chalk_1.default.hex("ed7056")(`Languages: ${user.languages
         .map((language) => {
         return `${language.name} (${(0, formatTime_1.formatTime)(language.timeSpent)})`;
     })
-        .join(", ")}`;
-    const lastProject = `Last Project: ${user.lastFolder}`;
+        .join(", ")}`);
+    const lastProject = chalk_1.default.yellow(`Last Project: ${user.lastFolder}`);
     const terminalWidth = process.stdout.columns || 80;
     const textWidth = terminalWidth - asciiArt[0].length;
     if (terminalWidth < 42) {
-        return `\nKEYTIME\n*******\n${username}\n${maxInterval}\n${serverPid}\n${editors}\n${languages}\n${lastProject}
-    `;
+        console.log(`\n${chalk_1.default.blue.bold("KEYTIME")}\n${chalk_1.default.dim("**********")}\n${username}\n${maxInterval}\n${serverPid}\n${editors}\n${languages}\n${lastProject}
+    `);
     }
-    let text = ["", "KEYTIME", "**********"];
+    let text = ["", "", chalk_1.default.blue.bold("KEYTIME"), chalk_1.default.dim("**********")];
     text = splitText(text, username, textWidth);
     text = splitText(text, maxInterval, textWidth);
     text = splitText(text, serverPid, textWidth);
@@ -102,9 +105,9 @@ function printUser(user) {
     }
 }
 function splitText(text, cur, textWidth) {
-    while (cur.length > textWidth) {
-        text.push(cur.substring(0, textWidth));
-        cur = cur.substring(textWidth, cur.length);
+    while ((0, string_width_1.default)(cur) > textWidth) {
+        text.push((0, slice_ansi_1.default)(cur, 0, textWidth));
+        cur = (0, slice_ansi_1.default)(cur, textWidth);
     }
     text.push(cur);
     return text;

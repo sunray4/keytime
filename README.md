@@ -16,10 +16,18 @@ Keytime is a coding time tracker that helps you monitor and analyze your program
 
 ---
 
-### user account setup
+### User account setup
 
 ![Keytime Account Setup](assets/create_account.png)
 
-### heartbeats sent from vscode to server
+### Displays all projects and respective coding time
 
-![Keytime](assets/full_proj.png)
+![Keytime](assets/projects.png)
+
+### Displays user information
+
+![Keytime](assets/user.png)
+
+### Extension communicating with server
+
+![Keytime](assets/heartbeats.png)

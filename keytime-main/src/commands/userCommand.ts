@@ -1,6 +1,8 @@
 import chalk from "chalk";
 import { Command } from "commander";
 import ora from "ora";
+import sliceAnsi from "slice-ansi";
+import stringWidth from "string-width";
 import { Prisma, PrismaClient } from "../../generated/prisma";
 import { formatTime } from "../formatTime";
 import { startServer } from "./serverCommand";
@@ -66,6 +68,7 @@ export function userCommand(program: Command) {
 
 function printUser(user: User) {
   const asciiArt = [
+    "                            ",
     "       ==+++++++++===       ",
     "      .=*@########*+=.      ",
     "      .=*%########*+=.      ",
@@ -80,30 +83,38 @@ function printUser(user: User) {
     "           :====:           ",
   ];
 
-  const username = `Username: ${user.username}`;
-  const maxInterval = `Max Heartbeat Interval: ${user.maxInterval}`;
-  const serverPid = `Server PID: ${user.serverPid}`;
-  const editors = `Editors: ${user.editors
-    .map((editor) => {
-      return `${editor.name} (${formatTime(editor.timeSpent)})`;
-    })
-    .join(", ")}`;
-  const languages = `Languages: ${user.languages
-    .map((language) => {
-      return `${language.name} (${formatTime(language.timeSpent)})`;
-    })
-    .join(", ")}`;
-  const lastProject = `Last Project: ${user.lastFolder}`;
+  const username = chalk.cyan(`Username: ${user.username}`);
+  const maxInterval = chalk.magenta(
+    `Max Heartbeat Interval: ${user.maxInterval}`
+  );
+  const serverPid = chalk.green(`Server PID: ${user.serverPid}`);
+  const editors = chalk.cyanBright(
+    `Editors: ${user.editors
+      .map((editor) => {
+        return `${editor.name} (${formatTime(editor.timeSpent)})`;
+      })
+      .join(", ")}`
+  );
+  const languages = chalk.hex("ed7056")(
+    `Languages: ${user.languages
+      .map((language) => {
+        return `${language.name} (${formatTime(language.timeSpent)})`;
+      })
+      .join(", ")}`
+  );
+  const lastProject = chalk.yellow(`Last Project: ${user.lastFolder}`);
 
   const terminalWidth = process.stdout.columns || 80;
   const textWidth = terminalWidth - asciiArt[0].length;
 
   if (terminalWidth < 42) {
-    return `\nKEYTIME\n*******\n${username}\n${maxInterval}\n${serverPid}\n${editors}\n${languages}\n${lastProject}
-    `;
+    console.log(`\n${chalk.blue.bold("KEYTIME")}\n${chalk.dim(
+      "**********"
+    )}\n${username}\n${maxInterval}\n${serverPid}\n${editors}\n${languages}\n${lastProject}
+    `);
   }
 
-  let text = ["", "KEYTIME", "**********"];
+  let text = ["", "", chalk.blue.bold("KEYTIME"), chalk.dim("**********")];
 
   text = splitText(text, username, textWidth);
   text = splitText(text, maxInterval, textWidth);
@@ -120,9 +131,9 @@ function printUser(user: User) {
 }
 
 function splitText(text: string[], cur: string, textWidth: number): string[] {
-  while (cur.length > textWidth) {
-    text.push(cur.substring(0, textWidth));
-    cur = cur.substring(textWidth, cur.length);
+  while (stringWidth(cur) > textWidth) {
+    text.push(sliceAnsi(cur, 0, textWidth));
+    cur = sliceAnsi(cur, textWidth);
   }
   text.push(cur);
   return text;

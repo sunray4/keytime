@@ -1,1 +1,1 @@
-{"version":3,"file":"userCommand.d.ts","sourceRoot":"","sources":["../../src/commands/userCommand.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,MAAM,WAAW,CAAC;AAgBpC,wBAAgB,WAAW,CAAC,OAAO,EAAE,OAAO,QA+C3C"}
+{"version":3,"file":"userCommand.d.ts","sourceRoot":"","sources":["../../src/commands/userCommand.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,MAAM,WAAW,CAAC;AAkBpC,wBAAgB,WAAW,CAAC,OAAO,EAAE,OAAO,QA+C3C"}
