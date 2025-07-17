@@ -631,3 +631,112 @@ user: {
   editors: [ { id: 1, name: 'vscode', timeSpent: 585475n, userId: 1 } ]
 } 
 
+Received message: {"type":"heartbeat","timestamp":1752722206596,"folder":"toDoTracker","lang":"typescriptreact","editor":"vscode","date":"2025-07-16"}
+handling heartbeat...
+heartbeat updated
+user: {
+  id: 1,
+  username: 'ray',
+  maxInterval: 10,
+  serverPid: 79742,
+  lastHeartbeat: 1752722206596n,
+  lastFolder: 'toDoTracker',
+  lastLang: 'typescriptreact',
+  lastEditor: 'vscode',
+  projects: [
+    { id: 1, name: 'medlinks', timeSpent: 391351n, authorId: 1 },
+    { id: 2, name: 'emailbloc', timeSpent: 232894n, authorId: 1 },
+    { id: 3, name: 'toDoTracker', timeSpent: 102397n, authorId: 1 }
+  ],
+  languages: [
+    { id: 1, name: 'json', userId: 1, timeSpent: 117710n },
+    { id: 2, name: 'python', userId: 1, timeSpent: 273641n },
+    { id: 3, name: 'html', userId: 1, timeSpent: 2952n },
+    { id: 4, name: 'javascript', userId: 1, timeSpent: 229942n },
+    { id: 5, name: 'typescriptreact', userId: 1, timeSpent: 78074n },
+    { id: 6, name: 'typescript', userId: 1, timeSpent: 24323n }
+  ],
+  editors: [ { id: 1, name: 'vscode', timeSpent: 585475n, userId: 1 } ]
+} 
+
+Received message: {"type":"heartbeat","timestamp":1752722209902,"folder":"toDoTracker","lang":"typescriptreact","editor":"vscode","date":"2025-07-16"}
+handling heartbeat...
+editor: { id: 1, name: 'vscode', timeSpent: 585475n, userId: 1 }
+heartbeat updated
+user: {
+  id: 1,
+  username: 'ray',
+  maxInterval: 10,
+  serverPid: 79742,
+  lastHeartbeat: 1752722209902n,
+  lastFolder: 'toDoTracker',
+  lastLang: 'typescriptreact',
+  lastEditor: 'vscode',
+  projects: [
+    { id: 1, name: 'medlinks', timeSpent: 391351n, authorId: 1 },
+    { id: 2, name: 'emailbloc', timeSpent: 232894n, authorId: 1 },
+    { id: 3, name: 'toDoTracker', timeSpent: 105703n, authorId: 1 }
+  ],
+  languages: [
+    { id: 1, name: 'json', userId: 1, timeSpent: 117710n },
+    { id: 2, name: 'python', userId: 1, timeSpent: 273641n },
+    { id: 3, name: 'html', userId: 1, timeSpent: 2952n },
+    { id: 4, name: 'javascript', userId: 1, timeSpent: 229942n },
+    { id: 5, name: 'typescriptreact', userId: 1, timeSpent: 81380n },
+    { id: 6, name: 'typescript', userId: 1, timeSpent: 24323n }
+  ],
+  editors: [ { id: 1, name: 'vscode', timeSpent: 588781n, userId: 1 } ]
+} 
+
+Connection closed (0 active)
+client connected (1 active)
+Received message: Hello from client
+not a json heartbeat
+Received message: {"type":"heartbeat","timestamp":1752722573681,"folder":"toDoTracker","lang":"typescriptreact","editor":"vscode","date":"2025-07-16"}
+handling heartbeat...
+editor: { id: 1, name: 'vscode', timeSpent: 588781n, userId: 1 }
+heartbeat updated
+user: {
+  id: 1,
+  username: 'ray',
+  maxInterval: 10,
+  serverPid: 79742,
+  lastHeartbeat: 1752722573681n,
+  lastFolder: 'toDoTracker',
+  lastLang: 'typescriptreact',
+  lastEditor: 'vscode',
+  projects: [
+    { id: 1, name: 'medlinks', timeSpent: 391351n, authorId: 1 },
+    { id: 2, name: 'emailbloc', timeSpent: 232894n, authorId: 1 },
+    { id: 3, name: 'toDoTracker', timeSpent: 469482n, authorId: 1 }
+  ],
+  languages: [
+    { id: 1, name: 'json', userId: 1, timeSpent: 117710n },
+    { id: 2, name: 'python', userId: 1, timeSpent: 273641n },
+    { id: 3, name: 'html', userId: 1, timeSpent: 2952n },
+    { id: 4, name: 'javascript', userId: 1, timeSpent: 229942n },
+    { id: 5, name: 'typescriptreact', userId: 1, timeSpent: 445159n },
+    { id: 6, name: 'typescript', userId: 1, timeSpent: 24323n }
+  ],
+  editors: [ { id: 1, name: 'vscode', timeSpent: 952560n, userId: 1 } ]
+} 
+
+Connection closed (0 active)
+
+entered sigterm
+user id: 1
+Closing WebSocket server with 0 active connections
+WebSocket server closing...
+in changeServerPid:  1 0
+user:  {
+  id: 1,
+  username: 'ray',
+  maxInterval: 10,
+  serverPid: 0,
+  lastHeartbeat: 1752722573681n,
+  lastFolder: 'toDoTracker',
+  lastLang: 'typescriptreact',
+  lastEditor: 'vscode'
+}
+changed server pid to:  0
+Server closed

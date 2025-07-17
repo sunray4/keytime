@@ -84,14 +84,14 @@ async function showRepos(user) {
             for (const repo of repos) {
                 console.log(chalk_1.default.gray("--------------------------------"));
                 console.log(chalk_1.default.bold(repo.name));
-                console.log(chalk_1.default.blue(`Time spent: ${(0, formatTime_1.formatTime)(repo.timeSpent)}`));
+                console.log(chalk_1.default.cyanBright(`Time spent: ${(0, formatTime_1.formatTime)(repo.timeSpent)}`));
                 // for (const language of repo.languages) {
-                console.log(chalk_1.default.green(`Languages: ${repo.languages
+                console.log(chalk_1.default.magentaBright(`Languages: ${repo.languages
                     .map((language) => {
                     return `${language.name} (${(0, formatTime_1.formatTime)(language.timeSpent)})`;
                 })
                     .join(", ")}`));
-                console.log(chalk_1.default.yellow(`Editors: ${repo.editors.map((editor) => editor.name).join(", ")}`));
+                console.log(chalk_1.default.yellowBright(`Editors: ${repo.editors.map((editor) => editor.name).join(", ")}`));
             }
         }
     }

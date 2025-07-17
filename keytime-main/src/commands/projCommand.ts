@@ -101,11 +101,13 @@ async function showRepos(user: User) {
       for (const repo of repos) {
         console.log(chalk.gray("--------------------------------"));
         console.log(chalk.bold(repo.name));
-        console.log(chalk.blue(`Time spent: ${formatTime(repo.timeSpent)}`));
+        console.log(
+          chalk.cyanBright(`Time spent: ${formatTime(repo.timeSpent)}`)
+        );
         // for (const language of repo.languages) {
 
         console.log(
-          chalk.green(
+          chalk.magentaBright(
             `Languages: ${repo.languages
               .map((language) => {
                 return `${language.name} (${formatTime(language.timeSpent)})`;
@@ -114,7 +116,7 @@ async function showRepos(user: User) {
           )
         );
         console.log(
-          chalk.yellow(
+          chalk.yellowBright(
             `Editors: ${repo.editors.map((editor) => editor.name).join(", ")}`
           )
         );
