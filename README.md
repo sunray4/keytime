@@ -5,9 +5,9 @@ Keytime is a coding time tracker that helps you monitor and analyze your program
 It consists of two main components:
 
 - **keytime-main**: The command line interface (CLI) and server, built with Node.js. This tool manages your account, tracks your coding time, and stores data locally using a Prisma SQLite database. It provides commands to view project stats, view user profile and control the background server.
-- **keytime-ext**: A VSCode extension that monitors your coding activity and sends heartbeats (activity pings) to the keytime server for accurate time tracking.
+- **keytime-ext**: A VSCode extension that monitors your coding activity and sends heartbeats (activity pings) to the keytime server for accurate time tracking. More extensions for various coding platforms can also be added!
 
-###### similar extensions for various coding platforms can be built and connected to the existing server seamlessly
+##### Watch project demo here: https://hc-cdn.hel1.your-objectstorage.com/s/v3/b00b670370756475a6b5726c401aad38520e9227_keytime_demo.mp4
 
 ---
 
@@ -26,5 +26,3 @@ It consists of two main components:
 ### Extension communicating with server
 
 ![Keytime](assets/heartbeats.png)
-
-##### watch project demo here: https://hc-cdn.hel1.your-objectstorage.com/s/v3/b00b670370756475a6b5726c401aad38520e9227_keytime_demo.mp4
