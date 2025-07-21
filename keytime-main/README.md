@@ -7,6 +7,9 @@ This is the command line interface of the keytime app
 To run the cli tool, download the keytime-main folder, and in the terminal run the following commands:
 
 ```bash
+npm install
+npx prisma init --datasource-provider sqlite --output ../generated/prisma
+npx prisma migrate dev --name init
 npx prisma db push
 npm run build
 chmod +x dist/index.js

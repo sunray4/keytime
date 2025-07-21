@@ -1,6 +1,6 @@
-# Keytime
+# Keytime-Ext
 
-**Keytime** is a VS Code extension that automatically tracks your coding time and activity. It monitors your development activity in real-time and sends heartbeat data to a local server for comprehensive time tracking across projects and programming languages.
+**Keytime-Ext** is a VS Code extension that automatically tracks your coding time and activity. It monitors your development activity in real-time and sends heartbeat data to a local server for comprehensive time tracking across projects and programming languages.
 
 ## Features
 

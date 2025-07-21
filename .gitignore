@@ -1,16 +1,16 @@
 node_modules
-# Keep environment variables out of version control
+test
 .env
+dist
+tmp
+tests
+test-results
 
-/generated/prisma
-
-/generated/prisma
-/dist
-
-
+keytime-main/generated/prisma
 keytime-main/keytime-server.log
-
 keytime-main/src/prisma/dev.db
-keytime-main/notes.md
 
-keytime_demo.mp4
+keytime-ext/keytime-ext-0.0.1.vsix
+keytime-ext/out
+
+/keytime_demo.mp4
