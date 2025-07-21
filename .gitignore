@@ -10,7 +10,8 @@ keytime-main/generated/prisma
 keytime-main/keytime-server.log
 keytime-main/src/prisma/dev.db
 
-keytime-ext/keytime-ext-0.0.1.vsix
+*.vsix
 keytime-ext/out
+keytime-ext/media
 
 /keytime_demo.mp4
